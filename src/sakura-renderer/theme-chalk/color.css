@@ -1,0 +1,26 @@
+/* 基础色 */
+:root{
+    --sa-color-primary-base: #409EFF;
+    --sa-color-primary-dark-2: #66b1ff;
+    --sa-color-primary-light-3: #3375b9;
+    --el-color-primary-light-5: #2a598a;
+    --el-color-primary-light-7: #213d5b;
+    --el-color-primary-light-8: #1d3043;
+    --el-color-primary-light-9: #18222c;
+}
+
+/* 中性色 */
+:root{
+    --sa-color-basic-black: #000000;
+    --sa-color-basic-white: #FFFFFF;
+    --sa-color-basic-transparent: #00000000;
+    --sa-color-base-background: #FFFFFF;
+    --sa-color-page-background: #F2F3F5;
+
+    --sa-color-primary-text: #303133;
+    --sa-color-regular-text: #606266;
+    --sa-color-secondary-text: #909399;
+    --sa-color-placeholder-text: #A8ABB2;
+    --sa-color-disabled-text: #C0C4CC;
+
+}
