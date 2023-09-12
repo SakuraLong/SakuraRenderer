@@ -1,45 +1,49 @@
-.article-container{
+:root{
+    --sa-color-article-container-background: var(--sa-color-base-background);
+    --sa-color-cata-area-background: var(--sa-color-page-background);
+}
+.sa-article-container{
     display: block;
     position: relative;
     width: 100%;
     min-width: 400px;
-    background-color: var(--sa-color-base-background);
+    background-color: var(--sa-color-article-container-background);
     text-align: left;
 }
-.article-container__slot{
+.sa-article-container__slot{
     position: relative;
     width: 100%;
     overflow: hidden;
 }
-.article-container__main{
+.sa-article-container__main{
     position: relative;
     display: flex;
     width: 100%;
     height: auto;
 }
-.article-container__body--nocata{
+.sa-article-container__body--nocata{
     position: relative;
     width: 100%;
 }
-.article-container__body--cata{
+.sa-article-container__body--cata{
     position: relative;
     float: left;
     width: calc(100% - 300px);
     box-shadow: inset 0px 0px 10px red;
 }
-.article-container__cata{
+.sa-article-container__cata{
     position: relative;
     float: left;
     width: 300px;
     box-shadow: inset 0px 0px 10px red;
     /* overflow: visible; */
 }
-.article-area,
-.cata-area{
+.sa-article-area,
+.sa-cata-area{
     position: relative;
     width: 100%;
 }
-.cata-area{
+.sa-cata-area{
     position: sticky;
     top: 50px;
     overflow: auto;
@@ -49,20 +53,20 @@
     justify-content: center;
     flex-direction: column;
 }
-.cata-area__container{
+.sa-cata-area__container{
     position: relative;
     width: calc(100% - 10px);
     margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 5px;
-    background-color: var(--sa-color-page-background);
+    background-color: var(--sa-color-cata-area-background);
     /* box-shadow: inset 0px 0px 10px red; */
 }
-.cata-area__container__title{
+.sa-cata-area__container__title{
     position: relative;
     width: 100%;
     /* box-shadow: inset 0px 0px 10px red; */
 }
-.cata-area__container__body{
+.sa-cata-area__container__body{
 
 }

@@ -1,4 +1,6 @@
-# sakurarenderer
+# sakuraRenderer 前端文本渲染器
+
+## 特色
 
 ## Project setup
 ```

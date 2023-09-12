@@ -1,4 +1,4 @@
-import "./theme-chalk";
+import "./theme-chalk"; // 导入css
 
 import ArticleContainer from "./packages/articleContainer";
 import Paragraph from "./packages/paragraph";
@@ -42,5 +42,6 @@ if (typeof window !== "undefined" && window.Vue) {
 
 export default {
     install,
-    ArticleContainer
+    ArticleContainer,
+    Paragraph
 };
