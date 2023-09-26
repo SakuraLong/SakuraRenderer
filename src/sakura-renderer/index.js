@@ -1,11 +1,14 @@
 import "./theme-chalk"; // 导入css
+import "./labels"; // 导入标签
 
 import ArticleContainer from "./packages/articleContainer";
 import Paragraph from "./packages/paragraph";
+import Title from "./packages/title";
 
 const components = [
     ArticleContainer,
-    Paragraph
+    Paragraph,
+    Title
 ];
 
 const install = function (Vue, opts = {}) {

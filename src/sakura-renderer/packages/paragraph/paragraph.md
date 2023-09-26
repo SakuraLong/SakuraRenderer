@@ -8,6 +8,16 @@
     + 格式：
         ```js
         data:{
-            content:"段落显示内容，里面可能会包含部分模板"
+            content: "段落段落", // 段落内容
+            title: "", // 段落类型不是default时，可能会有标题
+            option: {
+                // 段落配置项
+                linHeight: "1", // 行高
+                paraType: "default", // 段落类型
+                bc:"rgba(0, 0, 0, 0)", // 如果paraType是default，则是整个段落的边框色，如果paraType是custom，则是左边框色，其余的此值无效
+                bgc:"rgba(0, 0, 0, 0)", // 如果paraType是default或者paraType是custom，则是整个段落的背景色，其余的此值无效
+                classList:[], // 类名列表
+                styleList:[], // 样式列表
+            },
         }
         ```

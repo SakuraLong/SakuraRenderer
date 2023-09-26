@@ -1,8 +1,18 @@
 <template>
     <div class="test-container">
-        <sr-article-container></sr-article-container>
+        <sr-article-container ref="render"></sr-article-container>
     </div>
 </template>
+
+<script>
+import testArticleData from "./assets/testArticleData";
+export default {
+    mounted() {
+        this.$refs.render.setArticle(testArticleData.article);
+        this.$refs.render.render();
+    },
+};
+</script>
 
 <style lang="scss">
 #app {

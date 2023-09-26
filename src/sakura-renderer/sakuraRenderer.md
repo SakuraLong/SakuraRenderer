@@ -20,24 +20,36 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
     1. 预处理（暂无）
 2. 划分区间
     1. 拆分配置项、文章主体
+        + 通过\n|-\n划分
 3. 配置项初始化
     1. 拆分配置项
     2. 合并同类配置项
     3. 与默认配置项合并
 4. 拆分主体结构
-    1. 拆分成组件（大体）
-5. 处理每一个主体架构
     1. 确定不需要渲染的区域
         1. 将其从文章里面用特殊句子替换
     2. 确定代码区域
         1. 将其从文章里面用特殊句子替换
-    3. 处理模板语法
-    4. 将代码区域插回文章
-    5. 对文章代码区域进行渲染
-    6. 将不需要渲染的区域插回文章
+    3. 拆分成组件（大体）
+5. 处理每一个主体架构
+    1. 处理模板语法
+    2. 将代码区域插回文章
+    3. 对文章代码区域进行渲染
+    4. 将不需要渲染的区域插回文章
 6. 合并主体架构成为符合要求的渲染数组
 7. 加入到布局管理器中（文章承载器）
 8. 使用vue的component进行循环渲染
+9. 渲染完毕之后进行数学公式渲染
+
+# 页面结构
++ 头部（可有可无）
+    + 页面基础信息介绍
++ 主体
+    + 标题/段落/表格/列表/图片显示器
++ 尾部（可有可无）
+    + 贡献者显示器
+    + 引用显示器
+    + 页面信息显示器
 
 ## 组件（大体）
 
@@ -52,6 +64,9 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
     1. 全部图片显示器 allImageShower
     2. 走马灯图片显示器 carouselImageShower
     3. 相册图片显示器 albumImageShower
+7. 引用显示器
+8. 贡献者显示器
+9. 页面信息显示器
 
 注意：
 1. 以上组件都不能相互嵌套（暂时）
@@ -65,10 +80,12 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
 4. *包围 *斜体*
 5. __包围 __下划线__
 6. ~*包围 ~*粗斜体*~
+7. $包围 $行内数学公式$
+8. $$包围 $$行间数学公式$$
 
 + 删除线、加粗、下划线更加详细的设定需要在模板中编写
 
-## 模板
+## 模板{{}}
 + 模板都是被{{}}括起来
 + 模板基础语法：{{模板名字|参数1|参数3=red}}
     + 模板名字是确定不可变的，如果填写不存在的模板名字会将去掉{{}}的代码放到界面上
@@ -105,14 +122,27 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
 
 1. sr-box/sr-b 行内鼠标浮动显示框
     + 真实标签
-2. sr-ref/sr-r 行内引用标签文档区域
+2. sr-ref/sr-r/ref 行内引用标签文档区域
     + 虚假标签
-3. sr-code/sr-c 行内代码区域标签
-    + 真实标签
-4. sr-poem/sr-p 保留换行符区域标签
-    + 真实标签
-5. sr-ignore/sr-i 不对文本进行渲染
+3. sr-code/sr-c/code 行内代码区域标签
     + 虚假标签
+4. sr-poem/sr-p/poem 保留换行符区域标签
+    + 虚假标签
+    + 通过这个标签替换为pre
+5. sr-ignore/sr-i/ignore 不对文本进行渲染
+    + 虚假标签
+6. sr-ref-item 行内引用到页面底部的引用区域的链接
+    + 真实标签
+    + 通过sr-ref/sr-r替换而来
+    + 不对外开放
+7. sr-ref-node 页面底部引用区域的链接
+    + 真实标签
+    + 通过sr-ref/sr-r标签被js识别之后添加
+    + 不对外开放
+
+## 模块\[\[]]
+
+## 组件{||}
 
 ## 行内图像
 
@@ -163,40 +193,128 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
 ### 标题
 
 1. 格式：
-    + = 第一标题 ?style ta=center|bp=l|bc=red|bs=1px|ha=true
+    + = 第一标题 ?style ta=center|bp=l|ha=true
     + 前后至少有一个换行符
     + 通过=数量来判断是第几标题
     + 后跟?style可以设置样式
     + 如果希望标题有?style可以设置为<span>?</span>style，（见md源码）
+    + 当然也可以通过格式来进行书写，以便于加入配置
+    ```txt
+    {|title#标题|type=h1
+    |style=font-size:20px;width:100%
+    |class=class1;class2
+    |ta=center|bp=l|ha=true
+    |-
+    | 标题
+    |}
+    ```
 2. 参数（?style后的）
-    1. 顺序：ta|bp|bc|ha
-    2. 意义：
+    1. 意义：
         1. ta:text-align
             + 会将此值赋给标题css的text-align属性
             + 默认值：left
+            + 可选值：
+                + left
+                + center
         2. bp:border-position
             + 不会在标题上直接添加边框
             + 可选值：
-                + l：左侧边框
-                + r：右侧边框
-                + t：顶部边框
-                + b：底部边框
-                + n：没有边框
+                + l/left：左侧边框
+                + b/bottom：底部边框
+                + n/none：没有边框
             + 默认值：l
-        3. bc:border-color
-            + 边框颜色
-        4. bw:border-size
-            + 边框的粗细
-        5. ha:hover-animation
-            + 是否存在鼠标浮动动画，动画效果是边框从无到有
+        3. ha:hover-animation
+           + 是否存在鼠标浮动动画，动画效果是边框从无到有
             + 此值只要存在即认为有动画，也就是说ha等同于ha=true
             + 可选值：
                 + true：有动画
                 + false：没动画
             + 默认值：false
+        4. hl:has-link
+            + 鼠标浮动时是否出现可以点击的#，进行页面滚动
+            + 此值只要存在即认为有动画，也就是说hl等同于hl=true
+            + 可选值：
+                + true：有可以点击的#
+                + false：没有可以点击的#
+            + 默认值：false
 ## 段落
 1. 格式：
     + 通过两个换行符来进行区分
+    + 段落为了简写可以直接写内容
+    + 当然也可以通过格式来进行书写，以便于加入配置
+    + 段落会存在类型type
+        + default 默认，一般段落
+        + success 成功，（warning的配色改变）
+        + warning 警告，样式见https://element-plus.org/zh-CN/component/button.html#%E9%93%BE%E6%8E%A5%E6%8C%89%E9%92%AE
+        + info 信息，（warning的配色改变）
+        + tip 要点，（danger的配色改变）
+        + custom 自定义，必须填入边框颜色和背景颜色
+        + 注意！！！！warning的颜色用的sa-color-danger的配色！！！
+    + 类型可以设置类型标题
+    ```txt
+    {|para#段落|style=font-size:20px;width:100%
+    |class=class1;class2
+    |-
+    | 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
+    段落第一句话，这不会换行。段落第一句话，这不会换行。
+    | 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
+    段落第二句话，这部分与上面一句相比，已经换行了。
+    |}
+    ```
+    ```txt
+    {|para#段落|type=danger
+    |title=警告
+    |-
+    | 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
+    段落第一句话，这不会换行。段落第一句话，这不会换行。
+    | 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
+    段落第二句话，这部分与上面一句相比，已经换行了。
+    |}
+    ```
+    ```txt
+    {|para#段落|type=custom
+    |title=警告|bc=red|bgc=white
+    |-
+    | 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
+    段落第一句话，这不会换行。段落第一句话，这不会换行。
+    | 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
+    段落第二句话，这部分与上面一句相比，已经换行了。
+    |}
+    ```
+2. 参数
+    1. 意义：
+        1. lh:line-height
+            + 行高
+            + 可选值：
+                + 会将此值直接赋值给css的line-height属性
+            + 默认值：1
+        2. bc:border-color
+            + 边框颜色
+            + 如果type是default，则是整个段落的边框色，如果type是custom，则是左边框色，其余的此值无效
+            + 可选值：
+                + 颜色
+            + 默认值：rgba(0, 0, 0, 0)
+        3. border
+            + 边框
+            + 如果type是default，则是整个段落的边框设置，其余的此值无效
+            + 可选值：
+                + 直接将此值赋值给css的border属性
+            + 默认值：-
+        4. bgc:background-color
+            + 背景颜色
+            + 如果type是default或者type是custom，则是整个段落的背景色，其余的此值无效
+            + 可选值
+                + 颜色
+            + 默认值：rgba(0, 0, 0, 0)
+        5. type
+            + 段落类型
+            + 可选值：
+                + default 默认
+                + success 成功
+                + warning 警告
+                + tip 提示
+                + info 信息
+            + 默认值：default
 
 ## 表格
 1. 格式：
@@ -215,6 +333,14 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
     | 打游戏 | 看番 | 睡觉 
     |}
     ```
+    ```txt
+    {|table
+    |-
+    |+ 标题 | a | d | d |
+    |-
+    | sa | as | as | 
+    |}
+    ```
 2. 第一行后面填写的区域是代表表格的设置
     + fold代表表格是否可以折叠
     + style会直接赋给表格
@@ -223,6 +349,7 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
 5. 关键字r：代表单元格竖向占多少个格子
 6. 关键字t：代表单元格是否是标题
 7. 第一个|-出现之后的第一行如果带上+说明是thead
+8. 之后的|-代表表格换行
 
 ## 列表
 1. 格式：
