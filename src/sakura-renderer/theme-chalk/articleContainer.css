@@ -31,6 +31,10 @@
     width: calc(100% - 300px);
     box-shadow: inset 0px 0px 10px red;
 }
+.sa-article-container__body{
+    position: relative;
+    padding: 2rem;
+}
 .sa-article-container__cata{
     position: relative;
     float: left;

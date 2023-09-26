@@ -18,7 +18,18 @@
         a<br />
         a<br />
         a<br />
+        sasasac<sr-box>12345</sr-box>axawdad
     </p>
+    <h1 style="width: 100%;text-align: center;">aaaa</h1>
+    <pre style="text-align: center;">
+asc
+哈哈哈
+有点意思
+<span style="color: red;">sasa</span>
+    </pre>
+    <sr-ref-node item-id="title_id1" item-index="1" node-content="百度">http://www.baidu.com</sr-ref-node>
+    <sr-ref-node item-id="title_id1" item-index="1">http://www.baidu.com</sr-ref-node>
+    <component :is="test">asasas</component>
 </template>
 
 <script>
@@ -42,6 +53,7 @@ export default {
                 "https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg",
                 "https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg",
             ],
+            test:"h1"
         };
     },
     mounted() {
