@@ -2,8 +2,10 @@
 标题解析器
 */
 
-import ComponentsParser from "./componentParser";
-import GrammerParser from "../grammar/grammarParser";
+import ComponentsParser from "./componentParser"; // 组件解析器（各个具体组件解析器的父类）
+import GrammerParser from "../grammar/grammarParser"; // 语法解析器
+import TemplateParser from "../template/templateParser"; // 模板解析器
+import ModuleParser from "../module/moduleParser"; // 模块解析器
 
 class TitleParser extends ComponentsParser {
     constructor(component, option) {
@@ -131,7 +133,9 @@ class TitleParser extends ComponentsParser {
             });
         }
         this.template.data.id = this.template.data.content;
-        this.template.data.content = new GrammerParser(this.option, this.template.data.content).analyse();
+        this.template.data.content = new GrammerParser(this.option, this.template.data.content).analyse(); // 调用语法解析器解析
+        this.template.data.content = new TemplateParser(this.option, this.template.data.content).analyse(); // 调用模板解析器解析
+        this.template.data.content = new ModuleParser(this.option, this.template.data.content).analyse(); // 调用模块解析器解析
         return {
             type: "success",
             msg: "",
