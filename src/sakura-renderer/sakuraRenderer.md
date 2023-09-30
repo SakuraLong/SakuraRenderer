@@ -14,6 +14,7 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
 2. css类名字按照BEM规范，须以sa开头，css样式不用写在vue下，写在配套的css文件里面
 3. 组件用到的颜色变量在css文件开始的地方进行变量定义，颜色变量按照--sa-color+组件识别名字+颜色的位置
 4. 被articleContainer直接调用的组件有且只有data一个props，类型是Object
+5. 每个组件的css文件都不在组件内部，而存放在theme-chalk下面的css文件，文件名字和组件名字相同
 
 ## 渲染流程
 1. 文档加载
@@ -288,24 +289,28 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
             + 可选值：
                 + 会将此值直接赋值给css的line-height属性
             + 默认值：1
+            + 值填写出错(不为正数)：1
         2. bc:border-color
             + 边框颜色
             + 如果type是default，则是整个段落的边框色，如果type是custom，则是左边框色，其余的此值无效
             + 可选值：
                 + 颜色
             + 默认值：rgba(0, 0, 0, 0)
+            + 值填写出错：无法检测，不做处理
         3. border
             + 边框
             + 如果type是default，则是整个段落的边框设置，其余的此值无效
             + 可选值：
                 + 直接将此值赋值给css的border属性
             + 默认值：-
+            + 值填写出错：无法检测，不做处理
         4. bgc:background-color
             + 背景颜色
             + 如果type是default或者type是custom，则是整个段落的背景色，其余的此值无效
             + 可选值
                 + 颜色
             + 默认值：rgba(0, 0, 0, 0)
+            + 值填写出错：无法检测，不做处理
         5. type
             + 段落类型
             + 可选值：
@@ -315,6 +320,21 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
                 + tip 提示
                 + info 信息
             + 默认值：default
+            + 值填写出错：default
+        6. tips
+            + 段落的提示，当且仅当段落类型不为default时生效
+            + 可选值：
+                + - 空，此时根据类型使用默认值（见下）
+                    + TIPS 提示 type=tip
+                    + WARNING 警告 type=warning
+                    + SUCCESS 成功 type=success
+                    + INFO 信息 type=info
+                + 自定义值，当类型不为default时，替换界面上的提示信息
+                    + 此值允许使用模板
+                    + 默认颜色、大小、粗细和提示值的css相同
+                    + 或许要做一下字符串检查？
+            + 默认值：-
+            + 值填写出错：-
 
 ## 表格
 1. 格式：

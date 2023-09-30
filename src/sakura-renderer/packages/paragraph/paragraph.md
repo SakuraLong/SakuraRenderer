@@ -9,7 +9,7 @@
         ```js
         data:{
             content: "段落段落", // 段落内容
-            title: "", // 段落类型不是default时，可能会有标题
+            tips: "", // 段落类型不是default时，会有tips
             option: {
                 // 段落配置项
                 linHeight: "1", // 行高
@@ -21,3 +21,6 @@
             },
         }
         ```
+
+# 注意！
+现在的paragraph.vue的template并不是使用的，你需要将其进行修改

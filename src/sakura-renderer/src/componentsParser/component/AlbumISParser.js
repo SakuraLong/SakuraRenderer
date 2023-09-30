@@ -10,7 +10,7 @@ class AlbumISParser extends ComponentsParser{
         this.default = false; // 是否是组件模板（是否是{||}包裹）
         this.name = ["albumIS", "相册图片展示框"];
         this.template = {
-            type: "sr-album-image-shower", // 组件名称
+            type: "sr-album-is", // 组件名称
             data: {},
         }; // 标题段落配置
     }

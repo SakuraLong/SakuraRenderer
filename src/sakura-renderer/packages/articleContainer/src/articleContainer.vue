@@ -2,7 +2,7 @@
 <template>
     <div
         ref="article_container"
-        class="sa-article-container"
+        class="sa-article-container sa-mathjax"
         :style="{
             height: height,
             overflow: height === 'auto' ? 'visible' : 'auto',
@@ -88,6 +88,7 @@
                 <span>登场人物</span>
             </slot>
         </div>
+        <div style="display: none;" id="sa-article-temp"></div>
     </div>
 </template>
 

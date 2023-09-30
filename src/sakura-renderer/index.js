@@ -1,14 +1,28 @@
 import "./theme-chalk"; // 导入css
 import "./labels"; // 导入标签
+import "./src/componentsParser/grammar";
 
 import ArticleContainer from "./packages/articleContainer";
 import Paragraph from "./packages/paragraph";
 import Title from "./packages/title";
+import Table from "./packages/table";
+import List from "./packages/list";
+import AlbumIS from "./packages/albumImageShower";
+import AllIS from "./packages/allImageShower";
+import CarouselIS from "./packages/carouselImageShower";
+import Catalogue from "./packages/catalogue";
+
 
 const components = [
     ArticleContainer,
     Paragraph,
-    Title
+    Title,
+    Table,
+    List,
+    AlbumIS,
+    AllIS,
+    CarouselIS,
+    Catalogue
 ];
 
 const install = function (Vue, opts = {}) {
@@ -46,5 +60,12 @@ if (typeof window !== "undefined" && window.Vue) {
 export default {
     install,
     ArticleContainer,
-    Paragraph
+    Paragraph,
+    Title,
+    Table,
+    List,
+    AlbumIS,
+    AllIS,
+    CarouselIS,
+    Catalogue
 };

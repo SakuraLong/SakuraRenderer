@@ -50,6 +50,10 @@ const article =
 |-
 == 标题
 
+=== $x+y=\\Delta$
+
+= $$x+y=z$$
+
 段落1段落1段落1段落1段落1
 
 {|表格
@@ -76,7 +80,7 @@ sacasc
 |class=class3;class4
 |style=color:red;
 |-
-| 标题
+|不知道写啥
 |}
 `;
 

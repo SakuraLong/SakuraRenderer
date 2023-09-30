@@ -10,7 +10,7 @@ class AllISParser extends ComponentsParser{
         this.default = false; // 是否是组件模板（是否是{||}包裹）
         this.name = ["allIS", "图片展示框"];
         this.template = {
-            type: "sr-all-image-shower", // 组件名称
+            type: "sr-all-is", // 组件名称
             data: {},
         }; // 标题段落配置
     }

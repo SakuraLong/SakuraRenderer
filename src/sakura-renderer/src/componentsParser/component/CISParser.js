@@ -10,7 +10,7 @@ class CISParser extends ComponentsParser{
         this.default = false; // 是否是组件模板（是否是{||}包裹）
         this.name = ["carouselIS", "走马灯图片展示框"];
         this.template = {
-            type: "sr-carousel-image-shower", // 组件名称
+            type: "sr-carousel-is", // 组件名称
             data: {},
         }; // 标题段落配置
     }
