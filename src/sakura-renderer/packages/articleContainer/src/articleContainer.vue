@@ -93,7 +93,6 @@
 </template>
 
 <script>
-import testArticleData from "@/assets/testArticleData";
 import SakuraRenderer from "../../../sakuraRenderer";
 export default {
     name: "sr-article-container",

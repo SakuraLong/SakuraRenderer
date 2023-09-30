@@ -5,7 +5,7 @@ window.customElements.define("sr-box", Box);
 /* 此处是临时测试区域，之后会删除
 */
 import utils from "../../utils";
-import Template from "@/sakura-renderer/src/componentsParser/template/templateParser";
+import Template from "@/sakura-renderer/src/componentsParser/template/template";
 
 const test = `
 sca{{{{{{c{{sac|scasac|{ascsac{{scasc}}}}}ascasc`;
