@@ -23,6 +23,7 @@ module.exports = {
         require: true,
         resolve: true,
         __dirname: true,
+        MathJax: true
     },
     parserOptions: {
         ecmaVersion: 12,

@@ -3,6 +3,7 @@
 */
 
 import ComponentsParser from "./componentParser";
+import GrammerParser from "../grammar/grammarParser";
 
 class TitleParser extends ComponentsParser {
     constructor(component, option) {
@@ -10,11 +11,11 @@ class TitleParser extends ComponentsParser {
         this.default = false; // 是否是组件模板（是否是{||}包裹）
         this.name = ["title", "标题"];
         this.template = {
-            type: "sr-title", // 组件名称
+            type: "sr-title", // 组件名称（请不要更改名称，这个和vue的name是对应的）
             data: {
                 // 标题数据
                 type: "h1", // 标题类型
-                content: "标题", // 标题内容
+                content: "", // 标题内容
                 id: "title_id1", // 标题id
                 option: {
                     // 标题配置项
@@ -30,7 +31,6 @@ class TitleParser extends ComponentsParser {
     }
     judge() {
         // 重写
-        console.log(this.dataList[0]);
         if (this.name.indexOf(this.dataList[0]) !== -1) {
             this.default = true;
             return true;
@@ -120,7 +120,6 @@ class TitleParser extends ComponentsParser {
                         this.template.data.option.classList = this.template.data.option.classList.concat(value.split(";"));
                         break;
                     case "style":
-                        console.log(value);
                         this.template.data.option.styleList = this.template.data.option.styleList.concat(value.split(";"));
                         break;
                     case "type":
@@ -132,6 +131,7 @@ class TitleParser extends ComponentsParser {
             });
         }
         this.template.data.id = this.template.data.content;
+        this.template.data.content = new GrammerParser(this.option, this.template.data.content).analyse();
         return {
             type: "success",
             msg: "",
