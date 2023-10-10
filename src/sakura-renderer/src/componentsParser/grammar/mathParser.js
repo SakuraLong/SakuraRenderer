@@ -9,7 +9,6 @@ class MathParser {
         this.tempDivId = "sa-article-temp";
     }
     analyse() {
-        console.log("math analyse");
         this.OLMathParser();
         this.ILMathParser();
         return this.content;
@@ -33,14 +32,14 @@ class MathParser {
                 return this.getMathHTML(data.replace);
             });
         }
-        console.log(content);
+        // console.log(content);
         this.content = content;
     }
     getMathHTML(mathStr) {
-        console.log(mathStr);
+        // console.log(mathStr);
         const md = new MarkdownIt().use(markdownItKatex);
         const html = md.renderInline(mathStr);
-        console.log(html);
+        // console.log(html);
         return html;
     }
 }

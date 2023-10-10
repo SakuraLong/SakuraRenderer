@@ -263,7 +263,7 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
     |}
     ```
     ```txt
-    {|para#段落|type=danger
+    {|para#段落|type=warning
     |title=警告
     |-
     | 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。

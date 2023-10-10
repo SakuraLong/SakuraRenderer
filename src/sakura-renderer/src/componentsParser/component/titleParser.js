@@ -119,10 +119,12 @@ class TitleParser extends ComponentsParser {
                         }
                         break;
                     case "class":
-                        this.template.data.option.classList = this.template.data.option.classList.concat(value.split(";"));
+                        if(value)
+                            this.template.data.option.classList = this.template.data.option.classList.concat(value.split(";"));
                         break;
                     case "style":
-                        this.template.data.option.styleList = this.template.data.option.styleList.concat(value.split(";"));
+                        if(value)
+                            this.template.data.option.styleList = this.template.data.option.styleList.concat(value.split(";"));
                         break;
                     case "type":
                         this.template.data.type = value;

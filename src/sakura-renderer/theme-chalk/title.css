@@ -2,7 +2,6 @@
     --sa-color-title-text: var(--sa-color-primary-text);
     --sa-color-title-border: var(--sa-color-primary-base);
     --sa-color-title-a-text: var(--sa-color-primary-base);
-
 }
 .sa-title {
     position: relative;

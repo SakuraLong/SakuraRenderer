@@ -11,6 +11,7 @@ import AlbumIS from "./packages/albumImageShower";
 import AllIS from "./packages/allImageShower";
 import CarouselIS from "./packages/carouselImageShower";
 import Catalogue from "./packages/catalogue";
+import Scrollbar from "./packages/scrollbar";
 
 
 const components = [
@@ -22,7 +23,8 @@ const components = [
     AlbumIS,
     AllIS,
     CarouselIS,
-    Catalogue
+    Catalogue,
+    Scrollbar
 ];
 
 const install = function (Vue, opts = {}) {
@@ -67,5 +69,6 @@ export default {
     AlbumIS,
     AllIS,
     CarouselIS,
-    Catalogue
+    Catalogue,
+    Scrollbar
 };

@@ -14,3 +14,11 @@ pre{
 .katex-html{
     display: none;
 }
+
+/* 通用 */
+.float--left {
+    float: left;
+}
+.float--right {
+    float: right;
+}
