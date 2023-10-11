@@ -85,10 +85,6 @@ sacasc
 {|para|style=font-size:20px;width:100%
 |class=class1;class2
 |type=warning
-|bc=red
-|bgc=black
-|title=测试一下
-|tips=DANGER
 |border=none
 |-
 | 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。

@@ -17,7 +17,7 @@ class ParaParser extends ComponentsParser{
         this.template = {
             type: "sr-paragraph", // 组件名称
             data: {
-                content: "段落段落", // 段落内容
+                content: "", // 段落内容
                 title: "", // 段落类型不是default时，可能会有标题
                 option: {
                     // 段落配置项
