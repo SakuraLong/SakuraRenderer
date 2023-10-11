@@ -1,13 +1,13 @@
 <template>
-    <el-image
+    <!-- <el-image
         style="width: 100px; height: 100px; float: right"
         :src="url"
         :zoom-rate="1.2"
         :preview-src-list="srcList"
         :initial-index="4"
         fit="cover"
-    />
-    <p>
+    /> -->
+    <!-- <p>
         a122222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222<br />
         a<br />
         a<br />
@@ -26,9 +26,9 @@ asc
 哈哈哈
 有点意思
 <span style="color: red;">sasa</span>
-    </pre>
-    <sr-ref-node item-id="title_id1" item-index="1" node-content="百度">http://www.baidu.com</sr-ref-node>
-    <sr-ref-node item-id="title_id1" item-index="1">http://www.baidu.com</sr-ref-node>
+    </pre> -->
+    <!-- <sr-ref-node item-id="title_id1" item-index="1" node-content="百度">http://www.baidu.com</sr-ref-node>
+    <sr-ref-node item-id="title_id1" item-index="1">http://www.baidu.com</sr-ref-node> -->
     <component :is="test">asasas</component>
 </template>
 
