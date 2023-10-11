@@ -22,3 +22,7 @@
 .sa-all-image--right{
     float: right;
 }
+
+.all-image-container {
+  overflow: hidden;
+}

@@ -41,7 +41,22 @@ export default {
             } else if (this.data.option.align === "right") {
                 this.$refs.srAllImage.classList.add("sa-all-image--right");
             }
-            this.containerStyle=`grid-template-columns: repeat(${this.data.option.column}, ${this.data.option.width}); grid-gap: ${this.data.option.space}; grid-template-rows: repeat(${this.data.option.row}, ${this.data.option.height});`;
+            this.containerStyle = `grid-template-columns: repeat(${this.data.option.column}, ${this.data.option.width}); grid-gap: ${this.data.option.space}; grid-template-rows: repeat(${this.data.option.row}, ${this.data.option.height});`;
+            const container = this.$refs.srAllImage;
+            const images = container.querySelectorAll(".slide");
+            images.forEach((image) => {
+                const rect = image.getBoundingClientRect();
+                if (
+                    rect.bottom > container.clientHeight ||
+                    rect.top < 0 ||
+                    rect.right > container.clientWidth ||
+                    rect.left < 0
+                ) {
+                    image.classList.add("show");
+                } else {
+                    image.classList.remove("show");
+                }
+            });
         },
     },
 };
@@ -54,6 +69,4 @@ export default {
     justify-content: center;
     align-items: center;
 } */
-
-
 </style>
