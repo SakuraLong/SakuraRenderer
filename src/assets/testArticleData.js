@@ -55,7 +55,10 @@ const article = `
 
 = $$x+y=z$$
 
-段落1段落1段落1段落1段落1
+{|段落|
+|-
+|aascascascasuivhvidn
+|}
 
 
 <poem>
@@ -78,6 +81,11 @@ sacasc
 |style=color:red;
 |-
 |<span style='color:black'>不知道写啥</span>
+|}
+
+{|段落|
+|-
+|aascascascasuivhvidn
 |}
 
 {|table|class=class1|fold
@@ -171,7 +179,6 @@ ascsacascsacascsacascsacascsacascsacascsacascsacas c=2|
 |space=10px
 |column=3
 |row=2
->>>>>>> b04444b9c080d621dda3b6882724f74f187b0c00
 |-
 | https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg
 |https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80

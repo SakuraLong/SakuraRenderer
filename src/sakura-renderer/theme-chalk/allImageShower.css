@@ -1,12 +1,19 @@
 .allmage-container {
-  /* 声明一个容器 */
+    /* 声明一个容器 */
     display: grid;
-  /*  声明列的宽度  */
-    grid-template-columns: repeat(2, 200px);
-  /*  声明行间距和列间距  */
+    /*  声明列的宽度  */
+    grid-template-columns: repeat(1, 2fr);
+    /*  声明行间距和列间距  */
     grid-gap: 20px;
-  /*  声明行的高度  */
-    grid-template-rows: repeat(3, 200px);
+    /*  声明行的高度  */
+    grid-template-rows: repeat(1, 3fr);
+    max-width: 100%;
+}
+
+.sa-allmage {
+    position: relative;
+    display: block;
+    max-width: 100%;
 }
 
 .sa-allmage--left {
@@ -14,11 +21,11 @@
     float: left;
 }
 
-.sa-allmage--center{
+.sa-allmage--center {
     margin: auto;
     text-align: center;
 }
 
-.sa-allmage--right{
+.sa-allmage--right {
     float: right;
 }

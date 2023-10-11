@@ -1,6 +1,6 @@
 <template>
     <div class="test-container">
-        <sr-article-container ref="render"></sr-article-container>
+        <sr-article-container ref="render" height="500px"></sr-article-container>
     </div>
 </template>
 

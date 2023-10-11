@@ -10,7 +10,7 @@
     background-color: var(--sa-color-article-container-background);
     text-align: left;
     word-break: break-all;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .sa-article-container__slot{
     position: relative;
