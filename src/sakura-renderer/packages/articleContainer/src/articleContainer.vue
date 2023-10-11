@@ -133,6 +133,7 @@ export default {
         render() {
             let componentsList = this.sakuraRenderer.render();
             this.componentsList = componentsList;
+            // console.log(this.componentsList);
             return true;
         },
     },

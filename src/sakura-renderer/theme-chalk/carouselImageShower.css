@@ -1,0 +1,95 @@
+.sa-carousell {
+    position: relative;
+    /* margin: 0; */
+    padding: 0;
+    border: 0;
+}
+
+.sa-carousell--center {
+    margin: auto;
+    text-align: center;
+}
+
+.sa-carousell--left{
+    float: left;
+}
+
+.sa-carousell--right {
+    float: right;
+}
+
+.sa-carousell .slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+    overflow: hidden
+}
+
+.sa-carousell .slide {
+    margin: 0;
+    padding: 0;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    transition: transform 0.3s;
+}
+
+.sa-carousell .button-left {
+    position: absolute;
+    z-index: 100;
+    height: 100%;
+    left: 0;
+    top: 0;
+    font-size: 30px;
+    background-color: rgba(255,255,255,0.37);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sa-carousell .button-right {
+    position: absolute;
+    z-index: 100;
+    height: 100%;
+    right: 0;
+    top:0;
+    font-size: 30px;
+    background-color: rgba(255, 255, 255, 0.37);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sa-carousell .controls {
+    position: absolute;
+    width: 100%;
+    bottom: 3%;
+    text-align: center;
+}
+
+.sa-carousell .control{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 0 5px;
+    border: 2px solid #fff;
+    cursor: pointer;
+}
+
+.sa-carousell .control.active {
+    background-color: black;
+}

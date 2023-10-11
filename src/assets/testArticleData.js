@@ -43,8 +43,7 @@ const test_article_data_list = [
     },
 ];
 
-const article = 
-`
+const article = `
 配置项
 配置项
 |-
@@ -137,11 +136,20 @@ ascsacascsacascsacascsacascsacascsacascsacascsacas c=2|
 | img2.png
 | img3.jpg
 | img4.jpeg
+
+{|carouselIS
+|width=500px
+|height=300px
+|right
+|-
+|https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
+|https://images.unsplash.com/photo-1494251202008-582bbc3eac69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80
+|https://images.unsplash.com/photo-1431576901776-e539bd916ba2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80
 |}
 
 `;
 
 export default {
     test_article_data_list,
-    article
+    article,
 };
