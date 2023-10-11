@@ -1,13 +1,5 @@
 <template>
-    <div 
-        :data-para="data.content" 
-        ref="srPara"
-        :style="styleStr"
-        class="sa-para"
-    >
-    <span :id="data.id" ref="srPara_span" :data-para="data.content" v-html="data.content" :style="para_styleStr"></span>
-    <a v-if="hasLink" class="sa-para__a" :href="'#'+data.id" aria-hidden="true">#</a>
-    </div>
+    <p :id="data.id" ref="srPara" :data-para="data.content" v-html="data.content" :style="para_styleStr"></p>
 </template>
 
 <script>

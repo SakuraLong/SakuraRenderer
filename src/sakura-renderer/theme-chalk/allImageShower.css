@@ -1,4 +1,4 @@
-.allmage-container {
+.all-image-container {
     /* 声明一个容器 */
     display: grid;
     /*  声明列的宽度  */
@@ -16,16 +16,20 @@
     max-width: 100%;
 }
 
-.sa-allmage--left {
+.sa-all-image--left {
     margin: 0;
     float: left;
 }
 
-.sa-allmage--center {
+.sa-all-image--center {
     margin: auto;
     text-align: center;
 }
 
-.sa-allmage--right {
+.sa-all-image--right {
     float: right;
+}
+
+.all-image-container {
+    overflow: hidden;
 }
