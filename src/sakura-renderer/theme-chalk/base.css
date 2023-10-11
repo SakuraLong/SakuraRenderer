@@ -1,3 +1,7 @@
+:root {
+    --sa-color-icon: var(--sa-color-basic-white)
+}
+
 html{
     scroll-behavior: smooth;
 }
@@ -10,15 +14,25 @@ pre{
     line-height: 1.5;
 }
 
+/* icon */
+.sa-icon {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
 /* 不知道如何关闭 */
 .katex-html{
     display: none;
 }
 
 /* 通用 */
-.float--left {
+.sa-center {
+    margin: 0 auto;
+}
+.sa-float--left {
     float: left;
 }
-.float--right {
+.sa-float--right {
     float: right;
 }

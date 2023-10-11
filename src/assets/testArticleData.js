@@ -81,10 +81,10 @@ sacasc
 |<span style='color:black'>不知道写啥</span>
 |}
 
-{|table|class=class1
-|fold|width=400px|maxHeight=300px
+{|table|class=class1|fold
+|width=400px|maxHeight=300px|float=center
 |border=border
-|hover=row
+|hover=node
 |-
 |+ asc|saca|sca c=5/t|
 |-
@@ -100,6 +100,21 @@ ascsacascsacascsacascsacascsacascsacascsacascsacas c=2|
 |sacasc|sacasc|sacasc|sac$x+y=z$asc|
 |}
 
+== 分割测试
+
+{|table|border=border|hover=node
+|float=none
+|nw=80px|nh=80px|fontSize=26px
+|-
+| 123 d| 123 d| 123 d| 123 d
+|-
+| 123 d| 用一些技巧 c=2/r=1/t | 你还可以 c=1/r=2/t
+|-
+| 123 d| 这样 c=1/r=2/t | 不一样的表格 c=1/r=1/t
+|-
+| 123 d| 画出 c=2/r=1/t
+|}
+
 {|table|border=border|hover=node
 |nw=150px|nh=150px|fontSize=26px
 |-
@@ -111,6 +126,8 @@ ascsacascsacascsacascsacascsacascsacascsacascsacas c=2|
 |-
 | 123 d| 画出 c=2/r=1/t
 |}
+
+== 分割测试
 
 {|albumIS
 | width=500px

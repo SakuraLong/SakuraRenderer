@@ -20,10 +20,13 @@ class TableParser extends ComponentsParser {
                 option: {
                     // 表格配置项
                     fold: false, // 是否折叠
+                    float: "none", // 浮动情况
                     hover: "row", // 是否有浮动样式
                     border: "border", // border属性
                     maxWidth: "none", // 最大宽度
                     maxHeight: "none", // 最大高度
+                    minWidth: "none", // 最小宽度
+                    minHeight: "none", // 最小高度
                     width: "auto", // 宽度
                     height: "auto", // 高度
                     classList: [], // 类名列表
@@ -105,11 +108,22 @@ class TableParser extends ComponentsParser {
                         this.template.data.option.hover = ["row", "node", "none"].find((ele)=>{return ele === value;});
                     }
                     break;
+                case "float":
+                    if (["none", "center", "left", "right"].indexOf(value) !== -1) {
+                        this.template.data.option.float = ["center", "left", "right"].find((ele)=>{return ele === value;});
+                    }
+                    break;
                 case "maxWidth":
                     this.template.data.option.maxWidth = value;
                     break;
                 case "maxHeight":
                     this.template.data.option.maxHeight = value;
+                    break;
+                case "minWidth":
+                    this.template.data.option.minWidth = value;
+                    break;
+                case "minHeight":
+                    this.template.data.option.minHeight = value;
                     break;
                 case "height":
                     this.template.data.option.height = value;

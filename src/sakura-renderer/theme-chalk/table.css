@@ -9,11 +9,25 @@
 
 .sa-table-container{
     position: relative;
-    float: left;
+    /* float: left; */
     max-width: 100%;
     overflow: hidden;
     width: auto;
     height: auto;
+}
+
+.sa-table-buton{
+    cursor: pointer;
+    width: 100%;
+    min-width: 100px;
+    transition: all 0.1s linear;
+    text-align: center;
+    user-select: none;
+    padding: 0.05em;
+}
+.sa-table-buton:hover{
+    transition: all 0.1s linear;
+    background-color: var(--sa-color-tr-hover-fill);
 }
 
 .sa-table {

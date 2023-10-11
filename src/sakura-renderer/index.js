@@ -12,6 +12,8 @@ import AllIS from "./packages/allImageShower";
 import CarouselIS from "./packages/carouselImageShower";
 import Catalogue from "./packages/catalogue";
 import Scrollbar from "./packages/scrollbar";
+import ImageShower from "./packages/imageShower";
+import Mask from "./packages/mask";
 
 
 const components = [
@@ -24,7 +26,9 @@ const components = [
     AllIS,
     CarouselIS,
     Catalogue,
-    Scrollbar
+    Scrollbar,
+    ImageShower,
+    Mask
 ];
 
 const install = function (Vue, opts = {}) {

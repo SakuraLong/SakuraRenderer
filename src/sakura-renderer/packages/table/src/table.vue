@@ -1,8 +1,15 @@
 <template>
     <div ref="sr_table_container" class="sa-table-container">
-        折叠
+        <div
+            class="sa-table-buton"
+            ref="sr_table_button"
+            @click="clickButton"
+            v-if="showButton"
+        >
+            {{ buttonName }}
+        </div>
         <sr-scrollbar>
-            <div ref="sr_table_body" style="display: flex;">
+            <div ref="sr_table_body" v-show="showTable">
                 <table
                     ref="sr_table"
                     v-html="tableBody"
@@ -48,8 +55,19 @@ export default {
     },
     data() {
         return {
+            showTable: false,
+            showButton: true,
+            buttonName: "展开",
             tableBody: "",
             tableClassDict: {
+                tableContainer: {
+                    float: {
+                        center: "sa-center",
+                        left: "sa-float--left",
+                        right: "sa-float--right",
+                        none: "sa-no-style"
+                    },
+                },
                 table: {
                     border: {
                         border: "sa-table--border",
@@ -69,7 +87,7 @@ export default {
                         row: "sa-table__tr--hover",
                         node: "sa-no-style",
                         none: "sa-no-style",
-                    }
+                    },
                 },
                 td: {
                     default: "sa-table__td",
@@ -84,75 +102,121 @@ export default {
                         border: "sa-table__td--border",
                         bottom: "sa-table__td--border-bottom",
                         none: "sa-no-style",
-                        anytime: "sa-table__td--border-anytime"
+                        anytime: "sa-table__td--border-anytime",
                     },
                 },
             },
         };
     },
     mounted() {
-        console.log(this.data);
-        const tableBody = this.$refs.sr_table_body;
-        const table = this.$refs.sr_table;
-        table.classList.add(
-            this.tableClassDict.table.border[this.data.option.border]
-        ); // 默认
-        tableBody.style.width = this.data.option.width;
-        tableBody.style.maxWidth = this.data.option.maxWidth;
-        tableBody.style.height = this.data.option.height;
-        tableBody.style.maxHeight = this.data.option.maxHeight;
-        const thead = document.createElement("thead");
-        const tbody = document.createElement("tbody");
-        thead.classList.add(this.tableClassDict.thead.default);
-        tbody.classList.add(this.tableClassDict.tbody.default);
-        let hasHead = false;
-        this.data.tableData.forEach((rowData, index) => {
-            const tr = document.createElement("tr");
-            tr.classList.add(this.tableClassDict.tr.default); // 默认
-            tr.classList.add(this.tableClassDict.tr.hover[this.data.option.hover]); // 浮动
-            let data = rowData.rowData;
-            data.forEach((tdData) => {
-                const td = document.createElement("td");
-                td.classList.add(this.tableClassDict.td.default); // 默认
-                // 边框设置
-                td.classList.add(
-                    this.tableClassDict.td.border[this.data.option.border]
+        if (!this.data.option.fold) {
+            this.showTable = true;
+            this.showButton = false;
+        }
+        this.render();
+    },
+    methods: {
+        render() {
+            console.log(this.data);
+            const tableContainer = this.$refs.sr_table_container;
+            const tableBody = this.$refs.sr_table_body;
+            if (this.data.option.float === "center") {
+                tableBody.classList.add(
+                    this.tableClassDict.tableContainer.float[
+                        this.data.option.float
+                    ]
                 );
-                // colSpan rowSpan设置
-                td.setAttribute("colSpan", tdData.c);
-                td.setAttribute("rowSpan", tdData.r);
-                if((tdData.c !== 1 || tdData.r !== 1) && this.data.option.border === "border"){
-                    td.classList.add(this.tableClassDict.td.border.anytime);
-                }
-                // 宽高设置
-                if(this.data.option.node.width === "auto" && this.data.option.node.height === "auto"){
-                    td.classList.add(this.tableClassDict.td.noWH); // 没设置宽高
-                }else{
-                    td.classList.add(this.tableClassDict.td.hasWH); // 设置了宽高
-                    td.style.minWidth = this.data.option.node.width;
-                    td.style.minHeight = this.data.option.node.height;
-                }
-                td.style.width = this.data.option.node.width;
-                td.style.height = this.data.option.node.height;
-                // 是否显示
-                if(!tdData.display) td.style.display = "none";
-                // 显示信息设置
-                td.innerHTML = tdData.content;
-                if(tdData.hasCR && this.data.option.hover === "row" && tdData.r !== 1) td.classList.add(this.tableClassDict.td.hasCR);
-                else if(this.data.option.hover === "node") td.classList.add(this.tableClassDict.td.hover.node);
-                if (tdData.t) td.classList.add(this.tableClassDict.td.title); // 标题
-
-                tr.appendChild(td);
-            });
-            if (rowData.thead && index === 0) {
-                hasHead = true;
-                thead.appendChild(tr);
             } else {
-                tbody.appendChild(tr);
+                tableContainer.classList.add(
+                    this.tableClassDict.tableContainer.float[
+                        this.data.option.float
+                    ]
+                );
             }
-        });
-        if (hasHead) this.$refs.sr_table.appendChild(thead);
-        table.appendChild(tbody);
+            const table = this.$refs.sr_table;
+            table.classList.add(
+                this.tableClassDict.table.border[this.data.option.border]
+            ); // 默认
+            tableBody.style.width = this.data.option.width;
+            tableBody.style.maxWidth = this.data.option.maxWidth;
+            tableBody.style.minWidth = this.data.option.minWidth;
+            tableBody.style.height = this.data.option.height;
+            tableBody.style.maxHeight = this.data.option.maxHeight;
+            tableBody.style.minHeight = this.data.option.minHeight;
+            const thead = document.createElement("thead");
+            const tbody = document.createElement("tbody");
+            thead.classList.add(this.tableClassDict.thead.default);
+            tbody.classList.add(this.tableClassDict.tbody.default);
+            let hasHead = false;
+            this.data.tableData.forEach((rowData, index) => {
+                const tr = document.createElement("tr");
+                tr.classList.add(this.tableClassDict.tr.default); // 默认
+                tr.classList.add(
+                    this.tableClassDict.tr.hover[this.data.option.hover]
+                ); // 浮动
+                let data = rowData.rowData;
+                data.forEach((tdData) => {
+                    const td = document.createElement("td");
+                    td.classList.add(this.tableClassDict.td.default); // 默认
+                    // 边框设置
+                    td.classList.add(
+                        this.tableClassDict.td.border[this.data.option.border]
+                    );
+                    // colSpan rowSpan设置
+                    td.setAttribute("colSpan", tdData.c);
+                    td.setAttribute("rowSpan", tdData.r);
+                    if (
+                        (tdData.c !== 1 || tdData.r !== 1) &&
+                        this.data.option.border === "border"
+                    ) {
+                        td.classList.add(this.tableClassDict.td.border.anytime);
+                    }
+                    // 宽高设置
+                    if (
+                        this.data.option.node.width === "auto" &&
+                        this.data.option.node.height === "auto"
+                    ) {
+                        td.classList.add(this.tableClassDict.td.noWH); // 没设置宽高
+                    } else {
+                        td.classList.add(this.tableClassDict.td.hasWH); // 设置了宽高
+                        td.style.minWidth = this.data.option.node.width;
+                        td.style.minHeight = this.data.option.node.height;
+                    }
+                    td.style.width = this.data.option.node.width;
+                    td.style.height = this.data.option.node.height;
+                    // 是否显示
+                    if (!tdData.display) td.style.display = "none";
+                    // 显示信息设置
+                    td.innerHTML = tdData.content;
+                    if (
+                        tdData.hasCR &&
+                        this.data.option.hover === "row" &&
+                        tdData.r !== 1
+                    )
+                        td.classList.add(this.tableClassDict.td.hasCR);
+                    else if (this.data.option.hover === "node")
+                        td.classList.add(this.tableClassDict.td.hover.node);
+                    if (tdData.t)
+                        td.classList.add(this.tableClassDict.td.title); // 标题
+
+                    tr.appendChild(td);
+                });
+                if (rowData.thead && index === 0) {
+                    hasHead = true;
+                    thead.appendChild(tr);
+                } else {
+                    tbody.appendChild(tr);
+                }
+            });
+            if (hasHead) this.$refs.sr_table.appendChild(thead);
+            table.appendChild(tbody);
+
+            // this.$refs.sr_table_button.style.width = table.clientWidth;
+        },
+        clickButton() {
+            this.showTable = !this.showTable;
+            this.buttonName = this.buttonName === "折叠" ? "展开" : "折叠";
+        },
     },
 };
 </script>

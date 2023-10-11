@@ -1,6 +1,6 @@
 import utils from "../../../utils";
-import MarkdownIt from "../../../node_modules/markdown-it";
-import markdownItKatex from "../../../node_modules/markdown-it-katex";
+import MarkdownIt from "../../../sr_node_modules/markdown-it";
+import markdownItKatex from "../../../sr_node_modules/markdown-it-katex";
 
 class MathParser {
     constructor(option, content) {
