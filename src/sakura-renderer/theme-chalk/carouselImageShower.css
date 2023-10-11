@@ -1,3 +1,8 @@
+:root {
+    --sa-color-control-background: var(--sa-color-info-light-5);
+    --sa-color-control-active: var(--sa-color-basic-white);
+}
+
 .sa-carousell {
     position: relative;
     /* margin: 0; */
@@ -25,7 +30,6 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    background-color: #eee;
     overflow: hidden
 }
 
@@ -50,12 +54,9 @@
     height: 100%;
     left: 0;
     top: 0;
-    font-size: 30px;
-    background-color: rgba(255,255,255,0.37);
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
 }
 
 .sa-carousell .button-right {
@@ -64,32 +65,78 @@
     height: 100%;
     right: 0;
     top:0;
-    font-size: 30px;
-    background-color: rgba(255, 255, 255, 0.37);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.sa-carousell .button-ele {
+    font-size: 17px;
+    border-radius: 50%;
+    border: solid 1px transparent;
     cursor: pointer;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.pop-up-left {
+    animation: popUpLeft 0.5s;
+}
+
+.pop-up-right {
+    animation: popUpRight 0.5s;
+}
+
+@keyframes popUpLeft {
+    0% {
+        transform: translateX(10px);
+        /* Start below the normal position */
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(-10px);
+        /* Return to the normal position */
+        opacity: 0.6;
+    }
+}
+
+@keyframes popUpRight {
+    0% {
+        transform: translateX(-10px);
+        /* Start below the normal position */
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(10px);
+        /* Return to the normal position */
+        opacity: 0.6;
+    }
+}
+
+.sa-carousell:hover .button-left,
+.sa-carousell:hover .button-right {
+    opacity: 1;
 }
 
 .sa-carousell .controls {
     position: absolute;
     width: 100%;
-    bottom: 3%;
+    bottom: 2%;
     text-align: center;
 }
 
 .sa-carousell .control{
     display: inline-block;
-    width: 10px;
-    height: 10px;
-    background-color: #fff;
-    border-radius: 50%;
+    width: 20px;
+    height: 2.5px;
+    background-color: var(--sa-color-control-background);
+    opacity: 0.7;
     margin: 0 5px;
-    border: 2px solid #fff;
     cursor: pointer;
 }
 
 .sa-carousell .control.active {
-    background-color: black;
+    background-color: var(--sa-color-control-active);
 }

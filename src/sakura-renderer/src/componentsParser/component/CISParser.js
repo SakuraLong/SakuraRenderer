@@ -17,6 +17,8 @@ class CISParser extends ComponentsParser {
                     width: 0,
                     height: 0,
                     align: "center",
+                    play: false,
+                    playtime: 3000,
                     classList: [], // 类名列表
                     styleList: [], // 样式列表
                 },
@@ -61,6 +63,10 @@ class CISParser extends ComponentsParser {
                     ) {
                         // 对齐设置
                         this.template.data.option.align = styleELe;
+                    } else if (styleELe.split(":")[0] === "play") {
+                        this.template.data.option.play = true;
+                        this.template.data.option.playtime =
+                            styleELe.split(":")[1];
                     } else {
                         return {
                             type: "error",

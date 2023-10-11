@@ -1,6 +1,16 @@
 <template>
-    <div ref="srCarousell" :style="styleStr" class="sa-carousell">
-        <!-- <span class="button-left">&lt;</span> -->
+    <div
+        ref="srCarousell"
+        :style="styleStr"
+        class="sa-carousell"
+        @mouseover="showLeftButtons(true), showRightButtons(true)"
+        @mouseleave="showLeftButtons(false), showRightButtons(false)"
+    >
+        <span class="button-left"
+            ><button ref="leftButton" class="button-ele" @click="buttonLeft()">
+                &lt;
+            </button></span
+        >
         <ul class="slides">
             <li
                 v-for="(img, index) in this.data.imgList"
@@ -23,7 +33,17 @@
                 ></span>
             </div>
         </ul>
-        <!-- <span class="button-right">&gt;</span> -->
+        <span class="button-right"
+            ><button
+                ref="RightButton"
+                class="button-ele"
+                @click="buttonRight()"
+                @mouseover="showRightButtons(true)"
+                @mouseleave="showRightButtons(false)"
+            >
+                &gt;
+            </button></span
+        >
     </div>
 </template>
 
@@ -41,6 +61,9 @@ export default {
             hasLink: false,
             styleStr: "",
             activeIndex: 0, // 初始化第一个 index 为实心
+            showButtonsLeft: false,
+            showButtonsRight: false,
+            timer: null,
         };
     },
     mounted() {
@@ -52,6 +75,9 @@ export default {
         } else if (this.data.option.align === "right") {
             this.$refs.srCarousell.classList.add("sa-carousell--right");
         }
+        if (this.data.option.play === true) {
+            this.play();
+        }
         this.data.option.classList.forEach((className) => {
             this.$refs.srCarousell.classList.add(className);
         });
@@ -62,6 +88,51 @@ export default {
     methods: {
         setActiveIndex(index) {
             this.activeIndex = index;
+        },
+        buttonLeft() {
+            if (this.activeIndex > 0) {
+                this.activeIndex = this.activeIndex - 1;
+            }
+        },
+        buttonRight() {
+            if (this.activeIndex + 1 < this.data.imgList.length) {
+                this.activeIndex = this.activeIndex + 1;
+            }
+        },
+        showLeftButtons(show) {
+            if (show === true) {
+                if (this.data.option.play === true) {
+                    clearInterval(this.timer);
+                }
+                this.$refs.leftButton.classList.add("pop-up-right");
+            } else {
+                if (this.data.option.play === true) {
+                    this.play();
+                }
+                this.$refs.leftButton.classList.remove("pop-up-right");
+            }
+        },
+        showRightButtons(show) {
+            if (show === true) {
+                if (this.data.option.play === true) {
+                    clearInterval(this.timer);
+                }
+                this.$refs.RightButton.classList.add("pop-up-left");
+            } else {
+                if (this.data.option.play === true) {
+                    this.play();
+                }
+                this.$refs.RightButton.classList.remove("pop-up-left");
+            }
+        },
+        play() {
+            this.timer = setInterval(() => {
+                if (this.activeIndex + 1 < this.data.imgList.length) {
+                    this.activeIndex = this.activeIndex + 1;
+                } else {
+                    this.activeIndex = 0;
+                }
+            }, this.data.option.playtime);
         },
     },
 };
