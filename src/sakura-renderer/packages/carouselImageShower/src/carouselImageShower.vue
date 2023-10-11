@@ -104,25 +104,23 @@ export default {
                 if (this.data.option.play === true) {
                     clearInterval(this.timer);
                 }
+                this.$refs.leftButton.classList.remove("pop-out-left");
                 this.$refs.leftButton.classList.add("pop-up-right");
             } else {
                 if (this.data.option.play === true) {
                     this.play();
                 }
                 this.$refs.leftButton.classList.remove("pop-up-right");
+                this.$refs.leftButton.classList.add("pop-out-left");
             }
         },
         showRightButtons(show) {
             if (show === true) {
-                if (this.data.option.play === true) {
-                    clearInterval(this.timer);
-                }
+                this.$refs.RightButton.classList.remove("pop-out-right");
                 this.$refs.RightButton.classList.add("pop-up-left");
             } else {
-                if (this.data.option.play === true) {
-                    this.play();
-                }
                 this.$refs.RightButton.classList.remove("pop-up-left");
+                this.$refs.RightButton.classList.add("pop-out-right");
             }
         },
         play() {

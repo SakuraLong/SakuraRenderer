@@ -63,10 +63,6 @@ class CISParser extends ComponentsParser {
                     ) {
                         // 对齐设置
                         this.template.data.option.align = styleELe;
-                    } else if (styleELe.split(":")[0] === "play") {
-                        this.template.data.option.play = true;
-                        this.template.data.option.playtime =
-                            styleELe.split(":")[1];
                     } else {
                         return {
                             type: "error",
@@ -78,6 +74,10 @@ class CISParser extends ComponentsParser {
                 let key = styleELe.split("=")[0];
                 let value = styleELe.split("=")[styleELe.split("=").length - 1];
                 switch (key) {
+                    case "play":
+                        this.template.data.option.play = true;
+                        this.template.data.option.playtime = value;
+                        break;
                     case "width":
                         this.template.data.option.styleList =
                             this.template.data.option.styleList.concat(

@@ -6,7 +6,6 @@
         :style="styleStr"
         class="sa-title"
     >
-    <span></span>
     <span :id="data.id" ref="srTitle_span" :data-title="data.content" v-html="data.content"></span>
     <a v-if="hasLink" class="sa-title__a" :href="'#'+data.id" aria-hidden="true">#</a>
     </component>

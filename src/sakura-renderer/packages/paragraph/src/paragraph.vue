@@ -1,35 +1,13 @@
 <template>
-    <el-image
-        style="width: 100px; height: 100px; float: right"
-        :src="url"
-        :zoom-rate="1.2"
-        :preview-src-list="srcList"
-        :initial-index="4"
-        fit="cover"
-    />
-    <p>
-        a122222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222<br />
-        a<br />
-        a<br />
-        a<br />
-        a<br />
-        a<br />
-        a<br />
-        a<br />
-        a<br />
-        a<br />
-        sasasac<sr-box>12345</sr-box>axawdad
-    </p>
-    <h1 style="width: 100%;text-align: center;">aaaa</h1>
-    <pre style="text-align: center;">
-asc
-哈哈哈
-有点意思
-<span style="color: red;">sasa</span>
-    </pre>
-    <sr-ref-node item-id="title_id1" item-index="1" node-content="百度">http://www.baidu.com</sr-ref-node>
-    <sr-ref-node item-id="title_id1" item-index="1">http://www.baidu.com</sr-ref-node>
-    <component :is="test">asasas</component>
+    <div 
+        :data-para="data.content" 
+        ref="srPara"
+        :style="styleStr"
+        class="sa-para"
+    >
+    <span :id="data.id" ref="srPara_span" :data-para="data.content" v-html="data.content" :style="para_styleStr"></span>
+    <a v-if="hasLink" class="sa-para__a" :href="'#'+data.id" aria-hidden="true">#</a>
+    </div>
 </template>
 
 <script>
@@ -43,21 +21,41 @@ export default {
     },
     data() {
         return {
-            url: "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",
-            srcList: [
-                "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",
-                "https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg",
-                "https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg",
-                "https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg",
-                "https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg",
-                "https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg",
-                "https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg",
-            ],
-            test:"h1"
+            hasLink:false,
+            styleStr:""
         };
     },
     mounted() {
-        // 处理data
+        console.log(this.data);
+        // if(this.data.option.textAlign === "center"){
+        //     this.$refs.srPara.classList.add("sa-para--center");
+        // }else{
+        //     this.$refs.srPara.classList.add("sa-para--left");
+        // }
+        if(this.data.option.border === "bottom"){
+            this.$refs.srPara.classList.add("sa-para--border-bottom");
+        }else if(this.data.option.border === "none"){
+            //
+        }else{
+            this.$refs.srPara.classList.add("sa-para--border-left");
+        }
+        // if(this.data.option.hoverAnimation && this.data.option.borderPosition === "bottom"){
+        //     this.$refs.srPara.classList.add("sa-para--border-bottom--ani");
+        // }else if(this.data.option.hoverAnimation){
+        //     this.$refs.srPara.classList.add("sa-para--border-left--ani");
+        // }
+        this.para_styleStr=`border-color: ${this.data.option.bc}; line-height: ${this.data.option.lineHeight}; border: ${this.data.border}; background-color:${this.data.option.bgc}`;
+        
+        this.hasLink = this.data.option.hasLink === true ? true : false;
+        this.data.option.classList.forEach((className)=>{
+            // console.log(className);
+            // console.log(this.$refs.srPara.classList);
+            
+            this.$refs.srPara.classList.add(className);
+        });
+        this.data.option.styleList.forEach((styleName)=>{
+            this.styleStr += styleName + ";";
+        });
     },
 };
 </script>
