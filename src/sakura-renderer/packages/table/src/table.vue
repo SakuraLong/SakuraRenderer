@@ -58,6 +58,7 @@ export default {
             showTable: false,
             showButton: true,
             buttonName: "展开",
+            tableName: "",
             tableBody: "",
             tableClassDict: {
                 tableContainer: {
@@ -67,6 +68,9 @@ export default {
                         right: "sa-float--right",
                         none: "sa-no-style"
                     },
+                    display: {
+                        table:"sa-table-container--table",
+                    }
                 },
                 table: {
                     border: {
@@ -131,6 +135,9 @@ export default {
                     this.tableClassDict.tableContainer.float[
                         this.data.option.float
                     ]
+                );
+                tableContainer.classList.add(
+                    this.tableClassDict.tableContainer.display.table
                 );
             }
             const table = this.$refs.sr_table;
@@ -210,6 +217,8 @@ export default {
             });
             if (hasHead) this.$refs.sr_table.appendChild(thead);
             table.appendChild(tbody);
+
+            this.tableName = this.data.option.name; // 表格名字
 
             // this.$refs.sr_table_button.style.width = table.clientWidth;
         },

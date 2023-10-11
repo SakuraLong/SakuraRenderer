@@ -42,7 +42,6 @@
                                 sacascsacascsacascsacascsacascsacascsacascsacascsacascsacascsacascsacascsacascsacascsacascsacascsacascsacascsacascsacascsacascsacascsacasc
                                 <br />
                                 sasa
-                                <sr-image-shower v-if="showIS" :imgList="test" @exit="showIS = false"></sr-image-shower>
                             </div>
                             <div class="sa-article-container__slot">
                                 <slot name="after-article">
@@ -112,11 +111,6 @@ export default {
             sakuraRenderer: null, // 渲染器类
             hasArticleCata: true,
             componentsList: [],
-            test: [
-                "https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg",
-                "https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg",
-            ],
-            showIS:true
         };
     },
     mounted() {

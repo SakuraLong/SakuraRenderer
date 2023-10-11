@@ -19,6 +19,7 @@ class TableParser extends ComponentsParser {
                 tableData: [],
                 option: {
                     // 表格配置项
+                    name:"", // 表格名字
                     fold: false, // 是否折叠
                     float: "none", // 浮动情况
                     hover: "row", // 是否有浮动样式
@@ -110,7 +111,7 @@ class TableParser extends ComponentsParser {
                     break;
                 case "float":
                     if (["none", "center", "left", "right"].indexOf(value) !== -1) {
-                        this.template.data.option.float = ["center", "left", "right"].find((ele)=>{return ele === value;});
+                        this.template.data.option.float = ["center", "left", "right", "none"].find((ele)=>{return ele === value;});
                     }
                     break;
                 case "maxWidth":
@@ -136,6 +137,9 @@ class TableParser extends ComponentsParser {
                     break;
                 case "nh":
                     this.template.data.option.node.height = value;
+                    break;
+                case "name":
+                    this.template.data.option.name = value;
                     break;
             }
         });

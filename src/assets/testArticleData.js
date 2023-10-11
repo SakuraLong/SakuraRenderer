@@ -102,7 +102,7 @@ ascsacascsacascsacascsacascsacascsacascsacascsacas c=2|
 == 分割测试
 
 {|table|border=border|hover=node
-|float=none
+|float=right
 |nw=80px|nh=80px|fontSize=26px
 |-
 | 123 d| 123 d| 123 d| 123 d
@@ -115,7 +115,9 @@ ascsacascsacascsacascsacascsacascsacascsacascsacas c=2|
 |}
 
 {|table|border=border|hover=node
-|nw=150px|nh=150px|fontSize=26px
+|nw=150px|nh=150px|fontSize=60px
+|name=展示不一样的表格
+|float=none
 |-
 | 123 d| 123 d| 123 d| 123 d
 |-
@@ -141,7 +143,6 @@ ascsacascsacascsacascsacascsacascsacascsacascsacas c=2|
 |width=500px
 |height=300px
 |right
-|play:2000
 |-
 | https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg
 |https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
