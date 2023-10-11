@@ -4,7 +4,7 @@
         :style="styleStr"
         class="sa-carousell"
         @mouseover="showLeftButtons(true), showRightButtons(true)"
-        @mouseleave="showLeftButtons(false), showRightButtons(false), play()"
+        @mouseleave="showLeftButtons(false), showRightButtons(false)"
     >
         <span class="button-left"
             ><button ref="leftButton" class="button-ele" @click="buttonLeft()">
@@ -101,17 +101,27 @@ export default {
         },
         showLeftButtons(show) {
             if (show === true) {
-                clearInterval(this.timer);
+                if (this.data.option.play === true) {
+                    clearInterval(this.timer);
+                }
                 this.$refs.leftButton.classList.add("pop-up-right");
             } else {
+                if (this.data.option.play === true) {
+                    this.play();
+                }
                 this.$refs.leftButton.classList.remove("pop-up-right");
             }
         },
         showRightButtons(show) {
             if (show === true) {
-                clearInterval(this.timer);
+                if (this.data.option.play === true) {
+                    clearInterval(this.timer);
+                }
                 this.$refs.RightButton.classList.add("pop-up-left");
             } else {
+                if (this.data.option.play === true) {
+                    this.play();
+                }
                 this.$refs.RightButton.classList.remove("pop-up-left");
             }
         },
