@@ -1,19 +1,16 @@
 <template>
-    <div ref="srAllmage" :style="styleStr" class="sa-allmage">
-        <div class="allmage-container" :style="containerStyle">
-            <div
-                v-for="(img, index) in this.data.imgList"
-                :key="index"
-                class="slide"
-                :style="{
-                    'background-image': `url(${img})`,
-                    'background-color': '#ef32ef',
-                    'background-size': 'cover',
-                    'background-position': 'center',
-                    'object-fit': 'cover',
-                }"
-            ></div>
-        </div>
+    <div ref="srAllImage" class="all-image-container" :style="containerStyle">
+        <div
+            v-for="(img, index) in this.data.imgList"
+            :key="index"
+            class="slide"
+            :style="{
+                'background-image': `url(${img})`,
+                'background-size': 'cover',
+                'background-position': 'center',
+                'object-fit': 'cover',
+            }"
+        ></div>
     </div>
 </template>
 
@@ -38,11 +35,11 @@ export default {
         setStyles() {
             // console.log(this.data.option.align);
             if (this.data.option.align === "center") {
-                this.$refs.srAllmage.classList.add("sa-allmage--center");
+                this.$refs.srAllImage.classList.add("sa-all-image--center");
             } else if (this.data.option.align === "left") {
-                this.$refs.srAllmage.classList.add("sa-allmage--left");
+                this.$refs.srAllImage.classList.add("sa-all-image--left");
             } else if (this.data.option.align === "right") {
-                this.$refs.srAllmage.classList.add("sa-allmage--right");
+                this.$refs.srAllImage.classList.add("sa-all-image--right");
             }
             this.containerStyle=`grid-template-columns: repeat(${this.data.option.column}, ${this.data.option.width}); grid-gap: ${this.data.option.space}; grid-template-rows: repeat(${this.data.option.row}, ${this.data.option.height});`;
         },
