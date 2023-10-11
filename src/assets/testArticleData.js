@@ -82,12 +82,39 @@ sacasc
 |不知道写啥
 |}
 
+{|para|style=font-size:20px;width:100%
+|class=class1;class2
+|type=warning
+|bc=red
+|bgc=black
+|title=测试一下
+|tips=DANGER
+|border=none
+|-
+| 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
+段落第一句话，这不会换行。段落第一句话，这不会换行。
+| 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
+段落第二句话，这部分与上面一句相比，已经换行了。
+|}
+
 
 {|carouselIS
 |width=500px
 |height=300px
-|right
-|play=2000
+|-
+|https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
+|https://images.unsplash.com/photo-1494251202008-582bbc3eac69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80
+|https://images.unsplash.com/photo-1431576901776-e539bd916ba2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80
+|}
+
+{|allIS
+|width=200px
+|height=120px
+|center
+|space=10px
+|column=3
+|row=2
+>>>>>>> alexlee
 |-
 |https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
 |https://images.unsplash.com/photo-1494251202008-582bbc3eac69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80

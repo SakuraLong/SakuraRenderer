@@ -1,9 +1,62 @@
 <template>
-    <div></div>
+    <div ref="srAllmage" :style="styleStr" class="sa-allmage">
+        <div class="allmage-container" :style="containerStyle">
+            <div
+                v-for="(img, index) in this.data.imgList"
+                :key="index"
+                class="slide"
+                :style="{
+                    'background-image': `url(${img})`,
+                    'background-color': '#ef32ef',
+                    'background-size': 'cover',
+                    'background-position': 'center',
+                    'object-fit': 'cover',
+                }"
+            ></div>
+        </div>
+    </div>
 </template>
 
 <script>
 export default {
-    name:"sr-all-is"
+    name: "sr-all-is",
+    props: {
+        data: { type: Object, default: null },
+    },
+    data() {
+        return {
+            hasLink: false,
+            styleStr: "",
+            containerStyle: "",
+        };
+    },
+    mounted() {
+        console.log(this.data);
+        this.setStyles();
+    },
+    methods: {
+        setStyles() {
+            // console.log(this.data.option.align);
+            if (this.data.option.align === "center") {
+                this.$refs.srAllmage.classList.add("sa-allmage--center");
+            } else if (this.data.option.align === "left") {
+                this.$refs.srAllmage.classList.add("sa-allmage--left");
+            } else if (this.data.option.align === "right") {
+                this.$refs.srAllmage.classList.add("sa-allmage--right");
+            }
+            this.containerStyle=`grid-template-columns: repeat(${this.data.option.column}, ${this.data.option.width}); grid-gap: ${this.data.option.space}; grid-template-rows: repeat(${this.data.option.row}, ${this.data.option.height});`;
+        },
+    },
 };
 </script>
+
+<style>
+/* .allmage-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+} */
+
+
+</style>
