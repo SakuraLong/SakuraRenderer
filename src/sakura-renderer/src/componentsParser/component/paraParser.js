@@ -3,7 +3,7 @@
 李海林
 */
 
-import ComponentsParser from "./componentParser";
+import ComponentsParser from "./componentParser"; // 组件解析器（各个具体组件解析器的父类）
 import GrammerParser from "../grammar/grammarParser"; // 语法解析器
 import TemplateParser from "../template/templateParser"; // 模板解析器
 import ModuleParser from "../module/moduleParser"; // 模块解析器
@@ -21,7 +21,7 @@ class ParaParser extends ComponentsParser{
                 title: "", // 段落类型不是default时，可能会有标题
                 option: {
                     // 段落配置项
-                    linHeight: "1", // 行高
+                    lineHeight: "1", // 行高
                     paraType: "default", // 段落类型
                     bc:"rgba(0, 0, 0, 0)", // 如果paraType是default，则是整个段落的边框色，如果paraType是custom，则是左边框色，其余的此值无效
                     bgc:"rgba(0, 0, 0, 0)", // 如果paraType是default或者paraType是custom，则是整个段落的背景色，其余的此值无效
@@ -128,7 +128,7 @@ class ParaParser extends ComponentsParser{
                         this.template.data.option.styleList = this.template.data.option.styleList.concat(value.split(";"));
                         break;
                     case "lh":
-                        this.template.data.option.linHeight=value;
+                        this.template.data.option.lineHeight=value;
                         break;
                     case "title":
                         this.template.data.title=value;
