@@ -1,12 +1,5 @@
 <template>
-    <div 
-        :data-para="data.content" 
-        ref="srPara"
-        :style="styleStr"
-        class="sa-para"
-    >
-    <p :id="data.id" ref="srPara_span" :data-para="data.content" v-html="data.content" :style="para_styleStr"></p>
-    </div>
+    <p :id="data.id" ref="srPara" :data-para="data.content" v-html="data.content" :style="para_styleStr"></p>
 </template>
 
 <script>

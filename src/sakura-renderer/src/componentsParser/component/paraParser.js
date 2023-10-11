@@ -38,7 +38,7 @@ class ParaParser extends ComponentsParser{
         if (this.name.indexOf(this.dataList[0]) !== -1) {
             this.default = true;
             return true;
-        } else if (this.component[0] === "=") {
+        } else if (this.component[0] !== "=" && this.component[0] !== "{" ) {
             return true;
         } else {
             return false;
@@ -112,13 +112,6 @@ class ParaParser extends ComponentsParser{
                             this.template.data.option.tips=this.template.data.option.type.toUpperCase();
                         }else if(key === value){
                             this.template.data.option.type = "default";
-                        }
-                        break;
-                    case "hl":
-                        if(["true", "false"].indexOf(value) !== -1){
-                            this.template.data.option.hasLink = eval(value);
-                        }else if(key === value){
-                            this.template.data.option.hasLink = true;
                         }
                         break;
                     case "class":
