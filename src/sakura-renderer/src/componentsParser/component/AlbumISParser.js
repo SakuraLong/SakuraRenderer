@@ -115,9 +115,6 @@ class AlbumISParser extends ComponentsParser {
                 }
             });
         }
-        console.log("你在搞什么飞机");
-        console.log(styleList);
-        console.log(this.template.data.option);
         return {
             type: "success",
             msg: "",

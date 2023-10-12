@@ -121,7 +121,7 @@ export default {
     },
     methods: {
         render() {
-            console.log(this.data);
+            // console.log(this.data);
             const tableContainer = this.$refs.sr_table_container;
             tableContainer.style.clear = this.data.option.clear; // clear
             const tableBody = this.$refs.sr_table_body;
