@@ -12,9 +12,10 @@
             />
         </div>
         <div class="sr-album--controls">共{{ loadedPhotos.length }}张图片</div>
-        <div class="modal" v-if="modalVisible" @click="hideModal">
+        <!-- <div class="modal" v-if="modalVisible" @click="hideModal">
             <img :src="loadedPhotos[currentIndex]" @click.stop />
-        </div>
+        </div> -->
+        <sr-image-shower v-if="modalVisible" :imgList="loadedPhotos" :initialIndex="currentIndex" @exit="hideModal"></sr-image-shower>
     </div>
 </template>
 

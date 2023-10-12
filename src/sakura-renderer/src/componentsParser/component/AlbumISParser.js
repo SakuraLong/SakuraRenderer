@@ -15,11 +15,7 @@ class AlbumISParser extends ComponentsParser {
                 option: {
                     // 标题配置项
                     showImageWidth: "auto", // 外展示图片的宽度
-<<<<<<< HEAD
-                    showImageHeight: "x100%", // 外展示图片的高度
-=======
                     showImageHeight: "auto", // 外展示图片的高度
->>>>>>> 5757cde275768026460429030204d6098f274d36
                     width: "auto", // 外容器宽度
                     height: "auto", // 外容器高度
                     align: "center", //外容器对齐方式
