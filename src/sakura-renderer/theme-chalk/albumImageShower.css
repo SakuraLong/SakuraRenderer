@@ -3,17 +3,16 @@
     border: solid 1px red;
     /* background-color: red; */
     text-align: center;
-    width: 100px;
+    width: auto;
     height: auto;
     display: flex;
     flex-direction: column;
-    min-width: min-content;
-    min-height: min-content;
+    overflow: hidden;
+    /* max-width: max-content; */
 }
 .sr-album--align--center{
     margin: 0 auto;
     float: none;
-    border: solid 1px tan;
 }
 .sr-album--align--left{
     margin:0;
@@ -36,6 +35,12 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    width: auto;
+    height: auto;
+    max-width: max-content;
+    max-height: max-content;
+    overflow: hidden;
+    /* object-fit: contain */
 }
 .sr-album--preview--img{
     width: 100%;
