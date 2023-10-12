@@ -9,3 +9,6 @@ import "./carouselImageShower.css";
 import "./catalogue.css";
 import "./list.css";
 import "./table.css";
+import "./scrollbar.css";
+import "./imageShower.css";
+import "./mask.css";

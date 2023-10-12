@@ -4,8 +4,7 @@
         ref="article_container"
         class="sa-article-container sa-mathjax"
         :style="{
-            height: height,
-            overflow: height === 'auto' ? 'visible' : 'auto',
+            height: height ? height : 'auto',
         }"
     >
         <!-- 全部区域 -->
@@ -37,9 +36,6 @@
                             :is="item.type"
                             :data="item.data"
                         ></component>
-                        sacasc
-                        <br />
-                        sasa
                     </div>
                     <div class="sa-article-container__slot">
                         <slot name="after-article">
@@ -88,7 +84,7 @@
                 <span>登场人物</span>
             </slot>
         </div>
-        <div style="display: none;" id="sa-article-temp"></div>
+        <div style="display: none" id="sa-article-temp"></div>
     </div>
 </template>
 
@@ -104,7 +100,7 @@ export default {
     },
     data() {
         return {
-            sakuraRenderer:null, // 渲染器类
+            sakuraRenderer: null, // 渲染器类
             hasArticleCata: true,
             componentsList: [],
         };
@@ -117,12 +113,13 @@ export default {
         setArticle(article) {
             return this.sakuraRenderer.setArticle(article); // 返回文章渲染成功还是失败
         },
-        setOption(option){
+        setOption(option) {
             return this.sakuraRenderer.setOption(option); // 返回渲染器配置成功还是失败
         },
         render() {
             let componentsList = this.sakuraRenderer.render();
             this.componentsList = componentsList;
+            // console.log(this.componentsList);
             return true;
         },
     },

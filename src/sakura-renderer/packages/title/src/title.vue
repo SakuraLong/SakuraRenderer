@@ -6,8 +6,7 @@
         :style="styleStr"
         class="sa-title"
     >
-    <span></span>
-    <span :id="data.id" ref="srTitle_span" :data-title="data.content" v-html="data.content"></span>
+    <span style="display: inline-block;" :id="data.id" ref="srTitle_span" :data-title="data.content" v-html="data.content"></span>
     <a v-if="hasLink" class="sa-title__a" :href="'#'+data.id" aria-hidden="true">#</a>
     </component>
 </template>
@@ -42,22 +41,22 @@ export default {
         };
     },
     mounted(){
-        console.log(this.data);
-        if(this.data.option.textAlign === "center"){
+        // console.log(this.data);
+        if(this.data.option.textAlign === "center" || this.data.option.textAlign === "c"){
             this.$refs.srTitle.classList.add("sa-title--center");
         }else{
             this.$refs.srTitle.classList.add("sa-title--left");
         }
-        if(this.data.option.borderPosition === "bottom"){
+        if(this.data.option.borderPosition === "bottom" || this.data.option.borderPosition === "b"){
             this.$refs.srTitle.classList.add("sa-title--border-bottom");
-        }else if(this.data.option.borderPosition === "none"){
+        }else if(this.data.option.borderPosition === "none" || this.data.option.borderPosition === "n"){
             //
         }else{
             this.$refs.srTitle.classList.add("sa-title--border-left");
         }
-        if(this.data.option.hoverAnimation && this.data.option.borderPosition === "bottom"){
+        if(this.data.option.hoverAnimation && (this.data.option.borderPosition === "bottom" || this.data.option.borderPosition === "b")){
             this.$refs.srTitle.classList.add("sa-title--border-bottom--ani");
-        }else if(this.data.option.hoverAnimation){
+        }else if(this.data.option.hoverAnimation && (this.data.option.borderPosition === "left" || this.data.option.borderPosition === "l")){
             this.$refs.srTitle.classList.add("sa-title--border-left--ani");
         }
         this.hasLink = this.data.option.hasLink === true ? true : false;
