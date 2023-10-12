@@ -1,0 +1,32 @@
+:root {
+    --sa-color-para-text: var(--sa-color-primary-text);
+    --sa-color-para-border: var(--sa-color-primary-base);
+    --sa-color-para-a-text: var(--sa-color-primary-base);
+
+}
+.sa-para {
+    position: relative;
+    /* margin: 0; */
+    padding: 0;
+    border: 0;
+}
+
+.sa-para--center {
+    width: 100%;
+    text-align: center;
+    color: var(--sa-color-title-text);
+}
+.sa-para--left {
+    width: auto;
+    text-align: left;
+    color: var(--sa-color-title-text);
+}
+.sa-para--border-left {
+    padding-left: 1rem;
+}
+
+
+.sa-para--border-bottom > span {
+    position: relative;
+    padding-bottom: 1rem;
+}
