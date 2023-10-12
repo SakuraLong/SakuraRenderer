@@ -1,3 +1,7 @@
+:root{
+    --sa-color-album-preview-border: var(--sa-color-base-border)
+}
+
 .sr-album-is{
     position: relative;
     text-align: center;
@@ -19,21 +23,18 @@
 .sr-album--align--left{
     margin:0;
     float: left;
-    border: solid 1px palegreen;
 }
 .sr-album--align--right{
     margin:0;
     float: right;
-    border: solid 1px palegreen;
 }
 .sr-album--align--none{
     margin:0;
     float: none;
-    border: solid 1px yellow;
 }
 .sr-album--preview--div{
     cursor: pointer;
-    border: solid 1px black;
+    border: solid 1px var(--sa-color-album-preview-border);
     display: block;
     margin-left: auto;
     margin-right: auto;

@@ -11,7 +11,9 @@ p{
 pre{
     font-family: inherit;
     margin: 0;
-    line-height: 1.5;
+    /* line-height: 1.5;
+    text-align: center;
+    font-size: 30px; */
 }
 
 /* icon */

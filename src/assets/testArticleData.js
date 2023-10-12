@@ -150,18 +150,6 @@ const article = `
 | 123 d| 画出 c=2/r=1/t
 |}
 
-
-{|albumIS
-|class=class1;class2
-|width=200px
-|imgW=100px
-|imgH=x200px
-|-
-|https://img.moegirl.org.cn/common/thumb/b/b4/16bitsensation_al_KV.jpg/420px-16bitsensation_al_KV.jpg
-|https://lupic.cdn.bcebos.com/20220107/3086034705_23_600_261.jpg
-|https://lupic.cdn.bcebos.com/20191203/3016196694_23.jpg
-|}
-=======
 == 你也可以折叠表格，也可以设置最大高度来产生滚动条（当设置float=center，宽度不会产生滚动条）
 
 {|table|class=class1|fold
@@ -268,19 +256,19 @@ const article = `
 == 我们还提供图片展示器
 
 {|carouselIS
-| width=500px|height=300px
+|center
 |-
-| https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
-| https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
-| https://img.moegirl.org.cn/common/thumb/4/4d/Uiharu_Kazari.jpg/375px-Uiharu_Kazari.jpg
-| https://img.moegirl.org.cn/common/thumb/9/97/Saten_Ruiko.jpg/375px-Saten_Ruiko.jpg
-| https://img.moegirl.org.cn/common/thumb/a/a1/36012599_p0.png/375px-36012599_p0.png
+| https://img2.baidu.com/it/u=4023601634,1253627961&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500
+| https://img1.baidu.com/it/u=692986918,1036130994&fm=253&fmt=auto&app=138&f=JPEG?w=888&h=500
+| https://img1.baidu.com/it/u=2421558318,922867107&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667
+| https://img2.baidu.com/it/u=3505369468,1344692084&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667
+| https://img1.baidu.com/it/u=1697803941,1711840958&fm=253&fmt=auto&app=120&f=JPEG?w=1140&h=641
 |}
 
 === 当然你也可以布局
 
 {|carouselIS
-| width=500px|height=300px|right|play=3000
+| height=300px|right|play=3000
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
@@ -384,10 +372,18 @@ const article = `
 |}
 
 {|carouselIS
-|width=500px
-|height=300px
 |cycle
 |play=2000
+|-
+| https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
+| https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
+| https://img.moegirl.org.cn/common/thumb/4/4d/Uiharu_Kazari.jpg/375px-Uiharu_Kazari.jpg
+| https://img.moegirl.org.cn/common/thumb/9/97/Saten_Ruiko.jpg/375px-Saten_Ruiko.jpg
+| https://img.moegirl.org.cn/common/thumb/a/a1/36012599_p0.png/375px-36012599_p0.png
+|}
+
+{|albumIS
+|align=none
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
@@ -407,93 +403,73 @@ const article = `
 段落第一句话，这不会换行。段落第一句话，这不会换行。
 | 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
 段落第二句话，这部分与上面一句相比，已经换行了。
+| <ignore>忽略忽略</ignore>
+| <ignore>忽略忽略1231212</ignore>
+| <poem>哈哈哈
+哈哈哈
+哈哈哈哈哈</poem>
 |}
 
-{|table|class=class1|fold
-    |width=300px
-    |border=border
-    |hover=node
-    |maxHeight=300px
-    |float=left
-    |-
-    |+ 节次/周次|星期一|星期二|星期三|星期四|星期五
-    |-
-    |第一节|||||
-    |-
-    |第二节||||编译原理 r=2|操作系统 r=3
-    |-
-    |第三节|经济学原理 r=2||软件工程 r=2
-    |-
-    |第四节||
-    |-
-    |第五节||||计算机组成原理实验 r=2|
-    |-
-    |第六节||||
-    |-
-    |第七节|习近平新时代中国特色社会主义理论 r=2|并行与分布式程序设计 r=2|人工智能导论 r=2||操作系统实验 r=2
-    |-
-    |第八节|
-    |-
-    |第九节|计算机网络 r=2||python语言程序设计 r=2||
-    |-
-    |第十节|||
-    |-
-    |第十一节|计算机网络实验 r=3|并行与分布式程序设计实验 r=3|python语言设计实验 r=2|编译原理实验 r=3|
-    |-
-    |第十二节|
-    |-
-    |第十三节||
-    |-
-    |第十四节|||||
-    |}
-
-{|albumIS
-| width=500px|height=300px|right|play=3000|align=right
+{|para|style=font-size:20px;width:100%;display:block
+|class=class1;class2
+|type=warning
+|border=none
 |-
-| https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
-| https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
-| https://img.moegirl.org.cn/common/thumb/4/4d/Uiharu_Kazari.jpg/375px-Uiharu_Kazari.jpg
-| https://img.moegirl.org.cn/common/thumb/9/97/Saten_Ruiko.jpg/375px-Saten_Ruiko.jpg
-| https://img.moegirl.org.cn/common/thumb/a/a1/36012599_p0.png/375px-36012599_p0.png
+| <poem>哈哈哈
+哈哈哈
+哈哈哈哈哈</poem>
 |}
 
-{|table|class=class1|fold
-    |width=300px
-    |border=border
-    |hover=node
-    |maxHeight=300px
-    |float=right
-    |-
-    |+ 节次/周次|星期一|星期二|星期三|星期四|星期五
-    |-
-    |第一节|||||
-    |-
-    |第二节||||编译原理 r=2|操作系统 r=3
-    |-
-    |第三节|经济学原理 r=2||软件工程 r=2
-    |-
-    |第四节||
-    |-
-    |第五节||||计算机组成原理实验 r=2|
-    |-
-    |第六节||||
-    |-
-    |第七节|习近平新时代中国特色社会主义理论 r=2|并行与分布式程序设计 r=2|人工智能导论 r=2||操作系统实验 r=2
-    |-
-    |第八节|
-    |-
-    |第九节|计算机网络 r=2||python语言程序设计 r=2||
-    |-
-    |第十节|||
-    |-
-    |第十一节|计算机网络实验 r=3|并行与分布式程序设计实验 r=3|python语言设计实验 r=2|编译原理实验 r=3|
-    |-
-    |第十二节|
-    |-
-    |第十三节||
-    |-
-    |第十四节|||||
-    |}
+= 上面是demo，下面开始介绍使用方法
+
+{|para
+|-
+|&nbsp&nbsp&nbsp&nbsp本渲染器需要掌握的知识大体上分为：组件<sr-i>{|组件名字|配置……|}</sr-i>、模板<sr-i>{{模板名字|配置……}}</sr-i>、模板<sr-i>[[模块名字|配置……]]</sr-i>、
+语法、渲染器内嵌标签、配置项、外层的vue组件。
+|&nbsp&nbsp&nbsp&nbsp组件分为：标题、段落、表格、列表、全部图片显示器、相册图片显示器、走马灯图片显示器
+|&nbsp&nbsp&nbsp&nbsp模板体量较大，这里不进行介绍
+|&nbsp&nbsp&nbsp&nbsp模块分为：行内图片模块、行内音乐模块
+|下面先介绍组件
+|}
+
+== 组件
+
+=== 标题组件
+
+{|para
+|-
+|&nbsp&nbsp&nbsp&nbsp标题组件是较为常用的组件，组件有两种可以选择的语法
+|<poem>第一种是
+= 一级标题
+== 二级标题
+=== 三级标题
+==== 四级标题
+===== 五级标题
+====== 六级标题
+======= 还是六级标题</poem>
+<poem>第二种是
+{|title|type=h1
+|-
+|一级标题
+|}
+</poem>
+|当然标题也包含一些配置项
+|}
+
+{|table|float=center|width=600px
+|-
+|+ title配置项 c=6
+|-
+| 名称 t| 含义 t|可选值 t| 可选值效果 t|是否支持?style t| 默认值 t
+|-
+|ta r=2 | text-align标题文字显示位置 r=2 | left,l | 标题文字靠左 
+| 是 r=2| left r=2
+|- 
+|center,c| 标题文字居中
+|-
+|bp | border-position边框的位置
+| left,l<br>bottom,b
+|}
 
 `;
 
