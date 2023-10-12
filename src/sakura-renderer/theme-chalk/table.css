@@ -13,7 +13,6 @@
     /* overflow: hidden; */
     width: auto;
     height: auto;
-    clear: left;
 }
 .sa-table-container--table{
     display: inline-block;

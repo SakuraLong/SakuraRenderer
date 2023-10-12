@@ -173,6 +173,21 @@ ascsacascsacascsacascsacascsacascsacascsacascsacas c=2|
 | 123 d| 画出 c=2/r=1/t
 |}
 
+{|table|border=border|hover=node
+|nw=150px|nh=150px|fontSize=60px
+|maxWidth=500px
+|name=展示不一样的表格
+|float=right
+|-
+| 123 | 123 | 123 | 123 
+|-
+| 123 | 用一些技巧 c=2/r=1/t | 你还可以 c=1/r=2/t
+|-
+| 123 | 这样 c=1/r=2/t | 不一样的表格 c=1/r=1/t
+|-
+| 123 | 画出 c=2/r=1/t
+|}
+
 {|para|style=font-size:20px;width:100%
 |class=class1;class2
 |type=warning
