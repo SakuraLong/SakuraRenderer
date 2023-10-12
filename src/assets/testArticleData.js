@@ -82,6 +82,17 @@ sacasc
 |-
 |不知道写啥
 |}
+
+{|albumIS
+|class=class1;class2
+|width=200px
+|imgW=100px
+|imgH=x200px
+|-
+|https://img.moegirl.org.cn/common/thumb/b/b4/16bitsensation_al_KV.jpg/420px-16bitsensation_al_KV.jpg
+|https://lupic.cdn.bcebos.com/20220107/3086034705_23_600_261.jpg
+|https://lupic.cdn.bcebos.com/20191203/3016196694_23.jpg
+|}
 `;
 
 export default {

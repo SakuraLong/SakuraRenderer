@@ -1,6 +1,6 @@
 import utils from "../../../utils";
-import MarkdownIt from "../../../node_modules/markdown-it";
-import markdownItKatex from "../../../node_modules/markdown-it-katex";
+// import MarkdownIt from "../../../node_modules/markdown-it";
+// import markdownItKatex from "../../../node_modules/markdown-it-katex";
 
 class MathParser {
     constructor(option, content) {
@@ -38,10 +38,10 @@ class MathParser {
     }
     getMathHTML(mathStr) {
         console.log(mathStr);
-        const md = new MarkdownIt().use(markdownItKatex);
-        const html = md.renderInline(mathStr);
-        console.log(html);
-        return html;
+        // const md = new MarkdownIt().use(markdownItKatex);
+        // const html = md.renderInline(mathStr);
+        // console.log(html);
+        // return html;
     }
 }
 
