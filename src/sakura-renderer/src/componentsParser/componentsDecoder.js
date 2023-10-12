@@ -129,7 +129,7 @@ class ComponentsDecoder {
                 if (template.type === "success") {
                     templateList.push(template.content);
                 }
-                console.log(template);
+                // console.log(template);
             }
         }
         return templateList;

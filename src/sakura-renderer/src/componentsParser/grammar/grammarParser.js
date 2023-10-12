@@ -1,13 +1,13 @@
 /*
 语法解析器
 */
-// import MathParser from "./mathParser";
+import MathParser from "./mathParser";
 
 class GrammerParser {
     constructor(option, content) {
         this.option = option;
         this.content = content;
-        this.parsers = [];
+        this.parsers = [MathParser];
     }
     analyse() {
         let finish = [];
