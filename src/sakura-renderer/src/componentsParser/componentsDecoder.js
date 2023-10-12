@@ -10,6 +10,9 @@ import AllISParser from "./component/AllISParser";
 import CISParser from "./component/CISParser";
 import ListParser from "./component/listParser";
 import TableParser from "./component/tableParser";
+import GrammerParser from "./grammar/grammarParser"; // 语法解析器
+import TemplateParser from "./template/templateParser"; // 模板解析器
+import ModuleParser from "./module/moduleParser"; // 模块解析器
 
 class ComponentsDecoder {
     constructor(option, body) {
@@ -37,25 +40,51 @@ class ComponentsDecoder {
         // 选择需要忽略的区域
         let body = this.body;
         this.ignore.forEach((ignoreStr) => {
-            body = utils.replaceNonGreed(
+            let temp = utils.replaceNonGreed(
                 "<" + ignoreStr + ">",
                 "</" + ignoreStr + ">",
                 body,
-                this.ignoreReplace
+                (data) => {
+                    return this.ignoreReplace(data);
+                }
             ).content;
+            while(temp !== body){
+                body = temp;
+                temp = utils.replaceNonGreed(
+                    "<" + ignoreStr + ">",
+                    "</" + ignoreStr + ">",
+                    body,
+                    (data) => {
+                        return this.ignoreReplace(data);
+                    }
+                ).content;
+            }
         });
         // 选择代码区域
         this.code.forEach((codeStr) => {
-            body = utils.replaceNonGreed(
+            let temp = utils.replaceNonGreed(
                 "<" + codeStr + ">",
                 "</" + codeStr + ">",
                 body,
-                this.codeReplace
+                (data) => {
+                    return this.codeReplace(data);
+                }
             ).content;
+            while(temp !== body){
+                body = temp;
+                temp = utils.replaceNonGreed(
+                    "<" + codeStr + ">",
+                    "</" + codeStr + ">",
+                    body,
+                    (data) => {
+                        return this.codeReplace(data);
+                    }
+                ).content;
+            }
         });
         // 选择poem区域
         this.poem.forEach((poemStr) => {
-            body = utils.replaceNonGreed(
+            let temp = utils.replaceNonGreed(
                 "<" + poemStr + ">",
                 "</" + poemStr + ">",
                 body,
@@ -63,16 +92,45 @@ class ComponentsDecoder {
                     return this.poemReplace(data);
                 }
             ).content;
+            while(temp !== body){
+                body = temp;
+                temp = utils.replaceNonGreed(
+                    "<" + poemStr + ">",
+                    "</" + poemStr + ">",
+                    body,
+                    (data) => {
+                        return this.poemReplace(data);
+                    }
+                ).content;
+            }
         });
         // 存在不需要处理的\n区域已经选择完毕
         // 用双换行分割
         this.componentsList = body.split("\n\n");
         console.log("组件列表");
-        console.log(this.componentsList);
+        // console.log(this.componentsList);
+        // 此处进行模板和模块和语法解析器解析
+        for (let i = 0; i < this.componentsList.length; i++) {
+            this.componentsList[i] = new GrammerParser(
+                this.option,
+                this.componentsList[i]
+            ).analyse(); // 调用语法解析器解析
+            this.componentsList[i] = new TemplateParser(
+                this.option,
+                this.componentsList[i]
+            ).analyse(); // 调用模板解析器解析
+            this.componentsList[i] = new ModuleParser(
+                this.option,
+                this.componentsList[i]
+            ).analyse(); // 调用模块解析器解析
+        }
         this.componentsList = this.listDecode(); // 组件拆分
         // 每个组件的内容进行语法、模板、模块解析
         // 将忽略的区域插回组件
         return this.componentsList;
+    }
+    insert() {
+        // 将被移除的字符串替换回去
     }
     replace(data, type) {
         let now = new Date().getTime().toString();
@@ -111,8 +169,12 @@ class ComponentsDecoder {
             data.stringBegin.length,
             -data.stringEnd.length
         ); // 去掉头尾标记符
+        content = new GrammerParser(this.option, content).analyse(); // 调用语法解析器解析
+        content = new TemplateParser(this.option, content).analyse(); // 调用模板解析器解析
+        content = new ModuleParser(this.option, content).analyse(); // 调用模块解析器解析
         let replaceStr = this.replace(data, "poem");
-        this.poemReplaceList.push({ key: replaceStr, value: content });
+        console.log(content);
+        this.poemReplaceList.push({ key: replaceStr, value: "<pre>" + content + "</pre>" });
         return replaceStr;
     }
     /**
@@ -121,11 +183,17 @@ class ComponentsDecoder {
     listDecode() {
         let componentsList = this.componentsList;
         let templateList = [];
+        console.log(this.ignoreReplaceList);
+        console.log(this.poemReplaceList);
         for (let i = 0; i < componentsList.length; i++) {
             for (let j = 0; j < this.parsers.length; j++) {
                 let t = new this.parsers[j](componentsList[i], this.option);
                 if (!t.judge()) continue;
-                let template = t.analyse();
+                let template = t.analyse(
+                    this.ignoreReplaceList,
+                    this.codeReplaceList,
+                    this.poemReplaceList
+                );
                 if (template.type === "success") {
                     templateList.push(template.content);
                 }

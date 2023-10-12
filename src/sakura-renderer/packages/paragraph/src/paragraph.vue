@@ -18,7 +18,7 @@ export default {
         };
     },
     mounted() {
-        console.log(this.data);
+        // console.log(this.data);
         // if(this.data.option.textAlign === "center"){
         //     this.$refs.srPara.classList.add("sa-para--center");
         // }else{

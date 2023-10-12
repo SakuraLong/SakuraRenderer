@@ -3,9 +3,6 @@
 龙文
 */
 import ComponentsParser from "./componentParser";
-import GrammerParser from "../grammar/grammarParser"; // 语法解析器
-import TemplateParser from "../template/templateParser"; // 模板解析器
-import ModuleParser from "../module/moduleParser"; // 模块解析器
 import utils from "../../../utils";
 
 class TableParser extends ComponentsParser {
@@ -43,16 +40,19 @@ class TableParser extends ComponentsParser {
     }
     judge() {
         // 重写
-        // return false;
-        console.log(this.dataList[0]);
         if (this.name.indexOf(this.dataList[0]) !== -1) {
-            console.log(this.component);
             return true;
         } else {
             return false;
         }
     }
-    analyse() {
+    /**
+     * 
+     * @param {Object} ignoreReplaceList ignore的key-value
+     * @param {Object} codeReplaceList code的key-value
+     * @param {Object} poemReplaceList poem的key-value
+     */
+    analyse(ignoreReplaceList = [], codeReplaceList = [], poemReplaceList = []) {
         let divideIndexList = [];
         let optionList = []; // 配置项列表
         let tableList = []; // 表格数据列表
@@ -69,7 +69,6 @@ class TableParser extends ComponentsParser {
             if (data === "-") {
                 divideIndexList.push(index);
                 if (divideIndexList.length > 1) {
-                    console.log(tempTableList);
                     tableList.push(utils.deepClone(tempTableList));
                     tempTableList = [];
                 }
@@ -206,9 +205,7 @@ class TableParser extends ComponentsParser {
                     }
                 });
                 tempDataDict.content = this.contentNone.indexOf(tempDataDict.content) !== -1 ? "" : tempDataDict.content; // 是否是空表格
-                tempDataDict.content = new GrammerParser(this.option, tempDataDict.content).analyse(); // 调用语法解析器解析
-                tempDataDict.content = new TemplateParser(this.option, tempDataDict.content).analyse(); // 调用模板解析器解析
-                tempDataDict.content = new ModuleParser(this.option, tempDataDict.content).analyse(); // 调用模块解析器解析
+                tempDataDict.content = this.replace(ignoreReplaceList, codeReplaceList, poemReplaceList, tempDataDict.content);
                 tempRowDataDict.rowData.push(tempDataDict);
             });
             this.template.data.tableData.push(tempRowDataDict);
