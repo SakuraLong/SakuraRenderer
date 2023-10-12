@@ -57,6 +57,21 @@
     --sa-color-base-background: #FFFFFF;
     --sa-color-page-background: #F2F3F5;
 
+    --sa-color-darker-fill: #E6E8EB;
+    --sa-color-dark-fill: #EBEDF0;
+    --sa-color-base-fill: #F0F2F5;
+    --sa-color-light-fill: #F5F7FA;
+    --sa-color-lighter-fill: #FAFAFA;
+    --sa-color-extra-light-fill: #FAFCFF;
+    --sa-color-blank-fill: #FFFFFF;
+
+    --sa-color-darker-border: #CDD0D6;
+    --sa-color-dark-border: #D4D7DE;
+    --sa-color-base-border: #DCDFE6;
+    --sa-color-light-border: #E4E7ED;
+    --sa-color-lighter-border: #EBEEF5;
+    --sa-color-extra-light-border: #F2F6FC;
+
     --sa-color-primary-text: #303133;
     --sa-color-regular-text: #606266;
     --sa-color-secondary-text: #909399;
