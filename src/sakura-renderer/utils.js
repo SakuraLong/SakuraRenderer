@@ -34,21 +34,48 @@ function replaceNonGreed(string_begin, string_end, content, func) {
     }
     if (left_index_list.length === 0 || right_index_list.length === 0)
         return res; // 匹配失败
-    right_index_list.reverse(); // 反转 最大排在最前
+    // right_index_list.reverse(); // 反转 最大排在最前
     h = 0;
-    while (
-        left_index_list[0] < right_index_list[0] &&
-        left_index_list.length !== right_index_list.length
-    ) {
-        if (++h > 10000) break;
-        if (left_index_list.length > right_index_list.length)
-            left_index_list.shift();
-        else right_index_list.shift();
+    let temp_list = [];
+    let l_i = 0;
+    let r_i = 0;
+    while (h < 100000) {
+        h++;
+        if(l_i >= left_index_list.length && r_i >= right_index_list.length){
+            break;
+        }else if(l_i >= left_index_list.length && r_i < right_index_list.length){
+            temp_list.push({type:"right", index:right_index_list[r_i]});
+            r_i++;
+        }else if(l_i < left_index_list.length && r_i >= right_index_list.length){
+            temp_list.push({type:"left", index:left_index_list[l_i]});
+            l_i++;
+        }else {
+            if (left_index_list[l_i] < right_index_list[r_i]){
+                temp_list.push({type:"left", index:left_index_list[l_i]});
+                l_i++;
+            }else{
+                temp_list.push({type:"right", index:right_index_list[r_i]});
+                r_i++;
+            }
+        }
     }
-    if (left_index_list[0] >= right_index_list[0]) return res; // 匹配失败
-    left_index = left_index_list[0];
-    right_index = right_index_list[0];
+    let stack = 0;
+    l_i = left_index_list[0];
+    r_i = -1;
+    for(let i=0;i<temp_list.length;i++){
+        if(temp_list[i].type === "left"){
+            stack++;
+        }else{
+            r_i = temp_list[i].index;
+            stack--;
+        }
+        if(stack === 0) break;
+    }
+    if (l_i >= r_i) return res; // 匹配失败
+    left_index = l_i;
+    right_index = r_i;
     let temp = content.slice(left_index, right_index + string_end.length); // 不一定唯一，但一定是最先检索到
+    console.log("匹配成功",l_i, r_i, temp);
     content = content.replace(
         temp,
         func({

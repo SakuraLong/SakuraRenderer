@@ -30,6 +30,18 @@ class ComponentsParser{
         }
         this.dataList = dataList;
     }
+    replace(ignoreReplaceList, codeReplaceList, poemReplaceList, content){
+        ignoreReplaceList.forEach((ignoreData)=>{
+            content = content.replace(ignoreData.key, ignoreData.value);
+        });
+        codeReplaceList.forEach((codeData)=>{
+            content = content.replace(codeData.key, codeData.value);
+        });
+        poemReplaceList.forEach((poemData)=>{
+            content = content.replace(poemData.key, poemData.value);
+        });
+        return content;
+    }
 }
 
 export default ComponentsParser;

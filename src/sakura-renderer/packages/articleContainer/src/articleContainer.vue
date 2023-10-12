@@ -10,7 +10,7 @@
         <!-- 全部区域 -->
         <div class="sa-article-container__slot">
             <slot name="before">
-                <h1>123</h1>
+                <h1>文档和目录之前的slot插槽</h1>
             </slot>
         </div>
         <main class="sa-article-container__main">
@@ -25,7 +25,7 @@
                     <!-- 文章主体区域 -->
                     <div class="sa-article-container__slot">
                         <slot name="before-article">
-                            <h1>123</h1>
+                            <h1>文章主体区域前的slot插槽</h1>
                         </slot>
                     </div>
                     <div class="sa-article-area">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="sa-article-container__slot">
                         <slot name="after-article">
-                            <h1>123</h1>
+                            <h1>文章主体区域后的slot插槽</h1>
                         </slot>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                 <!-- 文章目录区域 -->
                 <div class="sa-article-container__slot">
                     <slot name="before-cata">
-                        <h1>123</h1>
+                        <h1>目录主体区域前的slot插槽</h1>
                     </slot>
                 </div>
                 <div class="sa-cata-area">
@@ -67,7 +67,7 @@
                     </div>
                     <div class="sa-article-container__slot">
                         <slot name="after-cata">
-                            <h1>123</h1>
+                            <h1>目录主体区域后的slot插槽</h1>
                         </slot>
                     </div>
                 </div>
@@ -75,13 +75,7 @@
         </main>
         <div class="sa-article-container__slot">
             <slot name="after">
-                <h1>123</h1>
-                <h2>登场人物</h2>
-                <h3>123</h3>
-                <h4>123</h4>
-                <h5>123</h5>
-                <h6>123</h6>
-                <span>登场人物</span>
+                <h1>文档和目录之后的slot插槽</h1>
             </slot>
         </div>
         <div style="display: none" id="sa-article-temp"></div>

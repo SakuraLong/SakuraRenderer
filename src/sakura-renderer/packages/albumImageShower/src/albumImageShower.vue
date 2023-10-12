@@ -52,8 +52,7 @@ export default {
         },
     },
     mounted(){
-        console.log("ggg");
-        console.log(this.data.option);    
+        // console.log(this.data.option);
         if(this.data.option.align === "center"){
             this.$refs.srAlbum.classList.add("sr-album--align--center");
         }

@@ -67,7 +67,7 @@ export default {
         };
     },
     mounted() {
-        console.log(this.data);
+        // console.log(this.data);
         if (this.data.option.align === "center") {
             this.$refs.srCarousell.classList.add("sa-carousell--center");
         } else if (this.data.option.align === "left") {
