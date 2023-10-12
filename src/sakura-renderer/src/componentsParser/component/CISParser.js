@@ -7,7 +7,6 @@ import ComponentsParser from "./componentParser";
 class CISParser extends ComponentsParser {
     constructor(component, option) {
         super(component, option);
-        this.default = false; // 是否是组件模板（是否是{||}包裹）
         this.name = ["carouselIS", "走马灯图片展示框"];
         this.template = {
             type: "sr-carousel-is", // 组件名称
@@ -29,7 +28,6 @@ class CISParser extends ComponentsParser {
     judge() {
         // 重写
         if (this.name.indexOf(this.dataList[0]) !== -1) {
-            this.default = true;
             return true;
         } else {
             return false;
@@ -104,9 +102,6 @@ class CISParser extends ComponentsParser {
                             this.template.data.option.styleList.concat(
                                 value.split(";")
                             );
-                        break;
-                    case "type":
-                        this.template.data.type = value;
                         break;
                     default:
                         break;

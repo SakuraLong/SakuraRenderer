@@ -4,8 +4,7 @@
         ref="article_container"
         class="sa-article-container sa-mathjax"
         :style="{
-            height: height,
-            overflow: height === 'auto' ? 'visible' : 'auto',
+            height: height ? height : 'auto',
         }"
     >
         <!-- 全部区域 -->
@@ -37,9 +36,6 @@
                             :is="item.type"
                             :data="item.data"
                         ></component>
-                        sacasc
-                        <br />
-                        sasa
                     </div>
                     <div class="sa-article-container__slot">
                         <slot name="after-article">
