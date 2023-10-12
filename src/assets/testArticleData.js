@@ -150,6 +150,18 @@ const article = `
 | 123 d| 画出 c=2/r=1/t
 |}
 
+
+{|albumIS
+|class=class1;class2
+|width=200px
+|imgW=100px
+|imgH=x200px
+|-
+|https://img.moegirl.org.cn/common/thumb/b/b4/16bitsensation_al_KV.jpg/420px-16bitsensation_al_KV.jpg
+|https://lupic.cdn.bcebos.com/20220107/3086034705_23_600_261.jpg
+|https://lupic.cdn.bcebos.com/20191203/3016196694_23.jpg
+|}
+=======
 == 你也可以折叠表格，也可以设置最大高度来产生滚动条（当设置float=center，宽度不会产生滚动条）
 
 {|table|class=class1|fold
@@ -372,7 +384,10 @@ const article = `
 |}
 
 {|carouselIS
-| width=350px|height=500px|play=3000
+|width=500px
+|height=300px
+|cycle
+|play=2000
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg

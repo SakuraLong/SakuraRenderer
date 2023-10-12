@@ -14,15 +14,15 @@
         <ul class="slides">
             <li
                 v-for="(img, index) in this.data.imgList"
-                :key="index"
                 class="slide"
+                :key="index"
                 :style="{
-                    'background-color': '#ef32ef',
-                    'background-image': `url(${img})`,
                     left: `${index * 100}%`,
                     transform: `translateX(-${activeIndex * 100}%)`,
                 }"
-            ></li>
+            >
+                <img class="img" :id="'img' + index" :src="img" />
+            </li>
             <div class="controls">
                 <span
                     v-for="(img, index) in this.data.imgList"
@@ -60,6 +60,8 @@ export default {
         return {
             hasLink: false,
             styleStr: "",
+            setWidth: false,
+            setHeight: false,
             activeIndex: 0, // 初始化第一个 index 为实心
             showButtonsLeft: false,
             showButtonsRight: false,
@@ -75,7 +77,7 @@ export default {
         } else if (this.data.option.align === "right") {
             this.$refs.srCarousell.classList.add("sa-carousell--right");
         }
-        if (this.data.option.play === true) {
+        if (this.data.option.play) {
             this.play();
         }
         this.data.option.classList.forEach((className) => {
@@ -83,6 +85,15 @@ export default {
         });
         this.data.option.styleList.forEach((styleName) => {
             this.styleStr += styleName + ";";
+            if (styleName.includes("width")) {
+                this.setWidth = true;
+            }
+            if (styleName.includes("height")) {
+                this.setHeight = true;
+            }
+        });
+        this.$nextTick(() => {
+            this.setImgSize();
         });
     },
     methods: {
@@ -92,11 +103,19 @@ export default {
         buttonLeft() {
             if (this.activeIndex > 0) {
                 this.activeIndex = this.activeIndex - 1;
+            } else {
+                if (this.data.option.cycle) {
+                    this.activeIndex = this.data.imgList.length - 1;
+                }
             }
         },
         buttonRight() {
             if (this.activeIndex + 1 < this.data.imgList.length) {
                 this.activeIndex = this.activeIndex + 1;
+            } else {
+                if (this.data.option.cycle) {
+                    this.activeIndex = 0;
+                }
             }
         },
         showLeftButtons(show) {
@@ -131,6 +150,27 @@ export default {
                     this.activeIndex = 0;
                 }
             }, this.data.option.playtime);
+        },
+        setImgSize() {
+            var maxwidth = 0;
+            var maxheight = 0;
+            var length = this.data.imgList.length;
+            for (var i = 0; i < length; i++) {
+                var img = document.getElementById("img" + i);
+                if (img.naturalWidth > maxwidth) {
+                    maxwidth = img.naturalWidth;
+                }
+                if (img.naturalHeight > maxheight) {
+                    maxheight = img.naturalHeight;
+                }
+            }
+            if (!this.setWidth) {
+                this.styleStr += "width:" + maxwidth + "px;";
+            }
+            if (!this.setHeight) {
+                console.log(maxheight);
+                this.styleStr += "height:" + maxheight + "px;";
+            }
         },
     },
 };
