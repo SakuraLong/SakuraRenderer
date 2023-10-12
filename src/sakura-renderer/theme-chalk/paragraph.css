@@ -5,10 +5,11 @@
 
 }
 .sa-para {
+    min-width: 50px;
     position: relative;
     /* margin: 0; */
-    padding: 0;
-    border: 0;
+    /* padding: 0;
+    border: 0; */
 }
 
 .sa-para--center {

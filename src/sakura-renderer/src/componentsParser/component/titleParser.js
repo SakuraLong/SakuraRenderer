@@ -94,7 +94,7 @@ class TitleParser extends ComponentsParser {
                 let value = styleELe.split("=")[styleELe.split("=").length - 1];
                 switch(key){
                     case "ta":
-                        if(["left", "center"].indexOf(value) !== -1){
+                        if(["left", "center", "l", "c"].indexOf(value) !== -1){
                             this.template.data.option.textAlign = value;
                         }
                         break;
@@ -127,6 +127,7 @@ class TitleParser extends ComponentsParser {
                             this.template.data.option.styleList = this.template.data.option.styleList.concat(value.split(";"));
                         break;
                     case "type":
+                        // 之后要做正确性检查
                         this.template.data.type = value;
                         break;
                     default:
@@ -134,6 +135,7 @@ class TitleParser extends ComponentsParser {
                 }
             });
         }
+        this.template.data.content = this.template.data.content.trim();
         this.template.data.id = this.template.data.content;
         this.template.data.content = new GrammerParser(this.option, this.template.data.content).analyse(); // 调用语法解析器解析
         this.template.data.content = new TemplateParser(this.option, this.template.data.content).analyse(); // 调用模板解析器解析

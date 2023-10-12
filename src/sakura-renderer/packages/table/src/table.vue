@@ -123,6 +123,7 @@ export default {
         render() {
             console.log(this.data);
             const tableContainer = this.$refs.sr_table_container;
+            tableContainer.style.clear = this.data.option.clear; // clear
             const tableBody = this.$refs.sr_table_body;
             if (this.data.option.float === "center") {
                 tableBody.classList.add(
@@ -145,9 +146,11 @@ export default {
                 this.tableClassDict.table.border[this.data.option.border]
             ); // 默认
             tableBody.style.width = this.data.option.width;
+            table.style.width = this.data.option.width;
             tableBody.style.maxWidth = this.data.option.maxWidth;
             tableBody.style.minWidth = this.data.option.minWidth;
             tableBody.style.height = this.data.option.height;
+            table.style.height = this.data.option.height;
             tableBody.style.maxHeight = this.data.option.maxHeight;
             tableBody.style.minHeight = this.data.option.minHeight;
             const thead = document.createElement("thead");

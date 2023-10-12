@@ -11,7 +11,7 @@ import utils from "../../../utils";
 class TableParser extends ComponentsParser {
     constructor(component, option) {
         super(component, option);
-        this.default = false; // 是否是组件模板（是否是{||}包裹）
+        this.contentNone = ["sr-none"]; // 内容是这些的表格为空
         this.name = ["table", "表格"];
         this.template = {
             type: "sr-table", // 组件名称
@@ -22,6 +22,7 @@ class TableParser extends ComponentsParser {
                     name:"", // 表格名字
                     fold: false, // 是否折叠
                     float: "none", // 浮动情况
+                    clear: "none", // clear情况
                     hover: "row", // 是否有浮动样式
                     border: "border", // border属性
                     maxWidth: "100%", // 最大宽度
@@ -62,8 +63,7 @@ class TableParser extends ComponentsParser {
                 optionList.push(data);
             else if (
                 divideIndexList.length !== 0 &&
-                data !== "-" &&
-                data !== ""
+                data !== "-"
             )
                 tempTableList.push(data);
             if (data === "-") {
@@ -112,6 +112,11 @@ class TableParser extends ComponentsParser {
                 case "float":
                     if (["none", "center", "left", "right"].indexOf(value) !== -1) {
                         this.template.data.option.float = ["center", "left", "right", "none"].find((ele)=>{return ele === value;});
+                    }
+                    break;
+                case "clear":
+                    if (["none", "both", "left", "right"].indexOf(value) !== -1) {
+                        this.template.data.option.clear = ["center", "both", "right", "none"].find((ele)=>{return ele === value;});
                     }
                     break;
                 case "maxWidth":
@@ -200,6 +205,7 @@ class TableParser extends ComponentsParser {
                         tempDataDict.content += data;
                     }
                 });
+                tempDataDict.content = this.contentNone.indexOf(tempDataDict.content) !== -1 ? "" : tempDataDict.content; // 是否是空表格
                 tempDataDict.content = new GrammerParser(this.option, tempDataDict.content).analyse(); // 调用语法解析器解析
                 tempDataDict.content = new TemplateParser(this.option, tempDataDict.content).analyse(); // 调用模板解析器解析
                 tempDataDict.content = new ModuleParser(this.option, tempDataDict.content).analyse(); // 调用模块解析器解析

@@ -2,13 +2,15 @@
     --sa-color-title-text: var(--sa-color-primary-text);
     --sa-color-title-border: var(--sa-color-primary-base);
     --sa-color-title-a-text: var(--sa-color-primary-base);
+    --sa-color-title-before-text: var(--sa-color-basic-transparent)
 }
 .sa-title {
     position: relative;
     /* margin: 0; */
     padding: 0;
     border: 0;
-    clear: both;
+    /* clear: left; */
+    min-width: 1rem;
 }
 .sa-title__a{
     user-select: none;
@@ -29,6 +31,7 @@
     width: 100%;
     text-align: center;
     color: var(--sa-color-title-text);
+    clear: both;
 }
 .sa-title--left {
     width: auto;
@@ -73,7 +76,7 @@
     height: 0.25em;
     background-color: var(--sa-color-title-border);
     border-radius: 1em;
-    color: rgba(0, 0, 0, 0);
+    color: var(--sa-color-title-before-text);
 }
 .sa-title--border-bottom--ani > span::before {
     width: 0;
