@@ -383,7 +383,7 @@ const article = `
 |}
 
 {|albumIS
-|align=none
+|align=center
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg

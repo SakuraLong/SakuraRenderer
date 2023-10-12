@@ -7,14 +7,18 @@
     text-align: center;
     width: auto;
     height: auto;
-    display: flex;
     flex-direction: column;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* max-width: max-content; */
 }
 .sr-album--align--center{
+    width: 100%;
     margin: 0 auto;
-    float: none;
+    float:none;
+    clear: both;
 }
 .sr-album--align--left{
     margin:0;
