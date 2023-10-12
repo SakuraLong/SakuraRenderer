@@ -1,0 +1,50 @@
+.sr-album-is{
+    position: relative;
+    border: solid 1px red;
+    /* background-color: red; */
+    text-align: center;
+    width: 100px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    min-width: min-content;
+    min-height: min-content;
+}
+.sr-album--align--center{
+    margin: 0 auto;
+    float: none;
+    border: solid 1px tan;
+}
+.sr-album--align--left{
+    margin:0;
+    float: left;
+    border: solid 1px palegreen;
+}
+.sr-album--align--right{
+    margin:0;
+    float: right;
+    border: solid 1px palegreen;
+}
+.sr-album--align--none{
+    margin:0;
+    float: none;
+    border: solid 1px yellow;
+}
+.sr-album--preview--div{
+    cursor: pointer;
+    border: solid 1px black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.sr-album--preview--img{
+    width: 100%;
+    height: 100%;
+}
+.sr-album--info{
+    align-items: center;
+    margin-bottom: 10px;
+}
+.sr-album--controls {
+    margin-top: 6px;
+}
