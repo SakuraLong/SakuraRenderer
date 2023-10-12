@@ -6,37 +6,45 @@
         @mouseover="showLeftButtons(true), showRightButtons(true)"
         @mouseleave="showLeftButtons(false), showRightButtons(false)"
     >
-        <span class="button-left"
-            ><button ref="leftButton" class="button-ele" @click="buttonLeft()">
+        <span class="sa-srCarousell-button-left"
+            ><button
+                ref="leftButton"
+                class="sa-srCarousell-button-ele"
+                @click="buttonLeft()"
+            >
                 &lt;
             </button></span
         >
-        <ul class="slides">
+        <ul class="sa-srCarousell-slides">
             <li
                 v-for="(img, index) in this.data.imgList"
-                class="slide"
+                class="sa-srCarousell-slide"
                 :key="index"
                 :style="{
                     left: `${index * 100}%`,
                     transform: `translateX(-${activeIndex * 100}%)`,
                 }"
             >
-                <img class="img" :id="'img' + index" :src="img" />
+                <img
+                    class="sa-srCarousell-img"
+                    :id="'img' + index"
+                    :src="img"
+                />
             </li>
-            <div class="controls">
+            <div class="sa-srCarousell-controls">
                 <span
                     v-for="(img, index) in this.data.imgList"
                     :key="index"
-                    class="control"
+                    class="sa-srCarousell-control"
                     :class="{ active: activeIndex === index }"
                     @click="setActiveIndex(index)"
                 ></span>
             </div>
         </ul>
-        <span class="button-right"
+        <span class="sa-srCarousell-button-right"
             ><button
                 ref="RightButton"
-                class="button-ele"
+                class="sa-srCarousell-button-ele"
                 @click="buttonRight()"
                 @mouseover="showRightButtons(true)"
                 @mouseleave="showRightButtons(false)"
@@ -123,23 +131,39 @@ export default {
                 if (this.data.option.play === true) {
                     clearInterval(this.timer);
                 }
-                this.$refs.leftButton.classList.remove("pop-out-left");
-                this.$refs.leftButton.classList.add("pop-up-right");
+                this.$refs.leftButton.classList.remove(
+                    "sa-srCarousell-pop-out-left"
+                );
+                this.$refs.leftButton.classList.add(
+                    "sa-srCarousell-pop-up-right"
+                );
             } else {
                 if (this.data.option.play === true) {
                     this.play();
                 }
-                this.$refs.leftButton.classList.remove("pop-up-right");
-                this.$refs.leftButton.classList.add("pop-out-left");
+                this.$refs.leftButton.classList.remove(
+                    "sa-srCarousell-pop-up-right"
+                );
+                this.$refs.leftButton.classList.add(
+                    "sa-srCarousell-pop-out-left"
+                );
             }
         },
         showRightButtons(show) {
             if (show === true) {
-                this.$refs.RightButton.classList.remove("pop-out-right");
-                this.$refs.RightButton.classList.add("pop-up-left");
+                this.$refs.RightButton.classList.remove(
+                    "sa-srCarousell-pop-out-right"
+                );
+                this.$refs.RightButton.classList.add(
+                    "sa-srCarousell-pop-up-left"
+                );
             } else {
-                this.$refs.RightButton.classList.remove("pop-up-left");
-                this.$refs.RightButton.classList.add("pop-out-right");
+                this.$refs.RightButton.classList.remove(
+                    "sa-srCarousell-pop-up-left"
+                );
+                this.$refs.RightButton.classList.add(
+                    "sa-srCarousell-pop-out-right"
+                );
             }
         },
         play() {

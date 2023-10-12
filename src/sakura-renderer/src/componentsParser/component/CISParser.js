@@ -60,10 +60,11 @@ class CISParser extends ComponentsParser {
                         styleELe === "right" ||
                         styleELe === "center"
                     ) {
-                        // 对齐设置
                         this.template.data.option.align = styleELe;
                     } else if (styleELe === "cycle") {
                         this.template.data.option.cycle = true;
+                    } else if (styleELe === "play") {
+                        this.template.data.option.play = true;
                     } else {
                         return {
                             type: "error",
@@ -71,40 +72,42 @@ class CISParser extends ComponentsParser {
                             content: this.content,
                         };
                     }
-                }
-                let key = styleELe.split("=")[0];
-                let value = styleELe.split("=")[styleELe.split("=").length - 1];
-                switch (key) {
-                    case "play":
-                        this.template.data.option.play = true;
-                        this.template.data.option.playtime = value;
-                        break;
-                    case "width":
-                        this.template.data.option.styleList =
-                            this.template.data.option.styleList.concat(
-                                "width:" + value.split(";")
-                            );
-                        break;
-                    case "height":
-                        this.template.data.option.styleList =
-                            this.template.data.option.styleList.concat(
-                                "height:" + value.split(";")
-                            );
-                        break;
-                    case "class":
-                        this.template.data.option.classList =
-                            this.template.data.option.classList.concat(
-                                value.split(";")
-                            );
-                        break;
-                    case "style":
-                        this.template.data.option.styleList =
-                            this.template.data.option.styleList.concat(
-                                value.split(";")
-                            );
-                        break;
-                    default:
-                        break;
+                } else {
+                    let key = styleELe.split("=")[0];
+                    let value =
+                        styleELe.split("=")[styleELe.split("=").length - 1];
+                    switch (key) {
+                        case "play":
+                            this.template.data.option.play = true;
+                            this.template.data.option.playtime = value;
+                            break;
+                        case "width":
+                            this.template.data.option.styleList =
+                                this.template.data.option.styleList.concat(
+                                    "width:" + value.split(";")
+                                );
+                            break;
+                        case "height":
+                            this.template.data.option.styleList =
+                                this.template.data.option.styleList.concat(
+                                    "height:" + value.split(";")
+                                );
+                            break;
+                        case "class":
+                            this.template.data.option.classList =
+                                this.template.data.option.classList.concat(
+                                    value.split(";")
+                                );
+                            break;
+                        case "style":
+                            this.template.data.option.styleList =
+                                this.template.data.option.styleList.concat(
+                                    value.split(";")
+                                );
+                            break;
+                        default:
+                            break;
+                    }
                 }
             });
         }
