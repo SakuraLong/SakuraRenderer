@@ -15,8 +15,9 @@ class CISParser extends ComponentsParser {
                 option: {
                     width: 0,
                     height: 0,
-                    align: "center",
+                    align: "",
                     play: false,
+                    cycle: false,
                     playtime: 3000,
                     classList: [], // 类名列表
                     styleList: [], // 样式列表
@@ -61,6 +62,8 @@ class CISParser extends ComponentsParser {
                     ) {
                         // 对齐设置
                         this.template.data.option.align = styleELe;
+                    } else if (styleELe === "cycle") {
+                        this.template.data.option.cycle = true;
                     } else {
                         return {
                             type: "error",
