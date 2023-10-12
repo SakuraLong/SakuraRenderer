@@ -16,7 +16,7 @@
     clear: left;
 }
 .sa-table-container--table{
-    display: table;
+    display: inline-block;
 }
 
 .sa-table-buton{

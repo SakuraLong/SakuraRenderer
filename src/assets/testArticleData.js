@@ -123,7 +123,7 @@ ascsacascsacascsacascsacascsacascsacascsacascsacas c=2|
 |}
 
 {|table|border=border|hover=node
-|nw=150px|nh=150px|fontSize=60px
+|nw=150px|nh=150px|fontSize=60px|maxWidth=480px
 |name=展示不一样的表格
 |float=none
 |-
@@ -146,6 +146,8 @@ ascsacascsacascsacascsacascsacascsacascsacascsacas c=2|
 | img2.png
 | img3.jpg
 | img4.jpeg
+|}
+
 {|para|style=font-size:20px;width:100%
 |class=class1;class2
 |type=warning
@@ -157,30 +159,32 @@ ascsacascsacascsacascsacascsacascsacascsacascsacas c=2|
 段落第二句话，这部分与上面一句相比，已经换行了。
 |}
 
-
-{|carouselIS
-|width=500px
-|height=300px
-|right
+{|table|border=border|hover=node
+|nw=150px|nh=150px|fontSize=60px|width=300px
+|name=展示不一样的表格
+|float=left
 |-
-|https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
-|https://images.unsplash.com/photo-1494251202008-582bbc3eac69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80
-|https://images.unsplash.com/photo-1431576901776-e539bd916ba2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80
+| 123 d| 123 d| 123 d| 123 d
+|-
+| 123 d| 用一些技巧 c=2/r=1/t | 你还可以 c=1/r=2/t
+|-
+| 123 d| 这样 c=1/r=2/t | 不一样的表格 c=1/r=1/t
+|-
+| 123 d| 画出 c=2/r=1/t
 |}
 
-{|allIS
-|width=200px
-|height=120px
-|center
-|space=10px
-|column=3
-|row=2
+{|para|style=font-size:20px;width:100%
+|class=class1;class2
+|type=warning
+|border=none
 |-
-| https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg
-|https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
-|https://images.unsplash.com/photo-1494251202008-582bbc3eac69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80
-|https://images.unsplash.com/photo-1431576901776-e539bd916ba2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80
+| 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
+段落第一句话，这不会换行。段落第一句话，这不会换行。
+| 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
+段落第二句话，这部分与上面一句相比，已经换行了。
 |}
+
+== asdasd
 
 `;
 

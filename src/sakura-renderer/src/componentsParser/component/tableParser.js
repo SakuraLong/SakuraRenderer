@@ -24,7 +24,7 @@ class TableParser extends ComponentsParser {
                     float: "none", // 浮动情况
                     hover: "row", // 是否有浮动样式
                     border: "border", // border属性
-                    maxWidth: "none", // 最大宽度
+                    maxWidth: "100%", // 最大宽度
                     maxHeight: "none", // 最大高度
                     minWidth: "none", // 最小宽度
                     minHeight: "none", // 最小高度
