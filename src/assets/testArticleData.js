@@ -409,8 +409,46 @@ const article = `
 段落第二句话，这部分与上面一句相比，已经换行了。
 |}
 
+{|table|class=class1|fold
+    |width=300px
+    |border=border
+    |hover=node
+    |maxHeight=300px
+    |float=left
+    |-
+    |+ 节次/周次|星期一|星期二|星期三|星期四|星期五
+    |-
+    |第一节|||||
+    |-
+    |第二节||||编译原理 r=2|操作系统 r=3
+    |-
+    |第三节|经济学原理 r=2||软件工程 r=2
+    |-
+    |第四节||
+    |-
+    |第五节||||计算机组成原理实验 r=2|
+    |-
+    |第六节||||
+    |-
+    |第七节|习近平新时代中国特色社会主义理论 r=2|并行与分布式程序设计 r=2|人工智能导论 r=2||操作系统实验 r=2
+    |-
+    |第八节|
+    |-
+    |第九节|计算机网络 r=2||python语言程序设计 r=2||
+    |-
+    |第十节|||
+    |-
+    |第十一节|计算机网络实验 r=3|并行与分布式程序设计实验 r=3|python语言设计实验 r=2|编译原理实验 r=3|
+    |-
+    |第十二节|
+    |-
+    |第十三节||
+    |-
+    |第十四节|||||
+    |}
+
 {|albumIS
-| width=500px|height=300px|right|play=3000
+| width=500px|height=300px|right|play=3000|align=right
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
@@ -418,6 +456,44 @@ const article = `
 | https://img.moegirl.org.cn/common/thumb/9/97/Saten_Ruiko.jpg/375px-Saten_Ruiko.jpg
 | https://img.moegirl.org.cn/common/thumb/a/a1/36012599_p0.png/375px-36012599_p0.png
 |}
+
+{|table|class=class1|fold
+    |width=300px
+    |border=border
+    |hover=node
+    |maxHeight=300px
+    |float=right
+    |-
+    |+ 节次/周次|星期一|星期二|星期三|星期四|星期五
+    |-
+    |第一节|||||
+    |-
+    |第二节||||编译原理 r=2|操作系统 r=3
+    |-
+    |第三节|经济学原理 r=2||软件工程 r=2
+    |-
+    |第四节||
+    |-
+    |第五节||||计算机组成原理实验 r=2|
+    |-
+    |第六节||||
+    |-
+    |第七节|习近平新时代中国特色社会主义理论 r=2|并行与分布式程序设计 r=2|人工智能导论 r=2||操作系统实验 r=2
+    |-
+    |第八节|
+    |-
+    |第九节|计算机网络 r=2||python语言程序设计 r=2||
+    |-
+    |第十节|||
+    |-
+    |第十一节|计算机网络实验 r=3|并行与分布式程序设计实验 r=3|python语言设计实验 r=2|编译原理实验 r=3|
+    |-
+    |第十二节|
+    |-
+    |第十三节||
+    |-
+    |第十四节|||||
+    |}
 
 `;
 
