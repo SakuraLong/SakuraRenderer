@@ -176,25 +176,28 @@ export default {
             }, this.data.option.playtime);
         },
         setImgSize() {
-            var maxwidth = 0;
-            var maxheight = 0;
-            var length = this.data.imgList.length;
-            for (var i = 0; i < length; i++) {
-                var img = document.getElementById("img" + i);
-                if (img.naturalWidth > maxwidth) {
-                    maxwidth = img.naturalWidth;
+            setTimeout(() => {
+                var maxwidth = 0;
+                var maxheight = 0;
+                var length = this.data.imgList.length;
+                for (var i = 0; i < length; i++) {
+                    var img = document.getElementById("img" + i);
+                    if (img.naturalWidth > maxwidth) {
+                        maxwidth = img.naturalWidth;
+                        console.log(img.naturalWidth);
+                    }
+                    if (img.naturalHeight > maxheight) {
+                        maxheight = img.naturalHeight;
+                    }
                 }
-                if (img.naturalHeight > maxheight) {
-                    maxheight = img.naturalHeight;
+                if (!this.setWidth) {
+                    this.styleStr += "width:" + maxwidth + "px;";
                 }
-            }
-            if (!this.setWidth) {
-                this.styleStr += "width:" + maxwidth + "px;";
-            }
-            if (!this.setHeight) {
-                console.log(maxheight);
-                this.styleStr += "height:" + maxheight + "px;";
-            }
+                if (!this.setHeight) {
+                    console.log(maxheight);
+                    this.styleStr += "height:" + maxheight + "px;";
+                }
+            }, 100);
         },
     },
 };
