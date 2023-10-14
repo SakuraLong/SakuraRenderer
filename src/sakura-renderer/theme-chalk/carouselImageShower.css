@@ -10,16 +10,14 @@
     padding: 0;
     border: 0;
     max-width: 100%;
-    display: inline-block;
 }
 
 .sa-carousell--center {
-    display: block;
     margin: auto;
     text-align: center;
 }
 
-.sa-carousell--left{
+.sa-carousell--left {
     float: left;
 }
 
@@ -27,17 +25,17 @@
     float: right;
 }
 
-.sa-carousell .slides {
+.sa-carousell .sa-srCarousell-slides {
     position: relative;
     width: 100%;
     height: 100%;
     list-style: none;
     margin: 0;
     padding: 0;
-    overflow: hidden
+    overflow: hidden;
 }
 
-.sa-carousell .slide {
+.sa-carousell .sa-srCarousell-slide {
     margin: 0;
     padding: 0;
     width: inherit;
@@ -52,19 +50,19 @@
     transition: transform 0.3s;
 }
 
-.sa-carousell .slide{
+.sa-carousell .sa-srCarousell-slide {
     width: 100%;
     height: 100%;
 }
-.slide{
+.sa-srCarousell-slide {
     clear: both;
 }
-.img{
+.sa-srCarousell-img {
     max-width: 100%;
     max-height: 100%;
 }
 
-.sa-carousell .button-left {
+.sa-carousell .sa-srCarousell-button-left {
     position: absolute;
     z-index: 100;
     height: 100%;
@@ -75,18 +73,18 @@
     align-items: center;
 }
 
-.sa-carousell .button-right {
+.sa-carousell .sa-srCarousell-button-right {
     position: absolute;
     z-index: 100;
     height: 100%;
     right: 0;
-    top:0;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.sa-carousell .button-ele {
+.sa-carousell .sa-srCarousell-button-ele {
     font-size: 17px;
     border-radius: 50%;
     border: solid 1px transparent;
@@ -95,23 +93,23 @@
     opacity: 0;
 }
 
-.pop-up-left {
-    animation: popUpLeft 0.5s;
+.sa-srCarousell-pop-up-left {
+    animation: sa-srCarousell-popUpLeft 0.5s;
 }
 
-.pop-up-right {
-    animation: popUpRight 0.5s;
+.sa-srCarousell-pop-up-right {
+    animation: sa-srCarousell-popUpRight 0.5s;
 }
 
-.pop-out-left {
-    animation: popOutLeft 0.5s;
+.sa-srCarousell-pop-out-left {
+    animation: sa-srCarousell-popOutLeft 0.5s;
 }
 
-.pop-out-right {
-    animation: popOutRight 0.5s;
+.sa-srCarousell-pop-out-right {
+    animation: sa-srCarousell-popOutRight 0.5s;
 }
 
-@keyframes popUpLeft {
+@keyframes sa-srCarousell-popUpLeft {
     0% {
         transform: translateX(10px);
         /* Start below the normal position */
@@ -125,7 +123,7 @@
     }
 }
 
-@keyframes popOutLeft {
+@keyframes sa-srCarousell-popOutLeft {
     0% {
         transform: translateX(10px);
         /* Start below the normal position */
@@ -139,7 +137,7 @@
     }
 }
 
-@keyframes popUpRight {
+@keyframes sa-srCarousell-popUpRight {
     0% {
         transform: translateX(-10px);
         /* Start below the normal position */
@@ -153,7 +151,7 @@
     }
 }
 
-@keyframes popOutRight {
+@keyframes sa-srCarousell-popOutRight {
     0% {
         transform: translateX(-10px);
         /* Start below the normal position */
@@ -167,19 +165,19 @@
     }
 }
 
-.sa-carousell:hover .button-left,
-.sa-carousell:hover .button-right {
+.sa-carousell:hover .sa-srCarousell-button-left,
+.sa-carousell:hover .sa-srCarousell-button-right {
     opacity: 1;
 }
 
-.sa-carousell .controls {
+.sa-carousell .sa-srCarousell-controls {
     position: absolute;
     width: 100%;
     bottom: 2%;
     text-align: center;
 }
 
-.sa-carousell .control{
+.sa-carousell .sa-srCarousell-control {
     display: inline-block;
     width: 20px;
     height: 2.5px;
@@ -189,6 +187,6 @@
     cursor: pointer;
 }
 
-.sa-carousell .control.active {
+.sa-carousell .sa-srCarousell-control.active {
     background-color: var(--sa-color-control-active);
 }
