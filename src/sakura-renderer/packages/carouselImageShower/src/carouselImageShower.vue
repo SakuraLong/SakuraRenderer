@@ -209,7 +209,7 @@ export default {
                     // console.log(maxheight);
                     this.styleStr += "height:" + maxheight + "px;";
                 }
-            }, 300);
+            }, 1000);
         },
     },
 };
