@@ -268,7 +268,7 @@ const article = `
 === 当然你也可以布局
 
 {|carouselIS
-| height=300px|right|play=3000
+| center|play=3000
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
@@ -374,6 +374,8 @@ const article = `
 {|carouselIS
 |cycle
 |play=2000
+|none
+|width=300px
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
@@ -391,47 +393,6 @@ const article = `
 | https://img.moegirl.org.cn/common/thumb/4/4d/Uiharu_Kazari.jpg/375px-Uiharu_Kazari.jpg
 | https://img.moegirl.org.cn/common/thumb/9/97/Saten_Ruiko.jpg/375px-Saten_Ruiko.jpg
 | https://img.moegirl.org.cn/common/thumb/a/a1/36012599_p0.png/375px-36012599_p0.png
-|}
-
-== asdasd
-
-{|para|style=font-size:20px;width:100%
-|class=class1;class2
-|type=warning
-|border=none
-|-
-| 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
-段落第一句话，这不会换行。段落第一句话，这不会换行。
-| 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
-段落第二句话，这部分与上面一句相比，已经换行了。
-| <ignore>忽略忽略</ignore>
-| <ignore>忽略忽略1231212</ignore>
-| <poem>哈哈哈
-哈哈哈
-哈哈哈哈哈</poem>
-|}
-
-{|carouselIS
-|cycle
-|center
-|play
-|-
-| https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
-| https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
-| https://img.moegirl.org.cn/common/thumb/4/4d/Uiharu_Kazari.jpg/375px-Uiharu_Kazari.jpg
-| https://img.moegirl.org.cn/common/thumb/9/97/Saten_Ruiko.jpg/375px-Saten_Ruiko.jpg
-| https://img.moegirl.org.cn/common/thumb/a/a1/36012599_p0.png/375px-36012599_p0.png
-|}
-
-
-{|para|style=font-size:20px;width:100%;display:block
-|class=class1;class2
-|type=warning
-|border=none
-|-
-| <poem>哈哈哈
-哈哈哈
-哈哈哈哈哈</poem>
 |}
 
 = 上面是demo，下面开始介绍使用方法
@@ -470,19 +431,35 @@ const article = `
 |当然标题也包含一些配置项
 |}
 
-{|table|float=center|width=600px
+{|table|width=100%
 |-
 |+ title配置项 c=6
 |-
 | 名称 t| 含义 t|可选值 t| 可选值效果 t|是否支持?style t| 默认值 t
 |-
-|ta r=2 | text-align标题文字显示位置 r=2 | left,l | 标题文字靠左 
-| 是 r=2| left r=2
+|ta r=2/t | text align标题文字显示位置 r=2 | left,l | 标题文字靠左 | 是 r=2| left r=2
 |- 
 |center,c| 标题文字居中
 |-
-|bp | border-position边框的位置
-| left,l<br>bottom,b
+| bp r=3/t | border position边框的位置 r=3| left,l|边框在左侧|是 r=3| left r=3
+|-
+| bottom,b|边框在底部
+|-
+| none,n|没有边框
+|-
+|ha r=2/t | hover animation是否有浮动动画 r=2 | true | 有 | 是 r=2| false r=2
+|- 
+|false| 没有
+|-
+|hl r=2/t | has link是否存在页面内跳转链接按钮 r=2 | true | 存在 | 是 r=2| true r=2
+|- 
+|false| 不存在
+|-
+|class t | 组件的类列表 | 类名1;类名2;类名3 | 给h组件添加此类 | 否 | 空
+|-
+|style t | 组件的css样式列表 | 样式1:值1;样式2:值2 | 给h组件添加此样式 | 否 | 空
+|-
+|type t | 组件是h几标题 | h1~h6 | 确定的h几标题 | 否 | h1
 |}
 
 `;

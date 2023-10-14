@@ -14,8 +14,11 @@
     width: auto;
     height: auto;
 }
-.sa-table-container--table{
+.sa-table-container--inline-bloc{
     display: inline-block;
+}
+.sa-table--block{
+    display: block;
 }
 
 .sa-table-buton{

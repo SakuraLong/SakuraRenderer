@@ -14,6 +14,7 @@ import Catalogue from "./packages/catalogue";
 import Scrollbar from "./packages/scrollbar";
 import ImageShower from "./packages/imageShower";
 import Mask from "./packages/mask";
+import Clear from "./packages/clear";
 
 
 const components = [
@@ -28,7 +29,8 @@ const components = [
     Catalogue,
     Scrollbar,
     ImageShower,
-    Mask
+    Mask,
+    Clear
 ];
 
 const install = function (Vue, opts = {}) {

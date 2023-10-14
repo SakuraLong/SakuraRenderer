@@ -18,18 +18,8 @@ class TableParser extends ComponentsParser {
                     // 表格配置项
                     name:"", // 表格名字
                     fold: false, // 是否折叠
-                    float: "none", // 浮动情况
-                    clear: "none", // clear情况
                     hover: "row", // 是否有浮动样式
                     border: "border", // border属性
-                    maxWidth: "100%", // 最大宽度
-                    maxHeight: "none", // 最大高度
-                    minWidth: "none", // 最小宽度
-                    minHeight: "none", // 最小高度
-                    width: "auto", // 宽度
-                    height: "auto", // 高度
-                    classList: [], // 类名列表
-                    styleList: [], // 样式列表
                     node: {
                         width: "auto", // nw=100px
                         height: "auto", // nh=100px
@@ -53,6 +43,7 @@ class TableParser extends ComponentsParser {
      * @param {Object} poemReplaceList poem的key-value
      */
     analyse(ignoreReplaceList = [], codeReplaceList = [], poemReplaceList = []) {
+        this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
         let divideIndexList = [];
         let optionList = []; // 配置项列表
         let tableList = []; // 表格数据列表
@@ -79,18 +70,6 @@ class TableParser extends ComponentsParser {
             let key = option.split("=")[0];
             let value = option.split("=")[option.split("=").length - 1];
             switch (key) {
-                case "class":
-                    if (value)
-                        this.template.data.option.classList.concat(
-                            value.split(";")
-                        );
-                    break;
-                case "style":
-                    if (value)
-                        this.template.data.option.styleList.concat(
-                            value.split(";")
-                        );
-                    break;
                 case "fold":
                     if (["true", "false"].indexOf(value) !== -1) {
                         this.template.data.option.fold = eval(value);
@@ -107,34 +86,6 @@ class TableParser extends ComponentsParser {
                     if (["row", "node", "none"].indexOf(value) !== -1) {
                         this.template.data.option.hover = ["row", "node", "none"].find((ele)=>{return ele === value;});
                     }
-                    break;
-                case "float":
-                    if (["none", "center", "left", "right"].indexOf(value) !== -1) {
-                        this.template.data.option.float = ["center", "left", "right", "none"].find((ele)=>{return ele === value;});
-                    }
-                    break;
-                case "clear":
-                    if (["none", "both", "left", "right"].indexOf(value) !== -1) {
-                        this.template.data.option.clear = ["center", "both", "right", "none"].find((ele)=>{return ele === value;});
-                    }
-                    break;
-                case "maxWidth":
-                    this.template.data.option.maxWidth = value;
-                    break;
-                case "maxHeight":
-                    this.template.data.option.maxHeight = value;
-                    break;
-                case "minWidth":
-                    this.template.data.option.minWidth = value;
-                    break;
-                case "minHeight":
-                    this.template.data.option.minHeight = value;
-                    break;
-                case "height":
-                    this.template.data.option.height = value;
-                    break;
-                case "width":
-                    this.template.data.option.width = value;
                     break;
                 case "nw":
                     this.template.data.option.node.width = value;

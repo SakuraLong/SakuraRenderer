@@ -12,3 +12,4 @@ import "./table.css";
 import "./scrollbar.css";
 import "./imageShower.css";
 import "./mask.css";
+import "./clear.css";
