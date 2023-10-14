@@ -76,6 +76,19 @@ export default {
             this.$refs.srAlbum.style.width = this.data.option.width;
             this.$refs.srAlbum.style.maxWidth = "none"; 
         }
+        if(this.data.option.width !== "auto" && this.$refs.srAlbum_preview_img.style.width === "auto"){
+            this.$refs.srAlbum_preview_img.style.width = this.data.option.width;
+        }
+        if(this.data.option.width !== "auto" && this.data.option.height !== "auto"){
+            if(this.data.option.showImageWidth !== "auto")
+                this.$refs.srAlbum_preview_img.style.width = this.data.option.showImageWidth;
+            else{
+                this.$refs.srAlbum_preview_img.style.width = this.data.option.width;
+            }
+        }
+        if(this.$refs.srAlbum_preview_img.style.width !== "auto" && this.data.option.showImageHeight !== "auto"){
+            this.$refs.srAlbum_preview_img.style.width = "auto";
+        }
         console.log(this.$refs.srAlbum.style.maxWidth);
         this.$refs.srAlbum.style.height = this.data.option.height;
         this.data.option.classList.forEach((className) => {
