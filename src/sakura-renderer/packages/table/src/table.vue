@@ -66,10 +66,10 @@ export default {
                         center: "sa-center",
                         left: "sa-float--left",
                         right: "sa-float--right",
-                        none: "sa-no-style"
+                        none: "sa-table--block"
                     },
                     display: {
-                        table:"sa-table-container--table",
+                        table:"sa-table-container--inline-bloc",
                     }
                 },
                 table: {
@@ -133,12 +133,12 @@ export default {
                 );
             } else {
                 tableContainer.classList.add(
+                    this.tableClassDict.tableContainer.display.table
+                );
+                tableContainer.classList.add(
                     this.tableClassDict.tableContainer.float[
                         this.data.option.float
                     ]
-                );
-                tableContainer.classList.add(
-                    this.tableClassDict.tableContainer.display.table
                 );
             }
             const table = this.$refs.sr_table;

@@ -456,19 +456,35 @@ const article = `
 |当然标题也包含一些配置项
 |}
 
-{|table|float=center|width=600px
+{|table|width=100%
 |-
 |+ title配置项 c=6
 |-
 | 名称 t| 含义 t|可选值 t| 可选值效果 t|是否支持?style t| 默认值 t
 |-
-|ta r=2 | text-align标题文字显示位置 r=2 | left,l | 标题文字靠左 
-| 是 r=2| left r=2
+|ta r=2/t | text align标题文字显示位置 r=2 | left,l | 标题文字靠左 | 是 r=2| left r=2
 |- 
 |center,c| 标题文字居中
 |-
-|bp | border-position边框的位置
-| left,l<br>bottom,b
+| bp r=3/t | border position边框的位置 r=3| left,l|边框在左侧|是 r=3| left r=3
+|-
+| bottom,b|边框在底部
+|-
+| none,n|没有边框
+|-
+|ha r=2/t | hover animation是否有浮动动画 r=2 | true | 有 | 是 r=2| false r=2
+|- 
+|false| 没有
+|-
+|hl r=2/t | has link是否存在页面内跳转链接按钮 r=2 | true | 存在 | 是 r=2| true r=2
+|- 
+|false| 不存在
+|-
+|class t | 组件的类列表 | 类名1;类名2;类名3 | 给h组件添加此类 | 否 | 空
+|-
+|style t | 组件的css样式列表 | 样式1:值1;样式2:值2 | 给h组件添加此样式 | 否 | 空
+|-
+|type t | 组件是h几标题 | h1~h6 | 确定的h几标题 | 否 | h1
 |}
 
 `;
