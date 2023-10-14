@@ -12,7 +12,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: solid 2px black;
     /* max-width: max-content; */
 }
 .sr-album--align--center{
@@ -44,7 +43,6 @@
     max-width: max-content;
     max-height: max-content;
     overflow: hidden;
-    border: solid 1px red;
     /* object-fit: contain */
 }
 .sr-album--preview--img{
