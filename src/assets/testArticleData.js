@@ -374,6 +374,8 @@ const article = `
 {|carouselIS
 |cycle
 |play=2000
+|none
+|width=300px
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
@@ -383,54 +385,14 @@ const article = `
 |}
 
 {|albumIS
-|align=center
+|align=none
+|width=300px
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
 | https://img.moegirl.org.cn/common/thumb/4/4d/Uiharu_Kazari.jpg/375px-Uiharu_Kazari.jpg
 | https://img.moegirl.org.cn/common/thumb/9/97/Saten_Ruiko.jpg/375px-Saten_Ruiko.jpg
 | https://img.moegirl.org.cn/common/thumb/a/a1/36012599_p0.png/375px-36012599_p0.png
-|}
-
-== asdasd
-
-{|para|style=font-size:20px;width:100%
-|class=class1;class2
-|type=warning
-|border=none
-|-
-| 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
-段落第一句话，这不会换行。段落第一句话，这不会换行。
-| 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
-段落第二句话，这部分与上面一句相比，已经换行了。
-| <ignore>忽略忽略</ignore>
-| <ignore>忽略忽略1231212</ignore>
-| <poem>哈哈哈
-哈哈哈
-哈哈哈哈哈</poem>
-|}
-
-{|carouselIS
-|cycle
-|center
-|play
-|-
-| https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
-| https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
-| https://img.moegirl.org.cn/common/thumb/4/4d/Uiharu_Kazari.jpg/375px-Uiharu_Kazari.jpg
-| https://img.moegirl.org.cn/common/thumb/9/97/Saten_Ruiko.jpg/375px-Saten_Ruiko.jpg
-| https://img.moegirl.org.cn/common/thumb/a/a1/36012599_p0.png/375px-36012599_p0.png
-|}
-
-
-{|para|style=font-size:20px;width:100%;display:block
-|class=class1;class2
-|type=warning
-|border=none
-|-
-| <poem>哈哈哈
-哈哈哈
-哈哈哈哈哈</poem>
 |}
 
 = 上面是demo，下面开始介绍使用方法

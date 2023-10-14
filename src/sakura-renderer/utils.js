@@ -7,9 +7,10 @@
  * @param {String} string_end 匹配结束字符串
  * @param {String} content 检查的内容
  * @param {Function} func 处理内容的函数，会传入入参以及匹配的内容，需要返回匹配的替换的结果
+ * @param {Boolean} 是否会找到全部
  * @returns
  */
-function replaceNonGreed(string_begin, string_end, content, func) {
+function replaceNonGreed(string_begin, string_end, content, func, all = false) {
     let res = {
         replace: false,
         content: content,
@@ -60,6 +61,7 @@ function replaceNonGreed(string_begin, string_end, content, func) {
         }
     }
     let stack = 0;
+    let lr_list = [];
     l_i = left_index_list[0];
     r_i = -1;
     for(let i=0;i<temp_list.length;i++){
@@ -69,23 +71,38 @@ function replaceNonGreed(string_begin, string_end, content, func) {
             r_i = temp_list[i].index;
             stack--;
         }
-        if(stack === 0) break;
+        if(stack === 0) {
+            lr_list.push([l_i, r_i]);
+            // 找到当前后面的第一个left
+            l_i = -1;
+            for(let j = i+ 1;j < temp_list.length;j++){
+                if(temp_list[j].type === "left"){
+                    l_i = temp_list[j].index;
+                    break;
+                }
+            }
+            if(l_i === -1) break; // 后面没有left了
+        }
     }
-    if (l_i >= r_i) return res; // 匹配失败
-    left_index = l_i;
-    right_index = r_i;
-    let temp = content.slice(left_index, right_index + string_end.length); // 不一定唯一，但一定是最先检索到
-    console.log("匹配成功",l_i, r_i, temp);
-    content = content.replace(
-        temp,
-        func({
-            stringBegin: string_begin,
-            stringEnd: string_end,
-            content: content,
-            replace: temp,
-        })
-    );
-    res.replace = true;
+    let replace_difference = 0; // 变化前后的差数
+    for(let i=0;i<lr_list.length;i++){
+        if(!all && i > 0) break;
+        if (lr_list[i][0] >= lr_list[i][1]) continue;
+        let temp = content.slice(lr_list[i][0] + replace_difference, lr_list[i][1] + string_end.length + replace_difference); // 不一定唯一，但一定是最先检索到
+        let before = content.length;
+        content = content.replace(
+            temp,
+            func({
+                stringBegin: string_begin,
+                stringEnd: string_end,
+                content: content,
+                replace: temp,
+            })
+        );
+        let after = content.length;
+        replace_difference = replace_difference + after - before;
+        res.replace = true;
+    }
     res.content = content;
     return res;
 }

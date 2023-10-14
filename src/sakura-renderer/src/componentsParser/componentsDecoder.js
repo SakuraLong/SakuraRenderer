@@ -10,6 +10,8 @@ import AllISParser from "./component/AllISParser";
 import CISParser from "./component/CISParser";
 import ListParser from "./component/listParser";
 import TableParser from "./component/tableParser";
+import ClearParser from "./component/ClearParser";
+
 import GrammerParser from "./grammar/grammarParser"; // 语法解析器
 import TemplateParser from "./template/templateParser"; // 模板解析器
 import ModuleParser from "./module/moduleParser"; // 模块解析器
@@ -32,6 +34,7 @@ class ComponentsDecoder {
             CISParser,
             ListParser,
             TableParser,
+            ClearParser,
         ]; // parsers
 
         this.componentsList = []; // components列表
@@ -40,25 +43,15 @@ class ComponentsDecoder {
         // 选择需要忽略的区域
         let body = this.body;
         this.ignore.forEach((ignoreStr) => {
-            let temp = utils.replaceNonGreed(
+            body = utils.replaceNonGreed(
                 "<" + ignoreStr + ">",
                 "</" + ignoreStr + ">",
                 body,
                 (data) => {
                     return this.ignoreReplace(data);
-                }
+                },
+                true
             ).content;
-            while(temp !== body){
-                body = temp;
-                temp = utils.replaceNonGreed(
-                    "<" + ignoreStr + ">",
-                    "</" + ignoreStr + ">",
-                    body,
-                    (data) => {
-                        return this.ignoreReplace(data);
-                    }
-                ).content;
-            }
         });
         // 选择代码区域
         this.code.forEach((codeStr) => {
@@ -189,6 +182,7 @@ class ComponentsDecoder {
             for (let j = 0; j < this.parsers.length; j++) {
                 let t = new this.parsers[j](componentsList[i], this.option);
                 if (!t.judge()) continue;
+                t.analyseBaseOption();
                 let template = t.analyse(
                     this.ignoreReplaceList,
                     this.codeReplaceList,
