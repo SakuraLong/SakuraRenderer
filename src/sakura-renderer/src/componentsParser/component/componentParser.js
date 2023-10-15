@@ -22,6 +22,7 @@ class ComponentsParser {
             fontFamily: "DEFAULT", // 字体 同上
             classList: [], // 类名列表
             styleList: [], // 样式列表
+            id: "", // 组件id
         }; // 基础基本上通用的配置项
         // 在vue里面挑选你需要的使用，不一定每个都有用
         // 如果需要修改默认值可以在子类的constructor里面修改（看得清楚
@@ -112,6 +113,9 @@ class ComponentsParser {
                         this.baseOption.styleList.concat(
                             value.split(";")
                         );
+                    break;
+                case "id":
+                    this.baseOption.id = value;
                     break;
             }
         }

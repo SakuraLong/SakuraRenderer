@@ -69,7 +69,7 @@ export default {
                         none: "sa-table--block"
                     },
                     display: {
-                        table:"sa-table-container--inline-bloc",
+                        table:"sa-table-container--inline-block",
                     }
                 },
                 table: {

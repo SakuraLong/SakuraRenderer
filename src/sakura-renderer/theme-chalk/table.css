@@ -14,8 +14,8 @@
     width: auto;
     height: auto;
 }
-.sa-table-container--inline-bloc{
-    display: inline-block;
+.sa-table-container--inline-block{
+    display: inline-block !important;
 }
 .sa-table--block{
     display: block;
