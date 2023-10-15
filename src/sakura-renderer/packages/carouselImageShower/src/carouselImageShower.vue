@@ -19,6 +19,7 @@
             <li
                 v-for="(img, index) in this.data.imgList"
                 class="sa-srCarousell-slide"
+                :id="'sa-carousel' + this.id"
                 :key="index"
                 :style="{
                     left: `${index * 100}%`,
@@ -27,7 +28,7 @@
             >
                 <img
                     class="sa-srCarousell-img"
-                    :id="'img' + index"
+                    :id="'sa-carousel-img' + index"
                     :src="img"
                 />
             </li>
@@ -70,15 +71,18 @@ export default {
             styleStr: "",
             setWidth: false,
             setHeight: false,
+            setCenter: false,
             activeIndex: 0, // 初始化第一个 index 为实心
             showButtonsLeft: false,
             showButtonsRight: false,
             timer: null,
+            id: Date.now(),
         };
     },
     mounted() {
         // console.log(this.data);
         if (this.data.option.align === "center") {
+            this.setCenter = true;
             this.$refs.srCarousell.classList.add("sa-carousell--center");
         } else if (this.data.option.align === "left") {
             this.$refs.srCarousell.classList.add("sa-carousell--left");
@@ -92,13 +96,16 @@ export default {
             this.$refs.srCarousell.classList.add(className);
         });
         this.data.option.styleList.forEach((styleName) => {
-            this.styleStr += styleName + ";";
             if (styleName.includes("width")) {
                 this.setWidth = true;
+                if (this.setCenter) {
+                    return true;
+                }
             }
             if (styleName.includes("height")) {
                 this.setHeight = true;
             }
+            this.styleStr += styleName + ";";
         });
         this.$nextTick(() => {
             this.setImgSize();
@@ -181,7 +188,9 @@ export default {
                 var maxheight = 0;
                 var length = this.data.imgList.length;
                 for (var i = 0; i < length; i++) {
-                    var img = document.getElementById("img" + i);
+                    var img = document.querySelector(
+                        "#sa-carousel" + this.id + " #sa-carousel-img" + i
+                    );
                     if (img.naturalWidth > maxwidth) {
                         maxwidth = img.naturalWidth;
                         console.log(img.naturalWidth);
@@ -191,13 +200,16 @@ export default {
                     }
                 }
                 if (!this.setWidth) {
-                    this.styleStr += "width:" + maxwidth + "px;";
+                    // console.log(maxwidth);
+                    if (!this.setCenter) {
+                        this.styleStr += "width:" + maxwidth + "px;";
+                    }
                 }
                 if (!this.setHeight) {
-                    console.log(maxheight);
+                    // console.log(maxheight);
                     this.styleStr += "height:" + maxheight + "px;";
                 }
-            }, 100);
+            }, 1000);
         },
     },
 };
