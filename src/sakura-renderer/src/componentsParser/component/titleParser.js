@@ -90,24 +90,28 @@ class TitleParser extends ComponentsParser {
                 let key = styleELe.split("=")[0];
                 let value = styleELe.split("=")[styleELe.split("=").length - 1];
                 switch(key){
-                    case "ta":
+                    case "textAlign":
+                    case "TA":
                         if(["left", "center", "l", "c"].indexOf(value) !== -1){
                             this.template.data.option.textAlign = value;
                         }
                         break;
-                    case "bp":
+                    case "borderPosition":
+                    case "BP":
                         if(["left", "l", "bottom", "b", "n", "none"].indexOf(value) !== -1){
                             this.template.data.option.borderPosition = value;
                         }
                         break;
-                    case "ha":
+                    case "hoverAnimation":   
+                    case "HA":
                         if(["true", "false"].indexOf(value) !== -1){
                             this.template.data.option.hoverAnimation = eval(value);
                         }else if(key === value){
                             this.template.data.option.hoverAnimation = true;
                         }
                         break;
-                    case "hl":
+                    case "hasLink":
+                    case "HL":
                         if(["true", "false"].indexOf(value) !== -1){
                             this.template.data.option.hasLink = eval(value);
                         }else if(key === value){
@@ -127,6 +131,11 @@ class TitleParser extends ComponentsParser {
                         this.template.data.type = value;
                         break;
                     default:
+                        if(this.default && key.length === 2 && key[0] === "h" && Number(key[1])){
+                            if(parseInt(key[1]) <= 6){
+                                this.template.data.type = value;
+                            }
+                        }
                         break;
                 }
             });

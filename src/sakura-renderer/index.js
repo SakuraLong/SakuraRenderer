@@ -15,6 +15,7 @@ import Scrollbar from "./packages/scrollbar";
 import ImageShower from "./packages/imageShower";
 import Mask from "./packages/mask";
 import Clear from "./packages/clear";
+import Icons from "./packages/icon";
 
 
 const components = [
@@ -30,7 +31,11 @@ const components = [
     Scrollbar,
     ImageShower,
     Mask,
-    Clear
+    Clear,
+    Icons.Icon,
+    Icons.ArrowLeft,
+    Icons.ArrowRight,
+    Icons.Exit
 ];
 
 const install = function (Vue, opts = {}) {

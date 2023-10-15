@@ -77,17 +77,17 @@ const article = `
 
 = 标题也可以设置配置
 
-== 这是一个有动画的标题 ?style ha
+== 这是一个有动画的标题 ?style HA
 
-== 这是一个文字居中而且有动画的标题 ?style ha|ta=c
+== 这是一个文字居中而且有动画的标题 ?style HA|TA=c
 
-== 这是一个文字居中、边框在下而且有动画的标题 ?style ha|ta=c|bp=b
+== 这是一个文字居中、边框在下而且有动画的标题 ?style HA|textAlign=c|BP=b
 
-== 这是一个文字居中、边框在下而且有动画但没有超链接的标题 ?style ha|ta=c|bp=b|hl=false
+== 这是一个文字居中、边框在下而且有动画但没有超链接的标题 ?style HA|TA=c|BP=b|HL=false
 
-{|标题|type=h1
+{|标题|h2
 |class=class1;class2
-|ta=c|bp=bottom|ha
+|TA=c|BP=bottom|HA
 |class=class3;class4
 |style=color:red;line-height:2
 |-
