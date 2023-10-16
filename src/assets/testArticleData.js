@@ -506,6 +506,8 @@ const article = `
 |type t | 组件是h几标题 | h1~h6 | 确定的h几标题 | 否 | h1
 |}
 
+这应该是一个段落
+
 `;
 
 export default {
