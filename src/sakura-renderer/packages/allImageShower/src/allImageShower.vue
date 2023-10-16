@@ -1,16 +1,18 @@
 <template>
-    <div ref="srAllImage" class="all-image-container" :style="containerStyle">
-        <div
-            v-for="(img, index) in this.data.imgList"
-            :key="index"
-            class="slide"
-            :style="{
-                'background-image': `url(${img})`,
-                'background-size': 'cover',
-                'background-position': 'center',
-                'object-fit': 'cover',
-            }"
-        ></div>
+    <div ref="srAllImage" class="all-image-fit">
+        <div class="all-image-container" :style="containerStyle">
+            <div
+                v-for="(img, index) in this.data.imgList"
+                :key="index"
+                class="slide"
+                :style="{
+                    'background-image': `url(${img})`,
+                    'background-size': 'cover',
+                    'background-position': 'center',
+                    'object-fit': 'cover',
+                }"
+            ></div>
+        </div>
     </div>
 </template>
 

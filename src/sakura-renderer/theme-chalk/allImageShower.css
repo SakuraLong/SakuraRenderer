@@ -9,6 +9,14 @@
     grid-template-rows: repeat(3, 200px);
 }
 
+.all-image-fit{
+  max-width: 100%;
+  display: inline-block;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 .sa-all-image--left {
     margin: 0;
     float: left;
