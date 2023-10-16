@@ -58,6 +58,8 @@
 
 ## table表格组件
 
++ 内部比外部大时需要显示滚动条
+
 ### table表格组件option的设置方法
 
 | option | 含义 | key值（key=value）| 可选值 | 默认值 | 示例 |
@@ -68,6 +70,52 @@
 | border | 边框情况 | 除none以外可以直接写或key=border | border<br>bottom<br>none | border | border=border<br>border |
 | tdWidth | 单元格宽度 | tdWidth/TW | css支持的宽度设置 | auto | tdWidth=100px<br>TW=100px |
 | tdHeight | 单元格高度 | tdHeight/TH | css支持的高度设置 | auto | tdHeight=100px<br>TH=100px |
+
+## list列表组件
+
++ 内部比外部大时需要显示滚动条
+
+### list列表组件option的设置方法
+
+| option | 含义 | key值（key=value）| 可选值 | 默认值 | 示例 |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| name | 列表的名字 | name | 列表名字 | 空 | name=列表名字 |
+| fold | 是否折叠 | 直接填或key=fold | true/false | false | fold=true<br>fold |
+| mode | 列表序号模式 | 直接填或key=mode；可以为有序和无序分别设置，可以设置两个，通过;分割，前者设置有序，后者设置无序 | 见详细mode | default | mode=default<br>default |
+| template | 列表序号显示模板 | template/t | 详细见template | DEFAULT | template=* <br>t=* |
+
+#### list列表组件mode大小比较
+
+default < number = solid = hollow = square < template < none
+
+#### list列表组件mode
+
+| mode可选值 | 含义 | 显示 |
+|:---:|:---:|:---:|
+| default | 有序列表为单一数字、无序列表顺序为实心点、空心点、正方形 | 1./2./3. |
+| number | 这个仅支持全部都是有序列表，如果内部出现无序列表则按照default，有序列表的多级列表会显示原先的列表序号 1.1.2这样 | 1./2./1.1./1.2. |
+| solid | 有序列表样式同default，无序列表样式全部是实心点 |
+| hollow | 有序列表样式同default，无序列表样式全部是空心点 |
+| square | 有序列表样式同default，无序列表样式全部是正方形 |
+| template | 有序列表样式通过配置项设置，没设置则同default，无序列表样式通过配置项设置，没设置同default |
+| none | 不会显示任何的序号样式 |
+
+| 有意义的mode合并可选值 | 含义 |
+|:---:|:---:|
+| template;solid/hollow/square | 有序列表按照模板来，无序列表按照相关设置来 |
+| default/number/template;none | 有序列表按照相关设置来，无序列表不显示序号 |
+| none;solid/hollow/square/template | 有序列表没有序号，无序列表按照相关设置来 |
+
+#### list列表组件template
+
++ *代表替换字符
+
+| template设置（样例） | 显示效果 |
+|:---:|:---:|
+| template=*. | 1./2./1.1./1.2. |
+| template=*: | 1:/2:/1.1:/1.2: |
+| template=a* | a1/a2/a1.1/a2.2 |
+| template=a* | a1/a2/a1.1/a2.2 |
 
 ## 图片显示器组件
 
@@ -96,6 +144,8 @@
 
 ## allImageShower全部图片显示器组件
 
++ 内部比外部大时需要显示滚动条
+
 ### allImageShower全部图片显示器组件option的设置方法
 
 | option | 含义 | key值（key=value）| 可选值 | 默认值 | 示例 |
@@ -106,6 +156,8 @@
 
 ## albumImageShower相册图片显示器组件
 
++ 内部比外部大时不需要显示滚动条
+
 ### albumImageShower相册图片显示器组件option的设置方法
 
 | option | 含义 | key值（key=value）| 可选值 | 默认值 | 示例 |
@@ -115,9 +167,11 @@
 
 ## carouselImageShower走马灯图片展示框组件
 
++ 内部比外部大时不需要显示滚动条
+
 ### carouselImageShower走马灯图片展示框组件option的设置方法
 
 | option | 含义 | key值（key=value）| 可选值 | 默认值 | 示例 |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | loop | 是否循环 | 直接写代表循环或者key=loop | true/false | true | loop=true<br>loop |
-| interval | 切换的时间 | key=interval/i;直接写代表有切换动画、图片切换时长默认20000ms，设置切换时长需要写interval=2000，不需要动画写interval=false | 切换时长（ms）/false | false | interval<br>interval=2000<br>i=false |
+| interval | 切换的时间 | key=interval/i;直接写代表有切换动画、图片切换时长默认2000ms，设置切换时长需要写interval=2000，不需要写单位，不需要动画写interval=false | 切换时长（ms）/false | false | interval<br>interval=2000<br>i=false |

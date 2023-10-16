@@ -8,6 +8,7 @@ class ComponentsParser {
         this.option = option;
         this.type = ""; // 类型
         this.dataList = []; // 数据列表
+        this.componentBaseOption = {}; // 需要修改的默认值
         this.baseOption = {
             float: "none", // 浮动情况
             clear: "none", // clear情况
@@ -38,6 +39,7 @@ class ComponentsParser {
         return {};
     }
     analyseBaseOption() {
+        this.changeBaseOption(); // 检查子类是否要修改默认baseOption
         let divideIndex = this.dataList.indexOf("-");
         for(let i = 1; i < divideIndex; i++) {
             let data = this.dataList[i];
@@ -142,6 +144,11 @@ class ComponentsParser {
             content = content.replace(ignoreData.key, ignoreData.value);
         });
         return content;
+    }
+    changeBaseOption() {
+        this.baseOption.forEach((value, key)=>{
+            this.baseOption[key] = this.componentBaseOption[key] === undefined ? value : this.componentBaseOption[key];
+        });
     }
 }
 
