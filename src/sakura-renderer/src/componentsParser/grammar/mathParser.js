@@ -5,7 +5,7 @@ class MathParser {
     constructor(option, content) {
         this.option = option;
         this.content = content;
-        this.tempDivId = "sa-article-temp";
+        // this.tempDivId = "sa-article-temp"; math可能要用
     }
     analyse() {
         this.OLMathParser();

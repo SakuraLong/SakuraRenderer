@@ -146,9 +146,9 @@ class ComponentsParser {
         return content;
     }
     changeBaseOption() {
-        this.baseOption.forEach((value, key)=>{
-            this.baseOption[key] = this.componentBaseOption[key] === undefined ? value : this.componentBaseOption[key];
-        });
+        for (let key in this.baseOption) {
+            this.baseOption[key] = this.componentBaseOption[key] === undefined ? this.baseOption[key] : this.componentBaseOption[key];
+        }
     }
 }
 
