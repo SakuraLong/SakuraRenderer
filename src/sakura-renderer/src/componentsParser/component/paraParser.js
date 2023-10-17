@@ -29,68 +29,53 @@ class ParaParser extends ComponentsParser{
                     styleList:[], // 样式列表
                     border:"-",
                     tips:"DEFAULT",
+                    model:true,
                 },
             },
         }; // 标题段落配置
     }
     judge(){
+        // console.log("组件内容：",this.component);
+        console.log(this.dataList);
         // 重写
         if (this.name.indexOf(this.dataList[0]) !== -1) {
             this.default = true;
             return true;
         } else if (this.component[0] !== "=" && this.component[0] !== "{" ) {
+            console.log("组件内容：",this.component);
+            this.template.model=false;
             return true;
         } else {
             return false;
         }
     }
     analyse() {
-        let component = this.component;
-        let paraType = "default";
-        let para = "";
-        let style = null;
         let styleList = [];
         console.log(this);
-        if (!this.default) {
-            let p1 = component.split("?style");
-            para = p1[0];
-            style = p1.length === 1 ? null : p1[p1.length - 1];
-            let p2 = para.split(" ");
-            let typeA = p2[0];
-            if (p2.length < 2) {
-                // 格式错误
-                return {
-                    type: "error",
-                    msg: "para格式错误",
-                    content: this.content,
-                };
-            }
-            para = p2[1];
-            for (let i = 2; i < p2.length; i++) para += " " + p2[i];
-            paraType = typeA.length > 6 ? 6 : typeA.length;
-            this.template.data.type = "p" + paraType.toString();
-            this.template.data.content = para;
-            if(style){
-                style = style.trim();
-                styleList = style.split("|");
-            }
-        } else {
-            let divideIndex = this.dataList.indexOf("-");
-            if(divideIndex === -1){
-                // 格式错误
-                return {
-                    type: "error",
-                    msg: "title格式错误",
-                    content: this.content,
-                };
-            }
-            for(let i=0;i<divideIndex;i++){
-                styleList.push(this.dataList[i]);
-            }
-            for(let i=divideIndex+1;i<this.dataList.length;i++){
-                this.template.data.content += this.dataList[i]+"<br>";
-            }
+        if(this.template.model===false){
+            this.template.data.content += this.component+"<br>";
+            return {
+                type: "success",
+                msg: "",
+                content: this.template,
+            };
         }
+        let divideIndex = this.dataList.indexOf("-");
+        if(divideIndex === -1){
+            // 格式错误
+            return {
+                type: "error",
+                msg: "para格式错误",
+                content: this.content,
+            };
+        }
+        for(let i=0;i<divideIndex;i++){
+            styleList.push(this.dataList[i]);
+        }
+        for(let i=divideIndex+1;i<this.dataList.length;i++){
+            this.template.data.content += this.dataList[i]+"<br>";
+        }
+        console.log("看这里",this.dataList);
         if (styleList.length!==0) {
             styleList.forEach((styleELe) => {
                 let key = styleELe.split("=")[0];
