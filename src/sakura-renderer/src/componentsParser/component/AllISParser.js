@@ -38,6 +38,7 @@ class AllISParser extends ComponentsParser {
     }
 
     analyse() {
+        this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
         let styleList = [];
         let divideIndex = this.dataList.indexOf("-");
         if (divideIndex === -1) {

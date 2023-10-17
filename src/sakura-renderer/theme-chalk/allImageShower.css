@@ -16,14 +16,25 @@
     max-width: 100%;
 }
 
+.all-image-fit{
+  max-width: 100%;
+  display: inline-block;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 .sa-all-image--left {
     margin: 0;
     float: left;
 }
 
-.sa-all-image--center {
+.sa-all-image--center{
+    width: 100%;
     margin: auto;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sa-all-image--right {
