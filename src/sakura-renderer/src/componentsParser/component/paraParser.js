@@ -50,6 +50,7 @@ class ParaParser extends ComponentsParser{
         }
     }
     analyse() {
+        this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
         let styleList = [];
         console.log(this);
         if(this.template.model===false){
@@ -75,7 +76,7 @@ class ParaParser extends ComponentsParser{
         for(let i=divideIndex+1;i<this.dataList.length;i++){
             this.template.data.content += this.dataList[i]+"<br>";
         }
-        console.log("看这里",styleList);
+        // console.log("看这里",styleList);
         if (styleList.length!==0) {
             styleList.forEach((styleELe) => {
                 let key = styleELe.split("=")[0];
@@ -128,7 +129,7 @@ class ParaParser extends ComponentsParser{
         this.template.data.content = new GrammerParser(this.option, this.template.data.content).analyse(); // 调用语法解析器解析
         this.template.data.content = new TemplateParser(this.option, this.template.data.content).analyse(); // 调用模板解析器解析
         this.template.data.content = new ModuleParser(this.option, this.template.data.content).analyse(); // 调用模块解析器解析
-        console.log("最终存储",this.template);
+        // console.log("最终存储",this.template);
         return {
             type: "success",
             msg: "",
