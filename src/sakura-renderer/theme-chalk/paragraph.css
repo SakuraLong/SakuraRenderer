@@ -2,6 +2,8 @@
     --sa-color-para-text: var(--sa-color-primary-text);
     --sa-color-para-border: var(--sa-color-primary-base);
     --sa-color-para-a-text: var(--sa-color-primary-base);
+    --block-warning-bg-color: rgba(var(--el-color-danger-rgb), .1);
+    --el-color-danger: #f56c6c;
 
 }
 .sa-para {
@@ -29,4 +31,13 @@
 .sa-para--border-bottom > span {
     position: relative;
     padding-bottom: 1rem;
+}
+
+
+.sa-para--border-warning {
+    padding: 8px 16px;
+    background-color: var(--block-warning-bg-color);
+    border-radius: 4px;
+    border-left: 5px solid var(--el-color-danger);
+    margin: 20px 0;
 }

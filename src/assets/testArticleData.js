@@ -83,9 +83,9 @@ sacasc
 |}
 
 {|para|style=font-size:20px;width:100%
-|class=class1;class2
+|bc=red
+|bgc=red
 |type=warning
-|border=none
 |-
 | 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
 段落第一句话，这不会换行。段落第一句话，这不会换行。

@@ -75,7 +75,7 @@ class ParaParser extends ComponentsParser{
         for(let i=divideIndex+1;i<this.dataList.length;i++){
             this.template.data.content += this.dataList[i]+"<br>";
         }
-        console.log("看这里",this.dataList);
+        console.log("看这里",styleList);
         if (styleList.length!==0) {
             styleList.forEach((styleELe) => {
                 let key = styleELe.split("=")[0];
@@ -91,7 +91,7 @@ class ParaParser extends ComponentsParser{
                         this.template.data.option.border = value;
                         break;
                     case "type":
-                        if(["default", "success","warning","tip","info"].indexOf(value) !== -1){
+                        if(["default", "success","warning","tip","info"].indexOf(value.toLowerCase()) !== -1){
                             console.log(["default", "success","warning","tip","info"].indexOf(value));
                             this.template.data.option.type = value;
                             this.template.data.option.tips=this.template.data.option.type.toUpperCase();
@@ -128,7 +128,7 @@ class ParaParser extends ComponentsParser{
         this.template.data.content = new GrammerParser(this.option, this.template.data.content).analyse(); // 调用语法解析器解析
         this.template.data.content = new TemplateParser(this.option, this.template.data.content).analyse(); // 调用模板解析器解析
         this.template.data.content = new ModuleParser(this.option, this.template.data.content).analyse(); // 调用模块解析器解析
-        console.log(this.template);
+        console.log("最终存储",this.template);
         return {
             type: "success",
             msg: "",
