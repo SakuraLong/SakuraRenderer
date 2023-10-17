@@ -83,9 +83,8 @@ sacasc
 |}
 
 {|para|style=font-size:20px;width:100%
-|bc=red
-|bgc=red
-|type=warning
+|type=info
+|tips=测试一下
 |-
 | 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
 段落第一句话，这不会换行。段落第一句话，这不会换行。
@@ -124,7 +123,7 @@ sacasc
 {|allIS
 |width=200px
 |height=120px
-|right
+|left
 |space=10px
 |column=3
 |row=2

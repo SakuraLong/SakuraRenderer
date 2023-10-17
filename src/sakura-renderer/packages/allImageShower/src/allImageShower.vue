@@ -1,20 +1,21 @@
 <template>
     <div ref="srAllImage" class="all-image-fit">
         <div class="all-image-container" :style="containerStyle">
-            <div
+            <img
                 v-for="(img, index) in this.data.imgList"
                 :key="index"
+                :src="img"
                 class="slide"
                 :style="{
-                    'background-image': `url(${img})`,
-                    'background-size': 'cover',
-                    'background-position': 'center',
                     'object-fit': 'cover',
+                    'width': '100%',
+                    'height': '100%',
                 }"
-            ></div>
+            />
         </div>
     </div>
 </template>
+
 
 <script>
 export default {
