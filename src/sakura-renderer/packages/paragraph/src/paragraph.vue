@@ -1,5 +1,5 @@
 <template>
-    <p :id="data.id" ref="srPara" :data-para="data.content" v-html="data.content" :style="para_styleStr"></p>
+    <p :id="data.id" ref="srPara" v-html="data.content" :style="para_styleStr"></p>
 </template>
 
 <script>
@@ -48,6 +48,13 @@ export default {
         this.data.option.styleList.forEach((styleName)=>{
             this.styleStr += styleName + ";";
         });
+
+        window.test  = this.test;
     },
+    methods:{
+        test(event) {
+            console.log("test", event.target.parent);
+        }
+    }
 };
 </script>

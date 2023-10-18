@@ -47,6 +47,16 @@ const article = `
 配置项
 配置项
 |-
+{|para
+|-
+|{{quote|这是不错的文档渲染器|项目组}}
+|}
+
+{|para
+|-
+|<span onclick='test(event)'>test</span>{{ref|refText=百度百科}}
+|}
+
 = 这个渲染文本在src/assets/testArticleData.js的article变量中
 
 = 一级标题
@@ -102,8 +112,12 @@ const article = `
 |width=600px|float=center
 |border=border
 |hover=node
+|style=color:red
+|name=课程表
 |-
 |+ 节次/周次|星期一|星期二|星期三|星期四|星期五
+|-
+| {{quote|这是不错的文档渲染器|项目组}} c=6
 |-
 |第一节|||||
 |-
@@ -137,7 +151,7 @@ const article = `
 == 你也可以用一些技巧画出不一样的表格
 
 {|table|border=border|hover=node
-|nw=70px|nh=70px|width=210px
+|TW=70px|TH=70px|width=210px
 |name=展示不一样的表格
 |float=center
 |-
@@ -156,6 +170,7 @@ const article = `
 |width=600px|float=center
 |border=border
 |hover=node
+|name=课程表
 |maxHeight=300px
 |-
 |+ 节次/周次|星期一|星期二|星期三|星期四|星期五
@@ -230,7 +245,7 @@ const article = `
 
 {|table|border=border|hover=node
 |float=right
-|nw=80px|nh=80px
+|TW=80px|TH=80px
 |-
 | 123 d| 123 d| 123 d| 123 d
 |-
@@ -506,11 +521,20 @@ const article = `
 |type t | 组件是h几标题 | h1~h6 | 确定的h几标题 | 否 | h1
 |}
 
-这应该是一个段落
+`;
 
+const articleForTemplate = `
+配置项
+|-
+
+{|para
+|-
+|{{quote|这是不错的文档渲染器|项目组}}
+|}
 `;
 
 export default {
     test_article_data_list,
     article,
+    articleForTemplate,
 };

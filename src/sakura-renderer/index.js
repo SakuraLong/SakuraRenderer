@@ -1,6 +1,5 @@
 import "./theme-chalk"; // 导入css
 import "./labels"; // 导入标签
-import "./src/componentsParser/grammar";
 
 import ArticleContainer from "./packages/articleContainer";
 import Paragraph from "./packages/paragraph";

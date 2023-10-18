@@ -38,6 +38,13 @@ class ComponentsDecoder {
         ]; // parsers
 
         this.componentsList = []; // components列表
+
+        this.rendererData = {
+            ref: {
+                amount: 0, // 参考的数量
+                refList: [], // 底部ref的渲染列表
+            },
+        }; // 全局渲染需要的数据
     }
     decode() {
         // 选择需要忽略的区域
@@ -63,7 +70,7 @@ class ComponentsDecoder {
                     return this.codeReplace(data);
                 }
             ).content;
-            while(temp !== body){
+            while (temp !== body) {
                 body = temp;
                 temp = utils.replaceNonGreed(
                     "<" + codeStr + ">",
@@ -85,7 +92,7 @@ class ComponentsDecoder {
                     return this.poemReplace(data);
                 }
             ).content;
-            while(temp !== body){
+            while (temp !== body) {
                 body = temp;
                 temp = utils.replaceNonGreed(
                     "<" + poemStr + ">",
@@ -106,15 +113,18 @@ class ComponentsDecoder {
         for (let i = 0; i < this.componentsList.length; i++) {
             this.componentsList[i] = new GrammerParser(
                 this.option,
-                this.componentsList[i]
+                this.componentsList[i],
+                this.rendererData
             ).analyse(); // 调用语法解析器解析
             this.componentsList[i] = new TemplateParser(
                 this.option,
-                this.componentsList[i]
+                this.componentsList[i],
+                this.rendererData
             ).analyse(); // 调用模板解析器解析
             this.componentsList[i] = new ModuleParser(
                 this.option,
-                this.componentsList[i]
+                this.componentsList[i],
+                this.rendererData
             ).analyse(); // 调用模块解析器解析
         }
         this.componentsList = this.listDecode(); // 组件拆分
@@ -162,12 +172,26 @@ class ComponentsDecoder {
             data.stringBegin.length,
             -data.stringEnd.length
         ); // 去掉头尾标记符
-        content = new GrammerParser(this.option, content).analyse(); // 调用语法解析器解析
-        content = new TemplateParser(this.option, content).analyse(); // 调用模板解析器解析
-        content = new ModuleParser(this.option, content).analyse(); // 调用模块解析器解析
+        content = new GrammerParser(
+            this.option,
+            content,
+            this.rendererData
+        ).analyse(); // 调用语法解析器解析
+        content = new TemplateParser(
+            this.option,
+            content,
+            this.rendererData
+        ).analyse(); // 调用模板解析器解析
+        content = new ModuleParser(
+            this.option,
+            content,
+            this.rendererData
+        ).analyse(); // 调用模块解析器解析
         let replaceStr = this.replace(data, "poem");
-        console.log(content);
-        this.poemReplaceList.push({ key: replaceStr, value: "<pre>" + content + "</pre>" });
+        this.poemReplaceList.push({
+            key: replaceStr,
+            value: "<pre>" + content + "</pre>",
+        });
         return replaceStr;
     }
     /**
@@ -176,11 +200,13 @@ class ComponentsDecoder {
     listDecode() {
         let componentsList = this.componentsList;
         let templateList = [];
-        console.log(this.ignoreReplaceList);
-        console.log(this.poemReplaceList);
         for (let i = 0; i < componentsList.length; i++) {
             for (let j = 0; j < this.parsers.length; j++) {
-                let t = new this.parsers[j](componentsList[i], this.option);
+                let t = new this.parsers[j](
+                    componentsList[i],
+                    this.option,
+                    this.rendererData
+                );
                 if (!t.judge()) continue;
                 t.analyseBaseOption();
                 let template = t.analyse(
@@ -194,6 +220,8 @@ class ComponentsDecoder {
                 // console.log(template);
             }
         }
+        // 组件处理完毕
+        // 向列表加入头尾
         return templateList;
     }
 }

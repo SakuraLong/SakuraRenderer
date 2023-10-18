@@ -35,7 +35,7 @@ class ParaParser extends ComponentsParser{
         if (this.name.indexOf(this.dataList[0]) !== -1) {
             this.default = true;
             return true;
-        } else if (this.component[0] !== "=" ) {
+        } else if (this.component[0] !== "=" && (this.component[0] !== "{" && this.component[1] !== "|")) {
             return true;
         } else {
             return false;

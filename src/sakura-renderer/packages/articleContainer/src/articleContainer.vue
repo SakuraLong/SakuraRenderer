@@ -35,6 +35,7 @@
                             :key="index"
                             :is="item.type"
                             :data="item.data"
+                            @showImageShower="this.imageShower.show = true;"
                         ></component>
                     </div>
                     <div class="sa-article-container__slot">
@@ -78,6 +79,7 @@
                 <h1>文档和目录之后的slot插槽</h1>
             </slot>
         </div>
+        <sr-image-shower v-if="imageShower.show" :imgList="imageShower.imgList" :initialIndex="imageShower.index" @exit="this.imageShower.show = false;"></sr-image-shower>
         <div style="display: none" id="sa-article-temp"></div>
     </div>
 </template>
@@ -97,6 +99,11 @@ export default {
             sakuraRenderer: null, // 渲染器类
             hasArticleCata: true,
             componentsList: [],
+            imageShower:{
+                show: false,
+                imgList: [],
+                index: 0
+            }
         };
     },
     mounted() {
