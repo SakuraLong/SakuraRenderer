@@ -1,6 +1,11 @@
 <template>
-    <p :id="data.id" ref="srPara" v-html="data.content" :style="para_styleStr"></p>
+    <div v-if="this.data.option.type!=='default'" ref="srParaType" class="sa-para sa-para--border">
+        <p class="custom-block-title" v-html="data.option.tips"></p>
+        <p ref="srPara" v-html="data.content"></p>
+    </div>
+    <p v-else ref="srPara" v-html="data.content" class="sa-para"></p>
 </template>
+
 
 <script>
 export default {
@@ -36,13 +41,22 @@ export default {
         // }else if(this.data.option.hoverAnimation){
         //     this.$refs.srPara.classList.add("sa-para--border-left--ani");
         // }
-        this.para_styleStr=`border-color: ${this.data.option.bc}; line-height: ${this.data.option.lineHeight}; border: ${this.data.border}; background-color:${this.data.option.bgc}`;
-        
-        this.hasLink = this.data.option.hasLink === true ? true : false;
+        if (this.data.option.type==="warning"){
+            this.$refs.srParaType.classList.add("sa-para--border-warning");
+        }
+        //"success","warning","tip","info"
+        else if (this.data.option.type==="success"){
+            this.$refs.srParaType.classList.add("sa-para--border-success");
+        }
+        else if (this.data.option.type==="tip"){
+            this.$refs.srParaType.classList.add("sa-para--border-tip");
+        }
+        else if(this.data.option.type==="info"){
+            this.$refs.srParaType.classList.add("sa-para--border-info");
+        }
+        this.$refs.srPara.style=`border-color: ${this.data.option.bc}; line-height: ${this.data.option.lineHeight}; border: ${this.data.border}; background-color:${this.data.option.bgc}`;
+        console.log("this.para_styleStr",this.$refs.srPara.style);
         this.data.option.classList.forEach((className)=>{
-            // console.log(className);
-            // console.log(this.$refs.srPara.classList);
-            
             this.$refs.srPara.classList.add(className);
         });
         this.data.option.styleList.forEach((styleName)=>{
@@ -58,3 +72,7 @@ export default {
     }
 };
 </script>
+
+<style>
+
+</style>

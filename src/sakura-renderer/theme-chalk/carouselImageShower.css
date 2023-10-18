@@ -4,6 +4,7 @@
 }
 
 .sa-carousell {
+    display: inline-block;
     position: relative;
     display: inline-block;
     /* margin: 0; */

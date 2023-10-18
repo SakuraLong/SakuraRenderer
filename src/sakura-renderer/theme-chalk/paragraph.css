@@ -2,14 +2,31 @@
     --sa-color-para-text: var(--sa-color-primary-text);
     --sa-color-para-border: var(--sa-color-primary-base);
     --sa-color-para-a-text: var(--sa-color-primary-base);
+    --el-color-primary-rgb: 64, 158, 255;
+    --el-color-success-rgb: 103, 194, 58;
+    --el-color-warning-rgb: 230, 162, 60;
+    --el-color-danger-rgb: 245, 108, 108;
+    --el-color-error-rgb: 245, 108, 108;
+    --el-color-info-rgb: 144, 147, 153;
+    --el-color-danger: #f56c6c;
+    --el-color-primary: #409eff;
+    --el-color-success: #67c23a;
+    --el-color-warning: #e6a23c;
+    --el-color-error: #f56c6c;
+    --el-color-info: #909399;
+    --block-warning-bg-color: rgba(var(--el-color-danger-rgb), .1);
+    --block-tip-bg-color: rgba(var(--el-color-primary-rgb), .1);
+    --block-success-bg-color: rgba(var(--el-color-success-rgb), .1);
+    --block-error-bg-color: rgba(var(--el-color-error-rgb), .1);
+    --block-info-bg-color: rgba(var(--el-color-info-rgb), .1);
 
 }
 .sa-para {
-    min-width: 50px;
-    position: relative;
-    /* margin: 0; */
-    /* padding: 0;
-    border: 0; */
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }
 
 .sa-para--center {
@@ -23,11 +40,40 @@
     color: var(--sa-color-title-text);
 }
 .sa-para--border-left {
-    padding-left: 1rem;
+    padding-left: 0rem;
 }
 
 
 .sa-para--border-bottom > span {
     position: relative;
-    padding-bottom: 1rem;
+    padding-bottom: 0rem;
+}
+
+.sa-para--border{
+    padding: 8px 16px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+.sa-para--border-warning {
+    background-color: var(--block-warning-bg-color);
+    border-left: 5px solid var(--el-color-danger);
+}
+
+.sa-para--border-success{
+    background-color: var(--block-success-bg-color);
+    border-left: 5px solid var(--el-color-success);
+}
+
+.sa-para--border-tip{
+    background-color: var(--block-tip-bg-color);
+    border-left: 5px solid var(--el-color-primary);
+}
+
+.sa-para--border-info{
+    background-color: var(--block-info-bg-color);
+    border-left: 5px solid var(--el-color-info);
+}
+
+.custom-block-title {
+    font-weight: 700;
 }
