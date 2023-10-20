@@ -1,0 +1,16 @@
+
+.sa-cata-container{
+    width: 100%;
+    display: block !important;
+    max-height: 50vh;
+    overflow: hidden;
+    height: auto;
+}
+.sa-cata-body{
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: calc(100% - 20px);
+    max-height: 50vh;
+    height: 100%;
+}

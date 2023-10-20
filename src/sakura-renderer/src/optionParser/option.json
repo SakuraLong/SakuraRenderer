@@ -1,6 +1,23 @@
 {
-    "page": {},
-    "cata": {},
+    "page": {
+        "bgColor": "DEFAULT",
+        "bgBorder": "DEFAULT",
+        "bgBorderRadius": "DEFAULT",
+        "padding": "DEFAULT"
+    },
+    "acticle": {
+        "bgColor": "DEFAULT",
+        "bgBorder": "DEFAULT",
+        "bgBorderRadius": "DEFAULT",
+        "padding": "DEFAULT",
+        "authors": "DEFAULT",
+        "time": "DEFAULT",
+        "position": "DEFAULT"
+    },
+    "cata": {
+        "position": "right",
+        "float": false
+    },
     "modules": {},
     "templates": {},
     "components": {
@@ -17,7 +34,7 @@
         "fontFamily": "DEFAULT",
         "classList": [],
         "styleList": [],
-        "lineHeight":"1",
+        "lineHeight": "1",
         "title": {
             "textAlign": "left",
             "borderPosition": "left",

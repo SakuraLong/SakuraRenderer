@@ -166,6 +166,8 @@ const article = `
 
 == 你也可以折叠表格，也可以设置最大高度来产生滚动条（当设置float=center，宽度不会产生滚动条）
 
+==== aassasasaassasa
+
 {|table|class=class1|fold
 |width=600px|float=center
 |border=border

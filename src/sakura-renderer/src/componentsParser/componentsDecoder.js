@@ -11,6 +11,7 @@ import CISParser from "./component/CISParser";
 import ListParser from "./component/listParser";
 import TableParser from "./component/tableParser";
 import ClearParser from "./component/ClearParser";
+import CataParser from "./component/cataParser";
 
 import GrammerParser from "./grammar/grammarParser"; // 语法解析器
 import TemplateParser from "./template/templateParser"; // 模板解析器
@@ -222,6 +223,9 @@ class ComponentsDecoder {
         }
         // 组件处理完毕
         // 向列表加入头尾
+
+        // 处理目录
+        new CataParser(this.option, templateList).analyse();
         return templateList;
     }
 }

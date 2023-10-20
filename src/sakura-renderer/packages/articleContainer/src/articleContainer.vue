@@ -28,7 +28,7 @@
                             <h1>文章主体区域前的slot插槽</h1>
                         </slot>
                     </div>
-                    <div class="sa-article-area">
+                    <div class="sa-article-area" id="sr-article-area">
                         <!-- 文章区域 -->
                         <component
                             v-for="(item, index) in componentsList"
@@ -58,14 +58,15 @@
                 </div>
                 <div class="sa-cata-area">
                     <!-- 目录区域 和 末尾插槽区域 -->
-                    <div class="sa-cata-area__container">
+                    <!-- <div class="sa-cata-area__container">
                         <div class="sa-cata-area__container__title">
                             <h3>目录</h3>
                         </div>
                         <div class="sa-cata-area__container__body">
-                            sacascsac
+                            <sr-catalogue></sr-catalogue>
                         </div>
-                    </div>
+                    </div> -->
+                    <sr-catalogue></sr-catalogue>
                     <div class="sa-article-container__slot">
                         <slot name="after-cata">
                             <h1>目录主体区域后的slot插槽</h1>
