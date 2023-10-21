@@ -1,0 +1,10 @@
+.sr-list-container{
+    border: solid 1px red;
+    width: 50%;
+}
+.sr-list-ol-number:before{
+    content: "ao";
+}
+.sr-list-ul-solid:before{
+    list-style-type: square;
+}

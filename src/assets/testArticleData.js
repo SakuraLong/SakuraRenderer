@@ -85,6 +85,7 @@ const article = `
 
 == 这是一个文字居中、边框在下而且有动画但没有超链接的标题 ?style HA|TA=c|BP=b|HL=false
 
+
 {|标题|h2
 |class=class1;class2
 |TA=c|BP=bottom|HA
@@ -93,6 +94,27 @@ const article = `
 |-
 |当然你也可以通过更加详细的设置配置标题
 |}
+
+{|list|
+    |fold
+    |float=center
+    |default;none
+    |-
+    |*你干嘛
+    |** Haihia
+    |*** zzz
+    |** qaq
+    |+害羞羞
+    |++欧尼酱
+    |++只因
+    |+有序：你干嘛
+    |++欧尼酱
+    |+++只因
+    |*你干嘛
+    |** Haihia
+    |*** zzz
+    |** qaq
+    |}
 
 = 接下来介绍表格
 
@@ -506,6 +528,7 @@ const article = `
 |}
 
 这应该是一个段落
+
 
 `;
 
