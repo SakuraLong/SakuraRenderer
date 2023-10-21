@@ -49,6 +49,15 @@
     --sa-color-info-light-9: #f4f4f5;
 }
 
+:root{
+    --sa-color-primary-rgb: 64, 158, 255;
+    --sa-color-success-rgb: 103, 194, 58;
+    --sa-color-warning-rgb: 230, 162, 60;
+    --sa-color-danger-rgb: 245, 108, 108;
+    --sa-color-error-rgb: 245, 108, 108;
+    --sa-color-info-rgb: 144, 147, 153;
+}
+
 /* 中性色 */
 :root{
     --sa-color-basic-black: #000000;

@@ -15,17 +15,16 @@ class ParaParser extends ComponentsParser{
             type: "sr-paragraph", // 组件名称
             data: {
                 content: "", // 段落内容
-                title: "", // 段落类型不是default时，可能会有标题
                 option: {
                     // 段落配置项
-                    lineHeight: NaN, // 行高
+                    lineHeight: "DEFAULT", // 行高
                     type: "default", // 段落类型
-                    bc:"rgba(0, 0, 0, 0)", // 如果paraType是default，则是整个段落的边框色，如果paraType是custom，则是左边框色，其余的此值无效
-                    bgc:"rgba(0, 0, 0, 0)", // 如果paraType是default或者paraType是custom，则是整个段落的背景色，其余的此值无效
+                    bc:"DEFAULT", // 如果paraType是default，则是整个段落的边框色，如果paraType是custom，则是左边框色，其余的此值无效
+                    bgc:"DEFAULT", // 如果paraType是default或者paraType是custom，则是整个段落的背景色，其余的此值无效
                     classList:[], // 类名列表
                     styleList:[], // 样式列表
                     border:"-",
-                    tips:"DEFAULT",
+                    title:"DEFAULT",
                     model:true,
                 },
             },
@@ -46,7 +45,7 @@ class ParaParser extends ComponentsParser{
             return false;
         }
     }
-    analyse() {
+    analyse(ignoreReplaceList = [], codeReplaceList = [], poemReplaceList = []) {
         this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
         let styleList = [];
         console.log(this);
@@ -73,26 +72,43 @@ class ParaParser extends ComponentsParser{
         for(let i=divideIndex+1;i<this.dataList.length;i++){
             this.template.data.content += this.dataList[i]+"<br>";
         }
+
         // console.log("看这里",styleList);
         if (styleList.length!==0) {
             styleList.forEach((styleELe) => {
                 let key = styleELe.split("=")[0];
                 let value = styleELe.split("=")[styleELe.split("=").length - 1];
                 switch(key){
-                    case "bc":
+                    case "BC":
+                    case "borderColor":
                         this.template.data.option.bc = value;
                         break;
-                    case "bgc":
+                    case "BGC":
+                    case "backgroundColor":
                         this.template.data.option.bgc = value;
                         break;
                     case "border":
                         this.template.data.option.border = value;
                         break;
+                    case "success":
+                    case "warning":
+                    case "tip":
+                    case "info":
+                        if(value===key){
+                            if(["default", "success","warning","tip","info"].indexOf(value.toLowerCase()) !== -1){
+                                console.log(["default", "success","warning","tip","info"].indexOf(value));
+                                this.template.data.option.type = value;
+                                this.template.data.option.title=this.template.data.option.type.toUpperCase();
+                            }else if(key === value){
+                                this.template.data.option.type = "default";
+                            }
+                        }
+                        break;
                     case "type":
                         if(["default", "success","warning","tip","info"].indexOf(value.toLowerCase()) !== -1){
                             console.log(["default", "success","warning","tip","info"].indexOf(value));
                             this.template.data.option.type = value;
-                            this.template.data.option.tips=this.template.data.option.type.toUpperCase();
+                            this.template.data.option.title=this.template.data.option.type.toUpperCase();
                         }else if(key === value){
                             this.template.data.option.type = "default";
                         }
@@ -103,18 +119,16 @@ class ParaParser extends ComponentsParser{
                     case "style":
                         this.template.data.option.styleList = this.template.data.option.styleList.concat(value.split(";"));
                         break;
-                    case "lh":
+                    case "LH":
+                    case "lineHeight":
                         this.template.data.option.lineHeight=value;
                         break;
                     case "title":
-                        this.template.data.title=value;
-                        break;
-                    case "tips":
                         if(this.template.data.option.type!=="default"){
-                            this.template.data.option.tips=value;
+                            this.template.data.option.title=value;
                         }
                         else{
-                            this.template.data.option.tips=this.template.data.option.type.toUpperCase();
+                            this.template.data.option.title=this.template.data.option.type.toUpperCase();
                         }
                         break;
                     default:
@@ -122,11 +136,12 @@ class ParaParser extends ComponentsParser{
                 }
             });
         }
-        this.template.data.id = this.template.data.content;
+        // this.template.data.id = this.template.data.content;
         // this.template.data.content = new GrammerParser(this.option, this.template.data.content).analyse(); // 调用语法解析器解析
         // this.template.data.content = new TemplateParser(this.option, this.template.data.content).analyse(); // 调用模板解析器解析
         // this.template.data.content = new ModuleParser(this.option, this.template.data.content).analyse(); // 调用模块解析器解析
         // console.log("最终存储",this.template);
+        this.template.data.content = this.replace(ignoreReplaceList, codeReplaceList, poemReplaceList, this.template.data.content);
         return {
             type: "success",
             msg: "",

@@ -290,7 +290,7 @@ const article = `
 === 当然你也可以布局
 
 {|carouselIS
-| center|play=3000
+| center|interval=3000
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
@@ -393,9 +393,36 @@ const article = `
 在漫画中上条当麻有更为充足的戏份，不过动画化时监督长井龙雪从构成角度考虑删减了部分上条当麻的剧情。
 |}
 
+{|para|style=font-size:20px;width:100%
+|class=class1;class2
+|type=success
+|border=none
+|-
+| 第1期TV动画《某科学的超电磁炮》于2009年10月2日播出，全24话。第1~12话为原作的“幻想御手（Level Upper）”篇。之后为根据原作者镰池和马的意见所制作的原创小故事，包括第15~16话的“武装无能力者集团（Skill Out）”篇与第20~24话的“乱杂开放（Poltergeist）”篇。
+2010年7月27日的视觉书附赠DVD中收录了5分钟新制作的动画短篇（第1期#13'）。
+| 第2期TV动画《某科学的超电磁炮S》于2013年4月12日播出，全24话。标题中的“S”指的是“妹妹们（Sisters）”[3]，同时也指第18-24话的原创篇章“革命未明（Silent Party）”和第2期的英文“Second Season”[4]。
+2014年3月27日的视觉书附赠Blu-ray中收录了6分钟新制作的动画短篇（第2期特典）。
+| 第3期TV动画《某科学的超电磁炮T》于2020年1月10日播出，全25话。第1~15话为原作的“大霸星祭”篇，第16~25话为原作的“天赋梦路（Dream Ranker）”篇。碟片版第25话为导演剪辑版，新增约两分钟内容。
+在漫画中上条当麻有更为充足的戏份，不过动画化时监督长井龙雪从构成角度考虑删减了部分上条当麻的剧情。
+|}
+
+{|para|style=font-size:20px;width:100%
+|class=class1;class2
+|type=tip
+|tips=我可去你的
+|border=none
+|-
+| 第1期TV动画《某科学的超电磁炮》于2009年10月2日播出，全24话。第1~12话为原作的“幻想御手（Level Upper）”篇。之后为根据原作者镰池和马的意见所制作的原创小故事，包括第15~16话的“武装无能力者集团（Skill Out）”篇与第20~24话的“乱杂开放（Poltergeist）”篇。
+2010年7月27日的视觉书附赠DVD中收录了5分钟新制作的动画短篇（第1期#13'）。
+| 第2期TV动画《某科学的超电磁炮S》于2013年4月12日播出，全24话。标题中的“S”指的是“妹妹们（Sisters）”[3]，同时也指第18-24话的原创篇章“革命未明（Silent Party）”和第2期的英文“Second Season”[4]。
+2014年3月27日的视觉书附赠Blu-ray中收录了6分钟新制作的动画短篇（第2期特典）。
+| 第3期TV动画《某科学的超电磁炮T》于2020年1月10日播出，全25话。第1~15话为原作的“大霸星祭”篇，第16~25话为原作的“天赋梦路（Dream Ranker）”篇。碟片版第25话为导演剪辑版，新增约两分钟内容。
+在漫画中上条当麻有更为充足的戏份，不过动画化时监督长井龙雪从构成角度考虑删减了部分上条当麻的剧情。
+|}
+
 {|carouselIS
-|cycle
-|play=2000
+|loop
+|interval=2000
 |none
 |width=300px
 |-

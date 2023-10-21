@@ -58,7 +58,7 @@
 
 }
 .sa-table__tr {
-    background-color: var(--sa-color-tr-fill);
+    /* background-color: var(--sa-color-tr-fill); */
     transition: all 0.1s linear;
 }
 .sa-table__td {
