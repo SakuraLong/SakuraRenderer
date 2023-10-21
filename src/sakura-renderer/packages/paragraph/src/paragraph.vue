@@ -1,13 +1,11 @@
 <template>
-    <div
-        v-if="this.data.option.type !== 'default'"
-        ref="srParaType"
-        class="sa-para sa-para--border"
-    >
-        <p class="custom-block-title" v-html="data.option.tips"></p>
-        <p ref="srPara" v-html="data.content"></p>
+    <div v-if="this.data.option.type!=='default'" class="sa-pre-para">
+        <div ref="srParaType" class="sa-para sa-para--border" >
+            <p class="custom-block-title" v-html="data.option.title" :style="styleStr"></p>
+            <p ref="srPara" v-html="data.content" :style="styleStr"></p>
+        </div>
     </div>
-    <p v-else ref="srPara" v-html="data.content" class="sa-para"></p>
+    <p v-else ref="srPara" v-html="data.content" class="sa-para" :style="styleStr"></p>
 </template>
 
 <script>
@@ -55,9 +53,8 @@ export default {
         } else if (this.data.option.type === "info") {
             this.$refs.srParaType.classList.add("sa-para--border-info");
         }
-        this.$refs.srPara.style = `border-color: ${this.data.option.bc}; line-height: ${this.data.option.lineHeight}; border: ${this.data.border}; background-color:${this.data.option.bgc}`;
-        // console.log("this.para_styleStr", this.$refs.srPara.style);
-        this.data.option.classList.forEach((className) => {
+        this.$refs.srPara.style=`border-color: ${this.data.option.bc}; line-height: ${this.data.option.lineHeight}; border: ${this.data.border}; background-color:${this.data.option.bgc}`;
+        this.data.option.classList.forEach((className)=>{
             this.$refs.srPara.classList.add(className);
         });
         this.data.option.styleList.forEach((styleName) => {
