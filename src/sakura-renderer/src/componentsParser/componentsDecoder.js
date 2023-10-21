@@ -225,8 +225,8 @@ class ComponentsDecoder {
         // 向列表加入头尾
 
         // 处理目录
-        new CataParser(this.option, templateList).analyse();
-        return templateList;
+        let cataMenu = new CataParser(this.option, templateList).analyse();
+        return { templateList: templateList, cataMenu: cataMenu };
     }
 }
 

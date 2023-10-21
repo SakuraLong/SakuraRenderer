@@ -52,7 +52,7 @@ const article = `
 |{{quote|这是不错的文档渲染器|项目组}}
 |}
 
-{|para
+{|para|type=success
 |-
 |<span onclick='test(event)'>test</span>{{ref|refText=百度百科}}
 |}
@@ -489,6 +489,11 @@ const article = `
 |}
 </poem>
 |当然标题也包含一些配置项
+|}
+
+{|para|type=tip|
+|-
+|标题建议不要跨级书写
 |}
 
 {|table|width=100%

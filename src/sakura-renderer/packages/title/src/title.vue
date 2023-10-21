@@ -7,7 +7,7 @@
         class="sa-title"
     >
     <span style="display: inline-block;" :id="data.id" ref="srTitle_span" :data-title="data.content" v-html="data.content"></span>
-    <a v-if="hasLink" class="sa-title__a" :href="'#'+data.id" aria-hidden="true">#</a>
+    <a v-if="hasLink" class="sa-title__a" :href="'#'+data.id" aria-hidden="true" @click="this.clickTitleLink">#</a>
     </component>
 </template>
 
@@ -66,6 +66,14 @@ export default {
         this.data.option.styleList.forEach((styleName)=>{
             this.styleStr += styleName + ";";
         });
+    },
+    methods:{
+        clickTitleLink(){
+            let data = {
+                id:this.data.id
+            };
+            this.$emit("eventsFunction", "title", "clickLink", data);
+        }
     }
 };
 </script>

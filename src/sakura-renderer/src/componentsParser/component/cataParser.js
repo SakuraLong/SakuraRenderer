@@ -50,7 +50,7 @@ class CataParser {
             }
         }
         // 递归深搜
-        console.log(menu);
+        return menu;
     }
 }
 
