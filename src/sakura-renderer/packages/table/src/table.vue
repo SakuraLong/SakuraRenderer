@@ -6,7 +6,7 @@
             @click="clickButton"
             v-if="showButton"
         >
-            {{ buttonName }}
+            {{ buttonName }}{{tableName}}
         </div>
         <sr-scrollbar>
             <div ref="sr_table_body" v-show="showTable">
@@ -21,6 +21,7 @@
             </div>
             <!-- <p v-for="item in 20" :key="item" style="background-color: aqua;" class="scrollbar-demo-item">{{ item }}</p> -->
         </sr-scrollbar>
+        <div style="text-align: center;" v-if="!showButton || (showButton && showTable) ">{{ tableName }}</div>
     </div>
 </template>
 
@@ -56,6 +57,7 @@ export default {
     data() {
         return {
             showTable: false,
+            showName: false,
             showButton: true,
             buttonName: "展开",
             tableName: "",

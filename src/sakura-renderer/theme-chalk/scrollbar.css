@@ -12,8 +12,8 @@
 
 .sa-scrollbar::-webkit-scrollbar{
     cursor: pointer !important;
-    width:6px;
-    height:6px;
+    width:7px;
+    height:7px;
     /* background-color: #61B6EB; */
 }
 .sa-scrollbar::-webkit-scrollbar-track{
