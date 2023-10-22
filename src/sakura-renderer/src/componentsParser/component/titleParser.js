@@ -15,15 +15,12 @@ class TitleParser extends ComponentsParser {
                 // 标题数据
                 type: "h1", // 标题类型
                 content: "", // 标题内容
-                id: "title_id1", // 标题id
                 option: {
                     // 标题配置项
                     textAlign: "left", // 文字排版
                     borderPosition: "left", // 边框位置
                     hoverAnimation: false, // hover动画
                     hasLink: true, // 有无页面内跳转链接
-                    classList:[], // 类名列表
-                    styleList:[], // 样式列表
                 },
             },
         }; // 标题默认配置
@@ -40,6 +37,7 @@ class TitleParser extends ComponentsParser {
         }
     }
     analyse() {
+        this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
         let component = this.component;
         let titleType = 0;
         let title = "";
@@ -118,14 +116,6 @@ class TitleParser extends ComponentsParser {
                             this.template.data.option.hasLink = true;
                         }
                         break;
-                    case "class":
-                        if(value)
-                            this.template.data.option.classList = this.template.data.option.classList.concat(value.split(";"));
-                        break;
-                    case "style":
-                        if(value)
-                            this.template.data.option.styleList = this.template.data.option.styleList.concat(value.split(";"));
-                        break;
                     case "type":
                         // 之后要做正确性检查
                         this.template.data.type = value;
@@ -141,7 +131,7 @@ class TitleParser extends ComponentsParser {
             });
         }
         this.template.data.content = this.template.data.content.trim();
-        this.template.data.id = this.template.data.content;
+        this.template.data.option.id = this.template.data.option.id === "" ? this.template.data.content : this.template.data.option.id;
         return {
             type: "success",
             msg: "",

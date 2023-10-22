@@ -1,5 +1,5 @@
 <template>
-    <div class="test-container">
+    <div class="test-container" id="test-container">
         <sr-article-container ref="render"></sr-article-container>
     </div>
 </template>
@@ -21,5 +21,9 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+}
+.test-container{
+    // height: 500px;
+    // overflow: auto;
 }
 </style>

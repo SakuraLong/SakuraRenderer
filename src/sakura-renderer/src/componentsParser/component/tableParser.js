@@ -87,10 +87,12 @@ class TableParser extends ComponentsParser {
                         this.template.data.option.hover = ["row", "node", "none"].find((ele)=>{return ele === value;});
                     }
                     break;
-                case "nw":
+                case "tdWidth":
+                case "TW":
                     this.template.data.option.node.width = value;
                     break;
-                case "nh":
+                case "tdHeight":
+                case "TH":
                     this.template.data.option.node.height = value;
                     break;
                 case "name":

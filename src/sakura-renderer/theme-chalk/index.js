@@ -13,4 +13,5 @@ import "./scrollbar.css";
 import "./imageShower.css";
 import "./mask.css";
 import "./clear.css";
+import "./quote.css";
 import "./paragraph.css";
