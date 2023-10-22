@@ -68,6 +68,7 @@
     position: absolute;
     z-index: 100;
     height: 100%;
+    width: 10%;
     left: 0;
     top: 0;
     display: flex;
@@ -79,6 +80,7 @@
     position: absolute;
     z-index: 100;
     height: 100%;
+    width: 10%;
     right: 0;
     top: 0;
     display: flex;
@@ -87,8 +89,6 @@
 }
 
 .sa-carousell .sa-srCarousell-button-ele {
-    font-size: 17px;
-    border-radius: 50%;
     border: solid 1px transparent;
     cursor: pointer;
     animation-fill-mode: forwards;
@@ -121,7 +121,7 @@
     100% {
         transform: translateX(-10px);
         /* Return to the normal position */
-        opacity: 0.6;
+        opacity: 0.7;
     }
 }
 
@@ -129,7 +129,7 @@
     0% {
         transform: translateX(10px);
         /* Start below the normal position */
-        opacity: 0.6;
+        opacity: 0.7;
     }
 
     100% {
@@ -149,7 +149,7 @@
     100% {
         transform: translateX(10px);
         /* Return to the normal position */
-        opacity: 0.6;
+        opacity: 0.7;
     }
 }
 
@@ -157,7 +157,7 @@
     0% {
         transform: translateX(-10px);
         /* Start below the normal position */
-        opacity: 0.6;
+        opacity: 0.7;
     }
 
     100% {
