@@ -18,7 +18,7 @@
                                 class="sa-cata-border-wrapper"
                             >
                                 <div class="sa-cata-line">
-                                    <div class="sa-cata-line__select"></div>
+                                    <div class="sa-cata-line__select" ref="saCataLineSelect"></div>
                                 </div>
                                 <div class="sa-cata-shadow" ref="saCataShadow"></div>
                             </div>
@@ -98,7 +98,7 @@ export default {
 
                 a.appendChild(spanLiIndex);
                 a.appendChild(spanLiContent);
-                li.append(a);
+                li.appendChild(a);
 
                 if (data.children.length !== 0) {
                     let sonOl = document.createElement("ol");
@@ -124,6 +124,7 @@ export default {
             this.$refs.saCataWrapper.style.height =
                 this.$refs.saCataOl.clientHeight.toString() + "px";
             this.$refs.saCataShadow.style.height = document.getElementById(this.nowCataId).clientHeight.toString() + "px";
+            this.$refs.saCataLineSelect.style.height = document.getElementById(this.nowCataId).clientHeight.toString() + "px";
         },
         clickLink(data) {
             // 标题点击页面内跳转
@@ -146,6 +147,8 @@ export default {
             });
             this.$refs.saCataShadow.style.top = offsetTop.toString() + "px";
             this.$refs.saCataShadow.style.height = document.getElementById(this.nowCataId).clientHeight.toString() + "px";
+            this.$refs.saCataLineSelect.style.top = offsetTop.toString() + "px";
+            this.$refs.saCataLineSelect.style.height = document.getElementById(this.nowCataId).clientHeight.toString() + "px";
         }
     },
 };
