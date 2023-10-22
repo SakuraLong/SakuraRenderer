@@ -2,7 +2,6 @@
 AllISParser解析器
 李海林
 */
-import { th } from "element-plus/es/locale";
 import ComponentsParser from "./componentParser";
 
 class AllISParser extends ComponentsParser {
