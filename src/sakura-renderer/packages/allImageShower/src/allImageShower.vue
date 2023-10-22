@@ -8,14 +8,13 @@
                 class="slide"
                 :style="{
                     'object-fit': 'cover',
-                    'width': '100%',
-                    'height': '100%',
+                    width: '100%',
+                    height: '100%',
                 }"
             />
         </div>
     </div>
 </template>
-
 
 <script>
 export default {
@@ -27,7 +26,7 @@ export default {
         return {
             hasLink: false,
             styleStr: "",
-            containerStyle: "",
+            containerStyle: {},
         };
     },
     mounted() {
@@ -36,7 +35,7 @@ export default {
     },
     methods: {
         setStyles() {
-            // console.log(this.data.option.align);
+            console.log(this.data.option);
             if (this.data.option.align === "center") {
                 this.$refs.srAllImage.classList.add("sa-all-image--center");
             } else if (this.data.option.align === "left") {
@@ -44,7 +43,19 @@ export default {
             } else if (this.data.option.align === "right") {
                 this.$refs.srAllImage.classList.add("sa-all-image--right");
             }
-            this.containerStyle = `grid-template-columns: repeat(${this.data.option.column}, ${this.data.option.width}); grid-gap: ${this.data.option.space}; grid-template-rows: repeat(${this.data.option.row}, ${this.data.option.height});`;
+            this.containerStyle = {
+                "grid-template-columns": `repeat(${this.data.option.column}, ${this.data.option.width})`,
+                "grid-gap": this.data.option.space,
+                "grid-template-rows": `repeat(${this.data.option.row}, ${this.data.option.height})`,
+            };
+            if (this.data.option.cs !== false) {
+                this.containerStyle["grid-template-columns"] =
+                    this.data.option.cs;
+            }
+            if (this.data.option.rs !== false) {
+                this.containerStyle["grid-template-rows"] =
+                    this.data.option.rs;
+            }
             const container = this.$refs.srAllImage;
             const images = container.querySelectorAll(".slide");
             images.forEach((image) => {

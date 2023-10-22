@@ -19,8 +19,10 @@ class AllISParser extends ComponentsParser {
                     align: "center",
                     classList: [], // 类名列表
                     styleList: [], // 样式列表
-                    column: 3, // 列数
+                    column: 1, // 列数
                     row: 1,
+                    rs:false,
+                    cs:false,
                     space: "10px",
                 },
             },
@@ -76,11 +78,17 @@ class AllISParser extends ComponentsParser {
                 let key = styleELe.split("=")[0];
                 let value = styleELe.split("=")[styleELe.split("=").length - 1];
                 switch (key) {
-                    case "width":
+                    case "IW":
+                    case "imgWidth":
                         this.template.data.option.width= value;
                         break;
-                    case "height":
+                    case "IH":
+                    case "imgHeight":
                         this.template.data.option.height= value;
+                        break;
+                    case "imgPosition":
+                    case "IP":
+                        this.template.data.option.align=value;
                         break;
                     case "class":
                         this.template.data.option.classList =
@@ -96,12 +104,20 @@ class AllISParser extends ComponentsParser {
                         break;
                     case "column":
                         this.template.data.option.column = parseInt(value);
+                        this.template.data.option.row = Math.ceil(imgList.length/this.template.data.option.column);
                         break;
                     case "row":
                         this.template.data.option.row = parseInt(value);
+                        this.template.data.option.column = Math.ceil(imgList.length/this.template.data.option.row);
                         break;
                     case "space":
                         this.template.data.option.space = value;
+                        break;
+                    case "RS":
+                        this.template.data.option.rs=value.replace(/\+/g, " ");
+                        break;
+                    case "CS":
+                        this.template.data.option.cs=value.replace(/\+/g, " ");
                         break;
                     default:
                         break;
