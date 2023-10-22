@@ -7,7 +7,7 @@
     text-align: center;
     width: auto;
     height: auto;
-    flex-direction: column;
+    flex-direction: column; 
     overflow: hidden;
     display: flex;
     align-items: center;

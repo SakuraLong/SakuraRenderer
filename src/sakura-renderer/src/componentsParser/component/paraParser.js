@@ -32,13 +32,13 @@ class ParaParser extends ComponentsParser{
     }
     judge(){
         // console.log("组件内容：",this.component);
-        console.log(this.dataList);
+        // console.log(this.dataList);
         // 重写
         if (this.name.indexOf(this.dataList[0]) !== -1) {
             this.default = true;
             return true;
-        } else if (this.component[0] !== "=" && this.component[0] !== "{" ) {
-            console.log("组件内容：",this.component);
+        } else if (this.component[0] !== "=" && (this.component[0] !== "{" && this.component[1] !== "|") ) {
+            // console.log("组件内容：",this.component);
             this.template.model=false;
             return true;
         } else {
@@ -48,7 +48,7 @@ class ParaParser extends ComponentsParser{
     analyse(ignoreReplaceList = [], codeReplaceList = [], poemReplaceList = []) {
         this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
         let styleList = [];
-        console.log(this);
+        // console.log(this);
         if(this.template.model===false){
             this.template.data.content += this.component+"<br>";
             return {

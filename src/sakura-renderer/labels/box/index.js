@@ -28,8 +28,8 @@ function t(data){
     return "132435465787";
 }
 
-let tem = new Template(test);
-tem.decodeDefault(test);
+// let tem = new Template(test);
+// tem.decodeDefault(test);
 
 console.log(test.length); // 49
 

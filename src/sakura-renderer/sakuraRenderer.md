@@ -93,7 +93,7 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
 
 + 删除线、加粗、下划线更加详细的设定需要在模板中编写
 
-## 模板}
+## 模板
 
 + 模板都是被{{}}括起来
 + 模板基础语法：{{模板名字|参数1|参数3=red}}
@@ -116,7 +116,7 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
 
 1. {{黑幕#heimu#hide|内容#content|注释#title}}
 2. {{模糊#blur|内容#content|注释#title|范围#size}}
-3. {{文本#font|内容#content|颜色#color|大小#size|行高#height|字体#fontfamily|粗细#weight|背景色#bgcolor|斜体#italic|位置#align}}
+3. {{文本#font|内容#content|颜色#color|大小#size|行高#height|字体#fontfamily|粗细#weight|背景色#bgcolor|斜体#italic|字体#family}}
 4. {{删除线#del|内容#content|颜色#color|粗细#size}}
 5. {{下划线#und|内容#content|颜色#color|粗细#size}}
 6. {{注解#ruby|内容#content|解释#explain}}
@@ -124,7 +124,8 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
 8. {{id|内容#content|ID}}
 9. {{func|内容#content|click|mousein|mouseout|doubleclick}}
 10. {{显示框#box|内容#content|框内内容#boxcontent|图片#src}}
-11. {{引用#ref|内容#content|来源#from}}
+11. {{引用#quote|内容#content|来源#from}}
+12. {{参考#ref|地址#href|参考内容#refText|内容#content}}
 
 ## 标签
 
@@ -204,11 +205,12 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
 ### 标题
 
 1. 格式：
+
    + = 第一标题 ?style ta=center|bp=l|ha=true
    + 前后至少有一个换行符
    + 通过=数量来判断是第几标题
    + 后跟?style可以设置样式
-   + 如果希望标题有?style可以设置为`<span>`?style，（见md源码）
+   + 如果希望标题有?style可以设置为 `<span>`?style，（见md源码）
    + 当然也可以通过格式来进行书写，以便于加入配置
 
    ```txt
@@ -221,6 +223,7 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
    |}
    ```
 2. 参数（?style后的）
+
    1. 意义：
       1. ta:text-align
          + 会将此值赋给标题css的text-align属性
@@ -253,48 +256,52 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
 ## 段落
 
 1. 格式：
-    + 通过两个换行符来进行区分
-    + 段落为了简写可以直接写内容
-    + 当然也可以通过格式来进行书写，以便于加入配置
-    + 段落会存在类型type
-        + default 默认，一般段落
-        + success 成功，（warning的配色改变）
-        + warning 警告，样式见https://element-plus.org/zh-CN/component/button.html#%E9%93%BE%E6%8E%A5%E6%8C%89%E9%92%AE
-        + info 信息，（warning的配色改变）
-        + tip 要点，（danger的配色改变）
-        + custom 自定义，必须填入边框颜色和背景颜色
-        + 注意！！！！warning的颜色用的sa-color-danger的配色！！！
-    + 类型可以设置类型标题
-    ```txt
-    {|para#段落|style=font-size:20px;width:100%
-    |class=class1;class2
-    |-
-    | 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
-    段落第一句话，这不会换行。段落第一句话，这不会换行。
-    | 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
-    段落第二句话，这部分与上面一句相比，已经换行了。
-    |}
-    ```
-    ```txt
-    {|para#段落|type=warning
-    |title=警告
-    |-
-    | 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
-    段落第一句话，这不会换行。段落第一句话，这不会换行。
-    | 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
-    段落第二句话，这部分与上面一句相比，已经换行了。
-    |}
-    ```
-    ```txt
-    {|para#段落|type=custom
-    |title=警告|bc=red|bgc=white
-    |-
-    | 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
-    段落第一句话，这不会换行。段落第一句话，这不会换行。
-    | 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
-    段落第二句话，这部分与上面一句相比，已经换行了。
-    |}
-    ```
+
+   + 通过两个换行符来进行区分
+   + 段落为了简写可以直接写内容
+   + 当然也可以通过格式来进行书写，以便于加入配置
+   + 段落会存在类型type
+     + default 默认，一般段落
+     + success 成功，（warning的配色改变）
+     + warning 警告，样式见https://element-plus.org/zh-CN/component/button.html#%E9%93%BE%E6%8E%A5%E6%8C%89%E9%92%AE
+     + info 信息，（warning的配色改变）
+     + tip 要点，（danger的配色改变）
+     + custom 自定义，必须填入边框颜色和背景颜色
+     + 注意！！！！warning的颜色用的sa-color-danger的配色！！！
+   + 类型可以设置类型标题
+
+   ```txt
+   {|para#段落|style=font-size:20px;width:100%
+   |class=class1;class2
+   |-
+   | 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
+   段落第一句话，这不会换行。段落第一句话，这不会换行。
+   | 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
+   段落第二句话，这部分与上面一句相比，已经换行了。
+   |}
+   ```
+
+   ```txt
+   {|para#段落|type=warning
+   |title=警告
+   |-
+   | 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
+   段落第一句话，这不会换行。段落第一句话，这不会换行。
+   | 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
+   段落第二句话，这部分与上面一句相比，已经换行了。
+   |}
+   ```
+
+   ```txt
+   {|para#段落|type=custom
+   |title=警告|bc=red|bgc=white
+   |-
+   | 段落第一句话，这不会换行。段落第一句话，这不会换行。段落第一句话，这不会换行。
+   段落第一句话，这不会换行。段落第一句话，这不会换行。
+   | 段落第二句话，这部分与上面一句相比，已经换行了。段落第二句话，这部分与上面一句相比，已经换行了。
+   段落第二句话，这部分与上面一句相比，已经换行了。
+   |}
+   ```
 2. 参数
 
    1. 意义：
@@ -392,6 +399,7 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
 ## 列表
 
 1. 格式：
+
    ```txt
    {|list#列表|
    |class=class1;class2
@@ -409,7 +417,9 @@ articleGroup < articleContainer < option < articleConfig < elementClass < elemen
    |+有序列表4
    |}
    ```
+
    上面的格式应该显示如下
+
    ```txt
    1. 有序列表1
    2. 有序列表2

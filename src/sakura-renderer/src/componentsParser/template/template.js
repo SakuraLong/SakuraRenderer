@@ -1,39 +1,38 @@
+import utils from "../../../utils";
+
 class Template {
-    constructor(content) {
+    constructor(option, content, rendererData) {
+        this.option = option;
         this.content = content;
-        this.str_left = "{{";
-        this.str_right = "}}";
+        this.rendererData = rendererData;
+        this.strLeft = "{{";
+        this.strRight = "}}";
+        this.dataList = []; // 存放模板的参数
     }
-    decode() {}
-    /**
-     * 默认值解码，有意义的|-只出现一次
-     * @param {String} content 解码的参数
-     * @returns
-     */
-    decodeDefault(content) {
-        content = content.trim(); // 去掉空格和换行符
-        let l = content.indexOf(this.str_left) === 0 ? this.str_left.length : 0;
-        let r = content.lastIndexOf(this.str_right) === content.length - this.str_right.length ? -this.str_right.length : content.length;
-        let use_content = content.slice(l, r); // 去掉两侧的{{}}（如果有）
-        // 对use_content根据|进行分割
-        // 此时的use_content按照理论内部是不会有模板的
-        let use_list = use_content.split("|");
-        use_list.forEach((element, index)=>{
-            use_list[index].trim(); // 去掉行首行尾换行符和空格
-            use_list[index].replace("\n", ""); // 去掉行内的换行符
-        });
-        console.log(use_list);
-        return {};
+    analyse() {
+        return utils.replaceGreed(
+            this.strLeft,
+            this.strRight,
+            this.content,
+            (data) => {
+                return this.analyseTemplate(data.replace);
+            }
+        ).content;
     }
-    /**
-     * 表格解码
-     * @param {String} content
-     * @returns
-     */
-    decodeTable(content) {
-        return {};
+    analyseTemplate(content){
+        this.dataListInit(content);
+        return content;
+    }
+    dataListInit(content){
+        console.log(content);
+        let tContent =content;
+        tContent = tContent.slice(2, -2);
+        tContent = tContent.replace(/\n/g, ""); // 去掉所有换行符
+        this.dataList = tContent.split("|");
+        for (let i = 0; i < this.dataList.length; i++) {
+            this.dataList[i] = this.dataList[i].trim();
+        }
     }
 }
-
 
 export default Template;

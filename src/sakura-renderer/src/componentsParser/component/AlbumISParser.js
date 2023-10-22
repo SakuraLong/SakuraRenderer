@@ -16,11 +16,7 @@ class AlbumISParser extends ComponentsParser {
                     // 标题配置项
                     showImageWidth: "auto", // 外展示图片的宽度
                     showImageHeight: "auto", // 外展示图片的高度
-                    width: "auto", // 外容器宽度
-                    height: "auto", // 外容器高度
                     align: "center", //外容器对齐方式
-                    classList: [], // 类名列表
-                    styleList: [], // 样式列表
                 },
             },
         }; // 标题段落配置
@@ -49,6 +45,7 @@ class AlbumISParser extends ComponentsParser {
         }
     }
     analyse() {
+        this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
         let styleList = [];
         let divideIndex = this.dataList.indexOf("-");
         if (divideIndex === -1) {
@@ -65,7 +62,7 @@ class AlbumISParser extends ComponentsParser {
         for (let i = divideIndex + 1; i < this.dataList.length; i++) {
             this.template.data.content.push(this.dataList[i]);
         }
-        console.log(this.template.data.content);
+        // console.log(this.template.data.content);
         if (styleList.length !== 0) {
             styleList.forEach((styleELe) => {
                 let key = styleELe.split("=")[0];

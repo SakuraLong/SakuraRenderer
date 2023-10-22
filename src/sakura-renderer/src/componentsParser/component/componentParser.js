@@ -3,9 +3,10 @@
 */
 
 class ComponentsParser {
-    constructor(component, option) {
+    constructor(component, option, rendererData) {
         this.component = component.trim();
         this.option = option;
+        this.rendererData = rendererData;
         this.type = ""; // 类型
         this.dataList = []; // 数据列表
         this.componentBaseOption = {}; // 需要修改的默认值
@@ -106,13 +107,13 @@ class ComponentsParser {
                     break;
                 case "class":
                     if (value)
-                        this.baseOption.classList.concat(
+                        this.baseOption.classList = this.baseOption.classList.concat(
                             value.split(";")
                         );
                     break;
                 case "style":
                     if (value)
-                        this.baseOption.styleList.concat(
+                        this.baseOption.styleList = this.baseOption.styleList.concat(
                             value.split(";")
                         );
                     break;
