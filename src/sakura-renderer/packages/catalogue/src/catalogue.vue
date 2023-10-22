@@ -98,7 +98,7 @@ export default {
 
                 a.appendChild(spanLiIndex);
                 a.appendChild(spanLiContent);
-                li.append(a);
+                li.appendChild(a);
 
                 if (data.children.length !== 0) {
                     let sonOl = document.createElement("ol");

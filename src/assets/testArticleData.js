@@ -110,20 +110,17 @@ const article = `
     |float=center
     |default;none
     |-
-    |*你干嘛
-    |** Haihia
-    |*** zzz
-    |** qaq
     |+害羞羞
     |++欧尼酱
     |++只因
     |+有序：你干嘛
     |++欧尼酱
     |+++只因
-    |*你干嘛
-    |** Haihia
-    |*** zzz
-    |** qaq
+    |+有序：你干嘛
+    |++欧尼酱
+    |++欧尼酱
+    |++stack
+    |++ascd
     |}
 
 = 接下来介绍表格
