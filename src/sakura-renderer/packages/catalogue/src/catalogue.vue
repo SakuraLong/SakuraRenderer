@@ -63,7 +63,7 @@ export default {
     },
     methods: {
         render(dataList) {
-            console.log(dataList);
+            // console.log(dataList);
             let ol = document.createElement("ol");
             ol.classList.add("sa-cata-ol");
             ol.classList.add("sa-cata-ol-root");
@@ -91,7 +91,7 @@ export default {
                 a.href = "#" + data.id;
                 a.setAttribute("id", id);
                 a.addEventListener("click", (event) => {
-                    this.clickCata(id);
+                    this.clickCata(id, data.id);
                 });
                 spanLiIndex.textContent = cataIndex;
                 spanLiContent.innerHTML = data.title;
@@ -132,15 +132,17 @@ export default {
             let cataId = "sa-cata-id-" + data.id;
             this.scrollToElementById(cataId);
         },
-        clickCata(cataId) {
-            this.scrollToElementById(cataId);
+        clickCata(cataId, id) {
+            let data = {
+                id:id
+            };
+            this.$emit("eventsFunction", "title", "clickLink", data);
         },
         scrollToElementById(elementId){
             this.nowCataId = elementId;
             let offsetTop = document.getElementById(elementId).offsetTop;
             let elementHeight = document.getElementById(elementId).clientHeight;
             let viewHeight = this.$refs.saCataView.clientHeight;
-            console.log(viewHeight);
             this.$refs.scrollbar.scrollTo({
                 top: offsetTop + elementHeight / 2 - viewHeight / 2,
                 behavior: "smooth",
