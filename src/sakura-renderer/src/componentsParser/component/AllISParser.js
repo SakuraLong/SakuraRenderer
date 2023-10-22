@@ -2,6 +2,7 @@
 AllISParser解析器
 李海林
 */
+import { th } from "element-plus/es/locale";
 import ComponentsParser from "./componentParser";
 
 class AllISParser extends ComponentsParser {
@@ -14,8 +15,10 @@ class AllISParser extends ComponentsParser {
             data: {
                 imgList: [],
                 option: {
-                    width: 0,
-                    height: 0,
+                    imgWidth: 0,
+                    height: "auto",
+                    width: "auto",
+                    imgHeight:0,
                     align: "center",
                     classList: [], // 类名列表
                     styleList: [], // 样式列表
@@ -78,13 +81,19 @@ class AllISParser extends ComponentsParser {
                 let key = styleELe.split("=")[0];
                 let value = styleELe.split("=")[styleELe.split("=").length - 1];
                 switch (key) {
+                    case "height":
+                        this.template.data.option.height=value;
+                        break;
+                    case "width":
+                        this.template.data.option.width=value;
+                        break;
                     case "IW":
                     case "imgWidth":
-                        this.template.data.option.width= value;
+                        this.template.data.option.imgWidth= value;
                         break;
                     case "IH":
                     case "imgHeight":
-                        this.template.data.option.height= value;
+                        this.template.data.option.imgHeight= value;
                         break;
                     case "imgPosition":
                     case "IP":

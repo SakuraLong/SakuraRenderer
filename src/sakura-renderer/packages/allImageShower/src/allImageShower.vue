@@ -44,9 +44,12 @@ export default {
                 this.$refs.srAllImage.classList.add("sa-all-image--right");
             }
             this.containerStyle = {
-                "grid-template-columns": `repeat(${this.data.option.column}, ${this.data.option.width})`,
+                "grid-template-columns": `repeat(${this.data.option.column}, ${this.data.option.imgWidth})`,
                 "grid-gap": this.data.option.space,
-                "grid-template-rows": `repeat(${this.data.option.row}, ${this.data.option.height})`,
+                "grid-template-rows": `repeat(${this.data.option.row}, ${this.data.option.imgHeight})`,
+                "height": this.data.option.height,
+                "width": this.data.option.width,
+                
             };
             if (this.data.option.cs !== false) {
                 this.containerStyle["grid-template-columns"] =
