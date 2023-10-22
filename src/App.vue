@@ -1,5 +1,5 @@
 <template>
-    <div class="test-container">
+    <div class="test-container" id="test-container">
         <sr-article-container ref="render"></sr-article-container>
     </div>
 </template>

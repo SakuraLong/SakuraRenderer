@@ -18,7 +18,7 @@
                                 class="sa-cata-border-wrapper"
                             >
                                 <div class="sa-cata-line">
-                                    <div class="sa-cata-line__select"></div>
+                                    <div class="sa-cata-line__select" ref="saCataLineSelect"></div>
                                 </div>
                                 <div class="sa-cata-shadow" ref="saCataShadow"></div>
                             </div>
@@ -63,7 +63,7 @@ export default {
     },
     methods: {
         render(dataList) {
-            console.log(dataList);
+            // console.log(dataList);
             let ol = document.createElement("ol");
             ol.classList.add("sa-cata-ol");
             ol.classList.add("sa-cata-ol-root");
@@ -91,7 +91,7 @@ export default {
                 a.href = "#" + data.id;
                 a.setAttribute("id", id);
                 a.addEventListener("click", (event) => {
-                    this.clickCata(id);
+                    this.clickCata(id, data.id);
                 });
                 spanLiIndex.textContent = cataIndex;
                 spanLiContent.innerHTML = data.title;
@@ -124,6 +124,7 @@ export default {
             this.$refs.saCataWrapper.style.height =
                 this.$refs.saCataOl.clientHeight.toString() + "px";
             this.$refs.saCataShadow.style.height = document.getElementById(this.nowCataId).clientHeight.toString() + "px";
+            this.$refs.saCataLineSelect.style.height = document.getElementById(this.nowCataId).clientHeight.toString() + "px";
         },
         clickLink(data) {
             // 标题点击页面内跳转
@@ -131,21 +132,25 @@ export default {
             let cataId = "sa-cata-id-" + data.id;
             this.scrollToElementById(cataId);
         },
-        clickCata(cataId) {
-            this.scrollToElementById(cataId);
+        clickCata(cataId, id) {
+            let data = {
+                id:id
+            };
+            this.$emit("eventsFunction", "title", "clickLink", data);
         },
         scrollToElementById(elementId){
             this.nowCataId = elementId;
             let offsetTop = document.getElementById(elementId).offsetTop;
             let elementHeight = document.getElementById(elementId).clientHeight;
             let viewHeight = this.$refs.saCataView.clientHeight;
-            console.log(viewHeight);
             this.$refs.scrollbar.scrollTo({
                 top: offsetTop + elementHeight / 2 - viewHeight / 2,
                 behavior: "smooth",
             });
             this.$refs.saCataShadow.style.top = offsetTop.toString() + "px";
             this.$refs.saCataShadow.style.height = document.getElementById(this.nowCataId).clientHeight.toString() + "px";
+            this.$refs.saCataLineSelect.style.top = offsetTop.toString() + "px";
+            this.$refs.saCataLineSelect.style.height = document.getElementById(this.nowCataId).clientHeight.toString() + "px";
         }
     },
 };
