@@ -12,9 +12,11 @@
                 class="sa-srCarousell-button-ele"
                 @click="buttonLeft()"
             >
-                &lt;
-            </button></span
-        >
+                <sr-icon-arrow-left
+                    width="30px"
+                    height="30px"
+                ></sr-icon-arrow-left></button
+        ></span>
         <ul class="sa-srCarousell-slides">
             <li
                 v-for="(img, index) in this.data.imgList"
@@ -50,9 +52,11 @@
                 @mouseover="showRightButtons(true)"
                 @mouseleave="showRightButtons(false)"
             >
-                &gt;
-            </button></span
-        >
+                <sr-icon-arrow-right
+                    width="30px"
+                    height="30px"
+                ></sr-icon-arrow-right></button
+        ></span>
     </div>
 </template>
 
@@ -89,7 +93,7 @@ export default {
         } else if (this.data.option.align === "right") {
             this.$refs.srCarousell.classList.add("sa-carousell--right");
         }
-        if (this.data.option.play) {
+        if (this.data.option.interval) {
             this.play();
         }
         this.data.option.classList.forEach((className) => {
@@ -128,14 +132,14 @@ export default {
             if (this.activeIndex + 1 < this.data.imgList.length) {
                 this.activeIndex = this.activeIndex + 1;
             } else {
-                if (this.data.option.cycle) {
+                if (this.data.option.loop) {
                     this.activeIndex = 0;
                 }
             }
         },
         showLeftButtons(show) {
             if (show === true) {
-                if (this.data.option.play === true) {
+                if (this.data.option.interval === true) {
                     clearInterval(this.timer);
                 }
                 this.$refs.leftButton.classList.remove(
@@ -145,7 +149,7 @@ export default {
                     "sa-srCarousell-pop-up-right"
                 );
             } else {
-                if (this.data.option.play === true) {
+                if (this.data.option.interval === true) {
                     this.play();
                 }
                 this.$refs.leftButton.classList.remove(
@@ -180,7 +184,7 @@ export default {
                 } else {
                     this.activeIndex = 0;
                 }
-            }, this.data.option.playtime);
+            }, this.data.option.intervaltime);
         },
         setImgSize() {
             setTimeout(() => {

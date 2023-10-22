@@ -13,14 +13,10 @@ class CISParser extends ComponentsParser {
             data: {
                 imgList: [],
                 option: {
-                    width: 0,
-                    height: 0,
                     align: "",
-                    play: false,
-                    cycle: false,
-                    playtime: 3000,
-                    classList: [], // 类名列表
-                    styleList: [], // 样式列表
+                    interval: false,
+                    loop: true,
+                    intervaltime: 2000,
                 },
             },
         }; // 标题段落配置
@@ -34,6 +30,10 @@ class CISParser extends ComponentsParser {
         }
     }
     analyse() {
+        this.template.data.option = Object.assign(
+            this.template.data.option,
+            this.baseOption
+        ); // 合并baseOption
         let styleList = [];
         let divideIndex = this.dataList.indexOf("-");
         if (divideIndex === -1) {
@@ -61,10 +61,10 @@ class CISParser extends ComponentsParser {
                         styleELe === "center"
                     ) {
                         this.template.data.option.align = styleELe;
-                    } else if (styleELe === "cycle") {
+                    } else if (styleELe === "loop") {
                         this.template.data.option.cycle = true;
-                    } else if (styleELe === "play") {
-                        this.template.data.option.play = true;
+                    } else if (styleELe === "interval" || styleELe === "i") {
+                        this.template.data.option.interval = true;
                     } else {
                         return {
                             type: "error",
@@ -77,9 +77,28 @@ class CISParser extends ComponentsParser {
                     let value =
                         styleELe.split("=")[styleELe.split("=").length - 1];
                     switch (key) {
-                        case "play":
-                            this.template.data.option.play = true;
-                            this.template.data.option.playtime = value;
+                        case "interval":
+                            if (value === "false") {
+                                this.template.data.option.interval = false;
+                            } else {
+                                this.template.data.option.interval = true;
+                                this.template.data.option.intervaltime = value;
+                            }
+                            break;
+                        case "i":
+                            if (value === "false") {
+                                this.template.data.option.interval = false;
+                            } else {
+                                this.template.data.option.interval = true;
+                                this.template.data.option.intervaltime = value;
+                            }
+                            break;
+                        case "loop":
+                            if (value === "true") {
+                                this.template.data.option.loop = true;
+                            } else if (value === "false") {
+                                this.template.data.option.loop = false;
+                            }
                             break;
                         case "width":
                             this.template.data.option.styleList =
