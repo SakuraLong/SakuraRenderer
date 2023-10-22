@@ -1,6 +1,9 @@
 .sr-list-container{
-    border: solid 1px red;
-    width: 50%;
+    /* border: solid 1px red; */
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    flex-direction: column;
 }
 .sr-list-ol-number:before{
     content: "ao";
@@ -9,17 +12,40 @@
     list-style-type: square;
 }
 .sa-list-li {
-    /* user-select: none; */
     list-style: none;
-    /* margin: 0; */
-    /* padding: 0; */
     border: 0;
-
 }
 .sa-list-li-index {
-    position: absolute;
-    top: 50%;
-    transform: translate(-100%, -50%);
+    position: relative;
+    right:0.5rem;
+    /* transform: translate(-100%, -50%); */
     margin-left: -0.5rem;
     word-break: keep-all;
+}
+.sr-list-main-container{
+    /* border: solid 1px blue; */
+}
+.sr-list-title{
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+}
+.sa-list-button{
+    cursor: pointer;
+    border: solid 2px rgb(228, 228, 228);
+    border-radius: 5px; /* 圆角半径为10像素 */
+    font-size: 14px;
+    font-weight: 600;
+    user-select: none;
+    text-align: center;
+}
+.sa-list-button:hover{
+    background-color: rgb(224, 224, 224);
+    transition: all 0.1s linear;
+}
+.sa-list--block{
+    display: block;
+}
+.sa-list-container--inline-block{
+    display: inline-block !important;
 }

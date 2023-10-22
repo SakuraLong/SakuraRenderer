@@ -101,29 +101,40 @@ const article = `
 |TA=c|BP=bottom|HA
 |class=class3;class4
 |style=color:red;line-height:2
+|clear=right
 |-
 |当然你也可以通过更加详细的设置配置标题
 |}
 
 {|list|
-    |fold
-    |float=center
-    |default;none
-    |-
-    |+害羞羞
-    |++欧尼酱
-    |++只因
-    |+有序：你干嘛
-    |++欧尼酱
-    |+++只因
-    |+有序：你干嘛
-    |++欧尼酱
-    |++欧尼酱
-    |++stack
-    |++ascd
-    |}
+|fold
+|float=none
+|t
+|-
+|+害羞羞
+|++欧尼酱
+|++只因
+|+有序：你干嘛
+|++欧尼酱
+|+++只因
+|+有序：你干嘛
+|++欧尼酱欧尼酱
+|++欧尼酱
+|++stack
+|++ascd
+|* yi
+|** er
+|* yi
+|** er
+|}
 
-= 接下来介绍表格
+计算方式
+
+{|title|clear=left
+|style=color:red
+|-
+|接下来介绍表格
+|}
 
 == 这是一个简单的表格
 

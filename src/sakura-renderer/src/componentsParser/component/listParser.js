@@ -29,7 +29,7 @@ function createMenu(data) {
         let item = {
             text: text,
             order_judge: getLevelAndType(template)[1],
-            level:level,
+            level: level,
             children: [],
         };
         while (stack.length >= level) {
@@ -62,7 +62,8 @@ class ListParser extends ComponentsParser {
                     mode_both: true, //是否同时设置序号模式，如果分别设置为false
                     ordered_mode: "default", //有序列表序号模式
                     unordered_mode: "default", //无序列表序号模式
-                    template: "DEFAULT",
+                    ordered_template: "DEFAULT", //有序列表序号样式
+                    unordered_template: "DEFAULT", //无序列表序号样式
                 },
             },
         }; // 标题段落配置
@@ -136,41 +137,144 @@ class ListParser extends ComponentsParser {
                             ].indexOf(value) !== -1
                         ) {
                             this.template.data.option.mode = value;
+                            if (value === "default") {
+                                this.template.data.option.ordered_mode =
+                                    "default";
+                                this.template.data.option.unordered_mode =
+                                    "default";
+                            } else if (value === "number") {
+                                this.template.data.option.ordered_mode =
+                                    "number";
+                                this.template.data.option.unordered_mode =
+                                    "default";
+                            } else if (value === "solid") {
+                                this.template.data.option.ordered_mode =
+                                    "default";
+                                this.template.data.option.unordered_mode =
+                                    "solid";
+                            } else if (value === "hollow") {
+                                this.template.data.option.ordered_mode =
+                                    "default";
+                                this.template.data.option.unordered_mode =
+                                    "hollow";
+                            } else if (value === "square") {
+                                this.template.data.option.ordered_mode =
+                                    "default";
+                                this.template.data.option.unordered_mode =
+                                    "template";
+                            }
                         }
                         break;
                     case "default":
                         if (key === value) {
                             this.template.data.option.mode = key;
+                            this.template.data.option.ordered_mode = "default";
+                            this.template.data.option.unordered_mode =
+                                "default";
                         }
                         break;
                     case "number":
                         if (key === value) {
                             this.template.data.option.mode = key;
+                            this.template.data.option.ordered_mode = "number";
+                            this.template.data.option.unordered_mode =
+                                "default";
                         }
                         break;
                     case "solid":
                         if (key === value) {
                             this.template.data.option.mode = key;
+                            this.template.data.option.ordered_mode = "default";
+                            this.template.data.option.unordered_mode = "solid";
                         }
                         break;
                     case "hollow":
                         if (key === value) {
                             this.template.data.option.mode = key;
+                            this.template.data.option.ordered_mode = "default";
+                            this.template.data.option.unordered_mode = "hollow";
                         }
                         break;
                     case "square":
                         if (key === value) {
                             this.template.data.option.mode = key;
+                            this.template.data.option.ordered_mode = "default";
+                            this.template.data.option.unordered_mode = "square";
                         }
                         break;
                     case "template":
                         if (key === value) {
                             this.template.data.option.mode = key;
+                            this.template.data.option.ordered_mode = "template";
+                            this.template.data.option.unordered_mode =
+                                "template";
+                        } else {
+                            //设置template样式
+                            if (
+                                value.includes(";") &&
+                                value.trim().split(";").length === 2
+                            ) {
+                                //分别设置的情况
+                                let temp1 = value.trim().split(";")[0];
+                                let temp2 = value.trim().split(";")[1];
+                                if (
+                                    temp1.length >= 2 &&
+                                    (temp1[0] === "*" ||
+                                        temp1[temp1.length - 1] === "*")
+                                ) {
+                                    this.template.data.option.ordered_template =
+                                        temp1;
+                                }
+                                this.template.data.option.unordered_template =
+                                    temp2;
+                            } else if (
+                                value.trim()[0] === "*" ||
+                                value.trim()[value.trim().length - 1] === "*"
+                            ) {
+                                this.template.data.option.ordered_template =
+                                    value.trim();
+                            }
+                        }
+                        break;
+                    case "t":
+                        if (key === value) {
+                            this.template.data.option.mode = key;
+                            this.template.data.option.ordered_mode = "template";
+                            this.template.data.option.unordered_mode =
+                                "template";
+                        } else {
+                            //设置template样式
+                            if (
+                                value.includes(";") &&
+                                value.trim().split(";").length === 2
+                            ) {
+                                //分别设置的情况
+                                let temp1 = value.trim().split(";")[0];
+                                let temp2 = value.trim().split(";")[1];
+                                if (
+                                    temp1.length >= 2 &&
+                                    (temp1[0] === "*" ||
+                                        temp1[temp1.length - 1] === "*")
+                                ) {
+                                    this.template.data.option.ordered_template =
+                                        temp1;
+                                }
+                                this.template.data.option.unordered_template =
+                                    temp2;
+                            } else if (
+                                value.trim()[0] === "*" ||
+                                value.trim()[value.trim().length - 1] === "*"
+                            ) {
+                                this.template.data.option.ordered_template =
+                                    value.trim();
+                            }
                         }
                         break;
                     case "none":
                         if (key === value) {
                             this.template.data.option.mode = key;
+                            this.template.data.option.ordered_mode = "none";
+                            this.template.data.option.unordered_mode = "none";
                         }
                         break;
                     default:
@@ -187,29 +291,30 @@ class ListParser extends ComponentsParser {
                                     "number",
                                     "template",
                                     "none",
-                                ].indexOf(str1) !== -1 &&
+                                ].indexOf(str1) !== -1
+                            ) {
+                                this.template.data.option.ordered_mode = str1;
+                                this.template.data.option.mode_both = false;
+                            }
+                            if (
                                 [
                                     "default",
                                     "solid",
                                     "hollow",
                                     "square",
+                                    "template",
                                     "none",
                                 ].indexOf(str2) !== -1
                             ) {
-                                this.template.data.option.ordered_mode = str1;
                                 this.template.data.option.unordered_mode = str2;
                                 this.template.data.option.mode_both = false;
                             }
-                            console.log(
-                                this.template.data.option.ordered_mode,
-                                this.template.data.option.unordered_mode
-                            );
                         }
                         break;
                 }
             });
         }
-        
+
         return {
             type: "success",
             msg: "",
