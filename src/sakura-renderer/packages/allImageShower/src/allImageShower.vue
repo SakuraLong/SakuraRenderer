@@ -5,6 +5,7 @@
                 v-for="(img, index) in this.data.imgList"
                 :key="index"
                 :src="img"
+                @click="this.showModal(index)"
                 class="slide"
                 :style="{
                     'object-fit': 'cover',
@@ -13,6 +14,7 @@
                 }"
             />
         </div>
+        <sr-image-shower v-if="modalVisible" :imgList=this.data.imgList :initialIndex="currentIndex" @exit="hideModal"></sr-image-shower>
     </div>
 </template>
 
@@ -27,6 +29,9 @@ export default {
             hasLink: false,
             styleStr: "",
             containerStyle: {},
+            // loadedPhotos: [], // 存储照片地址的数组
+            currentIndex: 0, // 当前展示的照片索引
+            modalVisible: false, // 控制大图展示的模态框可见性
         };
     },
     mounted() {
@@ -36,11 +41,11 @@ export default {
     methods: {
         setStyles() {
             console.log(this.data.option);
-            if (this.data.option.align === "center") {
+            if (this.data.option.float === "center") {
                 this.$refs.srAllImage.classList.add("sa-all-image--center");
-            } else if (this.data.option.align === "left") {
+            } else if (this.data.option.float === "left") {
                 this.$refs.srAllImage.classList.add("sa-all-image--left");
-            } else if (this.data.option.align === "right") {
+            } else if (this.data.option.float === "right") {
                 this.$refs.srAllImage.classList.add("sa-all-image--right");
             }
             this.containerStyle = {
@@ -74,6 +79,13 @@ export default {
                     image.classList.remove("show");
                 }
             });
+        },
+        showModal(index) {
+            this.currentIndex= index;
+            this.modalVisible = true;
+        },
+        hideModal() {
+            this.modalVisible = false;
         },
     },
 };

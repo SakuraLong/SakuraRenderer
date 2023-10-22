@@ -9,23 +9,23 @@ class AllISParser extends ComponentsParser {
         super(component, option);
         this.default = false; // 是否是组件模板（是否是{||}包裹）
         this.name = ["allIS", "图片展示框"];
+        this.componentBaseOption = {
+            float:"center",
+            height: "auto",
+            width: "auto",
+        };
         this.template = {
             type: "sr-all-is", // 组件名称
             data: {
                 imgList: [],
                 option: {
-                    imgWidth: "auto",
-                    height: "auto",
-                    width: "auto",
-                    imgHeight:"auto",
-                    align: "center",
-                    classList: [], // 类名列表
-                    styleList: [], // 样式列表
                     column: 1, // 列数
                     row: 1,
                     rs:false,
                     cs:false,
                     space: "10px",
+                    imgWidth: "auto",
+                    imgHeight:"auto",
                 },
             },
         }; // 标题段落配置
@@ -96,7 +96,7 @@ class AllISParser extends ComponentsParser {
                         break;
                     case "imgPosition":
                     case "IP":
-                        this.template.data.option.align=value;
+                        this.template.data.option.float=value;
                         break;
                     case "class":
                         this.template.data.option.classList =
