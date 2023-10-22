@@ -14,10 +14,10 @@ class AllISParser extends ComponentsParser {
             data: {
                 imgList: [],
                 option: {
-                    imgWidth: 0,
+                    imgWidth: "auto",
                     height: "auto",
                     width: "auto",
-                    imgHeight:0,
+                    imgHeight:"auto",
                     align: "center",
                     classList: [], // 类名列表
                     styleList: [], // 样式列表

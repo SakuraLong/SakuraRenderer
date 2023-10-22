@@ -425,15 +425,16 @@ const article = `
 {|allIS
 |IP=center
 |column=3
-|height=500px
-|RS=10%+80%+10%
-|CS=100px+200px+200px
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
 | https://img.moegirl.org.cn/common/thumb/4/4d/Uiharu_Kazari.jpg/375px-Uiharu_Kazari.jpg
 | https://img.moegirl.org.cn/common/thumb/9/97/Saten_Ruiko.jpg/375px-Saten_Ruiko.jpg
 | https://img.moegirl.org.cn/common/thumb/a/a1/36012599_p0.png/375px-36012599_p0.png
+| https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
+| https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
+| https://img.moegirl.org.cn/common/thumb/4/4d/Uiharu_Kazari.jpg/375px-Uiharu_Kazari.jpg
+| https://img.moegirl.org.cn/common/thumb/9/97/Saten_Ruiko.jpg/375px-Saten_Ruiko.jpg
 |}
 
 
