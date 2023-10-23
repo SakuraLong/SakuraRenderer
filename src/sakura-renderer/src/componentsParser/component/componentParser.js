@@ -40,6 +40,7 @@ class ComponentsParser {
         return {};
     }
     analyseBaseOption() {
+        this.analyseImageShowerOption(); // 如果有imageShowerOption
         this.changeBaseOption(); // 检查子类是否要修改默认baseOption
         let divideIndex = this.dataList.indexOf("-");
         for(let i = 1; i < divideIndex; i++) {
@@ -145,6 +146,9 @@ class ComponentsParser {
             content = content.replace(ignoreData.key, ignoreData.value);
         });
         return content;
+    }
+    analyseImageShowerOption(){
+        // 解析imageShowerOption
     }
     changeBaseOption() {
         for (let key in this.baseOption) {
