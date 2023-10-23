@@ -68,7 +68,7 @@
     position: absolute;
     z-index: 100;
     height: 100%;
-    width: 10%;
+    width: 40px;
     left: 0;
     top: 0;
     display: flex;
@@ -80,7 +80,7 @@
     position: absolute;
     z-index: 100;
     height: 100%;
-    width: 10%;
+    width: 40px;
     right: 0;
     top: 0;
     display: flex;
@@ -89,10 +89,20 @@
 }
 
 .sa-carousell .sa-srCarousell-button-ele {
-    border: solid 1px transparent;
+    margin: 0;
+    padding: 0;
+    border: 0;
     cursor: pointer;
     animation-fill-mode: forwards;
     opacity: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .sa-srCarousell-pop-up-left {

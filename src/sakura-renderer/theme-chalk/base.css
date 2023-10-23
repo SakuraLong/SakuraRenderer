@@ -21,6 +21,7 @@ pre{
     width: 30px;
     height: 30px;
     color: white;
+    user-select: none;
 }
 
 /* 不知道如何关闭 */

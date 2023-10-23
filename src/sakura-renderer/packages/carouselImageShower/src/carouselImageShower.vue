@@ -7,15 +7,16 @@
         @mouseleave="showLeftButtons(false), showRightButtons(false)"
     >
         <span class="sa-srCarousell-button-left"
-            ><button
+            ><div
                 ref="leftButton"
                 class="sa-srCarousell-button-ele"
                 @click="buttonLeft()"
             >
+                <sr-mask color="#606266" opacity="0.6"></sr-mask>
                 <sr-icon-arrow-left
                     width="30px"
                     height="30px"
-                ></sr-icon-arrow-left></button
+                ></sr-icon-arrow-left></div
         ></span>
         <ul class="sa-srCarousell-slides">
             <li
@@ -45,17 +46,18 @@
             </div>
         </ul>
         <span class="sa-srCarousell-button-right"
-            ><button
+            ><div
                 ref="RightButton"
                 class="sa-srCarousell-button-ele"
                 @click="buttonRight()"
                 @mouseover="showRightButtons(true)"
                 @mouseleave="showRightButtons(false)"
             >
+                <sr-mask color="#606266" opacity="0.6"></sr-mask>
                 <sr-icon-arrow-right
                     width="30px"
                     height="30px"
-                ></sr-icon-arrow-right></button
+                ></sr-icon-arrow-right></div
         ></span>
     </div>
 </template>
@@ -112,8 +114,14 @@ export default {
             this.styleStr += styleName + ";";
         });
         this.$nextTick(() => {
-            this.setImgSize();
+            setTimeout(()=>{
+                this.setImgSize();
+            }, 1000);
         });
+        window.addEventListener("resize", this.setImgSize);
+    },
+    beforeUnmount(){
+        window.removeEventListener("resize", this.setImgSize);
     },
     methods: {
         setActiveIndex(index) {
@@ -187,33 +195,32 @@ export default {
             }, this.data.option.intervaltime);
         },
         setImgSize() {
-            setTimeout(() => {
-                var maxwidth = 0;
-                var maxheight = 0;
-                var length = this.data.imgList.length;
-                for (var i = 0; i < length; i++) {
-                    var img = document.querySelector(
-                        "#sa-carousel" + this.id + " #sa-carousel-img" + i
-                    );
-                    if (img.naturalWidth > maxwidth) {
-                        maxwidth = img.naturalWidth;
-                        console.log(img.naturalWidth);
-                    }
-                    if (img.naturalHeight > maxheight) {
-                        maxheight = img.naturalHeight;
-                    }
+            var maxwidth = 0;
+            var maxheight = 0;
+            var length = this.data.imgList.length;
+            for (var i = 0; i < length; i++) {
+                var img = document.querySelector(
+                    "#sa-carousel" + this.id + " #sa-carousel-img" + i
+                );
+                console.log(img);
+                if (img.clientWidth > maxwidth) {
+                    maxwidth = img.clientWidth;
+                    console.log(img.clientWidth);
                 }
-                if (!this.setWidth) {
-                    // console.log(maxwidth);
-                    if (!this.setCenter) {
-                        this.styleStr += "width:" + maxwidth + "px;";
-                    }
+                if (img.clientHeight > maxheight) {
+                    maxheight = img.clientHeight;
                 }
-                if (!this.setHeight) {
-                    // console.log(maxheight);
-                    this.styleStr += "height:" + maxheight + "px;";
+            }
+            if (!this.setWidth) {
+                // console.log(maxwidth);
+                if (!this.setCenter) {
+                    this.styleStr += "width:" + maxwidth + "px;";
                 }
-            }, 1000);
+            }
+            if (!this.setHeight) {
+                // console.log(maxheight);
+                this.styleStr += "height:" + maxheight + "px;";
+            }
         },
     },
 };

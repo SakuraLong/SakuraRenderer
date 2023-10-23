@@ -2,8 +2,9 @@
 AlbumISParser解析器
 边俣
 */
-import ComponentsParser from "./componentParser";
-class AlbumISParser extends ComponentsParser {
+// import ComponentsParser from "./componentParser";
+import ImageShowerParser from "./imageShowerParser";
+class AlbumISParser extends ImageShowerParser {
     constructor(component, option) {
         super(component, option);
         this.name = ["albumIS", "相册图片展示框"];
