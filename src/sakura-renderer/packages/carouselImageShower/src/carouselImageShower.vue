@@ -202,10 +202,10 @@ export default {
                 var img = document.querySelector(
                     "#sa-carousel" + this.id + " #sa-carousel-img" + i
                 );
-                console.log(img);
+                // console.log(img);
                 if (img.clientWidth > maxwidth) {
                     maxwidth = img.clientWidth;
-                    console.log(img.clientWidth);
+                    // console.log(img.clientWidth);
                 }
                 if (img.clientHeight > maxheight) {
                     maxheight = img.clientHeight;

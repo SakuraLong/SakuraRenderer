@@ -31,7 +31,9 @@ function t(data){
 // let tem = new Template(test);
 // tem.decodeDefault(test);
 
-console.log(test.length); // 49
+// console.log(test.length); // 49
 
-console.log(utils.replaceNonGreed(l, r, tset_2, t));
-console.log(utils.replaceGreed(l, r, tset_2, t));
+// console.log(utils.replaceNonGreed(l, r, tset_2, t));
+// console.log(utils.replaceGreed(l, r, tset_2, t));
+
+// console.log(Object);
