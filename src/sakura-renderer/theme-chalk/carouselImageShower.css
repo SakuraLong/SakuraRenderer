@@ -202,3 +202,16 @@
 .sa-carousell .sa-srCarousell-control.active {
     background-color: var(--sa-color-control-active);
 }
+
+.sa-carousell .sa-srCarousell-check {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    color: var(--sa-color-control-background);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s,transform 0.3s;
+}
+
+
+
