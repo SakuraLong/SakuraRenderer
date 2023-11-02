@@ -30,9 +30,11 @@
                 }"
             >
                 <img
+                    @click="showModal()"
                     class="sa-srCarousell-img"
                     :id="'sa-carousel-img' + index"
                     :src="img"
+                    :style="{ 'object-fit': this.data.option.fit }"
                 />
             </li>
             <div class="sa-srCarousell-controls">
@@ -59,6 +61,12 @@
                     height="30px"
                 ></sr-icon-arrow-right></div
         ></span>
+        <sr-image-shower
+            v-if="modalVisible"
+            :imgList="this.data.imgList"
+            :initialIndex="activeIndex"
+            @exit="hideModal"
+        ></sr-image-shower>
     </div>
 </template>
 
@@ -79,8 +87,10 @@ export default {
             setHeight: false,
             setCenter: false,
             activeIndex: 0, // 初始化第一个 index 为实心
+            modalVisible: false, // 控制大图展示的模态框可见性
             showButtonsLeft: false,
             showButtonsRight: false,
+            maxfit: 0,
             timer: null,
             id: Date.now(),
         };
@@ -114,16 +124,23 @@ export default {
             this.styleStr += styleName + ";";
         });
         this.$nextTick(() => {
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.setImgSize();
-            }, 1000);
+                this.changeImgSize();
+            }, 500);
         });
-        window.addEventListener("resize", this.setImgSize);
+        window.addEventListener("resize", this.changeImgSize);
     },
-    beforeUnmount(){
-        window.removeEventListener("resize", this.setImgSize);
+    beforeUnmount() {
+        window.removeEventListener("resize", this.changeImgSize);
     },
     methods: {
+        showModal() {
+            this.modalVisible = true;
+        },
+        hideModal() {
+            this.modalVisible = false;
+        },
         setActiveIndex(index) {
             this.activeIndex = index;
         },
@@ -202,24 +219,34 @@ export default {
                 var img = document.querySelector(
                     "#sa-carousel" + this.id + " #sa-carousel-img" + i
                 );
-                console.log(img);
-                if (img.clientWidth > maxwidth) {
-                    maxwidth = img.clientWidth;
-                    console.log(img.clientWidth);
+                if (img.naturalWidth > maxwidth) {
+                    maxwidth = img.naturalWidth;
+                    // console.log(img.naturalWidth);
+                } else if (img.naturalHeight > maxheight) {
+                    maxheight = img.naturalHeight;
                 }
-                if (img.clientHeight > maxheight) {
-                    maxheight = img.clientHeight;
+                if (img.naturalWidth / img.naturalHeight > this.maxfit) {
+                    this.maxfit = img.naturalWidth / img.naturalHeight;
                 }
             }
             if (!this.setWidth) {
                 // console.log(maxwidth);
                 if (!this.setCenter) {
-                    this.styleStr += "width:" + maxwidth + "px;";
+                    this.$refs.srCarousell.style.width = maxwidth + "px";
                 }
             }
             if (!this.setHeight) {
-                // console.log(maxheight);
-                this.styleStr += "height:" + maxheight + "px;";
+                console.log(maxheight);
+                this.$refs.srCarousell.style.height = maxheight + "px";
+            }
+        },
+        changeImgSize() {
+            const carouselElement = this.$refs.srCarousell;
+            const width = carouselElement.getBoundingClientRect().width;
+            const height = carouselElement.getBoundingClientRect().height;
+            const newheight = width / this.maxfit;
+            if (newheight < height) {
+                carouselElement.style.height = newheight + "px";
             }
         },
     },

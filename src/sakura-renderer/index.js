@@ -16,7 +16,6 @@ import Mask from "./packages/mask";
 import Clear from "./packages/clear";
 import Icons from "./packages/icon";
 
-
 const components = [
     ArticleContainer,
     Paragraph,
@@ -34,7 +33,8 @@ const components = [
     Icons.Icon,
     Icons.ArrowLeft,
     Icons.ArrowRight,
-    Icons.Exit
+    Icons.Exit,
+    Icons.FullScreen,
 ];
 
 const install = function (Vue, opts = {}) {
@@ -80,5 +80,5 @@ export default {
     AllIS,
     CarouselIS,
     Catalogue,
-    Scrollbar
+    Scrollbar,
 };
