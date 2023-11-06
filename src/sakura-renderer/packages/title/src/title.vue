@@ -5,14 +5,16 @@
         ref="srTitle"
         :style="styleStr"
         class="sa-title"
+        :id="'sr-title-' + data.option.id"
     >
-    <span style="display: inline-block;" :id="data.id" ref="srTitle_span" :data-title="data.content" v-html="data.content"></span>
-    <a v-if="hasLink" class="sa-title__a" :href="'#'+data.id" aria-hidden="true" @click="this.clickTitleLink">#</a>
+    <span style="display: inline-block;" :id="data.option.id" ref="srTitle_span" :data-title="data.content" v-html="data.content"></span>
+    <a v-if="hasLink" class="sa-title__a" :href="'#'+data.option.id" aria-hidden="true" @click="this.clickTitleLink">#</a>
     </component>
 </template>
 
 <script>
 /*
+给h1~h6设置id是为了读取offsetTop
 data:{
     type:"h1",
     content:"标题",
@@ -41,7 +43,8 @@ export default {
         };
     },
     mounted(){
-        // console.log(this.data);
+        // console.log(this.data.option.clear);
+        this.$refs.srTitle.style.clear = this.data.option.clear; // clear
         if(this.data.option.textAlign === "center" || this.data.option.textAlign === "c"){
             this.$refs.srTitle.classList.add("sa-title--center");
         }else{
@@ -70,7 +73,7 @@ export default {
     methods:{
         clickTitleLink(){
             let data = {
-                id:this.data.id
+                id:this.data.option.id
             };
             this.$emit("eventsFunction", "title", "clickLink", data);
         }

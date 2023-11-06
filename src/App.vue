@@ -1,5 +1,5 @@
 <template>
-    <div class="test-container">
+    <div class="test-container" id="test-container">
         <sr-article-container ref="render"></sr-article-container>
     </div>
 </template>
@@ -8,6 +8,7 @@
 import testArticleData from "./assets/testArticleData";
 export default {
     mounted() {
+        console.log("文章初始化");
         this.$refs.render.setArticle(testArticleData.article);
         this.$refs.render.render();
     },

@@ -21,6 +21,7 @@ pre{
     width: 30px;
     height: 30px;
     color: white;
+    user-select: none;
 }
 
 /* 不知道如何关闭 */
@@ -37,4 +38,15 @@ pre{
 }
 .sa-float--right {
     float: right;
+}
+
+/* test */
+
+.sa-test-div{
+    width: 40px;
+    height: 40px;
+    background-color: blueviolet;
+    position: fixed;
+    top: 300px;
+    left: 300px;
 }

@@ -15,7 +15,7 @@
     height: auto;
 }
 .sa-table-container--inline-block{
-    display: inline-block !important;
+    display: inline-block;
 }
 .sa-table--block{
     display: block;
@@ -46,6 +46,7 @@
 
 .sa-table {
     color: var(--sa-color-table-text);
+    border-collapse: collapse;
 }
 
 .sa-table__thead > .sa-table__tr,

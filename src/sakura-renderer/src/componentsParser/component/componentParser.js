@@ -28,7 +28,8 @@ class ComponentsParser {
         }; // 基础基本上通用的配置项
         // 在vue里面挑选你需要的使用，不一定每个都有用
         // 如果需要修改默认值可以在子类的constructor里面修改（看得清楚
-
+        this.template = {};
+        this.name = [];
         this.init();
     }
     judge() {
@@ -40,6 +41,7 @@ class ComponentsParser {
         return {};
     }
     analyseBaseOption() {
+        this.analyseImageShowerOption(); // 如果有imageShowerOption
         this.changeBaseOption(); // 检查子类是否要修改默认baseOption
         let divideIndex = this.dataList.indexOf("-");
         for(let i = 1; i < divideIndex; i++) {
@@ -62,7 +64,7 @@ class ComponentsParser {
                     break;
                 case "clear":
                     if (["none", "both", "left", "right"].indexOf(value) !== -1) {
-                        this.baseOption.clear = ["center", "both", "right", "none"].find((ele)=>{return ele === value;});
+                        this.baseOption.clear = ["left", "both", "right", "none"].find((ele)=>{return ele === value;});
                     }
                     break;
                 case "c":
@@ -145,6 +147,9 @@ class ComponentsParser {
             content = content.replace(ignoreData.key, ignoreData.value);
         });
         return content;
+    }
+    analyseImageShowerOption(){
+        // 解析imageShowerOption
     }
     changeBaseOption() {
         for (let key in this.baseOption) {

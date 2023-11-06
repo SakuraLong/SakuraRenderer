@@ -15,7 +15,7 @@ class CataParser {
                 if (level === -1) continue;
                 let item = {
                     title: template.data.content,
-                    id: template.data.id,
+                    id: template.data.option.id,
                     children: [],
                 };
                 while (stack.length >= level) {

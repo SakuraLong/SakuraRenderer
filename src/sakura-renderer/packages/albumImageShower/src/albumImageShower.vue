@@ -8,6 +8,7 @@
                 ref="srAlbum_preview_img"
             />
         </div>
+
         <div class="sr-album--controls">
             <span class="sr-album--controls--left">{{ data.title }}</span>
             <span class="sr-album--controls--right">({{ loadedPhotos.length }}张)</span>
@@ -31,6 +32,7 @@ export default {
             title: "",
             styleStr: "",
             loadedPhotos: [], // 存储照片地址的数组
+            imgData: [],
             currentIndex: 0, // 当前展示的照片索引
             modalVisible: false, // 控制大图展示的模态框可见性
         };
@@ -55,7 +57,7 @@ export default {
     },
     mounted() {
         this.$refs.srAlbum.style.maxWidth = "max-content"; 
-        console.log(this.data.option);
+        // console.log(this.data.option);
         if (this.data.option.align === "center") {
             this.$refs.srAlbum.classList.add("sr-album--align--center");
         } else if (this.data.option.align === "left") {
@@ -96,6 +98,12 @@ export default {
             this.styleStr += styleName + ";";
         });
         this.loadedPhotos = this.data.content;
+        this.loadedPhotos.forEach((data, index)=>{
+            this.imgData.push({
+                src:data,
+                name:index === 0 ? "" : "album" + index.toString()
+            });
+        });
         this.title = this.data.title;
     },
 };

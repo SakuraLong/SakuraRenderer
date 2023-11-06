@@ -21,8 +21,6 @@ class ParaParser extends ComponentsParser{
                     type: "default", // 段落类型
                     bc:"DEFAULT", // 如果paraType是default，则是整个段落的边框色，如果paraType是custom，则是左边框色，其余的此值无效
                     bgc:"DEFAULT", // 如果paraType是default或者paraType是custom，则是整个段落的背景色，其余的此值无效
-                    classList:[], // 类名列表
-                    styleList:[], // 样式列表
                     border:"-",
                     title:"DEFAULT",
                     model:true,

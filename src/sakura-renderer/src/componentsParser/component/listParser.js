@@ -203,42 +203,9 @@ class ListParser extends ComponentsParser {
                         }
                         break;
                     case "template":
-                        if (key === value) {
-                            this.template.data.option.mode = key;
-                            this.template.data.option.ordered_mode = "template";
-                            this.template.data.option.unordered_mode =
-                                "template";
-                        } else {
-                            //设置template样式
-                            if (
-                                value.includes(";") &&
-                                value.trim().split(";").length === 2
-                            ) {
-                                //分别设置的情况
-                                let temp1 = value.trim().split(";")[0];
-                                let temp2 = value.trim().split(";")[1];
-                                if (
-                                    temp1.length >= 2 &&
-                                    (temp1[0] === "*" ||
-                                        temp1[temp1.length - 1] === "*")
-                                ) {
-                                    this.template.data.option.ordered_template =
-                                        temp1;
-                                }
-                                this.template.data.option.unordered_template =
-                                    temp2;
-                            } else if (
-                                value.trim()[0] === "*" ||
-                                value.trim()[value.trim().length - 1] === "*"
-                            ) {
-                                this.template.data.option.ordered_template =
-                                    value.trim();
-                            }
-                        }
-                        break;
                     case "t":
                         if (key === value) {
-                            this.template.data.option.mode = key;
+                            this.template.data.option.mode = "template";
                             this.template.data.option.ordered_mode = "template";
                             this.template.data.option.unordered_mode =
                                 "template";

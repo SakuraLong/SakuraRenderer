@@ -7,15 +7,16 @@
         @mouseleave="showLeftButtons(false), showRightButtons(false)"
     >
         <span class="sa-srCarousell-button-left"
-            ><button
+            ><div
                 ref="leftButton"
                 class="sa-srCarousell-button-ele"
                 @click="buttonLeft()"
             >
+                <sr-mask color="#606266" opacity="0.6"></sr-mask>
                 <sr-icon-arrow-left
                     width="30px"
                     height="30px"
-                ></sr-icon-arrow-left></button
+                ></sr-icon-arrow-left></div
         ></span>
         <ul class="sa-srCarousell-slides">
             <li
@@ -29,9 +30,11 @@
                 }"
             >
                 <img
+                    @click="showModal()"
                     class="sa-srCarousell-img"
                     :id="'sa-carousel-img' + index"
                     :src="img"
+                    :style="{ 'object-fit': this.data.option.fit }"
                 />
             </li>
             <div class="sa-srCarousell-controls">
@@ -45,18 +48,25 @@
             </div>
         </ul>
         <span class="sa-srCarousell-button-right"
-            ><button
+            ><div
                 ref="RightButton"
                 class="sa-srCarousell-button-ele"
                 @click="buttonRight()"
                 @mouseover="showRightButtons(true)"
                 @mouseleave="showRightButtons(false)"
             >
+                <sr-mask color="#606266" opacity="0.6"></sr-mask>
                 <sr-icon-arrow-right
                     width="30px"
                     height="30px"
-                ></sr-icon-arrow-right></button
+                ></sr-icon-arrow-right></div
         ></span>
+        <sr-image-shower
+            v-if="modalVisible"
+            :imgList="this.data.imgList"
+            :initialIndex="activeIndex"
+            @exit="hideModal"
+        ></sr-image-shower>
     </div>
 </template>
 
@@ -77,8 +87,10 @@ export default {
             setHeight: false,
             setCenter: false,
             activeIndex: 0, // 初始化第一个 index 为实心
+            modalVisible: false, // 控制大图展示的模态框可见性
             showButtonsLeft: false,
             showButtonsRight: false,
+            maxfit: 0,
             timer: null,
             id: Date.now(),
         };
@@ -112,10 +124,23 @@ export default {
             this.styleStr += styleName + ";";
         });
         this.$nextTick(() => {
-            this.setImgSize();
+            setTimeout(() => {
+                this.setImgSize();
+                this.changeImgSize();
+            }, 500);
         });
+        window.addEventListener("resize", this.changeImgSize);
+    },
+    beforeUnmount() {
+        window.removeEventListener("resize", this.changeImgSize);
     },
     methods: {
+        showModal() {
+            this.modalVisible = true;
+        },
+        hideModal() {
+            this.modalVisible = false;
+        },
         setActiveIndex(index) {
             this.activeIndex = index;
         },
@@ -187,33 +212,42 @@ export default {
             }, this.data.option.intervaltime);
         },
         setImgSize() {
-            setTimeout(() => {
-                var maxwidth = 0;
-                var maxheight = 0;
-                var length = this.data.imgList.length;
-                for (var i = 0; i < length; i++) {
-                    var img = document.querySelector(
-                        "#sa-carousel" + this.id + " #sa-carousel-img" + i
-                    );
-                    if (img.naturalWidth > maxwidth) {
-                        maxwidth = img.naturalWidth;
-                        console.log(img.naturalWidth);
-                    }
-                    if (img.naturalHeight > maxheight) {
-                        maxheight = img.naturalHeight;
-                    }
+            var maxwidth = 0;
+            var maxheight = 0;
+            var length = this.data.imgList.length;
+            for (var i = 0; i < length; i++) {
+                var img = document.querySelector(
+                    "#sa-carousel" + this.id + " #sa-carousel-img" + i
+                );
+                if (img.naturalWidth > maxwidth) {
+                    maxwidth = img.naturalWidth;
+                    // console.log(img.naturalWidth);
+                } else if (img.naturalHeight > maxheight) {
+                    maxheight = img.naturalHeight;
                 }
-                if (!this.setWidth) {
-                    // console.log(maxwidth);
-                    if (!this.setCenter) {
-                        this.styleStr += "width:" + maxwidth + "px;";
-                    }
+                if (img.naturalWidth / img.naturalHeight > this.maxfit) {
+                    this.maxfit = img.naturalWidth / img.naturalHeight;
                 }
-                if (!this.setHeight) {
-                    // console.log(maxheight);
-                    this.styleStr += "height:" + maxheight + "px;";
+            }
+            if (!this.setWidth) {
+                // console.log(maxwidth);
+                if (!this.setCenter) {
+                    this.$refs.srCarousell.style.width = maxwidth + "px";
                 }
-            }, 1000);
+            }
+            if (!this.setHeight) {
+                console.log(maxheight);
+                this.$refs.srCarousell.style.height = maxheight + "px";
+            }
+        },
+        changeImgSize() {
+            const carouselElement = this.$refs.srCarousell;
+            const width = carouselElement.getBoundingClientRect().width;
+            const height = carouselElement.getBoundingClientRect().height;
+            const newheight = width / this.maxfit;
+            if (newheight < height) {
+                carouselElement.style.height = newheight + "px";
+            }
         },
     },
 };

@@ -6,10 +6,8 @@
 }
 .sa-title {
     position: relative;
-    /* margin: 0; */
     padding: 0;
     border: 0;
-    /* clear: left; */
     min-width: 1rem;
 }
 .sa-title__a{

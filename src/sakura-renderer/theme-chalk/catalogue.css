@@ -5,7 +5,7 @@
     --sa-color-cata-before-text: var(--sa-color-basic-transparent);
     --sa-color-cata-line-fill: var(--sa-color-basic-transparent);
     --sa-color-cata-line-select-fill: var(--sa-color-primary-dark-2);
-    --sa-color-cata-shadow-bg-color: var(--sa-color-primary-base);
+    --sa-color-cata-shadow-bg-color: rgba(var(--sa-color-primary-rgb), .3);
 }
 
 .sa-cata-container{
@@ -56,6 +56,8 @@
 }
 
 .sa-cata-line__select {
+    position: absolute;
+    transition: all 0.3s linear;
     width: 100%;
     height: 1rem;
     border-radius: 99em;

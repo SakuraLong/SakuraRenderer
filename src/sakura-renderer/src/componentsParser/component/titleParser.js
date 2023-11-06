@@ -15,7 +15,6 @@ class TitleParser extends ComponentsParser {
                 // 标题数据
                 type: "h1", // 标题类型
                 content: "", // 标题内容
-                id: "title_id1", // 标题id
                 option: {
                     // 标题配置项
                     textAlign: "left", // 文字排版
@@ -132,7 +131,7 @@ class TitleParser extends ComponentsParser {
             });
         }
         this.template.data.content = this.template.data.content.trim();
-        this.template.data.id = this.template.data.content;
+        this.template.data.option.id = this.template.data.option.id === "" ? this.template.data.content : this.template.data.option.id;
         return {
             type: "success",
             msg: "",
