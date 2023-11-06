@@ -46,6 +46,7 @@
 
 .sa-table {
     color: var(--sa-color-table-text);
+    border-collapse: collapse;
 }
 
 .sa-table__thead > .sa-table__tr,

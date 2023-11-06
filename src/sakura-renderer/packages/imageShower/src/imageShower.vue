@@ -40,6 +40,10 @@
                 display="none"
                 class="sa-image-shower__img"
             />
+            <div class="sa-image-shower__img-name" v-if="(imgListData.length > 0 ? imgListData[showIndex].name : '').length !== 0">
+                <sr-mask color="#606266" opacity="0.7"></sr-mask>
+                {{ imgListData.length > 0 ? imgListData[showIndex].name : ''}}
+            </div>
         </div>
     </div>
 </template>
@@ -65,11 +69,13 @@ export default {
         };
     },
     mounted() {
+        console.log(this.imgList);
         document.body.style.overflow = "hidden"; // 阻止页面滚动
         try {
-            this.imgList.forEach((imgSrc, index) => {
+            this.imgList.forEach((imgData, index) => {
                 this.imgListData.push({
-                    src: imgSrc,
+                    src: imgData.src,
+                    name: imgData.name,
                     show: this.initialIndex === index ? true : false,
                 });
             });

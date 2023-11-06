@@ -8,6 +8,7 @@
 import testArticleData from "./assets/testArticleData";
 export default {
     mounted() {
+        console.log("文章初始化");
         this.$refs.render.setArticle(testArticleData.article);
         this.$refs.render.render();
     },

@@ -78,6 +78,7 @@
             :initialIndex="imageShower.index"
             @exit="this.imageShower.show = false"
         ></sr-image-shower>
+        <div class="sa-test-div">sss</div>
         <div style="display: none" id="sa-article-temp"></div>
     </div>
 </template>
@@ -99,8 +100,8 @@ export default {
     data() {
         return {
             sakuraRenderer: null, // 渲染器类
-            hasArticleCata: true,
-            componentsList: [],
+            hasArticleCata: true, // 有没有侧边目录
+            componentsList: [], // 渲染组件列表
             imageShower: {
                 show: false,
                 imgList: [],
@@ -152,11 +153,11 @@ export default {
         /**
          * 渲染
          */
-        render() {
-            let data = this.sakuraRenderer.render();
+        async render() {
+            let data = await this.sakuraRenderer.render();
             this.componentsList = data.templateList;
             this.$refs.saCata.render(data.cataMenu);
-            // console.log(this.componentsList);
+            console.log(this.componentsList);
             return true;
         },
         /**
@@ -248,5 +249,3 @@ export default {
     },
 };
 </script>
-
-<style></style>

@@ -108,10 +108,10 @@ const article = `
 
 {|list|
 |fold
-|float=none
+|float=left
 |t
 |-
-|+害羞羞
+|+害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞害羞羞
 |++欧尼酱
 |++只因
 |+有序：你干嘛
@@ -128,10 +128,8 @@ const article = `
 |** er
 |}
 
-计算方式
-
-{|title|clear=left
-|style=color:red
+{|title|
+|clear=left
 |-
 |接下来介绍表格
 |}
@@ -303,7 +301,6 @@ const article = `
 == 我们还提供图片展示器
 
 {|carouselIS
-|center
 |-
 | https://img2.baidu.com/it/u=4023601634,1253627961&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500
 | https://img1.baidu.com/it/u=692986918,1036130994&fm=253&fmt=auto&app=138&f=JPEG?w=888&h=500
@@ -521,8 +518,6 @@ const article = `
 | https://i0.wp.com/picjumbo.com/wp-content/uploads/golden-hour-in-old-park-romantic-fall-nature-with-old-bridge-free-photo.jpg?w=2210&quality=70
 | https://i0.wp.com/picjumbo.com/wp-content/uploads/golden-hour-in-old-park-romantic-fall-nature-with-old-bridge-free-photo.jpg?w=2210&quality=70
 |}
-
-
 {|para|style=font-size:20px;width:100%;display:block
 |class=class1;class2
 |type=warning
@@ -532,8 +527,6 @@ const article = `
 哈哈哈
 哈哈哈哈哈</poem>
 |}
-
-=======
 
 = 上面是demo，下面开始介绍使用方法
 
