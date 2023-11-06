@@ -301,7 +301,7 @@ const article = `
 == 我们还提供图片展示器
 
 {|carouselIS
-|center
+|height=500px
 |-
 | https://img2.baidu.com/it/u=4023601634,1253627961&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500
 | https://img1.baidu.com/it/u=692986918,1036130994&fm=253&fmt=auto&app=138&f=JPEG?w=888&h=500

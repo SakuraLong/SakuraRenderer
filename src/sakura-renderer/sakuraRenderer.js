@@ -5,9 +5,10 @@ import ArticleDecoder from "./src/articleDecoder";
 import ComponentsDecoder from "./src/componentsParser/componentsDecoder";
 
 class SakuraRenderer {
-    constructor(renderElement = null, edit = false) {
+    constructor(renderElement = null, edit = false, isVue = false) {
         this.renderElement = renderElement; // 渲染加载的元素
         this.edit = edit; // 是否处于编辑模式
+        this.isVue = isVue;
         this.articleGroup = []; // 文章列表
         this.articleGroupIndex = 0; // 当前显示的文章
         this.article = ""; // 文章

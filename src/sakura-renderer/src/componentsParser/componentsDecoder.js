@@ -68,18 +68,18 @@ class ComponentsDecoder {
      * 处理组件列表
      */
     listDecode() {
-        let componentsList = this.componentsList;
-        let templateList = [];
+        const componentsList = this.componentsList;
+        const templateList = [];
         for (let i = 0; i < componentsList.length; i++) {
             for (let j = 0; j < this.parsers.length; j++) {
-                let t = new this.parsers[j](
+                const t = new this.parsers[j](
                     componentsList[i],
                     this.option,
                     this.rendererData
                 );
                 if (!t.judge()) continue;
                 t.analyseBaseOption();
-                let template = t.analyse(
+                const template = t.analyse(
                     this.ignoreReplaceList,
                     this.codeReplaceList,
                     this.poemReplaceList
@@ -93,7 +93,7 @@ class ComponentsDecoder {
         // 向列表加入头尾
 
         // 处理目录
-        let cataMenu = new CataParser(this.option, templateList).analyse();
+        const cataMenu = new CataParser(this.option, templateList).analyse();
         return { templateList: templateList, cataMenu: cataMenu };
     }
     
