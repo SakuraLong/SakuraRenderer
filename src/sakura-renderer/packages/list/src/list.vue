@@ -333,10 +333,4 @@ export default {
 };
 </script>
 <style>
-ol {
-    list-style-type: decimal;
-}
-ul {
-    /* list-style-type: none; */
-}
 </style>

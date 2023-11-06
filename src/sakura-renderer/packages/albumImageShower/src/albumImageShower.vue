@@ -1,8 +1,5 @@
 <template>
     <div class="sr-album-is" ref="srAlbum" :style="styleStr">
-        <div class="sr-album-info">
-            {{ title }}
-        </div>
         <div class="sr-album--preview--div" ref="srAlbum_preview">
             <img
                 :src="loadedPhotos[currentIndex]"
@@ -11,11 +8,13 @@
                 ref="srAlbum_preview_img"
             />
         </div>
-        <div class="sr-album--controls">共{{ loadedPhotos.length }}张图片</div>
-        <!-- <div class="modal" v-if="modalVisible" @click="hideModal">
-            <img :src="loadedPhotos[currentIndex]" @click.stop />
-        </div> -->
-        <sr-image-shower v-if="modalVisible" :imgList="imgData" :initialIndex="currentIndex" @exit="hideModal"></sr-image-shower>
+
+        <div class="sr-album--controls">
+            <span class="sr-album--controls--left">{{ data.title }}</span>
+            <span class="sr-album--controls--right">({{ loadedPhotos.length }}张)</span>
+        </div>
+        <div class="sr-album-decorate"></div>
+        <sr-image-shower v-if="modalVisible" :imgList="loadedPhotos" :initialIndex="currentIndex" @exit="hideModal"></sr-image-shower>
     </div>
 </template>
 
@@ -111,21 +110,4 @@ export default {
 </script>
 
 <style scoped>
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal img {
-    max-width: 80%;
-    max-height: 80%;
-    cursor: pointer;
-}
 </style>
