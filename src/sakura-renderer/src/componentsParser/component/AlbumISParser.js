@@ -46,6 +46,8 @@ class AlbumISParser extends ImageShowerParser {
         }
     }
     analyse() {
+        this.analyseImageShowerOption(); // 获取imageShower的配置项
+        this.getImgListData(); // 获取数据
         this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
         let styleList = [];
         let divideIndex = this.dataList.indexOf("-");

@@ -44,9 +44,6 @@ const test_article_data_list = [
 ];
 
 const article = `
-配置项
-配置项
-|-
 {|para
 |-
 |{{quote|这是不错的文档渲染器|项目组}}
@@ -301,6 +298,7 @@ const article = `
 == 我们还提供图片展示器
 
 {|carouselIS
+|left
 |-
 | https://img2.baidu.com/it/u=4023601634,1253627961&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500
 | https://img1.baidu.com/it/u=692986918,1036130994&fm=253&fmt=auto&app=138&f=JPEG?w=888&h=500
@@ -459,7 +457,7 @@ const article = `
 |align=center
 |imgW=200px
 |-
-| https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
+| https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg 测试测试
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
 | https://img.moegirl.org.cn/common/thumb/4/4d/Uiharu_Kazari.jpg/375px-Uiharu_Kazari.jpg
 | https://img.moegirl.org.cn/common/thumb/9/97/Saten_Ruiko.jpg/375px-Saten_Ruiko.jpg
