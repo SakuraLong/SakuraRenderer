@@ -33,7 +33,7 @@
                     @click="showModal()"
                     class="sa-srCarousell-img"
                     :id="'sa-carousel-img' + index"
-                    :src="img"
+                    :src="img.src"
                     :style="{ 'object-fit': this.data.option.fit }"
                 />
             </li>
@@ -97,12 +97,12 @@ export default {
     },
     mounted() {
         // console.log(this.data);
-        if (this.data.option.align === "center") {
+        if (this.data.option.float === "center") {
             this.setCenter = true;
             this.$refs.srCarousell.classList.add("sa-carousell--center");
-        } else if (this.data.option.align === "left") {
+        } else if (this.data.option.float === "left") {
             this.$refs.srCarousell.classList.add("sa-carousell--left");
-        } else if (this.data.option.align === "right") {
+        } else if (this.data.option.float === "right") {
             this.$refs.srCarousell.classList.add("sa-carousell--right");
         }
         if (this.data.option.interval) {
@@ -236,7 +236,7 @@ export default {
                 }
             }
             if (!this.setHeight) {
-                console.log(maxheight);
+                // console.log(maxheight);
                 this.$refs.srCarousell.style.height = maxheight + "px";
             }
         },
