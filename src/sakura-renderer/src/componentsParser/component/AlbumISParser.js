@@ -11,13 +11,10 @@ class AlbumISParser extends ImageShowerParser {
         this.template = {
             type: "sr-album-is", // 组件名称
             data: {
-                title:"相册",
+                name: "相册",
                 imgList: [],
                 option: {
-                    // 标题配置项
-                    showImageWidth: "auto", // 外展示图片的宽度
-                    showImageHeight: "auto", // 外展示图片的高度
-                    align: "center", //外容器对齐方式
+                    index: 0,
                 },
             },
         }; // 标题段落配置
@@ -28,8 +25,8 @@ class AlbumISParser extends ImageShowerParser {
         if (match && match.length === 3) {
             const width = parseFloat(match[1]);
             const height = parseFloat(match[2]);
-            this.template.data.option.showImageWidth = width.toString() + "px";
-            this.template.data.option.showImageHeight = "x" + height + "px";
+            this.template.data.option.imgWidth = width.toString() + "px";
+            this.template.data.option.imgHeight = "x" + height + "px";
         }
     }
     judge() {
@@ -43,7 +40,10 @@ class AlbumISParser extends ImageShowerParser {
     }
     analyse() {
         this.getImgListData(); // 获取数据
-        this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
+        this.template.data.option = Object.assign(
+            this.template.data.option,
+            this.baseOption
+        ); // 合并baseOption
         let styleList = [];
         let divideIndex = this.dataList.indexOf("-");
         if (divideIndex === -1) {
@@ -60,34 +60,20 @@ class AlbumISParser extends ImageShowerParser {
         this.template.data.imgList = this.imageListData;
         if (styleList.length !== 0) {
             styleList.forEach((styleELe) => {
-                let key = styleELe.split("=")[0];
-                let value = styleELe.split("=")[styleELe.split("=").length - 1];
+                let temp = styleELe.trim();
+                let key = temp.split("=")[0].trim();
+                let value = temp.split("=")[temp.split("=").length - 1].trim();
+                console.log(key,value);
                 switch (key) {
-                    case "title":
-                        this.template.data.title = value;
+                    case "name":
+                        this.template.data.name = value;
+                        console.log(value);
                         break;
-                    case "imgW":
-                        this.template.data.option.showImageWidth = value;
-                        break;
-                    case "imgH":
-                        this.template.data.option.showImageHeight = value;
-                        break;
-                    case "imgS":
-                        this.extractWidthAndHeight(value);
-                        break;
-                    case "width":
-                        this.template.data.option.width = value;
-                        break;
-                    case "height":
-                        this.template.data.option.height = value;
-                        break;
-                    case "align":
-                        if (
-                            ["none", "left", "right", "center"].indexOf(
-                                value
-                            ) !== -1
-                        ) {
-                            this.template.data.option.align = value;
+                    case "index":
+                        console.log(value);
+                        if(Number.isInteger(Number(value))){
+                            this.template.data.option.index = parseInt(value);
+                            console.log("asfsfs",this.template.data.option.index);
                         }
                         break;
                     default:
@@ -95,6 +81,7 @@ class AlbumISParser extends ImageShowerParser {
                 }
             });
         }
+        console.log(this.template.data);
         return {
             type: "success",
             msg: "",

@@ -455,8 +455,12 @@ const article = `
 |}
 
 {|albumIS
-|align=center
-|imgW=200px
+|float=center
+|imgWidth=200px
+|imgHeight=300px
+|height =20px
+|index =2
+|name = 微软微软
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg 测试测试
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
@@ -467,9 +471,9 @@ const article = `
 
 {|allIS
 |IP=center
-|width=500px
 |space=1%
-|row=3
+|height=100px
+|column=5
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
 | https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg

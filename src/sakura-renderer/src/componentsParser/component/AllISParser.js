@@ -2,9 +2,9 @@
 AllISParser解析器
 李海林
 */
-import ComponentsParser from "./componentParser";
+import ImageShowerParser from "./imageShowerParser";
 
-class AllISParser extends ComponentsParser {
+class AllISParser extends ImageShowerParser {
     constructor(component, option) {
         super(component, option);
         this.default = false; // 是否是组件模板（是否是{||}包裹）
@@ -13,7 +13,20 @@ class AllISParser extends ComponentsParser {
             float:"center",
             height: "auto",
             width: "auto",
+            imgWidth: "auto",
+            imgHeight: "auto",
         };
+        // this.imageShowerOption={
+        //     baseUrl:"",
+        //     imgWidth: "auto",
+        //     imgHeight: "auto",
+        //     imgMaxWidth: "",
+        //     imgMaxHeight: "",
+        //     imgPosition: "",
+        //     fit: "cover",
+        //     nameTitle: true,
+        //     name:""
+        // };
         this.template = {
             type: "sr-all-is", // 组件名称
             data: {
@@ -24,8 +37,6 @@ class AllISParser extends ComponentsParser {
                     rs:false,
                     cs:false,
                     space: "10px",
-                    imgWidth: "auto",
-                    imgHeight:"auto",
                     direction:"auto",
                 },
             },
@@ -43,7 +54,11 @@ class AllISParser extends ComponentsParser {
     }
 
     analyse() {
-        this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
+        this.getImgListData(); // 获取数据
+        this.template.data.option = Object.assign(
+            this.template.data.option,
+            this.baseOption
+        ); // 合并baseOption
         let styleList = [];
         let divideIndex = this.dataList.indexOf("-");
         if (divideIndex === -1) {
@@ -81,36 +96,6 @@ class AllISParser extends ComponentsParser {
                 let key = styleELe.split("=")[0];
                 let value = styleELe.split("=")[styleELe.split("=").length - 1];
                 switch (key) {
-                    case "height":
-                        this.template.data.option.height=value;
-                        break;
-                    case "width":
-                        this.template.data.option.width=value;
-                        break;
-                    case "IW":
-                    case "imgWidth":
-                        this.template.data.option.imgWidth= value;
-                        break;
-                    case "IH":
-                    case "imgHeight":
-                        this.template.data.option.imgHeight= value;
-                        break;
-                    case "imgPosition":
-                    case "IP":
-                        this.template.data.option.float=value;
-                        break;
-                    case "class":
-                        this.template.data.option.classList =
-                            this.template.data.option.classList.concat(
-                                value.split(";")
-                            );
-                        break;
-                    case "style":
-                        this.template.data.option.styleList =
-                            this.template.data.option.styleList.concat(
-                                value.split(";")
-                            );
-                        break;
                     case "column":
                         this.template.data.option.column = parseInt(value);
                         this.template.data.option.row = Math.ceil(imgList.length/this.template.data.option.column);
@@ -136,9 +121,7 @@ class AllISParser extends ComponentsParser {
                 }
             });
         }
-        if (imgList.length !== 0) {
-            this.template.data.imgList = imgList;
-        }
+        this.template.data.imgList = this.imageListData;
         return {
             type: "success",
             msg: "",
