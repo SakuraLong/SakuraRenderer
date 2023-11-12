@@ -26,6 +26,7 @@ class AllISParser extends ComponentsParser {
                     space: "10px",
                     imgWidth: "auto",
                     imgHeight:"auto",
+                    direction:"auto",
                 },
             },
         }; // 标题段落配置
@@ -117,6 +118,9 @@ class AllISParser extends ComponentsParser {
                     case "row":
                         this.template.data.option.row = parseInt(value);
                         this.template.data.option.column = Math.ceil(imgList.length/this.template.data.option.row);
+                        break;
+                    case "direction":
+                        this.template.data.option.direction=value;
                         break;
                     case "space":
                         this.template.data.option.space = value;

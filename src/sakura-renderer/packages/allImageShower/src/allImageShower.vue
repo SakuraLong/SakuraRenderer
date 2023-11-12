@@ -54,8 +54,10 @@ export default {
                 "grid-template-rows": `repeat(${this.data.option.row}, ${this.data.option.imgHeight})`,
                 "height": this.data.option.height,
                 "width": this.data.option.width,
-                
             };
+            if (this.data.option.direction !== "auto") {
+                this.containerStyle["grid-auto-flow"]=this.data.option.direction;
+            }
             if (this.data.option.cs !== false) {
                 this.containerStyle["grid-template-columns"] =
                     this.data.option.cs;

@@ -3,8 +3,9 @@ CISParser解析器
 孙锦瑞
 */
 import ComponentsParser from "./componentParser";
+import ImageShowerParser from "./imageShowerParser";
 
-class CISParser extends ComponentsParser {
+class CISParser extends ImageShowerParser {
     constructor(component, option) {
         super(component, option);
         this.name = ["carouselIS", "走马灯图片展示框"];
@@ -13,7 +14,6 @@ class CISParser extends ComponentsParser {
             data: {
                 imgList: [],
                 option: {
-                    align: "",
                     interval: false,
                     loop: true,
                     intervaltime: 2000,
@@ -30,6 +30,8 @@ class CISParser extends ComponentsParser {
         }
     }
     analyse() {
+        this.analyseImageShowerOption(); // 获取imageShower的配置项
+        this.getImgListData(); // 获取数据
         this.template.data.option = Object.assign(
             this.template.data.option,
             this.baseOption
@@ -47,21 +49,16 @@ class CISParser extends ComponentsParser {
         for (let i = 0; i < divideIndex; i++) {
             styleList.push(this.dataList[i]);
         }
-        for (let i = divideIndex + 1; i < this.dataList.length; i++) {
-            this.template.data.imgList.push(this.dataList[i]);
-        }
+        // for (let i = divideIndex + 1; i < this.dataList.length; i++) {
+        //     this.template.data.imgList.push(this.dataList[i]);
+        // }
+        this.template.data.imgList = this.imageListData;
+        // console.log(this.template.data.imgList);
         if (styleList.length !== 0) {
             styleList.forEach((styleELe) => {
                 if (styleELe.indexOf("=") === -1) {
                     // 不是样式设置
-                    if (
-                        styleELe === "none" ||
-                        styleELe === "left" ||
-                        styleELe === "right" ||
-                        styleELe === "center"
-                    ) {
-                        this.template.data.option.align = styleELe;
-                    } else if (styleELe === "loop") {
+                    if (styleELe === "loop") {
                         this.template.data.option.cycle = true;
                     } else if (styleELe === "interval" || styleELe === "i") {
                         this.template.data.option.interval = true;

@@ -55,7 +55,8 @@ export default {
                         none: "sa-list--block",
                     },
                     display: {
-                        table: "sa-list-container--inline-block",
+                        inline_block: "sa-list-container--inline-block",
+                        block:"sa-list--block"
                     },
                 },
             },
@@ -147,13 +148,22 @@ export default {
                                         this.data.option.ordered_template.substring(
                                             1
                                         );
-                                } else {
+                                } else if (
+                                    this.data.option.ordered_template[
+                                        this.data.option.ordered_template
+                                            .length - 1
+                                    ] === "*"
+                                ) {
                                     cataIndex =
                                         this.data.option.ordered_template.substring(
                                             0,
                                             this.data.option.ordered_template
                                                 .length - 1
                                         ) + cataIndex;
+                                } else {
+                                    if(this.data.option.ordered_template.split("*").length===2){
+                                        cataIndex = this.data.option.ordered_template.split("*")[0] + cataIndex + this.data.option.ordered_template.split("*")[1];
+                                    }
                                 }
                             }
                         } else if (this.data.option.ordered_mode === "none") {
@@ -300,13 +310,17 @@ export default {
         const listContainer = this.$refs.list_container;
         listContainer.style.clear = this.data.option.clear; // clear
         const listBody = this.$refs.main_container;
-        if (this.data.option.float === "center") {
+        if (this.data.option.float === "center" ||this.data.option.float === "none" ) {
             listBody.classList.add(
                 this.listClassDict.listContainer.float[this.data.option.float]
             );
-        } else {
+            listBody.classList.add(
+                this.listClassDict.listContainer.display.block
+            );
+        } 
+        else {
             listContainer.classList.add(
-                this.listClassDict.listContainer.display.table
+                this.listClassDict.listContainer.display.inline_block
             );
             listContainer.classList.add(
                 this.listClassDict.listContainer.float[this.data.option.float]
@@ -332,5 +346,4 @@ export default {
     created() {},
 };
 </script>
-<style>
-</style>
+<style></style>

@@ -3,47 +3,6 @@
 边俣
 */
 import ComponentsParser from "./componentParser";
-function getLevelAndType(item) {
-    const level = item.match(/^(\*+|\++|-+)/)?.[0].length || 0;
-    if (level !== 0) {
-        if (item.match(/^(\*+|\++|-+)/)?.[0].endsWith("+")) {
-            return [level, true];
-        } else if (item.match(/^(\*+|\++|-+)/)?.[0].endsWith("*")) {
-            return [level, false];
-        } else {
-            return [0, true];
-        }
-    } else {
-        return [0, true];
-    }
-}
-function createMenu(data) {
-    let menu = [];
-    let stack = [];
-    for (let i = 0, len = data.length; i < len; i++) {
-        let template = data[i];
-        let level = getLevelAndType(template)[0];
-        if (level === 0) continue;
-        let text = template.replace(/^(\*+|\++|-+)\s*/, "");
-        console.log(text, getLevelAndType(template));
-        let item = {
-            text: text,
-            order_judge: getLevelAndType(template)[1],
-            level: level,
-            children: [],
-        };
-        while (stack.length >= level) {
-            stack.pop();
-        }
-        if (stack.length === 0) {
-            menu.push(item);
-        } else {
-            stack[stack.length - 1].children.push(item);
-        }
-        stack.push(item);
-    }
-    return menu;
-}
 class ListParser extends ComponentsParser {
     constructor(component, option) {
         super(component, option);
@@ -67,6 +26,47 @@ class ListParser extends ComponentsParser {
                 },
             },
         }; // 标题段落配置
+    }
+    getLevelAndType(item) {
+        const level = item.match(/^(\*+|\++|-+)/)?.[0].length || 0;
+        if (level !== 0) {
+            if (item.match(/^(\*+|\++|-+)/)?.[0].endsWith("+")) {
+                return [level, true];
+            } else if (item.match(/^(\*+|\++|-+)/)?.[0].endsWith("*")) {
+                return [level, false];
+            } else {
+                return [0, true];
+            }
+        } else {
+            return [0, true];
+        }
+    }
+    createMenu(data) {
+        let menu = [];
+        let stack = [];
+        for (let i = 0, len = data.length; i < len; i++) {
+            let template = data[i];
+            let level = this.getLevelAndType(template)[0];
+            if (level === 0) continue;
+            let text = template.replace(/^(\*+|\++|-+)\s*/, "");
+            console.log(text, this.getLevelAndType(template));
+            let item = {
+                text: text,
+                order_judge: this.getLevelAndType(template)[1],
+                level: level,
+                children: [],
+            };
+            while (stack.length >= level) {
+                stack.pop();
+            }
+            if (stack.length === 0) {
+                menu.push(item);
+            } else {
+                stack[stack.length - 1].children.push(item);
+            }
+            stack.push(item);
+        }
+        return menu;
     }
     judge() {
         // 重写
@@ -107,7 +107,22 @@ class ListParser extends ComponentsParser {
         for (let i = divideIndex + 1; i < this.dataList.length; i++) {
             this.template.data.content.push(this.dataList[i]);
         }
-        this.template.data.listData = createMenu(this.template.data.content);
+        this.template.data.listData = this.createMenu(
+            this.template.data.content
+        );
+        this.template.data.listData.forEach((item) => {
+            item.text = this.replace(
+                ignoreReplaceList,
+                codeReplaceList,
+                poemReplaceList,
+                item.text
+            );
+        });
+        // for (var key in this.template.data.option) {
+        //     if (this.template.data.option.prototype.hasOwnProperty.call(this.template.data.option,key) && dataObject.optionData.prototype.hasOwnProperty.call(dataObject.optionData.prototype,key)) {
+        //         this.template.data.option[key] = dataObject.optionData[key];
+        //     }
+        // }
         if (optionList.length !== 0) {
             optionList.forEach((optionELe) => {
                 let key = optionELe.split("=")[0];
@@ -225,6 +240,14 @@ class ListParser extends ComponentsParser {
                                 ) {
                                     this.template.data.option.ordered_template =
                                         temp1;
+                                } else if (
+                                    temp1.length >= 3 &&
+                                    temp1.includes("*") &&
+                                    temp1[0] !== "*" &&
+                                    temp1[temp1.length - 1] !== "*"
+                                ) {
+                                    this.template.data.option.ordered_template =
+                                        temp1;
                                 }
                                 this.template.data.option.unordered_template =
                                     temp2;
@@ -281,7 +304,37 @@ class ListParser extends ComponentsParser {
                 }
             });
         }
-
+        // let optionData = {
+        //     name:"让我测一下"
+        // };
+        // for (let key in this.template.data.option) {
+        //     this.template.data.option[key] =
+        //         optionData[key] === undefined
+        //             ? this.template.data.option[key]
+        //             : optionData[key];
+        // }
+        console.log(this.template.data.option);
+        return {
+            type: "success",
+            msg: "",
+            content: this.template,
+        };
+    }
+    analysePro(
+        listData = [], //列表数据(树)
+        optionData = {} //配置项数据
+    ) {
+        this.template.data.option = Object.assign(
+            this.template.data.option,
+            this.baseOption
+        ); // 合并baseOption
+        this.template.data.listData = listData;
+        for (let key in this.template.data.option) {
+            this.template.data.option[key] =
+                optionData[key] === undefined
+                    ? this.template.data.option[key]
+                    : optionData[key];
+        }
         return {
             type: "success",
             msg: "",
