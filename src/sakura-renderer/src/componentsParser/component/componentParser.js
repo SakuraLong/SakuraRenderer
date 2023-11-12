@@ -137,6 +137,7 @@ class ComponentsParser {
         this.dataList = dataList;
     }
     replace(ignoreReplaceList, codeReplaceList, poemReplaceList, content) {
+        content = content.replace(/\n/g, "");
         codeReplaceList.forEach((codeData) => {
             content = content.replace(codeData.key, codeData.value);
         });

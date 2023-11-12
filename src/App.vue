@@ -6,10 +6,12 @@
 
 <script>
 import testArticleData from "./assets/testArticleData";
+import testData from "./assets/testData";
 export default {
     mounted() {
         console.log("文章初始化");
-        this.$refs.render.setArticle(testArticleData.article);
+        this.$refs.render.setArticle(testData.testData);
+        // this.$refs.render.setArticle(testArticleData.article);
         this.$refs.render.render();
     },
 };
@@ -23,7 +25,7 @@ export default {
     text-align: center;
     color: #2c3e50;
 }
-.test-container{
+.test-container {
     // height: 500px;
     // overflow: auto;
 }

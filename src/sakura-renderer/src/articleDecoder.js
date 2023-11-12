@@ -10,7 +10,7 @@ import ModuleParser from "./componentsParser/module/moduleParser"; // 模块解�
 class ArticleDecoder {
     constructor(article) {
         this.article = article;
-        this.splitStr = "\n|-\n"; // 通过这个字符串划分
+        this.splitStr = "\n-\n"; // 通过这个字符串划分
         this.option = ""; // 配置项区域
         this.body = ""; // 文章区域
         this.componentsList = []; // 组件列表
@@ -105,16 +105,14 @@ class ArticleDecoder {
                 !componentStart
             ) {
                 componentStart = true;
-                if (startBegin !== -1) {
-                    // 再添加end + 1 ~ i - 1的内容
-                    let temp = body.slice(startEnd + 1, i).trim();
-                    temp = temp.split("\n\n"); // 划分细节
-                    temp.forEach((data) => {
-                        let t = data.trim();
-                        if (t === "") return;
-                        this.componentsList.push(t);
-                    });
-                }
+                // 再添加end + 1 ~ i - 1的内容
+                let temp = body.slice(startEnd + 1, i).trim();
+                temp = temp.split("\n\n"); // 划分细节
+                temp.forEach((data) => {
+                    let t = data.trim();
+                    if (t === "") return;
+                    this.componentsList.push(t);
+                });
                 startBegin = i;
             }
             if (
@@ -130,11 +128,11 @@ class ArticleDecoder {
                 }
                 startEnd = i;
             }
-            if (i === length - 1) {
+            if (i === body.length - 1) {
                 let temp = body
                     .slice(
-                        startBegin === -1 ? 0 : startBegin,
-                        startEnd === -1 ? i + 1 : startEnd
+                        startEnd === -1 ? i + 1 : startEnd + 1,
+                        i + 1
                     )
                     .trim();
                 temp = temp.split("\n\n");
@@ -145,10 +143,11 @@ class ArticleDecoder {
                 });
             }
         }
+        console.log(this.componentsList);
         return {
             option: this.option,
             body: this.body,
-            componentsList: [],
+            componentsList: this.componentsList,
             ignoreReplaceList: this.ignoreReplaceList,
             codeReplaceList: this.codeReplaceList,
             poemReplaceList: this.poemReplaceList,

@@ -78,7 +78,7 @@
             :initialIndex="imageShower.index"
             @exit="this.imageShower.show = false"
         ></sr-image-shower>
-        <div class="sa-test-div">sss</div>
+        <!-- <div class="sa-test-div">sss</div> -->
         <div style="display: none" id="sa-article-temp"></div>
     </div>
 </template>

@@ -94,6 +94,8 @@ class ComponentsDecoder {
 
         // 处理目录
         const cataMenu = new CataParser(this.option, templateList).analyse();
+        console.log(templateList);
+        console.log(cataMenu);
         return { templateList: templateList, cataMenu: cataMenu };
     }
     
