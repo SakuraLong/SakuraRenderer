@@ -13,7 +13,20 @@ class AllISParser extends ImageShowerParser {
             float:"center",
             height: "auto",
             width: "auto",
+            imgWidth: "auto",
+            imgHeight: "auto",
         };
+        // this.imageShowerOption={
+        //     baseUrl:"",
+        //     imgWidth: "auto",
+        //     imgHeight: "auto",
+        //     imgMaxWidth: "",
+        //     imgMaxHeight: "",
+        //     imgPosition: "",
+        //     fit: "cover",
+        //     nameTitle: true,
+        //     name:""
+        // };
         this.template = {
             type: "sr-all-is", // 组件名称
             data: {
@@ -24,8 +37,6 @@ class AllISParser extends ImageShowerParser {
                     rs:false,
                     cs:false,
                     space: "10px",
-                    imgWidth: "auto",
-                    imgHeight:"auto",
                     direction:"auto",
                 },
             },
@@ -43,7 +54,11 @@ class AllISParser extends ImageShowerParser {
     }
 
     analyse() {
-        this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
+        this.getImgListData(); // 获取数据
+        this.template.data.option = Object.assign(
+            this.template.data.option,
+            this.baseOption
+        ); // 合并baseOption
         let styleList = [];
         let divideIndex = this.dataList.indexOf("-");
         if (divideIndex === -1) {

@@ -4,7 +4,7 @@
             <img
                 v-for="(img, index) in this.data.imgList"
                 :key="index"
-                :src="img"
+                :src="img.src"
                 @click="this.showModal(index)"
                 class="slide"
                 :style="{
@@ -81,6 +81,7 @@ export default {
                     image.classList.remove("show");
                 }
             });
+            console.log(this.containerStyle);
         },
         showModal(index) {
             this.currentIndex= index;
