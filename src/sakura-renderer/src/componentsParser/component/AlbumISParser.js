@@ -42,7 +42,6 @@ class AlbumISParser extends ImageShowerParser {
         }
     }
     analyse() {
-        this.analyseImageShowerOption(); // 获取imageShower的配置项
         this.getImgListData(); // 获取数据
         this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
         let styleList = [];
@@ -90,18 +89,6 @@ class AlbumISParser extends ImageShowerParser {
                         ) {
                             this.template.data.option.align = value;
                         }
-                        break;
-                    case "class":
-                        this.template.data.option.classList =
-                            this.template.data.option.classList.concat(
-                                value.split(";")
-                            );
-                        break;
-                    case "style":
-                        this.template.data.option.styleList =
-                            this.template.data.option.styleList.concat(
-                                value.split(";")
-                            );
                         break;
                     default:
                         break;
