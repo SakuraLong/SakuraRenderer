@@ -75,13 +75,6 @@ class CISParser extends ImageShowerParser {
                         styleELe.split("=")[styleELe.split("=").length - 1];
                     switch (key) {
                         case "interval":
-                            if (value === "false") {
-                                this.template.data.option.interval = false;
-                            } else {
-                                this.template.data.option.interval = true;
-                                this.template.data.option.intervaltime = value;
-                            }
-                            break;
                         case "i":
                             if (value === "false") {
                                 this.template.data.option.interval = false;
@@ -96,30 +89,6 @@ class CISParser extends ImageShowerParser {
                             } else if (value === "false") {
                                 this.template.data.option.loop = false;
                             }
-                            break;
-                        case "width":
-                            this.template.data.option.styleList =
-                                this.template.data.option.styleList.concat(
-                                    "width:" + value.split(";")
-                                );
-                            break;
-                        case "height":
-                            this.template.data.option.styleList =
-                                this.template.data.option.styleList.concat(
-                                    "height:" + value.split(";")
-                                );
-                            break;
-                        case "class":
-                            this.template.data.option.classList =
-                                this.template.data.option.classList.concat(
-                                    value.split(";")
-                                );
-                            break;
-                        case "style":
-                            this.template.data.option.styleList =
-                                this.template.data.option.styleList.concat(
-                                    value.split(";")
-                                );
                             break;
                         default:
                             break;

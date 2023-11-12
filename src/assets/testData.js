@@ -231,11 +231,11 @@ const testData =
 |interval=2000
 |center
 |-
-| https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
-| https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg
-| https://img.moegirl.org.cn/common/thumb/4/4d/Uiharu_Kazari.jpg/375px-Uiharu_Kazari.jpg
-| https://img.moegirl.org.cn/common/thumb/9/97/Saten_Ruiko.jpg/375px-Saten_Ruiko.jpg
-| https://img.moegirl.org.cn/common/thumb/a/a1/36012599_p0.png/375px-36012599_p0.png
+| https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg 第一张图片
+| https://img.moegirl.org.cn/common/thumb/e/e5/Misaka_-_BD2.jpg/375px-Misaka_-_BD2.jpg 第二张图片
+| https://img.moegirl.org.cn/common/thumb/4/4d/Uiharu_Kazari.jpg/375px-Uiharu_Kazari.jpg 第三张图片
+| https://img.moegirl.org.cn/common/thumb/9/97/Saten_Ruiko.jpg/375px-Saten_Ruiko.jpg 第四张图片
+| https://img.moegirl.org.cn/common/thumb/a/a1/36012599_p0.png/375px-36012599_p0.png 第五张图片
 |}
 
 = 相册图片展示器
