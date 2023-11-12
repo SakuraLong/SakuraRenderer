@@ -49,7 +49,6 @@ class ListParser extends ComponentsParser {
             let level = this.getLevelAndType(template)[0];
             if (level === 0) continue;
             let text = template.replace(/^(\*+|\++|-+)\s*/, "");
-            console.log(text, this.getLevelAndType(template));
             let item = {
                 text: text,
                 order_judge: this.getLevelAndType(template)[1],
@@ -313,7 +312,6 @@ class ListParser extends ComponentsParser {
         //             ? this.template.data.option[key]
         //             : optionData[key];
         // }
-        console.log(this.template.data.option);
         return {
             type: "success",
             msg: "",

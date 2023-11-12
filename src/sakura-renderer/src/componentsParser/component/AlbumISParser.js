@@ -12,7 +12,7 @@ class AlbumISParser extends ImageShowerParser {
             type: "sr-album-is", // 组件名称
             data: {
                 title:"相册",
-                content: [],
+                imgList: [],
                 option: {
                     // 标题配置项
                     showImageWidth: "auto", // 外展示图片的宽度
@@ -30,10 +30,6 @@ class AlbumISParser extends ImageShowerParser {
             const height = parseFloat(match[2]);
             this.template.data.option.showImageWidth = width.toString() + "px";
             this.template.data.option.showImageHeight = "x" + height + "px";
-            console.log("Width:", width);
-            console.log("Height:", height);
-        } else {
-            console.log("格式不正确");
         }
     }
     judge() {
@@ -62,10 +58,7 @@ class AlbumISParser extends ImageShowerParser {
         for (let i = 1; i < divideIndex; i++) {
             styleList.push(this.dataList[i]);
         }
-        for (let i = divideIndex + 1; i < this.dataList.length; i++) {
-            this.template.data.content.push(this.dataList[i]);
-        }
-        // console.log(this.template.data.content);
+        this.template.data.imgList = this.imageListData;
         if (styleList.length !== 0) {
             styleList.forEach((styleELe) => {
                 let key = styleELe.split("=")[0];

@@ -171,9 +171,6 @@ export default {
                         }
                     }
                 }
-                // a.title = data.title;
-                // a.href = "#" + data.id;
-                // console.log("tempList.length", tempList.length);
                 spanLiIndex.textContent = cataIndex;
                 spanLiContent.innerHTML = data.text;
 
@@ -182,7 +179,6 @@ export default {
                 // li.append(a);
 
                 if (data.children.length !== 0) {
-                    // console.log("递归");
                     let olulList = []; // 存储外层ol和ul
                     let lastIndex_ = -1;
                     tempList.push(0);
@@ -239,7 +235,6 @@ export default {
             let olulList = []; // 存储外层ol和ul
             let lastIndex = -1;
             childData.forEach((data, index) => {
-                // console.log("lastIndex", lastIndex);
                 if (data.order_judge) {
                     if (
                         lastIndex === -1 ||
@@ -288,7 +283,6 @@ export default {
         },
     },
     mounted() {
-        // console.log(this.data.listData);
         this.listData = this.data.listData;
         if (this.data.option.ordered_mode === "number") {
             this.render(
@@ -338,10 +332,6 @@ export default {
         this.data.option.styleList.forEach((styleName) => {
             this.styleStr += styleName + ";";
         });
-        // console.log("有序样式", this.data.option.ordered_template);
-        // console.log("无序样式", this.data.option.unordered_template);
-        // console.log("有序mode", this.data.option.ordered_mode);
-        // console.log("无序mode", this.data.option.unordered_mode);
     },
     created() {},
 };
