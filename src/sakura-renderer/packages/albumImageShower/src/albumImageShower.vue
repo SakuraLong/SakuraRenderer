@@ -2,7 +2,7 @@
     <div class="sr-album-is" ref="srAlbum" :style="styleStr">
         <div class="sr-album--preview--div" ref="srAlbum_preview">
             <img
-                :src="loadedPhotos[currentIndex]"
+                :src="loadedPhotos[currentIndex].src"
                 @click="showModal"
                 class="sr-album--preview--img"
                 ref="srAlbum_preview_img"
@@ -32,7 +32,6 @@ export default {
             title: "",
             styleStr: "",
             loadedPhotos: [], // 存储照片地址的数组
-            imgData: [],
             currentIndex: 0, // 当前展示的照片索引
             modalVisible: false, // 控制大图展示的模态框可见性
         };
@@ -44,20 +43,9 @@ export default {
         hideModal() {
             this.modalVisible = false;
         },
-        previousPhoto() {
-            if (this.currentIndex > 0) {
-                this.currentIndex--;
-            }
-        },
-        nextPhoto() {
-            if (this.currentIndex < this.loadedPhotos.length - 1) {
-                this.currentIndex++;
-            }
-        },
     },
     mounted() {
         this.$refs.srAlbum.style.maxWidth = "max-content"; 
-        // console.log(this.data.option);
         if (this.data.option.align === "center") {
             this.$refs.srAlbum.classList.add("sr-album--align--center");
         } else if (this.data.option.align === "left") {
@@ -89,7 +77,6 @@ export default {
         if(this.$refs.srAlbum_preview_img.style.width !== "auto" && this.data.option.showImageHeight !== "auto"){
             this.$refs.srAlbum_preview_img.style.width = "auto";
         }
-        console.log(this.$refs.srAlbum.style.maxWidth);
         this.$refs.srAlbum.style.height = this.data.option.height;
         this.data.option.classList.forEach((className) => {
             this.$refs.srAlbum.classList.add(className);
@@ -97,15 +84,11 @@ export default {
         this.data.option.styleList.forEach((styleName) => {
             this.styleStr += styleName + ";";
         });
-        this.loadedPhotos = this.data.content;
-        this.loadedPhotos.forEach((data, index)=>{
-            this.imgData.push({
-                src:data,
-                name:index === 0 ? "" : "album" + index.toString()
-            });
-        });
-        this.title = this.data.title;
     },
+    created(){
+        this.loadedPhotos = this.data.imgList;
+        this.title = this.data.title;
+    }
 };
 </script>
 
