@@ -1,5 +1,5 @@
 <template>
-    <div ref="srAllImage" class="all-image-fit">
+    <div ref="srAllImage" class="all-image-fit" :style="fitStyle">
         <div class="all-image-container" :style="containerStyle">
             <img
                 v-for="(img, index) in this.data.imgList"
@@ -30,6 +30,7 @@ export default {
             styleStr: "",
             containerStyle: {},
             // loadedPhotos: [], // 存储照片地址的数组
+            fitStyle:{},
             currentIndex: 0, // 当前展示的照片索引
             modalVisible: false, // 控制大图展示的模态框可见性
         };
@@ -52,12 +53,13 @@ export default {
                 "grid-template-columns": `repeat(${this.data.option.column}, ${this.data.option.imgWidth})`,
                 "grid-gap": this.data.option.space,
                 "grid-template-rows": `repeat(${this.data.option.row}, ${this.data.option.imgHeight})`,
+                "grid-auto-flow":this.data.option.direction,
+                
+            };
+            this.fitStyle={
                 "height": this.data.option.height,
                 "width": this.data.option.width,
             };
-            if (this.data.option.direction !== "auto") {
-                this.containerStyle["grid-auto-flow"]=this.data.option.direction;
-            }
             if (this.data.option.cs !== false) {
                 this.containerStyle["grid-template-columns"] =
                     this.data.option.cs;

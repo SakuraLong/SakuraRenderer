@@ -468,7 +468,7 @@ const article = `
 {|allIS
 |IP=center
 |space=1%
-|width=500px
+|height=100px
 |column=5
 |-
 | https://img.moegirl.org.cn/common/thumb/6/6f/Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg/450px-Toaru_Kagaku_no_Railgun_T_Anime_KV2.jpg
