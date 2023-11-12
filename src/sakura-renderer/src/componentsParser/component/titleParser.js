@@ -27,10 +27,10 @@ class TitleParser extends ComponentsParser {
     }
     judge() {
         // 重写
-        if (this.name.indexOf(this.dataList[0]) !== -1) {
-            this.default = true;
+        if (this.component[0] === "=") {
             return true;
-        } else if (this.component[0] === "=") {
+        } else if (this.name.indexOf(this.dataList[0]) !== -1) {
+            this.default = true;
             return true;
         } else {
             return false;

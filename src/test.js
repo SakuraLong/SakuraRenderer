@@ -78,3 +78,37 @@ const funcTest = () => {
         }
     }, 100);
 };
+
+class C1{
+    constructor() {
+        this.c = 0;
+        console.log("c1");
+        console.log(this.c);
+    }
+}
+
+class C2 extends C1{
+    constructor() {
+        super();
+        console.log("c2");
+        this.c = 1;
+    }
+}
+
+class C3 extends C2{
+    constructor() {
+        super();
+        console.log("c3");
+    }
+}
+
+class C4 {
+    constructor(a){
+        this.a = a;
+    }
+    static show() {
+        console.log(this.a);
+    }
+}
+
+const c = new C3();
