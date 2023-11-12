@@ -10,11 +10,18 @@
         </div>
 
         <div class="sr-album--controls">
-            <span class="sr-album--controls--left">{{ data.title }}</span>
-            <span class="sr-album--controls--right">({{ loadedPhotos.length }}张)</span>
+            <span class="sr-album--controls--left">{{ data.name }}</span>
+            <span class="sr-album--controls--right"
+                >({{ loadedPhotos.length }}张)</span
+            >
         </div>
         <div class="sr-album-decorate"></div>
-        <sr-image-shower v-if="modalVisible" :imgList="loadedPhotos" :initialIndex="currentIndex" @exit="hideModal"></sr-image-shower>
+        <sr-image-shower
+            v-if="modalVisible"
+            :imgList="loadedPhotos"
+            :initialIndex="currentIndex"
+            @exit="hideModal"
+        ></sr-image-shower>
     </div>
 </template>
 
@@ -29,7 +36,7 @@ export default {
     },
     data() {
         return {
-            title: "",
+            name: "",
             styleStr: "",
             loadedPhotos: [], // 存储照片地址的数组
             currentIndex: 0, // 当前展示的照片索引
@@ -45,38 +52,62 @@ export default {
         },
     },
     mounted() {
-        this.$refs.srAlbum.style.maxWidth = "max-content"; 
-        if (this.data.option.align === "center") {
+        console.log(this.data);
+        this.$refs.srAlbum.style.clear = this.data.option.clear;
+        this.$refs.srAlbum.style.color = this.data.option.color;
+        this.$refs.srAlbum.style.maxHeight = this.data.option.maxHeight;
+        this.$refs.srAlbum.style.maxWidth = this.data.option.maxWidth;
+        this.$refs.srAlbum.style.minHeight = this.data.option.minHeight;
+        this.$refs.srAlbum.style.minWidth = this.data.option.minWidth;
+        this.$refs.srAlbum.style.height = this.data.option.height;
+        this.$refs.srAlbum.style.width = this.data.option.width;
+        this.$refs.srAlbum.style.maxWidth = "max-content";
+        if (this.data.option.float === "center") {
             this.$refs.srAlbum.classList.add("sr-album--align--center");
-        } else if (this.data.option.align === "left") {
+        } else if (this.data.option.float === "left") {
             this.$refs.srAlbum.classList.add("sr-album--align--left");
-        } else if (this.data.option.align === "right") {
+        } else if (this.data.option.float === "right") {
             this.$refs.srAlbum.classList.add("sr-album--align--right");
         } //
         else {
             this.$refs.srAlbum.classList.add("sr-album--align--none");
         }
-        this.$refs.srAlbum_preview_img.style.width =
-            this.data.option.showImageWidth;
+        this.$refs.srAlbum_preview_img.style.width = this.data.option.imgWidth;
         this.$refs.srAlbum_preview_img.style.height =
-            this.data.option.showImageHeight.slice(1);
+            this.data.option.imgHeight;
         if (this.data.option.width !== "auto") {
             this.$refs.srAlbum.style.width = this.data.option.width;
-            this.$refs.srAlbum.style.maxWidth = "none"; 
+            this.$refs.srAlbum.style.maxWidth = "none";
         }
-        if(this.data.option.width !== "auto" && this.$refs.srAlbum_preview_img.style.width === "auto"){
+        if (
+            this.data.option.width !== "auto" &&
+            this.$refs.srAlbum_preview_img.style.width === "auto"
+            // 外部设置了宽度但是内部没有设置
+        ) {
             this.$refs.srAlbum_preview_img.style.width = this.data.option.width;
         }
-        if(this.data.option.width !== "auto" && this.data.option.height !== "auto"){
-            if(this.data.option.showImageWidth !== "auto")
-                this.$refs.srAlbum_preview_img.style.width = this.data.option.showImageWidth;
-            else{
-                this.$refs.srAlbum_preview_img.style.width = this.data.option.width;
+        if (
+            this.data.option.width !== "auto" &&
+            this.data.option.height !== "auto"
+            // 外部同时修改宽高
+        ) {
+            if (this.data.option.imgWidth !== "auto")
+            //如果内部img设置了宽度，就用内部的
+                this.$refs.srAlbum_preview_img.style.width =
+                    this.data.option.imgWidth;
+            else {
+                //否则用外部的
+                this.$refs.srAlbum_preview_img.style.width =
+                    this.data.option.width;
             }
         }
-        if(this.$refs.srAlbum_preview_img.style.width !== "auto" && this.data.option.showImageHeight !== "auto"){
-            this.$refs.srAlbum_preview_img.style.width = "auto";
-        }
+        // if (
+        //     this.$refs.srAlbum_preview_img.style.width !== "auto" &&
+        //     this.data.option.imgHeight !== "auto"
+        //     // 如果内部img设置了宽度并且外部没有设置高度
+        // ) {
+        //     this.$refs.srAlbum_preview_img.style.width = "auto";
+        // }
         this.$refs.srAlbum.style.height = this.data.option.height;
         this.data.option.classList.forEach((className) => {
             this.$refs.srAlbum.classList.add(className);
@@ -85,12 +116,12 @@ export default {
             this.styleStr += styleName + ";";
         });
     },
-    created(){
+    created() {
         this.loadedPhotos = this.data.imgList;
-        this.title = this.data.title;
-    }
+        this.name = this.data.name;
+        this.currentIndex = this.data.option.index;
+    },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
