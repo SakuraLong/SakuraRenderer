@@ -3,36 +3,41 @@
 */
 import QuoteParser from "./quoteParser";
 import RefParser from "./refParser";
+import DelParser from "./delParser";
+import UndParser from "./undParser";
 
-
-class TemplateParser{
-    constructor(option, content, rendererData){
+class TemplateParser {
+    constructor(option, content, rendererData) {
         this.option = option;
         this.content = content;
         this.rendererData = rendererData;
-        this.parsers = [QuoteParser, RefParser];
+        this.parsers = [QuoteParser, RefParser, DelParser, UndParser];
     }
-    analyse(){
+    analyse() {
         let finish = [];
-        this.parsers.forEach((element)=>{
+        this.parsers.forEach((element) => {
             finish.push(false);
         });
         let h = 0;
-        while(!this.isFinish(finish) && h < 100000){
+        while (!this.isFinish(finish) && h < 100000) {
             h++; // 防止出现死循环
-            finish.forEach((element, index)=>{
-                if(!element){
-                    let content = new this.parsers[index](this.option, this.content, this.rendererData).analyse();
-                    if(content === this.content) finish[index] = true;
+            finish.forEach((element, index) => {
+                if (!element) {
+                    let content = new this.parsers[index](
+                        this.option,
+                        this.content,
+                        this.rendererData
+                    ).analyse();
+                    if (content === this.content) finish[index] = true;
                     this.content = content;
                 }
             });
         }
         return this.content;
     }
-    isFinish(finish){
-        for(let i=0;i<finish.length;i++){
-            if(!finish[i]) return false;
+    isFinish(finish) {
+        for (let i = 0; i < finish.length; i++) {
+            if (!finish[i]) return false;
         }
         return true;
     }

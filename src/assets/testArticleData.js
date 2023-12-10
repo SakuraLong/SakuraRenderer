@@ -47,6 +47,17 @@ const article = `
 {|para
 |-
 |{{quote|这是不错的文档渲染器|项目组}}
+|{{quote|这是不错的文档渲染器|项目组}}
+|}
+
+{|para
+|-
+|{{del|content=这是被删除的文本|color=red|size=2px}}
+|}
+
+{|para
+|-
+|{{und|content=这是被下划线的文本|color=#120132|size=5px}}
 |}
 
 {|para|type=success
