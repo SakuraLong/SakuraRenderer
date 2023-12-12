@@ -15,3 +15,5 @@ import "./mask.css";
 import "./clear.css";
 import "./quote.css";
 import "./paragraph.css";
+import "./hide.css";
+import "./blur.css";

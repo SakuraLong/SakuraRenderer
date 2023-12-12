@@ -5,13 +5,24 @@ import QuoteParser from "./quoteParser";
 import RefParser from "./refParser";
 import DelParser from "./delParser";
 import UndParser from "./undParser";
+import HideParser from "./hideParser";
+import BlurParser from "./blurParser";
+import TextParser from "./textParser";
 
 class TemplateParser {
     constructor(option, content, rendererData) {
         this.option = option;
         this.content = content;
         this.rendererData = rendererData;
-        this.parsers = [QuoteParser, RefParser, DelParser, UndParser];
+        this.parsers = [
+            QuoteParser,
+            RefParser,
+            DelParser,
+            UndParser,
+            HideParser,
+            BlurParser,
+            TextParser,
+        ];
     }
     analyse() {
         let finish = [];

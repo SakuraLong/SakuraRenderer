@@ -52,12 +52,27 @@ const article = `
 
 {|para
 |-
-|{{del|content=这是被删除的文本|color=red|size=2px}}
+|{{del|content=这是被删除的文本|color=red|size=2}}
 |}
 
 {|para
 |-
-|{{und|content=这是被下划线的文本|color=#120132|size=5px}}
+|{{und|content=这是被下划线的文本|color=#120132|size=5}}
+|}
+
+{|para
+|-
+|{{heimu|content=这是被黑幕的文本|title=这是黑幕的标题}}
+|}
+
+{|para
+|-
+|{{blur|content=这是被模糊的文本|title=这是模糊的标题|size=5}}
+|}
+
+{|para
+|-
+|{{text|content=这是模板文本|color=blue|size=25|height=25|weight=bold|bgcolor=yellow|italic=true|font=Arial}}
 |}
 
 {|para|type=success
