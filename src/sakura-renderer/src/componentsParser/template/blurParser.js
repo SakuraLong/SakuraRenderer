@@ -1,10 +1,10 @@
 // 孙锦瑞
 import Template from "./template";
 
-class UndParser extends Template {
+class BlurParser extends Template {
     constructor(option, content, rendererData) {
         super(option, content, rendererData);
-        this.name = ["und", "下划线"]; // 这个模板的名字
+        this.name = ["blur", "模糊"]; // 这个模板的名字
     }
     judge() {
         if (this.name.indexOf(this.dataList[0]) !== -1) {
@@ -17,10 +17,10 @@ class UndParser extends Template {
         // console.log("analyseTemplate:", content);
         this.dataListInit(content); // 对dataList初始化，必须要写
         if (!this.judge()) return content; // 判断是不是这个模板
-        // 以下是处理UndParser模板
+        // 以下是处理BlurParser模板
         let text = ""; // 文本内容
-        let color = "#303133"; // 颜色
-        let size = "1"; // 粗细
+        let title = ""; // 标题
+        let size = "2"; // 模糊程度
 
         const switchKeyValue = (key, value) => {
             switch (key) {
@@ -28,12 +28,12 @@ class UndParser extends Template {
                 case "内容":
                     text = value;
                     break;
-                case "color":
-                case "颜色":
-                    color = value;
+                case "title":
+                case "注释":
+                    title = value;
                     break;
                 case "size":
-                case "粗细":
+                case "范围":
                     size = value;
                     break;
             }
@@ -47,7 +47,7 @@ class UndParser extends Template {
                     else switchKeyValue(key, value);
                     break;
                 case 2:
-                    if (key === value) color = value;
+                    if (key === value) title = value;
                     else switchKeyValue(key, value);
                     break;
                 case 3:
@@ -56,19 +56,17 @@ class UndParser extends Template {
                     break;
             }
         });
-
-        let undItem =
-            "<p style='" +
-            "border-bottom: solid " +
+        let blurItem =
+            "<span title='" +
+            title +
+            "' class='sa-sr-blur-item' style='filter: blur(" +
             size +
-            "px " +
-            color +
-            ";width: fit-content;'>" +
+            "px);'>" +
             text +
-            "</p>";
+            "</span>";
 
-        return undItem; // 返回被替换的内容
+        return blurItem; // 返回被替换的内容
     }
 }
 
-export default UndParser;
+export default BlurParser;

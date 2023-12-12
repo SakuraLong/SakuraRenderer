@@ -1,3 +1,4 @@
+// 孙锦瑞
 import Template from "./template";
 
 class DelParser extends Template {
@@ -19,7 +20,7 @@ class DelParser extends Template {
         // 以下是处理DelParser模板
         let text = ""; // 文本内容
         let color = "#303133"; // 颜色
-        let size = "1px"; // 粗细
+        let size = "1"; // 粗细
 
         const switchKeyValue = (key, value) => {
             switch (key) {
@@ -60,7 +61,7 @@ class DelParser extends Template {
             "<del style='" +
             "text-decoration: line-through " +
             size +
-            " " +
+            "px " +
             color +
             ";'>" +
             text +
