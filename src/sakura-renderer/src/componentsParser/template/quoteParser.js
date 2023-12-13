@@ -36,8 +36,9 @@ class QuoteParser extends Template {
             return false;
         };
         this.dataList.forEach((data, index) => {
-            let key = data.split("=")[0];
-            let value = data.split("=")[data.split("=").length - 1];
+            const key = data.split("=")[0];
+            const left = data.indexOf("=");
+            const value = data.slice(left + 1, data.length);
             switch (index) {
                 case 1:
                     if(switchKeyValue(key, value)) break;
