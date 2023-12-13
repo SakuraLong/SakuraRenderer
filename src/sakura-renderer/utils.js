@@ -169,8 +169,8 @@ function replaceGreed(string_begin, string_end, content, func) {
     console.log(left_index_list, right_index_list);
     console.log("left_index:", left_index);
     if (left_index === -1) return res; // 匹配失败
-    left_index = left_index_list[left_index_list.length - 1];
-    right_index = right_index_list[right_index_list.length - 1];
+    left_index = left_index_list[left_index];
+    right_index = right_index_list[right_index];
     let temp = content.slice(left_index, right_index + string_end.length); // 不一定唯一，但一定是最先检索到
     console.log(left_index, right_index);
     content = content.replace(

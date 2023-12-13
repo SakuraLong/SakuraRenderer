@@ -16,6 +16,8 @@ class QuoteParser extends Template {
         console.log("analyseTemplate:", content);
         this.dataListInit(content); // 对dataList初始化，必须要写
         if(!this.judge()) return content; // 判断是不是这个模板
+        console.log("QuoteParser");
+        console.log(this.dataList);
         // 以下是处理QuoteParser模板
         let text = ""; // 文本内容
         let from = "——"; // 来源
@@ -25,28 +27,28 @@ class QuoteParser extends Template {
                 case "content":
                 case "内容":
                     text = value;
-                    break;
+                    return true;
                 case "from":
                 case "来源":
                     from += value;
-                    break;
+                    return true;
             }
+            return false;
         };
         this.dataList.forEach((data, index) => {
             let key = data.split("=")[0];
             let value = data.split("=")[data.split("=").length - 1];
             switch (index) {
                 case 1:
-                    if(key === value) text = value;
-                    else switchKeyValue(key, value);
+                    if(switchKeyValue(key, value)) break;
+                    else text = data;
                     break;
                 case 2:
-                    if(key === value) from += value;
-                    else switchKeyValue(key, value);
-                    break;
+                    if(switchKeyValue(key, value)) break;
+                    else from = data;
             }
         });
-
+        console.log(text);
         let table = document.createElement("table");
         let tbody = document.createElement("tbody");
         let tr_t = document.createElement("tr");

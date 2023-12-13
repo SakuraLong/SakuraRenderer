@@ -46,31 +46,22 @@ const test_article_data_list = [
 const article = `
 {|para
 |-
-|{{quote|这是不错的文档渲染器|项目组}}
-|{{quote|这是不错的文档渲染器|项目组}}
+|{{quote|这是不错的{{quote|这是不错的文档渲染器|项目组}}文档渲染器|项目组}}
+|{{quote|{{heimu|content=这是被黑幕的文本|title=这是黑幕的标题}}这是不错的文档渲染器|项目组}}
 |~~删除线语法测试~~
 |*斜体语法测试*
 |}
 
-{|para
-|-
-|{{del|content=这是被删除的文本|color=red|size=2}}
-|}
+{{del|这是被删除的{{del|content=这是被删除的文本|color=green|size=2}}文本|color=red|size=2}}
 
-{|para
-|-
-|{{und|content=这是被下划线的文本|color=#120132|size=5}}
-|}
+{{und|这是被下划线的文本|red|size=5}}
 
 {|para
 |-
 |{{heimu|content=这是被黑幕的文本|title=这是黑幕的标题}}
 |}
 
-{|para
-|-
-|{{blur|content=这是被模糊的文本|title=这是模糊的标题|size=5}}
-|}
+{{blur|content=这是被模糊的文本|title=这是模糊的标题|size=5}}
 
 {|para
 |-
@@ -643,8 +634,21 @@ const articleForTemplate = `
 |}
 `;
 
+const t = `
+= 测试
+{|para
+|-
+|{{quote|这是不错的{{quote|这是不错的文档渲染器|项目组}}文档渲染器|项目组}}
+|{{quote|这是不错的~~删除线语法测试~~文档渲染器|项目组}}
+|~~删除线语法测试~~
+|*斜体语法测试*
+|{{heimu|这是被黑幕的文本|这是黑幕的标题}}
+|}
+`;
+
 export default {
     test_article_data_list,
     article,
     articleForTemplate,
+    t
 };
