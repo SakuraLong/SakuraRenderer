@@ -2,12 +2,14 @@
 语法解析器
 */
 import MathParser from "./mathParser";
+import DelParser from "./delParser";
+import ItalicParser from "./italicParser";
 
 class GrammerParser {
     constructor(option, content) {
         this.option = option;
         this.content = content;
-        this.parsers = [MathParser];
+        this.parsers = [MathParser, DelParser, ItalicParser];
     }
     analyse() {
         let finish = [];
