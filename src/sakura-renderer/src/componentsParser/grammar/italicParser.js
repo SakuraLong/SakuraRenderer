@@ -1,10 +1,10 @@
-class DelParser {
+class ItalicParser {
     constructor(option, content) {
         this.option = option;
         this.content = content;
     }
     replaceDoubleTilde(inputText) {
-        const replacedText = inputText.replace(/~~([^~]+)~~/g, "<del>$1</del>");
+        const replacedText = inputText.replace(/\*([^~]+)\*/g, "<i>$1</i>");
 
         return replacedText;
     }
@@ -14,4 +14,4 @@ class DelParser {
     }
 }
 
-export default DelParser;
+export default ItalicParser;
