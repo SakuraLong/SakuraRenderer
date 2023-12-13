@@ -15,6 +15,7 @@ class Template {
             this.strRight,
             this.content,
             (data) => {
+                console.log(data);
                 return this.analyseTemplate(data.replace);
             }
         ).content;

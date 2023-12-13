@@ -30,8 +30,10 @@ class TemplateParser {
             finish.push(false);
         });
         let h = 0;
+        let hasChange = false;
         while (!this.isFinish(finish) && h < 100000) {
             h++; // 防止出现死循环
+            hasChange = false;
             finish.forEach((element, index) => {
                 if (!element) {
                     let content = new this.parsers[index](
@@ -39,10 +41,11 @@ class TemplateParser {
                         this.content,
                         this.rendererData
                     ).analyse();
-                    if (content === this.content) finish[index] = true;
+                    if (content !== this.content) hasChange = true;
                     this.content = content;
                 }
             });
+            if(!hasChange) break;
         }
         return this.content;
     }
