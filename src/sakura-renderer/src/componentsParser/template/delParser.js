@@ -39,20 +39,21 @@ class DelParser extends Template {
             }
         };
         this.dataList.forEach((data, index) => {
-            let key = data.split("=")[0];
-            let value = data.split("=")[data.split("=").length - 1];
+            const key = data.split("=")[0];
+            const left = data.indexOf("=");
+            const value = data.slice(left + 1, data.length);
             switch (index) {
                 case 1:
-                    if (key === value) text = value;
-                    else switchKeyValue(key, value);
+                    if (switchKeyValue(key, value)) break;
+                    else text = data;
                     break;
                 case 2:
-                    if (key === value) color = value;
-                    else switchKeyValue(key, value);
+                    if (switchKeyValue(key, value)) break;
+                    else color = data;
                     break;
                 case 3:
-                    if (key === value) size = value;
-                    else switchKeyValue(key, value);
+                    if (switchKeyValue(key, value)) break;
+                    else size = data;
                     break;
             }
         });
