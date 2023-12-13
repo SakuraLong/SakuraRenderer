@@ -1,6 +1,5 @@
 /*
 列表解析器
-边俣
 */
 import ComponentsParser from "./componentParser";
 class ListParser extends ComponentsParser {
@@ -303,15 +302,6 @@ class ListParser extends ComponentsParser {
                 }
             });
         }
-        // let optionData = {
-        //     name:"让我测一下"
-        // };
-        // for (let key in this.template.data.option) {
-        //     this.template.data.option[key] =
-        //         optionData[key] === undefined
-        //             ? this.template.data.option[key]
-        //             : optionData[key];
-        // }
         return {
             type: "success",
             msg: "",

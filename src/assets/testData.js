@@ -61,7 +61,7 @@ const testData =
 
 == 测试模板
 
-{{quote|这是一个引用模板|项目组}}
+{{quote|1|1}}1{{quote|1|1}}
 
 = 测试列表
 

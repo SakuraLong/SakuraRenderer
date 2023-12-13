@@ -44,9 +44,10 @@ console.log("\\|");
 // console.log(Object.hasOwnProperty.call(t, "abc"));
 
 const funcTest = () => {
-    let end = 157;
+    let end = 107;
     let liList = [];
     let full = 0;
+    let liClass = "sc-eZKMGy isJOBp";
     let timer = setInterval(() => {
         if(full > 100*10*60){
             clearInterval(timer);
@@ -55,17 +56,17 @@ const funcTest = () => {
         full += 100;
         for (
             let i = 0;
-            i < document.getElementsByClassName("sc-bjztBV fHWcSU").length;
+            i < document.getElementsByClassName(liClass).length;
             i++
         ) {
             let index = parseInt(
                 document
-                    .getElementsByClassName("sc-bjztBV fHWcSU")[i].childNodes[0].childNodes[2].getAttribute(
+                    .getElementsByClassName(liClass)[i].childNodes[0].childNodes[2].getAttribute(
                         "data-page-number"
                     )
             );
             liList[index] =
-                document.getElementsByClassName("sc-bjztBV fHWcSU")[i].childNodes[0].childNodes[0].childNodes[0].outerHTML;
+                document.getElementsByClassName(liClass)[i].childNodes[0].childNodes[0].childNodes[0].outerHTML;
             if (index === end) {
                 clearInterval(timer);
                 let res = "";
