@@ -62,16 +62,17 @@ class TextParser extends Template {
         };
 
         this.dataList.forEach((data, index) => {
-            let key = data.split("=")[0];
-            let value = data.split("=")[data.split("=").length - 1];
+            const key = data.split("=")[0];
+            const left = data.indexOf("=");
+            const value = data.slice(left + 1, data.length);
             switch (index) {
                 case 1:
-                    if (key === value) text = value;
-                    else switchKeyValue(key, value);
+                    if (switchKeyValue(key, value)) break;
+                    else text = data;
                     break;
                 default:
-                    if (key === value) text = value;
-                    else switchKeyValue(key, value);
+                    if (switchKeyValue(key, value)) break;
+                    else text = data;
                     break;
             }
         });
