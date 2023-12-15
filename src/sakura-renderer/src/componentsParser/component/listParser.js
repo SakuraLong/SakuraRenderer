@@ -27,7 +27,7 @@ class ListParser extends ComponentsParser {
         }; // 标题段落配置
     }
     getLevelAndType(item) {
-        const level = item.match(/^(\*+|\++|-+)/)?.[0].length || 0;
+        const level = item.match(/^(\*+|\++|-+)/)?.[0].length;
         if (level !== 0) {
             if (item.match(/^(\*+|\++|-+)/)?.[0].endsWith("+")) {
                 return [level, true];
