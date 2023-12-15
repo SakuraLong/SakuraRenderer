@@ -20,11 +20,11 @@ class TemplateParser {
             QuoteParser,
             RefParser,
             DelParser,
+            BoldParser,
             UndParser,
             HideParser,
             BlurParser,
             TextParser,
-            BoldParser,
         ];
     }
     analyse() {

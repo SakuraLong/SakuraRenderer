@@ -60,14 +60,13 @@ class BoldParser extends Template {
 
         let boldItem =
             "<bold style='" +
-            "font-weight: bold " +
+            "font-weight: bold; font-size: " +
             size +
-            "px " +
+            "px; color: " +
             color +
             ";'>" +
             text +
             "</bold>";
-
         return boldItem; // 返回被替换的内容
     }
 }
