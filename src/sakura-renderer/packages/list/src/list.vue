@@ -283,7 +283,6 @@ export default {
         },
     },
     mounted() {
-        console.log(this.data.listData);
         this.listData = this.data.listData;
         if (this.data.option.ordered_mode === "number") {
             this.render(
