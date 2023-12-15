@@ -4,12 +4,13 @@
 import MathParser from "./mathParser";
 import DelParser from "./delParser";
 import ItalicParser from "./italicParser";
+import BoldParser from "./boldParser";
 
 class GrammerParser {
     constructor(option, content) {
         this.option = option;
         this.content = content;
-        this.parsers = [MathParser, DelParser, ItalicParser];
+        this.parsers = [MathParser, DelParser,BoldParser,ItalicParser];
     }
     analyse() {
         let finish = [];
