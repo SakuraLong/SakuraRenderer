@@ -59,14 +59,14 @@ class BoldParser extends Template {
         });
 
         let boldItem =
-            "<bold style='" +
+            "<p style='" +
             "font-weight: bold; font-size: " +
             size +
             "px; color: " +
             color +
             ";'>" +
             text +
-            "</bold>";
+            "</p>";
         return boldItem; // 返回被替换的内容
     }
 }

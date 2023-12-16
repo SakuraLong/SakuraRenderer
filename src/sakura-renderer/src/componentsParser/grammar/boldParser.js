@@ -4,7 +4,7 @@ class BoldParser {
         this.content = content;
     }
     replaceDoubleTilde(inputText) {
-        const replacedText = inputText.replace(/!([^~]+)!/g, "<bold>$1</bold>");
+        const replacedText = inputText.replace(/!([^~]+)!/g, "<b>$1</b>");
 
         return replacedText;
     }
