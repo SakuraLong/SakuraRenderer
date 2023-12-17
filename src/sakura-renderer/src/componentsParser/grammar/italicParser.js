@@ -4,7 +4,7 @@ class ItalicParser {
         this.content = content;
     }
     replaceDoubleTilde(inputText) {
-        const replacedText = inputText.replace(/\*([^~]+)\*/g, "<i>$1</i>");
+        const replacedText = inputText.replace(/\*([^*]+)\*/g, "<i>$1</i>");
 
         return replacedText;
     }

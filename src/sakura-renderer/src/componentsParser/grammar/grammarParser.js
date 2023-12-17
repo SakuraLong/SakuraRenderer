@@ -16,17 +16,20 @@ class GrammerParser {
         this.parsers.forEach((element) => {
             finish.push(false);
         });
+        let hasChange = false;
         while (!this.isFinish(finish)) {
+            hasChange = false;
             finish.forEach((element, index) => {
                 if (!element) {
                     let content = new this.parsers[index](
                         this.option,
                         this.content
                     ).analyse();
-                    if (content === this.content) finish[index] = true;
+                    if (content !== this.content) hasChange = true;
                     this.content = content;
                 }
             });
+            if(!hasChange) break;
         }
         return this.content;
     }

@@ -56,11 +56,11 @@ export default {
     methods: {
         render() {},
         scrollTo(data1, data2){
-            console.log("scrolllll");
             if(!data2){
+                console.log("scrolllll1");
                 this.$refs.sr_scrollbar.scrollTo(data1);
             }else{
-                console.log("scrolllll");
+                console.log("scrolllll2");
                 this.$refs.sr_scrollbar.scrollTo(data1, data2);
             }
         }

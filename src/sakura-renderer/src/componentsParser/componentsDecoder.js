@@ -91,14 +91,32 @@ class ComponentsDecoder {
         }
         // 组件处理完毕
         // 向列表加入头尾
-
+        console.log(this.rendererData);
+        const listData = this.refListData();
+        const refTitle = new TitleParser("", {}).analysePro("注释", "h1", {});
+        const refList = new ListParser("", {}).analysePro(listData, {});
+        templateList.push(refTitle.content);
+        templateList.push(refList.content);
         // 处理目录
         const cataMenu = new CataParser(this.option, templateList).analyse();
         console.log(templateList);
         console.log(cataMenu);
         return { templateList: templateList, cataMenu: cataMenu };
     }
-    
+    refListData() {
+        const listData = [];
+        const refListData = this.rendererData.ref.refList;
+        refListData.forEach((data) => {
+            const temp = {
+                children: [],
+                level: 1,
+                order_judge: true,
+                text: data
+            };
+            listData.push(temp);
+        });
+        return listData;
+    }
 }
 
 export default ComponentsDecoder;

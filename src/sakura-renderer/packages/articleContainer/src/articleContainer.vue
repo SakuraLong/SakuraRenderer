@@ -139,7 +139,6 @@ export default {
     },
     beforeUnmount() {
         // 事件解绑
-        let that = this;
         this.scrollDomEvent.removeEventListener("scroll", this.pageScroll); // 解绑scroll事件
         this.scrollDomEvent.removeEventListener("wheel", this.onWheel); // 解绑wheel事件
     },
@@ -165,6 +164,7 @@ export default {
          * @param {Object} event event
          */
         pageScroll(event) {
+            console.log("pageScroll");
             const getElementTop = (elem) => {
                 let elemTop = elem.offsetTop; // 获取当前元素顶部距离父元素顶部的距离
                 let parentElem = elem.offsetParent; // 获取当前元素的父元素

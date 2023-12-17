@@ -46,7 +46,7 @@ class QuoteParser extends Template {
                     break;
                 case 2:
                     if(switchKeyValue(key, value)) break;
-                    else from = data;
+                    else from += data;
             }
         });
         console.log(text);

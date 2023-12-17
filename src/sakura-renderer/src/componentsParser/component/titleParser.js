@@ -138,6 +138,26 @@ class TitleParser extends ComponentsParser {
             content: this.template,
         };
     }
+    analysePro(content, type, option) {
+        this.template.data.option = Object.assign(
+            this.template.data.option,
+            this.baseOption
+        ); // 合并baseOption
+        this.template.data.content = content;
+        this.template.data.option.id = content;
+        this.template.data.type = type;
+        for (let key in this.template.data.option) {
+            this.template.data.option[key] =
+                option[key] === undefined
+                    ? this.template.data.option[key]
+                    : option[key];
+        }
+        return {
+            type: "success",
+            msg: "",
+            content: this.template,
+        };
+    }
 }
 
 export default TitleParser;

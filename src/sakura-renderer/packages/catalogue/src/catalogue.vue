@@ -131,6 +131,7 @@ export default {
             // 目录需要滚动
             let cataId = "sa-cata-id-" + data.id;
             this.scrollToElementById(cataId);
+            console.log("clickLink", data);
         },
         clickCata(cataId, id) {
             let data = {
@@ -145,7 +146,7 @@ export default {
             let viewHeight = this.$refs.saCataView.clientHeight;
             this.$refs.scrollbar.scrollTo({
                 top: offsetTop + elementHeight / 2 - viewHeight / 2,
-                behavior: "smooth",
+                behavior: "instant",
             });
             this.$refs.saCataShadow.style.top = offsetTop.toString() + "px";
             this.$refs.saCataShadow.style.height = document.getElementById(this.nowCataId).clientHeight.toString() + "px";
