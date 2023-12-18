@@ -29,9 +29,7 @@ class SakuraRenderer {
      * @param {String} article
      */
     setArticle(article) {
-        console.log("设置文章", typeof article);
         if (typeof article !== "string") return false;
-        console.log("设置文章");
         this.article = article;
         if (this.edit) {
             // 编辑模式需要根据这个输入返回对应的html
@@ -81,7 +79,6 @@ class SakuraRenderer {
         this.articleData.body = decodeRes.body;
         // 配置项处理
         let option = {};
-        // console.log(articleDecoder.componentsList);
 
         let componentsDecoder = new ComponentsDecoder(
             option,

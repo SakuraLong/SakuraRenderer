@@ -1,4 +1,3 @@
-//边俣
 class undParser {
     constructor(option, content) {
         this.option = option;

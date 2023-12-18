@@ -52,7 +52,6 @@ export default {
         },
     },
     mounted() {
-        console.log(this.data);
         this.$refs.srAlbum.style.clear = this.data.option.clear;
         this.$refs.srAlbum.style.color = this.data.option.color;
         this.$refs.srAlbum.style.maxHeight = this.data.option.maxHeight;
@@ -101,13 +100,6 @@ export default {
                     this.data.option.width;
             }
         }
-        // if (
-        //     this.$refs.srAlbum_preview_img.style.width !== "auto" &&
-        //     this.data.option.imgHeight !== "auto"
-        //     // 如果内部img设置了宽度并且外部没有设置高度
-        // ) {
-        //     this.$refs.srAlbum_preview_img.style.width = "auto";
-        // }
         this.$refs.srAlbum.style.height = this.data.option.height;
         this.data.option.classList.forEach((className) => {
             this.$refs.srAlbum.classList.add(className);

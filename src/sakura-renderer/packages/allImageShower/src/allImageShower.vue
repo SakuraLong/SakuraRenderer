@@ -36,12 +36,10 @@ export default {
         };
     },
     mounted() {
-        // console.log(this.data);
         this.setStyles();
     },
     methods: {
         setStyles() {
-            console.log(this.data.option);
             if (this.data.option.float === "center") {
                 this.$refs.srAllImage.classList.add("sa-all-image--center");
             } else if (this.data.option.float === "left") {
@@ -83,7 +81,6 @@ export default {
                     image.classList.remove("show");
                 }
             });
-            console.log(this.containerStyle);
         },
         showModal(index) {
             this.currentIndex= index;

@@ -14,7 +14,6 @@ class DelParser extends Template {
         }
     }
     analyseTemplate(content) {
-        // console.log("analyseTemplate:", content);
         this.dataListInit(content); // 对dataList初始化，必须要写
         if (!this.judge()) return content; // 判断是不是这个模板
         // 以下是处理DelParser模板

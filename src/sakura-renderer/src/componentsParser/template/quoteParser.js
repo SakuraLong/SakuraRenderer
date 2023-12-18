@@ -13,11 +13,8 @@ class QuoteParser extends Template {
         }
     }
     analyseTemplate(content) {
-        console.log("analyseTemplate:", content);
         this.dataListInit(content); // 对dataList初始化，必须要写
         if(!this.judge()) return content; // 判断是不是这个模板
-        console.log("QuoteParser");
-        console.log(this.dataList);
         // 以下是处理QuoteParser模板
         let text = ""; // 文本内容
         let from = "——"; // 来源
@@ -46,10 +43,9 @@ class QuoteParser extends Template {
                     break;
                 case 2:
                     if(switchKeyValue(key, value)) break;
-                    else from = data;
+                    else from += data;
             }
         });
-        console.log(text);
         let table = document.createElement("table");
         let tbody = document.createElement("tbody");
         let tr_t = document.createElement("tr");

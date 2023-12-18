@@ -3,10 +3,19 @@
 */
 
 class ComponentsParser {
-    constructor(component, option, rendererData) {
+    constructor(component, option, param = {}) {
         this.component = component.trim();
         this.option = option;
-        this.rendererData = rendererData;
+        this.param = param;
+        this.TDecode = param.TDecode; // 模板
+        this.MDecode = param.MDecode; // 模块
+        this.GDecode = param.GDecode; // 语法
+        this.ignoreReplaceList = param.ignoreReplaceList === undefined ? [] : param.ignoreReplaceList;
+        this.codeReplaceList = param.codeReplaceList === undefined ? [] : param.codeReplaceList;
+        this.poemReplaceList = param.poemReplaceList === undefined ? [] : param.poemReplaceList;
+        this.replaceIgnore = this.replace(this.ignoreReplaceList);
+        this.replaceCode = this.replace(this.codeReplaceList);
+        this.replacePoem = this.replace(this.poemReplaceList);
         this.type = ""; // 类型
         this.dataList = []; // 数据列表
         this.componentBaseOption = {}; // 需要修改的默认值
@@ -129,6 +138,11 @@ class ComponentsParser {
         // 初始化，如果不是{||}不影响，因为不是{||}格式不会调用dataList
         let component = this.component;
         component = component.slice(2, -2); // 去掉{||}
+        component = this.replacePoem(component);
+        if(this.TDecode) 
+            component = this.TDecode(component);
+        if(this.MDecode) 
+            component = this.MDecode(component);
         component = component.replace(/\n/g, ""); // 去掉所有换行符
         let dataList = component.split("|"); // 分割数据
         for (let i = 0; i < dataList.length; i++) {
@@ -136,18 +150,13 @@ class ComponentsParser {
         }
         this.dataList = dataList;
     }
-    replace(ignoreReplaceList, codeReplaceList, poemReplaceList, content) {
-        content = content.replace(/\n/g, "");
-        codeReplaceList.forEach((codeData) => {
-            content = content.replace(codeData.key, codeData.value);
-        });
-        poemReplaceList.forEach((poemData) => {
-            content = content.replace(poemData.key, poemData.value);
-        });
-        ignoreReplaceList.forEach((ignoreData) => {
-            content = content.replace(ignoreData.key, ignoreData.value);
-        });
-        return content;
+    replace(replaceList) {
+        return function(content) {
+            replaceList.forEach((data) => {
+                content = content.replace(data.key, data.value);
+            });
+            return content;
+        };
     }
     analyseImageShowerOption(){
         // 解析imageShowerOption

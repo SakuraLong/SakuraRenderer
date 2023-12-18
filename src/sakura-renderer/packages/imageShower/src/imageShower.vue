@@ -69,7 +69,6 @@ export default {
         };
     },
     mounted() {
-        console.log(this.imgList);
         document.body.style.overflow = "hidden"; // 阻止页面滚动
         try {
             this.imgList.forEach((imgData, index) => {

@@ -6,8 +6,8 @@ import ComponentsParser from "./componentParser";
 import utils from "../../../utils";
 
 class TableParser extends ComponentsParser {
-    constructor(component, option) {
-        super(component, option);
+    constructor(component, option, param) {
+        super(component, option, param);
         this.contentNone = ["sr-none"]; // 内容是这些的表格为空
         this.name = ["table", "表格"];
         this.template = {
@@ -36,13 +36,7 @@ class TableParser extends ComponentsParser {
             return false;
         }
     }
-    /**
-     * 
-     * @param {Object} ignoreReplaceList ignore的key-value
-     * @param {Object} codeReplaceList code的key-value
-     * @param {Object} poemReplaceList poem的key-value
-     */
-    analyse(ignoreReplaceList = [], codeReplaceList = [], poemReplaceList = []) {
+    analyse() {
         this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
         let divideIndexList = [];
         let optionList = []; // 配置项列表
@@ -158,7 +152,9 @@ class TableParser extends ComponentsParser {
                     }
                 });
                 tempDataDict.content = this.contentNone.indexOf(tempDataDict.content) !== -1 ? "" : tempDataDict.content; // 是否是空表格
-                tempDataDict.content = this.replace(ignoreReplaceList, codeReplaceList, poemReplaceList, tempDataDict.content);
+                tempDataDict.content = this.GDecode(tempDataDict.content);
+                tempDataDict.content = this.replaceCode(tempDataDict.content); // 替换code
+                tempDataDict.content = this.replaceIgnore(tempDataDict.content); // 替换ignore
                 tempRowDataDict.rowData.push(tempDataDict);
             });
             this.template.data.tableData.push(tempRowDataDict);

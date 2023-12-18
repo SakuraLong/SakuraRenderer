@@ -3,8 +3,8 @@
 */
 import ComponentsParser from "./componentParser";
 class ListParser extends ComponentsParser {
-    constructor(component, option) {
-        super(component, option);
+    constructor(component, option, param) {
+        super(component, option, param);
         this.default = false; // 是否是组件模板（是否是{||}包裹）
         this.name = ["list", "列表"];
         this.template = {
@@ -109,12 +109,9 @@ class ListParser extends ComponentsParser {
             this.template.data.content
         );
         this.template.data.listData.forEach((item) => {
-            item.text = this.replace(
-                ignoreReplaceList,
-                codeReplaceList,
-                poemReplaceList,
-                item.text
-            );
+            item.text = this.GDecode(item.text);
+            item.text = this.replaceCode(item.text); // 替换code
+            item.text = this.replaceIgnore(item.text); // 替换ignore
         });
         // for (var key in this.template.data.option) {
         //     if (this.template.data.option.prototype.hasOwnProperty.call(this.template.data.option,key) && dataObject.optionData.prototype.hasOwnProperty.call(dataObject.optionData.prototype,key)) {

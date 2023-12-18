@@ -7,11 +7,12 @@
 <script>
 import testArticleData from "./assets/testArticleData";
 import testData from "./assets/testData";
+import readme from "./assets/readme";
 export default {
     mounted() {
-        console.log("文章初始化");
+        console.log("文章初始化", readme.readme);
         // this.$refs.render.setArticle(testData.testData);
-        this.$refs.render.setArticle(testArticleData.article);
+        this.$refs.render.setArticle(readme.readme);
         this.$refs.render.render();
     },
 };

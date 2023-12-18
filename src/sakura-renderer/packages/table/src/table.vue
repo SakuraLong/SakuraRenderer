@@ -123,7 +123,6 @@ export default {
     },
     methods: {
         render() {
-            // console.log(this.data);
             const tableContainer = this.$refs.sr_table_container;
             tableContainer.style.clear = this.data.option.clear; // clear
             const tableBody = this.$refs.sr_table_body;
@@ -222,10 +221,7 @@ export default {
             });
             if (hasHead) this.$refs.sr_table.appendChild(thead);
             table.appendChild(tbody);
-
             this.tableName = this.data.option.name; // 表格名字
-
-            // this.$refs.sr_table_button.style.width = table.clientWidth;
         },
         clickButton() {
             this.showTable = !this.showTable;

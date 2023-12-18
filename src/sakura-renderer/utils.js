@@ -156,9 +156,7 @@ function replaceGreed(string_begin, string_end, content, func) {
     left_index = -1;
     right_index = -1;
     for(let i = 0; i < right_index_list.length; i++) {
-        console.log(right_index_list[i]);
         for(let j = 0; j < left_index_list.length; j++) {
-            console.log(right_index_list[i], left_index_list[j]);
             if(right_index_list[i] > left_index_list[j]) left_index = j;
         }
         if(left_index !== -1) {
@@ -166,13 +164,10 @@ function replaceGreed(string_begin, string_end, content, func) {
             break;
         }
     }
-    console.log(left_index_list, right_index_list);
-    console.log("left_index:", left_index);
     if (left_index === -1) return res; // 匹配失败
     left_index = left_index_list[left_index];
     right_index = right_index_list[right_index];
     let temp = content.slice(left_index, right_index + string_end.length); // 不一定唯一，但一定是最先检索到
-    console.log(left_index, right_index);
     content = content.replace(
         temp,
         func({

@@ -1,5 +1,5 @@
 /* 基础色 */
-:root{
+/* :root{
     --sa-color-primary-base: #409EFF;
     --sa-color-primary-dark-2: #66b1ff;
     --sa-color-primary-light-3: #3375b9;
@@ -7,6 +7,15 @@
     --sa-color-primary-light-7: #213d5b;
     --sa-color-primary-light-8: #1d3043;
     --sa-color-primary-light-9: #18222c;
+} */
+:root{
+    --sa-color-primary-base: #FF94D8;
+    --sa-color-primary-dark-2: #AD4E8C;
+    --sa-color-primary-light-3: #FFB3E7;
+    --sa-color-primary-light-5: #FFC8EF;
+    --sa-color-primary-light-7: #FFDCF5;
+    --sa-color-primary-light-8: #FFE6F7;
+    --sa-color-primary-light-9: #FFEFF9;
 }
 /* 辅助色 */
 :root{
@@ -50,7 +59,8 @@
 }
 
 :root{
-    --sa-color-primary-rgb: 64, 158, 255;
+    /* --sa-color-primary-rgb: 64, 158, 255; */
+    --sa-color-primary-rgb: 255, 148, 216;
     --sa-color-success-rgb: 103, 194, 58;
     --sa-color-warning-rgb: 230, 162, 60;
     --sa-color-danger-rgb: 245, 108, 108;

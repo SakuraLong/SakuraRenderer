@@ -1,3 +1,7 @@
+/**
+ * 弃用
+ */
+
 class Code extends HTMLElement {
     constructor() {
         super();

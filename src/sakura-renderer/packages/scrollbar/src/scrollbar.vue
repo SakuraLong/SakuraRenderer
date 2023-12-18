@@ -49,18 +49,13 @@ export default {
             viewWidth = view.clientWidth > viewWidth ? view.clientWidth : viewWidth;
             viewHeight += view.clientHeight;
         });
-        // console.log(viewList);
-        // console.log(viewWidth);
-        // console.log(viewHeight);
     },
     methods: {
         render() {},
         scrollTo(data1, data2){
-            console.log("scrolllll");
             if(!data2){
                 this.$refs.sr_scrollbar.scrollTo(data1);
             }else{
-                console.log("scrolllll");
                 this.$refs.sr_scrollbar.scrollTo(data1, data2);
             }
         }

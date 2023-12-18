@@ -96,7 +96,6 @@ export default {
         };
     },
     mounted() {
-        // console.log(this.data);
         if (this.data.option.float === "center") {
             this.setCenter = true;
             this.$refs.srCarousell.classList.add("sa-carousell--center");
@@ -221,7 +220,6 @@ export default {
                 );
                 if (img.naturalWidth > maxwidth) {
                     maxwidth = img.naturalWidth;
-                    // console.log(img.naturalWidth);
                 } else if (img.naturalHeight > maxheight) {
                     maxheight = img.naturalHeight;
                 }
@@ -230,13 +228,11 @@ export default {
                 }
             }
             if (!this.setWidth) {
-                // console.log(maxwidth);
                 if (!this.setCenter) {
                     this.$refs.srCarousell.style.width = maxwidth + "px";
                 }
             }
             if (!this.setHeight) {
-                // console.log(maxheight);
                 this.$refs.srCarousell.style.height = maxheight + "px";
             }
         },

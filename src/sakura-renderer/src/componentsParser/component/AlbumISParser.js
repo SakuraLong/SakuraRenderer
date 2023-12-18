@@ -63,17 +63,13 @@ class AlbumISParser extends ImageShowerParser {
                 let temp = styleELe.trim();
                 let key = temp.split("=")[0].trim();
                 let value = temp.split("=")[temp.split("=").length - 1].trim();
-                console.log(key,value);
                 switch (key) {
                     case "name":
                         this.template.data.name = value;
-                        console.log(value);
                         break;
                     case "index":
-                        console.log(value);
                         if(Number.isInteger(Number(value))){
                             this.template.data.option.index = parseInt(value);
-                            console.log("asfsfs",this.template.data.option.index);
                         }
                         break;
                     default:
@@ -81,7 +77,6 @@ class AlbumISParser extends ImageShowerParser {
                 }
             });
         }
-        console.log(this.template.data);
         return {
             type: "success",
             msg: "",
