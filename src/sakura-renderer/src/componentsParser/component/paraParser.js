@@ -91,18 +91,24 @@ class ParaParser extends ComponentsParser{
                         this.template.data.option.border = value;
                         break;
                     case "success":
+                    case "s":
+                        this.template.data.option.type = "success";
+                        this.template.data.option.title=this.template.data.option.type.toUpperCase();
+                        break;
                     case "warning":
+                    case "w":
+                        this.template.data.option.type = "warning";
+                        this.template.data.option.title=this.template.data.option.type.toUpperCase();
+                        break;
                     case "tip":
+                    case "t":
+                        this.template.data.option.type = "tip";
+                        this.template.data.option.title=this.template.data.option.type.toUpperCase();
+                        break;
                     case "info":
-                        if(value===key){
-                            if(["default", "success","warning","tip","info"].indexOf(value.toLowerCase()) !== -1){
-                                console.log(["default", "success","warning","tip","info"].indexOf(value));
-                                this.template.data.option.type = value;
-                                this.template.data.option.title=this.template.data.option.type.toUpperCase();
-                            }else if(key === value){
-                                this.template.data.option.type = "default";
-                            }
-                        }
+                    case "i":
+                        this.template.data.option.type = "info";
+                        this.template.data.option.title=this.template.data.option.type.toUpperCase();
                         break;
                     case "type":
                         if(["default", "success","warning","tip","info"].indexOf(value.toLowerCase()) !== -1){
