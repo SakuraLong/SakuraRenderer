@@ -50,8 +50,8 @@ class ComponentsParser {
         return {};
     }
     analyseBaseOption() {
-        this.analyseImageShowerOption(); // 如果有imageShowerOption
         this.changeBaseOption(); // 检查子类是否要修改默认baseOption
+        this.analyseImageShowerOption(); // 如果有imageShowerOption
         let divideIndex = this.dataList.indexOf("-");
         for(let i = 1; i < divideIndex; i++) {
             let data = this.dataList[i];

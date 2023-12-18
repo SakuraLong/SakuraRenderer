@@ -48,7 +48,7 @@ class ImageShowerParser extends ComponentsParser {
                 case "IMW":
                     // this.imageShowerOption.imgMaxWidth = [];
                     // this.imageShowerOption.imgMaxWidth = this.imgDataAnalyse(value.split(";"));
-                    this.imageShowerOption.imgMaxWidth =  value;
+                    this.imageShowerOption.imgMaxWidth = value;
                     break;
                 case "imgMaxHeight":
                 case "IMH":
