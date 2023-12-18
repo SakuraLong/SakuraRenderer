@@ -1,11 +1,12 @@
-class ItalicParser {
+//边俣
+class BIParser {
     constructor(option, content) {
         this.option = option;
         this.content = content;
     }
     replaceDoubleTilde(inputText) {
-        const replacedText = inputText.replace(/\*([^*]+)\*/g, "<i>$1</i>");
-        console.log(replacedText);
+        const replacedText = inputText.replace(/~\*(.*?)\*~/g, "<strong><i>$1</i></strong>");
+
         return replacedText;
     }
     analyse() {
@@ -14,4 +15,4 @@ class ItalicParser {
     }
 }
 
-export default ItalicParser;
+export default BIParser;

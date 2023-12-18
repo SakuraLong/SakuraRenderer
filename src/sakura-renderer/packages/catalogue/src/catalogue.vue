@@ -46,24 +46,13 @@ export default {
         };
     },
     mounted() {
-        // let data = [1, 1, 2, 3, 3, 3, 4, 5, 4, 1, 2];
-        // let res = [];
-        // let i = 0;
-        // const cal = (nowLevel, childrenList, data) => {
-        //     if(data <= nowLevel) return;
-        //     for(let j = 0; )
-        // };
         window.addEventListener("resize", this.windowResize);
-        // window.addEventListener("wheel", (event) => {
-        //     console.log(event);
-        // });
     },
     beforeUnmount() {
         window.removeEventListener("resize", this.windowResize);
     },
     methods: {
         render(dataList) {
-            // console.log(dataList);
             let ol = document.createElement("ol");
             ol.classList.add("sa-cata-ol");
             ol.classList.add("sa-cata-ol-root");
@@ -131,7 +120,6 @@ export default {
             // 目录需要滚动
             let cataId = "sa-cata-id-" + data.id;
             this.scrollToElementById(cataId);
-            console.log("clickLink", data);
         },
         clickCata(cataId, id) {
             let data = {
@@ -146,7 +134,7 @@ export default {
             let viewHeight = this.$refs.saCataView.clientHeight;
             this.$refs.scrollbar.scrollTo({
                 top: offsetTop + elementHeight / 2 - viewHeight / 2,
-                behavior: "instant",
+                behavior: "smooth",
             });
             this.$refs.saCataShadow.style.top = offsetTop.toString() + "px";
             this.$refs.saCataShadow.style.height = document.getElementById(this.nowCataId).clientHeight.toString() + "px";

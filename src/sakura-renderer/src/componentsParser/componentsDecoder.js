@@ -40,29 +40,47 @@ class ComponentsDecoder {
                 amount: 0, // 参考的数量
                 refList: [], // 底部ref的渲染列表
             },
+            title: {
+                idMap: new Map(), // 标题id
+            }
         }; // 全局渲染需要的数据
     }
     decode() {
-        // 此处进行模板和模块和语法解析器解析
-        for (let i = 0; i < this.componentsList.length; i++) {
-            this.componentsList[i] = new GrammerParser(
-                this.option,
-                this.componentsList[i],
-                this.rendererData
-            ).analyse(); // 调用语法解析器解析
-            this.componentsList[i] = new TemplateParser(
-                this.option,
-                this.componentsList[i],
-                this.rendererData
-            ).analyse(); // 调用模板解析器解析
-            this.componentsList[i] = new ModuleParser(
-                this.option,
-                this.componentsList[i],
-                this.rendererData
-            ).analyse(); // 调用模块解析器解析
-        }
         this.componentsList = this.listDecode(); // 组件拆分
         return this.componentsList;
+    }
+    /**
+     * 模板模块解析器
+     */
+    TDecode(content) {
+        const self = this;
+        content = new TemplateParser(
+            self.option,
+            content,
+            self.rendererData
+        ).analyse(); // 调用模板解析器解析
+        return content;
+    }
+    MDecode(content) {
+        const self = this;
+        content = new ModuleParser(
+            self.option,
+            content,
+            self.rendererData
+        ).analyse(); // 调用模块解析器解析
+        return content;
+    }
+    /**
+     * 语法
+     */
+    GDecode(content) {
+        const self = this;
+        content = new GrammerParser(
+            self.option,
+            content,
+            self.rendererData
+        ).analyse(); // 调用语法解析器解析
+        return content;
     }
     /**
      * 处理组件列表
@@ -75,15 +93,19 @@ class ComponentsDecoder {
                 const t = new this.parsers[j](
                     componentsList[i],
                     this.option,
-                    this.rendererData
+                    {
+                        TDecode: this.TDecode,
+                        MDecode: this.MDecode,
+                        GDecode: this.GDecode,
+                        ignoreReplaceList: this.ignoreReplaceList,
+                        codeReplaceList: this.codeReplaceList,
+                        poemReplaceList: this.poemReplaceList,
+                        rendererData: this.rendererData
+                    }
                 );
                 if (!t.judge()) continue;
                 t.analyseBaseOption();
-                const template = t.analyse(
-                    this.ignoreReplaceList,
-                    this.codeReplaceList,
-                    this.poemReplaceList
-                );
+                const template = t.analyse();
                 if (template.type === "success") {
                     templateList.push(template.content);
                 }
@@ -91,16 +113,17 @@ class ComponentsDecoder {
         }
         // 组件处理完毕
         // 向列表加入头尾
-        console.log(this.rendererData);
         const listData = this.refListData();
-        const refTitle = new TitleParser("", {}).analysePro("注释", "h1", {});
-        const refList = new ListParser("", {}).analysePro(listData, {});
-        templateList.push(refTitle.content);
-        templateList.push(refList.content);
+        if(listData.length > 0) {
+            const refTitle = new TitleParser("", {}).analysePro("注释", "h1", {});
+            const refList = new ListParser("", {}).analysePro(listData, {});
+            templateList.push(refTitle.content);
+            templateList.push(refList.content);
+        }
+        // 检查是否有标题
+        this.checkTitle(templateList);
         // 处理目录
         const cataMenu = new CataParser(this.option, templateList).analyse();
-        console.log(templateList);
-        console.log(cataMenu);
         return { templateList: templateList, cataMenu: cataMenu };
     }
     refListData() {
@@ -116,6 +139,16 @@ class ComponentsDecoder {
             listData.push(temp);
         });
         return listData;
+    }
+    checkTitle(templateList) {
+        let has = false;
+        templateList.forEach((template) => {
+            if(template.type === "sr-title") has = true;
+        });
+        if(!has) {
+            const title = new TitleParser("", {}).analysePro("默认标题", "h1", {});
+            templateList.unshift(title.content);
+        }
     }
 }
 

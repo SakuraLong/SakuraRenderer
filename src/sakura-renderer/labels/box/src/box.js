@@ -1,3 +1,7 @@
+/**
+ * 弃用
+ */
+
 class Box extends HTMLElement {
     constructor() {
         super();

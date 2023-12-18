@@ -1,3 +1,4 @@
+<!-- 弃用 -->
 <template>
     <div ref="srClearSpan">clear</div>
 </template>

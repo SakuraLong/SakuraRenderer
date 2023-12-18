@@ -8,6 +8,8 @@ import UndParser from "./undParser";
 import HideParser from "./hideParser";
 import BlurParser from "./blurParser";
 import TextParser from "./textParser";
+import BoldParser from "./boldParser";
+
 
 class TemplateParser {
     constructor(option, content, rendererData) {
@@ -18,6 +20,7 @@ class TemplateParser {
             QuoteParser,
             RefParser,
             DelParser,
+            BoldParser,
             UndParser,
             HideParser,
             BlurParser,

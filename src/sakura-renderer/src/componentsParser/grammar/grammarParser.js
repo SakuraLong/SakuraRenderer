@@ -1,15 +1,25 @@
 /*
 语法解析器
 */
-import MathParser from "./mathParser";
-import DelParser from "./delParser";
-import ItalicParser from "./italicParser";
+import MathParser from "./mathParser"; //
+import DelParser from "./delParser"; // ~~ ~~
+import ItalicParser from "./italicParser"; // * *
+import BoldParser from "./boldParser"; // ** **
+import BIParser from "./BIParser"; // ~* *~
+import UndParser from "./undParser"; // __ __
 
 class GrammerParser {
     constructor(option, content) {
         this.option = option;
         this.content = content;
-        this.parsers = [MathParser, DelParser, ItalicParser];
+        this.parsers = [
+            MathParser,
+            DelParser, // ~~ ~~
+            BoldParser, // ** **
+            BIParser, // ~* *~
+            ItalicParser, // * *
+            UndParser,  // __ __
+        ];
     }
     analyse() {
         let finish = [];
@@ -29,7 +39,7 @@ class GrammerParser {
                     this.content = content;
                 }
             });
-            if(!hasChange) break;
+            if (!hasChange) break;
         }
         return this.content;
     }

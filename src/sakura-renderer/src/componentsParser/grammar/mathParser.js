@@ -1,3 +1,5 @@
+// 弃用
+
 import utils from "../../../utils";
 import MarkdownIt from "../../../sr_node_modules/markdown-it";
 import markdownItKatex from "../../../sr_node_modules/markdown-it-katex";
@@ -31,14 +33,11 @@ class MathParser {
                 return this.getMathHTML(data.replace);
             });
         }
-        // console.log(content);
         this.content = content;
     }
     getMathHTML(mathStr) {
-        // console.log(mathStr);
         const md = new MarkdownIt().use(markdownItKatex);
         const html = md.renderInline(mathStr);
-        // console.log(html);
         return html;
     }
 }

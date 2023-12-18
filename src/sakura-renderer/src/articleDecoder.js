@@ -131,7 +131,7 @@ class ArticleDecoder {
             if (i === body.length - 1) {
                 let temp = body
                     .slice(
-                        startEnd === -1 ? i + 1 : startEnd + 1,
+                        startEnd === -1 ? 0 : startEnd + 1,
                         i + 1
                     )
                     .trim();
@@ -143,7 +143,6 @@ class ArticleDecoder {
                 });
             }
         }
-        console.log(this.componentsList);
         return {
             option: this.option,
             body: this.body,
@@ -159,7 +158,6 @@ class ArticleDecoder {
             now + type + Math.floor(Math.random() * 1000000).toString();
         let a = 0;
         while (data.content.indexOf(replaceStr) !== -1 && a++ < 100) {
-            console.log(data.content.indexOf(replaceStr));
             replaceStr += type + Math.floor(Math.random() * 1000000).toString();
         }
         return replaceStr;

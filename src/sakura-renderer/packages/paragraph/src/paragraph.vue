@@ -24,12 +24,6 @@ export default {
         };
     },
     mounted() {
-        // console.log(this.data);
-        // if(this.data.option.textAlign === "center"){
-        //     this.$refs.srPara.classList.add("sa-para--center");
-        // }else{
-        //     this.$refs.srPara.classList.add("sa-para--left");
-        // }
         if (this.data.option.border === "bottom") {
             this.$refs.srPara.classList.add("sa-para--border-bottom");
         } else if (this.data.option.border === "none") {
@@ -37,15 +31,9 @@ export default {
         } else {
             this.$refs.srPara.classList.add("sa-para--border-left");
         }
-        // if(this.data.option.hoverAnimation && this.data.option.borderPosition === "bottom"){
-        //     this.$refs.srPara.classList.add("sa-para--border-bottom--ani");
-        // }else if(this.data.option.hoverAnimation){
-        //     this.$refs.srPara.classList.add("sa-para--border-left--ani");
-        // }
         if (this.data.option.type === "warning") {
             this.$refs.srParaType.classList.add("sa-para--border-warning");
         }
-        //"success","warning","tip","info"
         else if (this.data.option.type === "success") {
             this.$refs.srParaType.classList.add("sa-para--border-success");
         } else if (this.data.option.type === "tip") {
@@ -60,27 +48,8 @@ export default {
         this.data.option.styleList.forEach((styleName) => {
             this.styleStr += styleName + ";";
         });
-
-        window.test = this.test;
     },
     methods: {
-        test(event) {
-            // console.log("test", event.target.parent);
-            // // 创建一个新的PDF文档
-            // var doc = new jspdf.jsPDF();
-            // // 获取<div>元素内容
-            // var element = document.getElementById("sr-article-area");
-            // console.log(element);
-            // // 将<div>内容转为HTML字符串
-            // var htmlString = element.outerHTML;
-            // // 将HTML字符串转为PDF
-            // doc.html(htmlString, {
-            //     callback: function (pdf) {
-            //         // 将PDF保存为文件
-            //         pdf.save("example.pdf");
-            //     },
-            // });
-        },
     },
 };
 </script>

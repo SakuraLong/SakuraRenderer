@@ -15,7 +15,6 @@ class Template {
             this.strRight,
             this.content,
             (data) => {
-                console.log(data);
                 return this.analyseTemplate(data.replace);
             }
         ).content;
@@ -25,7 +24,6 @@ class Template {
         return content;
     }
     dataListInit(content){
-        console.log(content);
         let tContent =content;
         tContent = tContent.slice(2, -2);
         tContent = tContent.replace(/\n/g, ""); // 去掉所有换行符

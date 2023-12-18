@@ -5,8 +5,8 @@
 import ComponentsParser from "./componentParser"; // 组件解析器（各个具体组件解析器的父类）
 
 class TitleParser extends ComponentsParser {
-    constructor(component, option) {
-        super(component, option);
+    constructor(component, option, param) {
+        super(component, option, param);
         this.default = false; // 是否是组件模板（是否是{||}包裹）
         this.name = ["title", "标题"];
         this.template = {
@@ -131,7 +131,20 @@ class TitleParser extends ComponentsParser {
             });
         }
         this.template.data.content = this.template.data.content.trim();
-        this.template.data.option.id = this.template.data.option.id === "" ? this.template.data.content : this.template.data.option.id;
+        this.template.data.content = this.replaceCode(this.template.data.content); // 替换code
+        this.template.data.content = this.replaceIgnore(this.template.data.content); // 替换ignore
+        let tid = this.template.data.option.id === "" ? this.template.data.content : this.template.data.option.id;
+        let sid = tid;
+        let t = 1;
+        let h = 0;
+        while(this.param.rendererData.title.idMap.get(sid) !== undefined && h < 10) {
+            h++;
+            sid = tid + "_" + t.toString();
+            t++;
+        }
+        tid = tid === sid ? tid : sid;
+        this.param.rendererData.title.idMap.set(tid, true);
+        this.template.data.option.id = tid;
         return {
             type: "success",
             msg: "",
@@ -144,7 +157,18 @@ class TitleParser extends ComponentsParser {
             this.baseOption
         ); // 合并baseOption
         this.template.data.content = content;
-        this.template.data.option.id = content;
+        let tid = this.template.data.option.id === "" ? this.template.data.content : this.template.data.option.id;
+        let sid = tid;
+        let t = 1;
+        let h = 0;
+        while(this.param.rendererData.title.idMap.get(sid) !== undefined && h < 10) {
+            h++;
+            sid = tid + "_" + t.toString();
+            t++;
+        }
+        tid = tid === sid ? tid : sid;
+        this.param.rendererData.title.idMap.set(tid, true);
+        this.template.data.option.id = tid;
         this.template.data.type = type;
         for (let key in this.template.data.option) {
             this.template.data.option[key] =

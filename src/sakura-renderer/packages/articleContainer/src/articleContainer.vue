@@ -9,9 +9,7 @@
     >
         <!-- 全部区域 -->
         <div class="sa-article-container__slot">
-            <slot name="before">
-                <h1>文档和目录之前的slot插槽</h1>
-            </slot>
+            <slot name="before"></slot>
         </div>
         <main class="sa-article-container__main">
             <div
@@ -24,9 +22,7 @@
                 <div class="sa-article-container__body">
                     <!-- 文章主体区域 -->
                     <div class="sa-article-container__slot">
-                        <slot name="before-article">
-                            <h1>文章主体区域前的slot插槽</h1>
-                        </slot>
+                        <slot name="before-article"></slot>
                     </div>
                     <div class="sa-article-area" id="sr-article-area">
                         <!-- 文章区域 -->
@@ -40,9 +36,7 @@
                         ></component>
                     </div>
                     <div class="sa-article-container__slot">
-                        <slot name="after-article">
-                            <h1>文章主体区域后的slot插槽</h1>
-                        </slot>
+                        <slot name="after-article"></slot>
                     </div>
                 </div>
             </div>
@@ -53,24 +47,18 @@
             >
                 <!-- 文章目录区域 -->
                 <div class="sa-article-container__slot">
-                    <slot name="before-cata">
-                        <h1>目录主体区域前的slot插槽</h1>
-                    </slot>
+                    <slot name="before-cata"></slot>
                 </div>
                 <div class="sa-cata-area">
                     <sr-catalogue ref="saCata" @eventsFunction="this.eventsFunction"></sr-catalogue>
                     <div class="sa-article-container__slot">
-                        <slot name="after-cata">
-                            <h1>目录主体区域后的slot插槽</h1>
-                        </slot>
+                        <slot name="after-cata"></slot>
                     </div>
                 </div>
             </aside>
         </main>
         <div class="sa-article-container__slot">
-            <slot name="after">
-                <h1>文档和目录之后的slot插槽</h1>
-            </slot>
+            <slot name="after"></slot>
         </div>
         <sr-image-shower
             v-if="imageShower.show"
@@ -156,7 +144,6 @@ export default {
             let data = await this.sakuraRenderer.render();
             this.componentsList = data.templateList;
             this.$refs.saCata.render(data.cataMenu);
-            console.log(this.componentsList);
             return true;
         },
         /**
@@ -164,7 +151,6 @@ export default {
          * @param {Object} event event
          */
         pageScroll(event) {
-            console.log("pageScroll");
             const getElementTop = (elem) => {
                 let elemTop = elem.offsetTop; // 获取当前元素顶部距离父元素顶部的距离
                 let parentElem = elem.offsetParent; // 获取当前元素的父元素

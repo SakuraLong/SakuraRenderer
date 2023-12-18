@@ -7,8 +7,8 @@ import ComponentsParser from "./componentParser"; // 组件解析器（各个具
 
 
 class ParaParser extends ComponentsParser{
-    constructor(component, option) {
-        super(component, option);
+    constructor(component, option, param) {
+        super(component, option, param);
         this.default = false; // 是否是组件模板（是否是{||}包裹）
         this.name = ["para", "段落"];
         this.template = {
@@ -29,28 +29,27 @@ class ParaParser extends ComponentsParser{
         }; // 标题段落配置
     }
     judge(){
-        // console.log("组件内容：",this.component);
-        // console.log(this.dataList);
-        // 重写
         if (this.name.indexOf(this.dataList[0]) !== -1) {
             this.default = true;
             return true;
         } else if (this.component[0] !== "=" && (this.component[0] !== "{" && this.component[1] !== "|") ) {
-            // console.log("组件内容：",this.component);
             this.template.model=false;
             return true;
         } else {
             return false;
         }
     }
-    analyse(ignoreReplaceList = [], codeReplaceList = [], poemReplaceList = []) {
+    analyse() {
         this.template.data.option = Object.assign(this.template.data.option, this.baseOption); // 合并baseOption
         let styleList = [];
-        console.log(this.component);
         if(this.template.model===false){
-            // this.template.data.content += this.component+"<br>";
             this.template.data.content = this.component;
-            this.template.data.content = this.replace(ignoreReplaceList, codeReplaceList, poemReplaceList, this.template.data.content);
+            this.template.data.content = this.replacePoem(this.template.data.content); // 替换poem
+            this.template.data.content = this.TDecode(this.template.data.content); // 模板
+            this.template.data.content = this.MDecode(this.template.data.content); // 模块
+            this.template.data.content = this.GDecode(this.template.data.content); // 语法
+            this.template.data.content = this.replaceCode(this.template.data.content); // 替换code
+            this.template.data.content = this.replaceIgnore(this.template.data.content); // 替换ignore
             return {
                 type: "success",
                 msg: "",
@@ -72,8 +71,6 @@ class ParaParser extends ComponentsParser{
         for(let i=divideIndex+1;i<this.dataList.length;i++){
             this.template.data.content += this.dataList[i]+"<br>";
         }
-
-        // console.log("看这里",styleList);
         if (styleList.length!==0) {
             styleList.forEach((styleELe) => {
                 let key = styleELe.split("=")[0];
@@ -96,7 +93,6 @@ class ParaParser extends ComponentsParser{
                     case "info":
                         if(value===key){
                             if(["default", "success","warning","tip","info"].indexOf(value.toLowerCase()) !== -1){
-                                console.log(["default", "success","warning","tip","info"].indexOf(value));
                                 this.template.data.option.type = value;
                                 this.template.data.option.title=this.template.data.option.type.toUpperCase();
                             }else if(key === value){
@@ -106,18 +102,11 @@ class ParaParser extends ComponentsParser{
                         break;
                     case "type":
                         if(["default", "success","warning","tip","info"].indexOf(value.toLowerCase()) !== -1){
-                            console.log(["default", "success","warning","tip","info"].indexOf(value));
                             this.template.data.option.type = value;
                             this.template.data.option.title=this.template.data.option.type.toUpperCase();
                         }else if(key === value){
                             this.template.data.option.type = "default";
                         }
-                        break;
-                    case "class":
-                        this.template.data.option.classList = this.template.data.option.classList.concat(value.split(";"));
-                        break;
-                    case "style":
-                        this.template.data.option.styleList = this.template.data.option.styleList.concat(value.split(";"));
                         break;
                     case "LH":
                     case "lineHeight":
@@ -136,7 +125,9 @@ class ParaParser extends ComponentsParser{
                 }
             });
         }
-        this.template.data.content = this.replace(ignoreReplaceList, codeReplaceList, poemReplaceList, this.template.data.content);
+        this.template.data.content = this.GDecode(this.template.data.content);
+        this.template.data.content = this.replaceCode(this.template.data.content); // 替换code
+        this.template.data.content = this.replaceIgnore(this.template.data.content); // 替换ignore
         return {
             type: "success",
             msg: "",

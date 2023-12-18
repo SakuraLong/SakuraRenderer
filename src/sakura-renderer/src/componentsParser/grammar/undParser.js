@@ -1,11 +1,11 @@
-class ItalicParser {
+class undParser {
     constructor(option, content) {
         this.option = option;
         this.content = content;
     }
     replaceDoubleTilde(inputText) {
-        const replacedText = inputText.replace(/\*([^*]+)\*/g, "<i>$1</i>");
-        console.log(replacedText);
+        const replacedText = inputText.replace(/__(.*?)__/g, "<u>$1</u>");
+
         return replacedText;
     }
     analyse() {
@@ -14,4 +14,4 @@ class ItalicParser {
     }
 }
 
-export default ItalicParser;
+export default undParser;

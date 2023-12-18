@@ -1,6 +1,7 @@
 :root{
     --sa-color-article-container-background: var(--sa-color-base-background);
     --sa-color-cata-area-background: var(--sa-color-page-background);
+    --sa-color-cata-border-left: var(--sa-color-dark-border);
 }
 .sa-article-container{
     display: block;
@@ -30,8 +31,8 @@
 .sa-article-container__body--cata{
     position: relative;
     float: left;
-    width: calc(100% - 300px);
-    box-shadow: inset 0px 0px 10px red;
+    width: auto;
+    /* box-shadow: inset 0px 0px 10px red; */
 }
 .sa-article-container__body{
     position: relative;
@@ -40,8 +41,11 @@
 .sa-article-container__cata{
     position: relative;
     float: left;
-    width: 300px;
-    box-shadow: inset 0px 0px 10px red;
+    min-width: 200px;
+    max-width: 300px;
+    /* width: 600px; */
+    border-left: 2px solid var(--sa-color-cata-border-left);
+    /* box-shadow: inset 0px 0px 10px red; */
     /* overflow: visible; */
 }
 .sa-article-area,
@@ -58,6 +62,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: var(--sa-color-cata-area-background);
+    border-radius: 5px;
 }
 .sa-cata-area__container{
     position: relative;

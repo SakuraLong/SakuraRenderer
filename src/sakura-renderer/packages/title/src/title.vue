@@ -43,7 +43,6 @@ export default {
         };
     },
     mounted(){
-        // console.log(this.data.option.clear);
         this.$refs.srTitle.style.clear = this.data.option.clear; // clear
         if(this.data.option.textAlign === "center" || this.data.option.textAlign === "c"){
             this.$refs.srTitle.classList.add("sa-title--center");

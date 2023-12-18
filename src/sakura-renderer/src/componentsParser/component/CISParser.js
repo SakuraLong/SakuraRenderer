@@ -49,11 +49,7 @@ class CISParser extends ImageShowerParser {
         for (let i = 0; i < divideIndex; i++) {
             styleList.push(this.dataList[i]);
         }
-        // for (let i = divideIndex + 1; i < this.dataList.length; i++) {
-        //     this.template.data.imgList.push(this.dataList[i]);
-        // }
         this.template.data.imgList = this.imageListData;
-        // console.log(this.template.data.imgList);
         if (styleList.length !== 0) {
             styleList.forEach((styleELe) => {
                 if (styleELe.indexOf("=") === -1) {
