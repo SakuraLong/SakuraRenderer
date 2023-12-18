@@ -52,6 +52,7 @@ export default {
                 "grid-gap": this.data.option.space,
                 "grid-template-rows": `repeat(${this.data.option.row}, ${this.data.option.imgHeight})`,
                 "grid-auto-flow":this.data.option.direction,
+                "clear":this.data.option.clear,
                 
             };
             this.fitStyle={
