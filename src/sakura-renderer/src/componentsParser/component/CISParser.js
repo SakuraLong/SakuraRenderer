@@ -1,6 +1,5 @@
 /*
 CISParser解析器
-孙锦瑞
 */
 import ComponentsParser from "./componentParser";
 import ImageShowerParser from "./imageShowerParser";

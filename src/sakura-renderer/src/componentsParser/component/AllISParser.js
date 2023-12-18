@@ -1,6 +1,5 @@
 /*
 AllISParser解析器
-李海林
 */
 import ImageShowerParser from "./imageShowerParser";
 
@@ -16,17 +15,6 @@ class AllISParser extends ImageShowerParser {
             imgWidth: "auto",
             imgHeight: "auto",
         };
-        // this.imageShowerOption={
-        //     baseUrl:"",
-        //     imgWidth: "auto",
-        //     imgHeight: "auto",
-        //     imgMaxWidth: "",
-        //     imgMaxHeight: "",
-        //     imgPosition: "",
-        //     fit: "cover",
-        //     nameTitle: true,
-        //     name:""
-        // };
         this.template = {
             type: "sr-all-is", // 组件名称
             data: {

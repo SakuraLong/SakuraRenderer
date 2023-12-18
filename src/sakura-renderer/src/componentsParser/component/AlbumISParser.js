@@ -1,6 +1,5 @@
 /*
 AlbumISParser解析器
-边俣
 */
 // import ComponentsParser from "./componentParser";
 import ImageShowerParser from "./imageShowerParser";
