@@ -39,6 +39,7 @@ class AlbumISParser extends ImageShowerParser {
     }
     analyse() {
         this.getImgListData(); // 获取数据
+        this.analyseImageShowerOption();
         this.template.data.option = Object.assign(
             this.template.data.option,
             this.baseOption
@@ -57,14 +58,19 @@ class AlbumISParser extends ImageShowerParser {
             styleList.push(this.dataList[i]);
         }
         this.template.data.imgList = this.imageListData;
+        this.template.data.imgList.forEach((Ele) => {
+            Ele.src = this.template.data.option.baseUrl + Ele.src;
+        });
+        console.log(this.template.data.imgList);
         if (styleList.length !== 0) {
             styleList.forEach((styleELe) => {
                 let temp = styleELe.trim();
                 let key = temp.split("=")[0].trim();
                 let value = temp.split("=")[temp.split("=").length - 1].trim();
                 switch (key) {
+                    case "nameTitle":
                     case "name":
-                        this.template.data.name = value;
+                        this.template.data.option.name = value;
                         break;
                     case "index":
                         if(Number.isInteger(Number(value))){
