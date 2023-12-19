@@ -99,8 +99,6 @@ const readme = `
 |-
 |{{heimu|aaaaaaa}}
 |}
-
-
 `;
 
 export default {
