@@ -36,6 +36,7 @@ class UndParser extends Template {
                     size = value;
                     return true;
             }
+            return false;
         };
         this.dataList.forEach((data, index) => {
             const key = data.split("=")[0];

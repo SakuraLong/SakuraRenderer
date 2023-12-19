@@ -59,6 +59,7 @@ class TextParser extends Template {
                     style += `font-family: ${value};`;
                     return true;
             }
+            return false;
         };
 
         this.dataList.forEach((data, index) => {
