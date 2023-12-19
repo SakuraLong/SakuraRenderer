@@ -6,11 +6,11 @@
                 @click="showModal"
                 class="sr-album--preview--img"
                 ref="srAlbum_preview_img"
-            />
+            /> 
         </div>
 
         <div class="sr-album--controls">
-            <span class="sr-album--controls--left">{{ data.name }}</span>
+            <span class="sr-album--controls--left">{{ name }}</span>
             <span class="sr-album--controls--right"
                 >({{ loadedPhotos.length }}张)</span
             >
@@ -71,6 +71,8 @@ export default {
         else {
             this.$refs.srAlbum.classList.add("sr-album--align--none");
         }
+        console.log("sss",this.data.option.fit);
+        this.$refs.srAlbum_preview_img.style.object_fit = this.data.option.fit;
         this.$refs.srAlbum_preview_img.style.width = this.data.option.imgWidth;
         this.$refs.srAlbum_preview_img.style.height =
             this.data.option.imgHeight;
@@ -110,7 +112,7 @@ export default {
     },
     created() {
         this.loadedPhotos = this.data.imgList;
-        this.name = this.data.name;
+        this.name = this.data.option.name;
         this.currentIndex = this.data.option.index;
     },
 };

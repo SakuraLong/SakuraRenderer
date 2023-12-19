@@ -84,11 +84,11 @@ class AllISParser extends ImageShowerParser {
                 let key = styleELe.split("=")[0];
                 let value = styleELe.split("=")[styleELe.split("=").length - 1];
                 switch (key) {
-                    case "column":
+                    case "columns":
                         this.template.data.option.column = parseInt(value);
                         this.template.data.option.row = Math.ceil(imgList.length/this.template.data.option.column);
                         break;
-                    case "row":
+                    case "rows":
                         this.template.data.option.row = parseInt(value);
                         this.template.data.option.column = Math.ceil(imgList.length/this.template.data.option.row);
                         break;
