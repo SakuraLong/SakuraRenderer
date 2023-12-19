@@ -1,5 +1,5 @@
 <template>
-    <div ref="sr_table_container" class="sa-table-container">
+    <div ref="sr_table_container" class="sa-table-container" :style="styleStr">
         <div
             class="sa-table-buton"
             ref="sr_table_button"
@@ -62,6 +62,7 @@ export default {
             buttonName: "展开",
             tableName: "",
             tableBody: "",
+            styleStr: "",
             tableClassDict: {
                 tableContainer: {
                     float: {
@@ -222,6 +223,13 @@ export default {
             if (hasHead) this.$refs.sr_table.appendChild(thead);
             table.appendChild(tbody);
             this.tableName = this.data.option.name; // 表格名字
+            this.data.option.classList.forEach((className)=>{
+                console.log(className);
+                this.$refs.sr_table_container.classList.add(className);
+            });
+            this.data.option.styleList.forEach((styleName)=>{
+                this.styleStr += styleName + ";";
+            });
         },
         clickButton() {
             this.showTable = !this.showTable;
