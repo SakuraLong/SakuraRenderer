@@ -26,15 +26,15 @@ class UndParser extends Template {
                 case "content":
                 case "内容":
                     text = value;
-                    break;
+                    return true;
                 case "color":
                 case "颜色":
                     color = value;
-                    break;
+                    return true;
                 case "size":
                 case "粗细":
                     size = value;
-                    break;
+                    return true;
             }
         };
         this.dataList.forEach((data, index) => {

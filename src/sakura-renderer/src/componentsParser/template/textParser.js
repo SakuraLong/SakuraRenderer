@@ -25,27 +25,27 @@ class TextParser extends Template {
                 case "content":
                 case "内容":
                     text = value;
-                    break;
+                    return true;
                 case "color":
                 case "颜色":
                     style += `color: ${value};`;
-                    break;
+                    return true;
                 case "size":
                 case "大小":
                     style += `font-size: ${value}px;`;
-                    break;
+                    return true;
                 case "height":
                 case "行高":
                     style += `line-height: ${value}px;`;
-                    break;
+                    return true;
                 case "weight":
                 case "粗细":
                     style += `font-weight: ${value};`;
-                    break;
+                    return true;
                 case "bgcolor":
                 case "背景色":
                     style += `background-color: ${value};`;
-                    break;
+                    return true;
                 case "italic":
                 case "斜体":
                     if (value === "true" || value === "false") {
@@ -53,11 +53,11 @@ class TextParser extends Template {
                             value === "true" ? "italic" : "normal"
                         };`;
                     }
-                    break;
+                    return true;
                 case "font":
                 case "字体":
                     style += `font-family: ${value};`;
-                    break;
+                    return true;
             }
         };
 
