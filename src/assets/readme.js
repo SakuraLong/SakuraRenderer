@@ -102,5 +102,5 @@ const readme = `
 `;
 
 export default {
-    readme
+    readme,
 };
