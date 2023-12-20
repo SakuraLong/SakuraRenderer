@@ -171,7 +171,7 @@ class ListParser extends ComponentsParser {
                                 this.template.data.option.ordered_mode =
                                     "default";
                                 this.template.data.option.unordered_mode =
-                                    "template";
+                                    "square";
                             }
                         }
                         break;

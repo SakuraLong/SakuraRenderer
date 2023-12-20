@@ -1,7 +1,7 @@
 {
     "name": "sakurarenderer",
-    "version": "0.1.0",
-    "private": true,
+    "version": "0.1.1",
+    "private": false,
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
@@ -33,5 +33,12 @@
     },
     "eslintConfig": {
         "parser": "babel-eslint"
-    }
+    },
+    "files": [
+        "src/sakura-renderer",
+        "babel.config.js",
+        "package.json",
+        "README.md",
+        "vue.config.js"
+    ]
 }

@@ -41,7 +41,8 @@ export default {
         } else if (this.data.option.type === "info") {
             this.$refs.srParaType.classList.add("sa-para--border-info");
         }
-        this.$refs.srPara.style=`border-color: ${this.data.option.bc}; line-height: ${this.data.option.lineHeight}; border: ${this.data.border}; background-color:${this.data.option.bgc}`;
+        // console.log("wwwwww",this.data.option);
+        this.$refs.srPara.style=`font-family:${this.data.option.fontFamily};font-size:${this.data.option.fontSize};clear: ${this.data.option.clear};color: ${this.data.option.color};border-color: ${this.data.option.bc}; line-height: ${this.data.option.lineHeight}; border: ${this.data.border}; background-color:${this.data.option.bgc}`;
         this.data.option.classList.forEach((className)=>{
             this.$refs.srPara.classList.add(className);
         });

@@ -1,5 +1,4 @@
-const testData = 
-`
+const testData = `
 = 此界面用于测试与负责验收
 
 文档位于src/assets/testData.js中的testData
@@ -253,5 +252,5 @@ const testData =
 `;
 
 export default {
-    testData
+    testData,
 };

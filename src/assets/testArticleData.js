@@ -713,5 +713,4 @@ export default {
     test_article_data_list,
     article,
     articleForTemplate,
-    t
 };

@@ -26,16 +26,17 @@ class BlurParser extends Template {
                 case "content":
                 case "内容":
                     text = value;
-                    break;
+                    return true;
                 case "title":
                 case "注释":
                     title = value;
-                    break;
+                    return true;
                 case "size":
                 case "范围":
                     size = value;
-                    break;
+                    return true;
             }
+            return false;
         };
         this.dataList.forEach((data, index) => {
             const key = data.split("=")[0];
