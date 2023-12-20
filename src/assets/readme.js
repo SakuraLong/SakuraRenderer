@@ -94,11 +94,6 @@ const readme = `
 === 通过“<sr-i>{||}</sr-i>”设置标题
 
 其实配置项和“=”基本上没有区别，多加了一个type来确定是几级标题。
-
-{|para|
-|-
-|{{heimu|aaaaaaa}}
-|}
 `;
 
 export default {
