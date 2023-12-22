@@ -9,6 +9,8 @@ import HideParser from "./hideParser";
 import BlurParser from "./blurParser";
 import TextParser from "./textParser";
 import BoldParser from "./boldParser";
+import AParser from "./aParser";
+import RubyParser from "./rubyParser";
 
 
 class TemplateParser {
@@ -25,6 +27,8 @@ class TemplateParser {
             HideParser,
             BlurParser,
             TextParser,
+            AParser,
+            RubyParser,
         ];
     }
     analyse() {
