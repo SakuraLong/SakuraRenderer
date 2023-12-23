@@ -77,6 +77,7 @@ class ComponentsParser {
                     }
                     break;
                 case "c":
+                case "color":
                     // c有可能是clear，也可以是color
                     if (["none", "both", "left", "right"].indexOf(value) !== -1) {
                         this.baseOption.clear = ["center", "both", "right", "none"].find((ele)=>{return ele === value;});
