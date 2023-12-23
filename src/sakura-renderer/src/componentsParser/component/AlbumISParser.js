@@ -6,7 +6,7 @@ import ImageShowerParser from "./imageShowerParser";
 class AlbumISParser extends ImageShowerParser {
     constructor(component, option) {
         super(component, option);
-        this.name = ["albumIS", "相册图片展示框"];
+        this.name = ["albumIS", "相册"];
         this.template = {
             type: "sr-album-is", // 组件名称
             data: {
