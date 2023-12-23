@@ -224,18 +224,51 @@ class ListParser extends ComponentsParser {
                             if (
                                 value.includes(";") &&
                                 value.trim().split(";").length === 2
+                                //分别设置并且都有值
                             ) {
                                 //分别设置的情况
-                                let temp1 = value.trim().split(";")[0];
-                                let temp2 = value.trim().split(";")[1];
+                                let temp1 = value.trim().split(";")[0].trim();
+                                let temp2 = value.trim().split(";")[1].trim();
+                                if(temp1.length!==0){
+                                    if (
+                                        temp1.length >= 2 &&
+                                        (temp1[0] === "*" ||
+                                            temp1[temp1.length - 1] === "*")
+                                        //开头或结尾有*
+    
+                                    ) {
+                                        this.template.data.option.ordered_template =
+                                            temp1;
+                                    } else if (
+                                        //中间有*，比如第*章
+                                        temp1.length >= 3 &&
+                                        temp1.includes("*") &&
+                                        temp1[0] !== "*" &&
+                                        temp1[temp1.length - 1] !== "*"
+                                    ) {
+                                        this.template.data.option.ordered_template =
+                                            temp1;
+                                    }
+                                }
+                                if(temp2.length!==0){
+                                    this.template.data.option.unordered_template =
+                                    temp2;
+                                }
+                            }
+                            else if(!value.includes(";")&&value.trim().length!== 0) {
+                                let temp1 = value.trim();
+                                //只设置了有序列表
                                 if (
                                     temp1.length >= 2 &&
                                     (temp1[0] === "*" ||
                                         temp1[temp1.length - 1] === "*")
+                                    //开头或结尾有*
+
                                 ) {
                                     this.template.data.option.ordered_template =
                                         temp1;
                                 } else if (
+                                    //中间有*，比如第*章
                                     temp1.length >= 3 &&
                                     temp1.includes("*") &&
                                     temp1[0] !== "*" &&
@@ -244,16 +277,9 @@ class ListParser extends ComponentsParser {
                                     this.template.data.option.ordered_template =
                                         temp1;
                                 }
-                                this.template.data.option.unordered_template =
-                                    temp2;
-                            } else if (
-                                value.trim()[0] === "*" ||
-                                value.trim()[value.trim().length - 1] === "*"
-                            ) {
-                                this.template.data.option.ordered_template =
-                                    value.trim();
                             }
                         }
+                        console.log(this.template.data.option.ordered_template,this.template.data.option.unordered_template);
                         break;
                     case "none":
                         if (key === value) {
