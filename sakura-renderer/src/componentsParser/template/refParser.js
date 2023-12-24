@@ -49,7 +49,7 @@ class RefParser extends Template {
                     break;
                 case 3:
                     if(switchKeyValue(key, value)) break;
-                    else reftextContentText = data; // 这个变量没有用
+                    else textContent = data; // 这个变量没有用
                     break;
             }
         });

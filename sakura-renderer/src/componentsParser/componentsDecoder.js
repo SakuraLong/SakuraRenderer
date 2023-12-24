@@ -51,7 +51,7 @@ class ComponentsDecoder {
                 self.rendererData
             ).analyse();
             return content;
-        }
+        };
     }
     /**
      * 处理组件列表

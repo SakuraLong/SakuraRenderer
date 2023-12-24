@@ -56,7 +56,7 @@ class AParser extends Template {
                     break;
             }
         });
-        if(text === "") text = href
+        if(text === "") text = href;
         let aItem =
             "<a href="+href+
             " class='sa-sr-ahref-item' title='"+title+"'target='_blank' rel='nofollow noopener noreferrer'>"+text+
