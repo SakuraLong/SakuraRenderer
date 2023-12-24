@@ -46,7 +46,7 @@ class Template {
                         t = t.replace(this.strRight, replaceStrRightSymbol);
                         return t;
                     }
-                    return after
+                    return after;
                 }
             }
         ).content;

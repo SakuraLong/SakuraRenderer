@@ -23,9 +23,9 @@ class ArticleDecoder {
         this.html = ["sr-html", "sr-h", "html"];
         this.htmlReplaceList = []; // poem替换列表
 
-        this.replaceTemplate = this.replaceTMG(TemplateParser)
-        this.replaceModule = this.replaceTMG(ModuleParser)
-        this.replaceGrammar = this.replaceTMG(GrammarParser) // 不能在这里替换
+        this.replaceTemplate = this.replaceTMG(TemplateParser);
+        this.replaceModule = this.replaceTMG(ModuleParser);
+        this.replaceGrammar = this.replaceTMG(GrammarParser); // 不能在这里替换
 
         this.replaceIgnore = this.replaceICPH(this.ignore, (data) => {return this.ignoreReplace(data);});
         this.replaceCode = this.replaceICPH(this.code, (data) => {return this.codeReplace(data);});
@@ -178,7 +178,7 @@ class ArticleDecoder {
                 }
             });
             return tContent;
-        }
+        };
     }
 
     replaceTMG(Parser) {
@@ -190,7 +190,7 @@ class ArticleDecoder {
                 self.rendererData
             ).analyse();
             return content;
-        }
+        };
     }
 
     ignoreReplace(data) {
@@ -236,7 +236,7 @@ class ArticleDecoder {
             span = true;
         }
         let replaceStr = this.replace(data, "code");
-        let value = span === true ? "<span class='sr-code-span'>" + window.SARE.hljs.highlightAuto(content, lang.length === 0 ? null : lang).value + "</span>" : "<pre class='sr-code'>" + window.SARE.hljs.highlightAuto(content, lang.length === 0 ? null : lang).value + "</pre>"
+        let value = span === true ? "<span class='sr-code-span'>" + window.SARE.hljs.highlightAuto(content, lang.length === 0 ? null : lang).value + "</span>" : "<pre class='sr-code'>" + window.SARE.hljs.highlightAuto(content, lang.length === 0 ? null : lang).value + "</pre>";
         this.codeReplaceList.push({ key: replaceStr, value: value});
         return replaceStr;
     }
