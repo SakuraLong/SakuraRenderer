@@ -4,9 +4,9 @@ AlbumISParser解析器
 // import ComponentsParser from "./componentParser";
 import ImageShowerParser from "./imageShowerParser";
 class AlbumISParser extends ImageShowerParser {
-    constructor(component, option) {
-        super(component, option);
-        this.name = ["albumIS", "相册"];
+    constructor(component, option, rendererData) {
+        super(component, option, rendererData);
+        this.name = ["albumIS", "相册图片展示框"];
         this.template = {
             type: "sr-album-is", // 组件名称
             data: {
@@ -39,7 +39,6 @@ class AlbumISParser extends ImageShowerParser {
     }
     analyse() {
         this.getImgListData(); // 获取数据
-        this.analyseImageShowerOption();
         this.template.data.option = Object.assign(
             this.template.data.option,
             this.baseOption
@@ -61,20 +60,22 @@ class AlbumISParser extends ImageShowerParser {
         this.template.data.imgList.forEach((Ele) => {
             Ele.src = this.template.data.option.baseUrl + Ele.src;
         });
-        console.log(this.template.data.imgList);
         if (styleList.length !== 0) {
             styleList.forEach((styleELe) => {
                 let temp = styleELe.trim();
                 let key = temp.split("=")[0].trim();
                 let value = temp.split("=")[temp.split("=").length - 1].trim();
                 switch (key) {
-                    case "nameTitle":
                     case "name":
-                        this.template.data.option.name = value;
+                        this.template.data.name = value;
                         break;
                     case "index":
+                    case "i":
                         if(Number.isInteger(Number(value))){
-                            this.template.data.option.index = parseInt(value);
+                            const i = parseInt(value);
+                            if(i <= this.template.data.imgList.length && i >= 1) {
+                                this.template.data.option.index = parseInt(i - 1);   
+                            }
                         }
                         break;
                     default:
