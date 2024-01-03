@@ -24,7 +24,7 @@ this.$refs.render.setArticle('= Hello world!') // 设置文章内容
 this.$refs.render.updateUserData({
   githubToken:'YOUR TOKEN'
 }) // 设置用户数据（可选）
-this.#refs.render.render() // 渲染
+this.$refs.render.render() // 渲染
 ```
 
 ## 官网链接
