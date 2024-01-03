@@ -20,7 +20,7 @@ vue文件template中
 ```
 在文件中调用
 ```
-this.#refs.render.setArticle('= Hello world!') // 设置文章内容
+this.$refs.render.setArticle('= Hello world!') // 设置文章内容
 this.$refs.render.updateUserData({
   githubToken:'YOUR TOKEN'
 }) // 设置用户数据（可选）
