@@ -28,7 +28,7 @@ this.$refs.render.render() // 渲染
 ```
 
 ## 官网链接
-See [Sakura Renderer](http://123.249.110.185:8000/).
+See [Sakura Renderer](http://114.116.230.1:12000/).
 
 ## 官网GitHub仓库
 See [Sakura Renderer](https://github.com/SakuraLong/SakuraRendererWeb).
